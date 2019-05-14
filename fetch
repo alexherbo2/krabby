@@ -1,0 +1,21 @@
+#!/bin/sh
+
+fetch() {
+  case $# in
+    1) curl --location --remote-name $1 ;;
+    2) curl --location $1 --output $2 ;;
+  esac
+}
+
+mkdir -p packages
+cd packages
+
+fetch https://github.com/alexherbo2/modal.js/raw/master/scripts/modal.js
+fetch https://github.com/alexherbo2/hint.js/raw/master/scripts/hint.js
+fetch https://github.com/alexherbo2/selection.js/raw/master/scripts/selection.js
+fetch https://github.com/alexherbo2/selection.js/raw/master/styles/selection.css
+fetch https://github.com/alexherbo2/mouse.js/raw/master/scripts/mouse.js
+fetch https://github.com/alexherbo2/clipboard.js/raw/master/scripts/clipboard.js
+fetch https://github.com/alexherbo2/scroll.js/raw/master/scripts/scroll.js
+fetch https://github.com/alexherbo2/player.js/raw/master/scripts/player.js
+fetch 'https://upload.wikimedia.org/wikipedia/commons/a/a5/Google_Chrome_icon_(September_2014).svg' chrome.svg

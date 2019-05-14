@@ -1,0 +1,31 @@
+{
+  "manifest_version": 2,
+  "name": "Configuration",
+  "description": "Configuration for Chrome",
+  "version": "0.1.0",
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "packages/modal.js",
+        "packages/hint.js",
+        "packages/selection.js",
+        "packages/mouse.js",
+        "packages/clipboard.js",
+        "packages/scroll.js",
+        "packages/player.js",
+        "config.js"
+      ],
+      "css": [
+        "packages/selection.css"
+      ]
+    }
+  ],
+  "icons": {
+    "16": "build/chrome.png",
+    "48": "build/chrome.png",
+    "128": "build/chrome.png"
+  }
+}
