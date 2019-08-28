@@ -14,6 +14,12 @@
 
 ## Installation
 
+### Installing from the Chrome Web Store
+
+https://chrome.google.com/webstore/detail/configuration/gkmignamlolbclcnmhlijklgaenooonk
+
+### Installing from the source
+
 ``` sh
 make
 ```
