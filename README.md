@@ -1,5 +1,7 @@
 # Configuration for [Chrome]
 
+###### [Installation](#installation) | [Configuration](config.js) | [Contributing](CONTRIBUTING)
+
 > Configuration example to [create a keyboard interface to the web].
 
 ## Demos
