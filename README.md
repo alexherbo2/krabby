@@ -3,6 +3,8 @@
 ###### [Installation](#installation) | [Configuration](config.js) | [Documentation](#commands) | [Contributing](CONTRIBUTING)
 
 > Configuration example to [create a keyboard interface to the web].
+>
+> Fork this repository to make your own configuration.
 
 ## Demos
 
@@ -109,6 +111,8 @@
 ### Installing from the Chrome Web Store
 
 https://chrome.google.com/webstore/detail/configuration/gkmignamlolbclcnmhlijklgaenooonk
+
+Note this extension is an example of configuration.  You are encouraged to fork the repository to make your own configuration.
 
 ### Installing from the source
 
