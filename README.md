@@ -108,6 +108,14 @@
 
 ## Installation
 
+### Installing from the web (Recommended)
+
+Run the following in your terminal, then follow the onscreen instructions.
+
+``` sh
+curl -sSL https://git.io/JeGCO | sh
+```
+
 ### Installing from the Chrome Web Store
 
 https://chrome.google.com/webstore/detail/configuration/gkmignamlolbclcnmhlijklgaenooonk
@@ -117,7 +125,7 @@ Note this extension is an example of configuration.  You are encouraged to fork 
 ### Installing from the source
 
 ``` sh
-make
+make install
 ```
 
 Open the _Extensions_ page by navigating to `chrome://extensions`, enable _Developer mode_ then _Load unpacked_ to select the extension directory.

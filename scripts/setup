@@ -1,0 +1,189 @@
+#!/bin/sh
+
+# Environment variables
+XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-~/.config}
+CONFIG=$XDG_CONFIG_HOME/chrome
+OS=$(uname -s)
+
+# Faces
+none='\033[0m'
+bold='\033[1m'
+red='\033[31m'
+green='\033[32m'
+yellow='\033[33m'
+blue='\033[34m'
+
+# Main ─────────────────────────────────────────────────────────────────────────
+
+main() {
+
+  # Options
+  INTERACTIVE=true
+  while test $# -gt 0; do
+    case "$1" in
+      -no-confirm) INTERACTIVE=false ;;
+    esac
+    shift
+  done
+
+  # Dependencies
+  print_horizontal_line
+  printf "${green}Dependencies${none}: git inkscape crystal shards jq mpv\n"
+  verify_dependency git Git https://git-scm.com
+  verify_dependency inkscape Inkscape https://inkscape.org
+  verify_dependency crystal Crystal https://crystal-lang.org
+  verify_dependency shards Shards https://crystal-lang.org
+  verify_dependency jq jq https://stedolan.github.io/jq/
+  verify_dependency mpv mpv https://mpv.io
+  if test "$OS" = Linux; then
+    printf "${green}Dependencies${none}: rofi (Linux-only)\n"
+    verify_dependency rofi Rofi https://github.com/davatorium/rofi
+  fi
+
+  # Extension: Configuration
+  name='Configuration'
+  description='Configuration for Chrome'
+  url='https://github.com/alexherbo2/chrome-configuration'
+  path=$CONFIG
+  dependencies='inkscape'
+  print_horizontal_line
+  print_info "$name" "$description" "$url" "$path" "$dependencies"
+  if test -e "$CONFIG"; then
+    printf "${yellow}Warning${none}: %s already exists\n" "$CONFIG"
+    printf 'It expects a copy of the repository\n'
+    if test "$INTERACTIVE" = true; then
+      on_key "Continue? (${green}y${none}/${red}n${none})"
+      if test "$key" != 'y'; then
+        exit
+      fi
+    fi
+  else
+    git clone "$url" "$CONFIG"
+  fi
+  cd "$CONFIG"
+  git pull
+  make
+  print_install_instructions
+
+  # Extension: Commands
+  name='Commands'
+  description='Chrome API to perform browser actions'
+  url='https://github.com/alexherbo2/chrome-commands'
+  path=$CONFIG/extensions/commands
+  dependencies='inkscape'
+  print_horizontal_line
+  print_info "$name" "$description" "$url" "$path" "$dependencies"
+  clone_repo "$url" "$path"
+  cd "$path"
+  git pull
+  make
+  print_install_instructions
+
+  # Extension: Shell
+  name='Shell'
+  description='Chrome API to execute external commands through native messaging'
+  url='https://github.com/alexherbo2/chrome-shell'
+  path=$CONFIG/extensions/shell
+  dependencies='crystal shards jq inkscape'
+  print_horizontal_line
+  print_info "$name" "$description" "$url" "$path" "$dependencies"
+  clone_repo "$url" "$path"
+  cd "$path"
+  git pull
+  cd "$path/host"
+  make install
+  cd "$path/extension"
+  make
+  print_install_instructions
+
+  # Extension: dmenu
+  name='dmenu'
+  description='Tab search with dmenu'
+  url='https://github.com/alexherbo2/chrome-dmenu'
+  path=$CONFIG/extensions/dmenu
+  dependencies='rofi inkscape'
+  print_horizontal_line
+  print_info "$name" "$description" "$url" "$path" "$dependencies"
+  clone_repo "$url" "$path"
+  cd "$path"
+  git pull
+  make
+  print_install_instructions
+
+  # Post-installation
+  print_horizontal_line
+  printf 'Installation finished 🐈\n'
+  printf '
+    ╭───────────────────────╮
+    │ $ cd ~/.config/chrome │
+    │ $ kak config.js       │
+    ╰───────────────────────╯
+  '
+  printf '\n'
+}
+
+# Helpers ──────────────────────────────────────────────────────────────────────
+
+on_key() {
+  prompt=$1
+  printf "${blue}❯${none} $prompt\n"
+  read -n 1 key < /dev/tty
+  printf '\r'
+}
+
+print_horizontal_line() {
+  COLUMNS=$(tput cols)
+  line=''
+  index=0
+  while test "$index" -lt "$COLUMNS"; do
+    index=$((index + 1))
+    line="${line}─"
+  done
+  printf '%s\n' "$line"
+}
+
+verify_dependency() {
+  command=$1
+  name=$2
+  url=$3
+  if command -v "$command" > /dev/null 2>&1; then
+    printf "❯ ${green}%s${none}\n" "$name"
+  else
+    printf "❯ ${red}%s${none}\n" "$name" > /dev/stderr
+    printf 'Please install %s\n' "$name" > /dev/stderr
+    printf '%s\n' "$url" > /dev/stderr
+    exit 1
+  fi
+}
+
+print_info() {
+  name=$1
+  description=$2
+  url=$3
+  path=$4
+  dependencies=$5
+  printf "${green}Extension${none}: ${bold}%s${none}\n" "$name"
+  printf "${green}Description${none}: %s\n" "$description"
+  printf "${green}Repository${none}: %s\n" "$url"
+  printf "${green}Path${none}: %s\n" "$path"
+  printf "${green}Dependencies${none}: %s\n" "$dependencies"
+  printf "${green}Building${none}:\n"
+}
+
+print_install_instructions() {
+  printf "${green}Installing${none}:\n"
+  printf "Open the ${bold}Extensions${none} page by navigating to chrome://extensions, enable ${bold}Developer mode${none} then ${bold}Load unpacked${none} to select the extension directory: %s\n" "$PWD"
+  if test "$INTERACTIVE" = true; then
+    on_key 'Press any key to continue'
+  fi
+}
+
+clone_repo() {
+  url=$1
+  path=$2
+  if test ! -e "$path"; then
+    git clone "$url" "$path"
+  fi
+}
+
+main "$@"
