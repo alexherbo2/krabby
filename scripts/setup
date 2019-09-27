@@ -61,8 +61,12 @@ main() {
     git clone "$url" "$CONFIG"
   fi
   cd "$CONFIG"
-  git pull
-  make
+  if test -e .git; then
+    git pull
+  fi
+  if test -e Makefile; then
+    make
+  fi
   print_install_instructions
 
   # Extension: Commands
