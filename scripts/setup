@@ -26,6 +26,15 @@ main() {
     shift
   done
 
+  # Usage
+  print_horizontal_line
+  printf "${green}Usage${none}: Local\n"
+  printf '$ setup\n'
+  printf '$ setup -no-confirm\n'
+  printf "${green}Usage${none}: Remote\n"
+  printf '$ curl -sSL https://git.io/JeGCO | sh\n'
+  printf '$ curl -sSL https://git.io/JeGCO | sh -s -- -no-confirm\n'
+
   # Dependencies
   print_horizontal_line
   printf "${green}Dependencies${none}: git inkscape crystal shards jq mpv\n"
