@@ -28,12 +28,22 @@ main() {
 
   # Usage
   print_horizontal_line
-  printf "${green}Usage${none}: Local\n"
-  printf '$ setup\n'
-  printf '$ setup -no-confirm\n'
-  printf "${green}Usage${none}: Remote\n"
-  printf '$ curl -sSL https://git.io/JeGCO | sh\n'
-  printf '$ curl -sSL https://git.io/JeGCO | sh -s -- -no-confirm\n'
+  if test "$INTERACTIVE" = true; then
+    interactive_usage_face=$green
+    non_interactive_usage_face=$none
+  else
+    interactive_usage_face=$none
+    non_interactive_usage_face=$green
+  fi
+  if test -t 0; then
+    printf "${green}Usage${none}:\n"
+    printf "\$ ${interactive_usage_face}setup${none}\n"
+    printf "\$ ${non_interactive_usage_face}setup -no-confirm${none}\n"
+  else
+    printf "${green}Usage${none}:\n"
+    printf "\$ ${interactive_usage_face}curl -sSL https://git.io/JeGCO | sh${none}\n"
+    printf "\$ ${non_interactive_usage_face}curl -sSL https://git.io/JeGCO | sh -s -- -no-confirm${none}\n"
+  fi
 
   # Dependencies
   print_horizontal_line
