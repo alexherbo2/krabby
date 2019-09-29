@@ -6,6 +6,16 @@
 >
 > Fork this repository to make your own configuration.
 
+## TL;DR
+
+**Chrome extension** — **Configuration** — **Keyboard interface** — **Multiple selections** — **Kakoune-inspired**
+
+Run the following in your terminal, then follow the onscreen instructions.
+
+``` sh
+curl -sSL https://git.io/JeGCO | sh
+```
+
 ## Demos
 
 ### Download 3-gatsu no Lion episodes from HorribleSubs
