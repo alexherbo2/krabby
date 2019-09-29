@@ -2,9 +2,7 @@
 
 ###### [Installation](#installation) | [Configuration](config.js) | [Documentation](#commands) | [Contributing](CONTRIBUTING)
 
-> Configuration example to [create a keyboard interface to the web].
->
-> Fork this repository to make your own configuration.
+> Configuration example to [create a keyboard interface to the web], heavily inspired by [Kakoune].
 
 ## TL;DR
 
@@ -315,6 +313,7 @@ Commands are bound to physical keys and displayed with the US layout.
 [Commands]: https://github.com/alexherbo2/chrome-commands
 [Shell]: https://github.com/alexherbo2/chrome-shell
 [chrome-dmenu]: https://github.com/alexherbo2/chrome-dmenu
+[Kakoune]: https://kakoune.org
 [Inkscape]: https://inkscape.org
 [dmenu]: https://tools.suckless.org/dmenu/
 [mpv]: https://mpv.io
