@@ -1,12 +1,12 @@
 # Configuration for [Chrome]
 
-###### [Installation](#installation) | [Configuration](config.js) | [Documentation](#commands) | [Contributing](CONTRIBUTING)
+###### [Installation](#installation) | [Configuration](config.js) | [Guides](#guides) | [Documentation](#commands) | [Contributing](CONTRIBUTING)
 
 > Configuration example to [create a keyboard interface to the web], heavily inspired by [Kakoune].
 
 ## TL;DR
 
-**Chrome extension** — **Configuration** — **Keyboard interface** — **Multiple selections** — **Kakoune-inspired**
+**Chrome extension** — **Configuration** — **Keyboard interface** — **Multiple selections** — **Kakoune-inspired** — **Firefox-compatible**
 
 Run the following in your terminal, then follow the onscreen instructions.
 
@@ -106,7 +106,8 @@ curl -sSL https://git.io/JeGCO | sh
 
 ## Dependencies
 
-- [Inkscape] (Inkscape is used to convert SVG to PNG when uploading to the [Chrome Web Store])
+- [Zip] (Zip is used to package the extension)
+- [Inkscape] (Inkscape is used to convert SVG to PNG when uploading the extension)
 
 ### Extensions
 
@@ -136,11 +137,21 @@ Note this extension is an example of configuration.  You are encouraged to fork 
 make install
 ```
 
+#### Chrome
+
 Open the _Extensions_ page by navigating to `chrome://extensions`, enable _Developer mode_ then _Load unpacked_ to select the extension directory.
 
 ![Load extension](https://developer.chrome.com/static/images/get_started/load_extension.png)
 
-See the [Getting Started Tutorial] for more information.
+#### Firefox
+
+- Open `about:config`, change `xpinstall.signatures.required` to `false`.
+- Open `about:addons` ❯ _Extensions_, click _Install add-on from file_ and select the package file.
+
+## Guides
+
+- [Chrome][Chrome – Getting Started Tutorial]
+- [Firefox][Firefox – Your first extension]
 
 ## Commands
 
@@ -308,13 +319,23 @@ Commands are bound to physical keys and displayed with the US layout.
 
 [Chrome]: https://google.com/chrome/
 [Chrome Web Store]: https://chrome.google.com/webstore
-[Create a keyboard interface to the web]: https://alexherbo2.github.io/blog/chrome/create-a-keyboard-interface-to-the-web/
-[Getting Started Tutorial]: https://developer.chrome.com/extensions/getstarted
+
+[Firefox]: https://mozilla.org/firefox/
+[Firefox Add-ons]: https://addons.mozilla.org
+
+[Kakoune]: https://kakoune.org
+[mpv]: https://mpv.io
+[dmenu]: https://tools.suckless.org/dmenu/
+[Zip]: http://infozip.sourceforge.net/Zip.html
+[Inkscape]: https://inkscape.org
+
 [Commands]: https://github.com/alexherbo2/chrome-commands
 [Shell]: https://github.com/alexherbo2/chrome-shell
 [chrome-dmenu]: https://github.com/alexherbo2/chrome-dmenu
-[Kakoune]: https://kakoune.org
-[Inkscape]: https://inkscape.org
-[dmenu]: https://tools.suckless.org/dmenu/
-[mpv]: https://mpv.io
+
+[Chrome – Getting Started Tutorial]: https://developer.chrome.com/extensions/getstarted
+[Firefox – Your first extension]: https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Your_first_WebExtension
+
 [Regular Expressions]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions
+
+[Create a keyboard interface to the web]: https://alexherbo2.github.io/blog/chrome/create-a-keyboard-interface-to-the-web/

@@ -1,22 +1,39 @@
+// Environment variables ───────────────────────────────────────────────────────
+
+switch (true) {
+  case (typeof browser !== 'undefined'):
+    var PLATFORM = 'firefox'
+    var COMMANDS_EXTENSION_ID = 'commands@alexherbo2.github.com'
+    var SHELL_EXTENSION_ID = 'shell@alexherbo2.github.com'
+    var DMENU_EXTENSION_ID = 'dmenu@alexherbo2.github.com'
+    break
+  case (typeof chrome !== 'undefined'):
+    var PLATFORM = 'chrome'
+    var COMMANDS_EXTENSION_ID = 'cabmgmngameccclicfmcpffnbinnmopc'
+    var SHELL_EXTENSION_ID = 'ohgecdnlcckpfnhjepfdcdgcfgebkdgl'
+    var DMENU_EXTENSION_ID = 'gonendiemfggilnopogmkafgadobkoeh'
+    break
+}
+
 // Extensions ──────────────────────────────────────────────────────────────────
 
 // Commands
 const commands = {}
-commands.port = chrome.runtime.connect('cabmgmngameccclicfmcpffnbinnmopc')
+commands.port = chrome.runtime.connect(COMMANDS_EXTENSION_ID)
 commands.send = (command, ...arguments) => {
   commands.port.postMessage({ command, arguments })
 }
 
 // Shell
 const shell = {}
-shell.port = chrome.runtime.connect('ohgecdnlcckpfnhjepfdcdgcfgebkdgl')
+shell.port = chrome.runtime.connect(SHELL_EXTENSION_ID)
 shell.send = (command, ...arguments) => {
   shell.port.postMessage({ command, arguments })
 }
 
 // dmenu
 const dmenu = {}
-dmenu.port = chrome.runtime.connect('gonendiemfggilnopogmkafgadobkoeh')
+dmenu.port = chrome.runtime.connect(DMENU_EXTENSION_ID)
 dmenu.send = (command, ...arguments) => {
   dmenu.port.postMessage({ command, arguments })
 }
