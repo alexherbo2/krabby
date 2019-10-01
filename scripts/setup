@@ -3,6 +3,7 @@
 # Environment variables
 XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-~/.config}
 CONFIG=$XDG_CONFIG_HOME/chrome
+FIREFOX_CONFIG=$XDG_CONFIG_HOME/firefox
 OS=$(uname -s)
 
 # Faces
@@ -12,6 +13,8 @@ red='\033[31m'
 green='\033[32m'
 yellow='\033[33m'
 blue='\033[34m'
+magenta='\033[35m'
+cyan='\033[36m'
 
 # Main ─────────────────────────────────────────────────────────────────────────
 
@@ -47,9 +50,9 @@ main() {
 
   # Dependencies
   print_horizontal_line
-  printf "${green}Dependencies${none}: git inkscape crystal shards jq mpv\n"
+  printf "${green}Dependencies${none}: git zip crystal shards jq mpv\n"
   verify_dependency git Git https://git-scm.com
-  verify_dependency inkscape Inkscape https://inkscape.org
+  verify_dependency zip Zip http://infozip.sourceforge.net/Zip.html
   verify_dependency crystal Crystal https://crystal-lang.org
   verify_dependency shards Shards https://crystal-lang.org
   verify_dependency jq jq https://stedolan.github.io/jq/
@@ -64,7 +67,7 @@ main() {
   description='Configuration for Chrome'
   url='https://github.com/alexherbo2/chrome-configuration'
   path=$CONFIG
-  dependencies='inkscape'
+  dependencies='zip'
   print_horizontal_line
   print_info "$name" "$description" "$url" "$path" "$dependencies"
   if test -e "$CONFIG"; then
@@ -80,20 +83,24 @@ main() {
     git clone "$url" "$CONFIG"
   fi
   cd "$CONFIG"
+  if test ! -e "$FIREFOX_CONFIG"; then
+    printf "${green}Symlinking${none}: '%s' → '%s'\n" "$CONFIG" "$FIREFOX_CONFIG"
+    ln -s "$CONFIG" "$FIREFOX_CONFIG"
+  fi
   if test -e .git; then
     git pull
   fi
   if test -e Makefile; then
     make
   fi
-  print_install_instructions
+  print_install_instructions . .
 
   # Extension: Commands
   name='Commands'
   description='Chrome API to perform browser actions'
   url='https://github.com/alexherbo2/chrome-commands'
   path=$CONFIG/extensions/commands
-  dependencies='inkscape'
+  dependencies='zip'
   print_horizontal_line
   print_info "$name" "$description" "$url" "$path" "$dependencies"
   clone_repo "$url" "$path"
@@ -107,7 +114,7 @@ main() {
   description='Chrome API to execute external commands through native messaging'
   url='https://github.com/alexherbo2/chrome-shell'
   path=$CONFIG/extensions/shell
-  dependencies='crystal shards jq inkscape'
+  dependencies='crystal shards jq zip'
   print_horizontal_line
   print_info "$name" "$description" "$url" "$path" "$dependencies"
   clone_repo "$url" "$path"
@@ -124,7 +131,7 @@ main() {
   description='Tab search with dmenu'
   url='https://github.com/alexherbo2/chrome-dmenu'
   path=$CONFIG/extensions/dmenu
-  dependencies='rofi inkscape'
+  dependencies='rofi zip'
   print_horizontal_line
   print_info "$name" "$description" "$url" "$path" "$dependencies"
   clone_repo "$url" "$path"
@@ -137,10 +144,10 @@ main() {
   print_horizontal_line
   printf 'Installation finished 🐈\n'
   printf '
-    ╭───────────────────────╮
-    │ $ cd ~/.config/chrome │
-    │ $ kak config.js       │
-    ╰───────────────────────╯
+    ╭───────────────────────╮    ╭────────────────────────╮
+    │ $ cd ~/.config/chrome │    │ $ cd ~/.config/firefox │
+    │ $ kak config.js       │    │ $ kak config.js        │
+    ╰───────────────────────╯    ╰────────────────────────╯
   '
   printf '\n'
 }
@@ -194,8 +201,14 @@ print_info() {
 }
 
 print_install_instructions() {
+  chrome_target=${1:-target/chrome}
+  firefox_target=${2:-target/firefox}
   printf "${green}Installing${none}:\n"
-  printf "Open the ${bold}Extensions${none} page by navigating to chrome://extensions, enable ${bold}Developer mode${none} then ${bold}Load unpacked${none} to select the extension directory: %s\n" "$PWD"
+  printf "${cyan}Chrome${none}:\n"
+  (cd "$chrome_target"; printf "Open the ${bold}Extensions${none} page by navigating to chrome://extensions, enable ${bold}Developer mode${none} then ${bold}Load unpacked${none} to select the extension directory: %s\n" "$PWD")
+  printf "${cyan}Firefox${none}:\n"
+  printf "Open about:config, change ${bold}xpinstall.signatures.required${none} to ${bold}false${none}\n"
+  (cd "$firefox_target"; printf "Open about:addons ❯ ${bold}Extensions${none}, click ${bold}Install add-on from file${none} and select the package file: %s\n" "$PWD/package.zip")
   if test "$INTERACTIVE" = true; then
     on_key 'Press any key to continue'
   fi
