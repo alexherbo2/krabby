@@ -106,7 +106,7 @@ curl -sSL https://git.io/JeGCO | sh
 
 ## Dependencies
 
-- [Inkscape] (Inkscape is used to convert SVG to PNG)
+- [Inkscape] (Inkscape is used to convert SVG to PNG when uploading to the [Chrome Web Store])
 
 ### Extensions
 
@@ -308,6 +308,7 @@ Commands are bound to physical keys and displayed with the US layout.
 - <kbd>Alt</kbd> + <kbd>m</kbd> → Play with [mpv] in reverse order (**Link** context) – Requires [Shell]
 
 [Chrome]: https://google.com/chrome/
+[Chrome Web Store]: https://chrome.google.com/webstore
 [Create a keyboard interface to the web]: https://alexherbo2.github.io/blog/chrome/create-a-keyboard-interface-to-the-web/
 [Getting Started Tutorial]: https://developer.chrome.com/extensions/getstarted
 [Commands]: https://github.com/alexherbo2/chrome-commands

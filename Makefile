@@ -1,6 +1,6 @@
 build: fetch
 	mkdir -p build
-	inkscape --without-gui packages/chrome.svg --export-png build/chrome.png
+	# inkscape --without-gui packages/chrome.svg --export-png build/chrome.png
 
 install:
 	scripts/setup
