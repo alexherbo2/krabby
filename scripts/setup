@@ -153,6 +153,9 @@ main() {
 • Important files: manifest.json config.js fetch Makefile (eventually .gitignore)
   You can remove the rest.
   '
+  printf '
+• How to update: curl -sSL https://git.io/JeGCO | sh
+  '
   printf '\n'
 }
 
