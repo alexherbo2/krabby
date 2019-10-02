@@ -1,6 +1,6 @@
 # Configuration for [Chrome]
 
-###### [Installation](#installation) | [Configuration](config.js) | [Guides](#guides) | [Documentation](#commands) | [Contributing](CONTRIBUTING)
+###### [Installation](#installation) | [Configuration](config.js) | [Guides](#guides) | [Documentation](#commands) | [Browser compatibility](#browser-compatibility) | [Contributing](CONTRIBUTING)
 
 > Configuration example to [create a keyboard interface to the web], heavily inspired by [Kakoune].
 
@@ -318,11 +318,39 @@ Commands are bound to physical keys and displayed with the US layout.
 - <kbd>m</kbd> → Play with [mpv] (**Link** context) – Requires [Shell]
 - <kbd>Alt</kbd> + <kbd>m</kbd> → Play with [mpv] in reverse order (**Link** context) – Requires [Shell]
 
+## Browser compatibility
+
+| Web browser | Support |             Engine              |
+| ----------- |:-------:|:-------------------------------:|
+| [Chrome]    |    ✓    | [![Blink][chrome.svg]][Blink]   |
+| [Firefox]   |    ✓    | [![Gecko][firefox.svg]][Gecko]  |
+| [Edge]      |    ?    | [![Blink][chrome.svg]][Blink]   |
+| [Opera]     |    ✓    | [![Blink][chrome.svg]][Blink]   |
+| [Safari]    |    ✗    | [![WebKit][safari.svg]][WebKit] |
+| [Vivaldi]   |    ✓    | [![Blink][chrome.svg]][Blink]   |
+| [Brave]     |    ✓    | [![Blink][chrome.svg]][Blink]   |
+
 [Chrome]: https://google.com/chrome/
 [Chrome Web Store]: https://chrome.google.com/webstore
 
 [Firefox]: https://mozilla.org/firefox/
 [Firefox Add-ons]: https://addons.mozilla.org
+
+[Chrome]: https://google.com/chrome/
+[Firefox]: https://mozilla.org/firefox/
+[Edge]: https://microsoft.com/en-us/windows/microsoft-edge
+[Opera]: https://opera.com
+[Safari]: https://apple.com/safari/
+[Vivaldi]: https://vivaldi.com
+[Brave]: https://brave.com
+
+[Blink]: https://chromium.org/blink
+[Gecko]: https://developer.mozilla.org/en-US/docs/Mozilla/Gecko
+[WebKit]: https://webkit.org
+
+[chrome.svg]: https://developer.mozilla.org/static/browsers/chrome.b49946f7739f.svg
+[firefox.svg]: https://developer.mozilla.org/static/browsers/firefox.1c9f202ae696.svg
+[safari.svg]: https://developer.mozilla.org/static/browsers/safari.aca6ae03b671.svg
 
 [Kakoune]: https://kakoune.org
 [mpv]: https://mpv.io
