@@ -149,6 +149,10 @@ main() {
     │ $ kak config.js       │    │ $ kak config.js        │
     ╰───────────────────────╯    ╰────────────────────────╯
   '
+  printf '
+• Important files: manifest.json config.js fetch Makefile (eventually .gitignore)
+  You can remove the rest.
+  '
   printf '\n'
 }
 
