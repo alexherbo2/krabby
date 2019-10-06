@@ -1,9 +1,18 @@
 #!/bin/sh
 
+# Faces
+none=$(printf '\033[0m')
+green=$(printf '\033[32m')
+
+curl() {
+  command curl --silent --show-error --location "$@" \
+    --write-out "${green}Fetching${none}: %{url_effective} → ${PWD}/%{filename_effective}\n"
+}
+
 fetch() {
   case $# in
-    1) curl --location --remote-name $1 ;;
-    2) curl --location $1 --output $2 ;;
+    1) curl --remote-name "$1" ;;
+    2) curl "$1" --output "$2" ;;
   esac
 }
 
