@@ -52,6 +52,11 @@ modal.filter('Gmail', () => location.hostname === 'mail.google.com')
 modal.enable('Gmail', 'Video', 'Link', 'Text', 'Command')
 modal.on('context-change', (context) => updateStatusLine())
 
+// Prompt
+const prompt = new Prompt
+prompt.on('open', () => modal.unlisten())
+prompt.on('close', () => modal.listen())
+
 // Pass
 const pass = new Modal('Pass')
 
@@ -157,9 +162,9 @@ const player = () => {
   return new Player(media)
 }
 
-const keep = (selections, matching, ...attributes) => {
+const keep = async (selections, matching, ...attributes) => {
   const mode = matching ? 'Keep matching' : 'Keep not matching'
-  const value = prompt(`${mode} (${attributes})`)
+  const value = await prompt.fire(`${mode} (${attributes})`)
   if (value === null) {
     return
   }
@@ -167,8 +172,8 @@ const keep = (selections, matching, ...attributes) => {
   selections.filter((selection) => attributes.some((attribute) => regex.test(selection[attribute]) === matching))
 }
 
-const select = (selections) => {
-  const value = prompt('Select (querySelectorAll)')
+const select = async (selections) => {
+  const value = await prompt.fire('Select (querySelectorAll)')
   if (value === null) {
     return
   }

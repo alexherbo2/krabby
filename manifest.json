@@ -16,6 +16,7 @@
       ],
       "js": [
         "packages/modal.js",
+        "packages/prompt.js",
         "packages/hint.js",
         "packages/selection.js",
         "packages/mouse.js",
