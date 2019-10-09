@@ -330,6 +330,11 @@ Commands are bound to physical keys and displayed with the US layout.
 | [Vivaldi]   |    ✓    | [![Blink][chrome.svg]][Blink]   |
 | [Brave]     |    ✓    | [![Blink][chrome.svg]][Blink]   |
 
+## Credits
+
+- [Kakoune] (@mawww) for ideas and [selection.cc].
+- [Saka Key] (@eejdoowad) was a reference, for implementation and its code quality.
+
 [Chrome]: https://google.com/chrome/
 [Chrome Web Store]: https://chrome.google.com/webstore
 
@@ -361,6 +366,11 @@ Commands are bound to physical keys and displayed with the US layout.
 [Commands]: https://github.com/alexherbo2/chrome-commands
 [Shell]: https://github.com/alexherbo2/chrome-shell
 [chrome-dmenu]: https://github.com/alexherbo2/chrome-dmenu
+
+[Kakoune]: https://kakoune.org
+[selection.cc]: https://github.com/mawww/kakoune/blob/master/src/selection.cc
+
+[Saka Key]: https://key.saka.io
 
 [Chrome – Getting Started Tutorial]: https://developer.chrome.com/extensions/getstarted
 [Firefox – Your first extension]: https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Your_first_WebExtension
