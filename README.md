@@ -332,7 +332,7 @@ Commands are bound to physical keys and displayed with the US layout.
 
 ## Credits
 
-- [Kakoune] ([@mawww]) for ideas and [selection.cc].
+- [Kakoune] ([@mawww]) for [ideas][Why Kakoune] and [selection.cc].
 - [Saka Key] ([@eejdoowad]) was a reference, for implementation and its code quality.
 
 [Chrome]: https://google.com/chrome/
@@ -368,6 +368,7 @@ Commands are bound to physical keys and displayed with the US layout.
 [chrome-dmenu]: https://github.com/alexherbo2/chrome-dmenu
 
 [Kakoune]: https://kakoune.org
+[Why Kakoune]: https://kakoune.org/why-kakoune/why-kakoune.html
 [selection.cc]: https://github.com/mawww/kakoune/blob/master/src/selection.cc
 
 [Saka Key]: https://key.saka.io
