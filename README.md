@@ -331,8 +331,8 @@ Commands are bound to physical keys and displayed with the US layout.
 
 ## Credits
 
-- [Kakoune] (@mawww) for ideas and [selection.cc].
-- [Saka Key] (@eejdoowad) was a reference for me, for implementation and its code quality.
+- [Kakoune] ([@mawww]) for ideas and [selection.cc].
+- [Saka Key] ([@eejdoowad]) was a reference for me, for implementation and its code quality.
 
 [Chrome]: https://google.com/chrome/
 [Chrome Web Store]: https://chrome.google.com/webstore
@@ -370,6 +370,9 @@ Commands are bound to physical keys and displayed with the US layout.
 [selection.cc]: https://github.com/mawww/kakoune/blob/master/src/selection.cc
 
 [Saka Key]: https://key.saka.io
+
+[@mawww]: https://github.com/mawww
+[@eejdoowad]: https://github.com/eejdoowad
 
 [Chrome – Getting Started Tutorial]: https://developer.chrome.com/extensions/getstarted
 [Firefox – Your first extension]: https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Your_first_WebExtension
