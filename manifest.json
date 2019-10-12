@@ -31,8 +31,8 @@
     }
   ],
   "icons": {
-    "16": "packages/chrome.png",
-    "48": "packages/chrome.png",
-    "128": "packages/chrome.png"
+    "16": "packages/kakoune.png",
+    "48": "packages/kakoune.png",
+    "128": "packages/kakoune.png"
   }
 }
