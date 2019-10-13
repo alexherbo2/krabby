@@ -334,6 +334,7 @@ Commands are bound to physical keys and displayed with the US layout.
 
 - [Kakoune] ([@mawww]) for [ideas][Why Kakoune] and [selection.cc].
 - [Saka Key] ([@eejdoowad]) was a reference, for implementation and its code quality.
+- [@ul], for his advice and proofreading, especially in the early stages.
 
 [Chrome]: https://google.com/chrome/
 [Chrome Web Store]: https://chrome.google.com/webstore
@@ -375,6 +376,7 @@ Commands are bound to physical keys and displayed with the US layout.
 
 [@mawww]: https://github.com/mawww
 [@eejdoowad]: https://github.com/eejdoowad
+[@ul]: https://github.com/ul
 
 [Chrome – Getting Started Tutorial]: https://developer.chrome.com/extensions/getstarted
 [Firefox – Your first extension]: https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Your_first_WebExtension
