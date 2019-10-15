@@ -8,7 +8,7 @@
   "manifest_version": 2,
   "name": "Configuration",
   "description": "Configuration for Chrome",
-  "version": "0.6.3",
+  "version": "0.6.4",
   "content_scripts": [
     {
       "matches": [
