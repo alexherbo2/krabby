@@ -16,7 +16,9 @@ curl -sSL https://git.io/JeGCO | sh
 
 ## Demos
 
-### Download 3-gatsu no Lion episodes from HorribleSubs
+<details>
+
+<summary>Download 3-gatsu no Lion episodes from HorribleSubs</summary>
 
 [![Download 3-gatsu no Lion episodes from HorribleSubs](https://img.youtube.com/vi_webp/aXaFt75lIqo/maxresdefault.webp)](https://youtu.be/aXaFt75lIqo)
 
@@ -36,7 +38,11 @@ curl -sSL https://git.io/JeGCO | sh
   - Input: `Magnet`
 - <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>Enter</kbd> → Open link in the associated application
 
-### Extract from Wikipedia the list of cities and towns in Russia
+</details>
+
+<details>
+
+<summary>Extract from Wikipedia the list of cities and towns in Russia</summary>
 
 [![Extract from Wikipedia the list of cities and towns in Russia](https://img.youtube.com/vi_webp/PJXCnRBkHDY/maxresdefault.webp)](https://youtu.be/PJXCnRBkHDY)
 
@@ -51,7 +57,11 @@ curl -sSL https://git.io/JeGCO | sh
 - <kbd>Alt</kbd> + <kbd>I</kbd> → Select links
 - <kbd>Alt</kbd> + <kbd>y</kbd> → Copy link text
 
-### Quickly move around a document with no table of contents
+</details>
+
+<details>
+
+<summary>Quickly move around a document with no table of contents</summary>
 
 [![Quickly move around a document with no table of contents](https://img.youtube.com/vi_webp/gp4_6VGXkOk/maxresdefault.webp)](https://youtu.be/gp4_6VGXkOk)
 
@@ -62,7 +72,11 @@ curl -sSL https://git.io/JeGCO | sh
   - Input: `h1, h2, h3`
 - <kbd>(</kbd> → Focus previous selection
 
-### Tab search with dmenu
+</details>
+
+<details>
+
+<summary>Tab search with dmenu</summary>
 
 [![Tab search with dmenu](https://img.youtube.com/vi_webp/tgrmss3u2aE/maxresdefault.webp)](https://youtu.be/tgrmss3u2aE)
 
@@ -70,7 +84,11 @@ curl -sSL https://git.io/JeGCO | sh
 
 - <kbd>q</kbd> → Tab search with [dmenu]
 
-### Playing videos in picture-in-picture mode
+</details>
+
+<details>
+
+<summary>Playing videos in picture-in-picture mode</summary>
 
 [![Playing videos in picture-in-picture mode](https://img.youtube.com/vi_webp/zgSx1AE6pig/maxresdefault.webp)](https://youtu.be/zgSx1AE6pig)
 
@@ -78,7 +96,11 @@ curl -sSL https://git.io/JeGCO | sh
 
 - <kbd>p</kbd> → Toggle picture-in-picture mode
 
-### Opening links in a paragraph
+</details>
+
+<details>
+
+<summary>Opening links in a paragraph</summary>
 
 [![Opening links in a paragraph](https://img.youtube.com/vi_webp/v2Jvk1rhIlc/maxresdefault.webp)](https://youtu.be/v2Jvk1rhIlc)
 
@@ -91,7 +113,11 @@ curl -sSL https://git.io/JeGCO | sh
 - <kbd>Alt</kbd> + <kbd>I</kbd> → Select links
 - <kbd>Control</kbd> + <kbd>Enter</kbd> → Open link in new tab
 
-### Play videos with mpv
+</details>
+
+<details>
+
+<summary>Play videos with mpv</summary>
 
 [![Play videos with mpv](https://img.youtube.com/vi_webp/gYTi-eXuWdI/maxresdefault.webp)](https://youtu.be/gYTi-eXuWdI)
 
@@ -103,6 +129,8 @@ curl -sSL https://git.io/JeGCO | sh
 - <kbd>Alt</kbd> + <kbd>a</kbd> → Select parent elements (3 times)
 - <kbd>Alt</kbd> + <kbd>I</kbd> → Select links
 - <kbd>Alt</kbd> + <kbd>m</kbd> → Play with [mpv] in reverse order
+
+</details>
 
 ## Dependencies
 
