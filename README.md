@@ -14,6 +14,53 @@ Run the following in your terminal, then follow the onscreen instructions.
 curl -sSL https://git.io/JeGCO | sh
 ```
 
+After installing, try to accomplish the following examples.
+
+<details>
+
+<summary>Opening links in a paragraph</summary>
+
+Navigate to <https://tuppervim.org> and type:
+
+```
+f{hint}s[alt+a][alt+I][ctrl+enter][alt+x]
+```
+
+**Explanation**
+
+- <kbd>f</kbd> enters hint mode,
+- `{hint}` is a placeholder for you to select a link,
+- <kbd>s</kbd> creates a selection out of the active element,
+- <kbd>Alt</kbd> + <kbd>a</kbd> expands the region,
+- <kbd>Alt</kbd> + <kbd>I</kbd> selects all links,
+- <kbd>Control</kbd> + <kbd>Enter</kbd> opens selected links in the background.
+- Optionally, <kbd>Alt</kbd> + <kbd>x</kbd> will undo the operation (closing right tabs).
+
+</details>
+
+<details>
+
+<summary>Play videos with mpv</summary>
+
+Navigate to <https://youtube.com/results?search_query=Berserk+AMV> and type:
+
+```
+F{hint}{hint}<page-down>{hint}<escape>m
+```
+
+**Explanation**
+
+- <kbd>F</kbd> enters hint mode (lock),
+- `{hint}` is a placeholder for you to select 2 links,
+- <kbd>Page Down</kbd> scrolls one page down,
+- `{hint}` is a placeholder for you to select another link,
+- <kbd>Escape</kbd> leaves hint mode.
+- Finally, <kbd>m</kbd> opens the selection with [mpv].
+
+</details>
+
+If you want to play around without installing, a live demo is available [here][Live demo].
+
 ## Demos
 
 <details>
@@ -412,3 +459,4 @@ Commands are bound to physical keys and displayed with the US layout.
 [Regular Expressions]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions
 
 [Create a keyboard interface to the web]: https://alexherbo2.github.io/blog/chrome/create-a-keyboard-interface-to-the-web/
+[Live demo]: https://alexherbo2.github.io/blog/chrome/create-a-keyboard-interface-to-the-web#try-it
