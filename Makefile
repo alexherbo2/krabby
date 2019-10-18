@@ -5,11 +5,11 @@ install:
 	scripts/setup
 
 uninstall:
-	rm -Rf ~/.config/chrome ~/.config/firefox
+	rm -Rf ~/.config/krabby
 
 chrome-web-store: fetch
 	mkdir -p build/chrome-web-store
-	inkscape --without-gui packages/kakoune.svg --export-png build/chrome-web-store/icon.png --export-width 128 --export-height 128
+	inkscape --without-gui packages/krabby.svg --export-png build/chrome-web-store/icon.png --export-width 128 --export-height 128
 
 fetch:
 	./fetch

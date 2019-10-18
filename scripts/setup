@@ -2,8 +2,7 @@
 
 # Environment variables
 XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-~/.config}
-CONFIG=$XDG_CONFIG_HOME/chrome
-FIREFOX_CONFIG=$XDG_CONFIG_HOME/firefox
+CONFIG=$XDG_CONFIG_HOME/krabby
 OS=$(uname -s)
 
 # Faces
@@ -44,8 +43,8 @@ main() {
     printf "\$ ${non_interactive_usage_face}setup -no-confirm${none}\n"
   else
     printf "${green}Usage${none}:\n"
-    printf "\$ ${interactive_usage_face}curl -sSL https://git.io/JeGCO | sh${none}\n"
-    printf "\$ ${non_interactive_usage_face}curl -sSL https://git.io/JeGCO | sh -s -- -no-confirm${none}\n"
+    printf "\$ ${interactive_usage_face}curl -sSL https://git.io/JeBcm | sh${none}\n"
+    printf "\$ ${non_interactive_usage_face}curl -sSL https://git.io/JeBcm | sh -s -- -no-confirm${none}\n"
   fi
 
   # Dependencies
@@ -62,10 +61,10 @@ main() {
     verify_dependency rofi Rofi https://github.com/davatorium/rofi
   fi
 
-  # Extension: Configuration
-  name='Configuration'
-  description='Configuration for Chrome'
-  url='https://github.com/alexherbo2/chrome-configuration'
+  # Extension: Krabby
+  name='Krabby'
+  description='A keyboard interface to the web'
+  url='https://github.com/alexherbo2/krabby'
   path=$CONFIG
   dependencies='zip'
   print_horizontal_line
@@ -83,10 +82,6 @@ main() {
     git clone "$url" "$CONFIG"
   fi
   cd "$CONFIG"
-  if test ! -e "$FIREFOX_CONFIG"; then
-    printf "${green}Symlinking${none}: '%s' → '%s'\n" "$CONFIG" "$FIREFOX_CONFIG"
-    ln -s "$CONFIG" "$FIREFOX_CONFIG"
-  fi
   if test -e .git; then
     git pull
   fi
@@ -142,19 +137,19 @@ main() {
 
   # Post-installation
   print_horizontal_line
-  printf 'Installation finished 🐈\n'
+  printf 'Installation finished 🦀\n'
   printf '
-    ╭───────────────────────╮    ╭────────────────────────╮
-    │ $ cd ~/.config/chrome │    │ $ cd ~/.config/firefox │
-    │ $ kak config.js       │    │ $ kak config.js        │
-    ╰───────────────────────╯    ╰────────────────────────╯
+    ╭───────────────────────╮
+    │ $ cd ~/.config/krabby │
+    │ $ kak config.js       │
+    ╰───────────────────────╯
   '
   printf '
 • Important files: manifest.json config.js fetch Makefile (eventually .gitignore)
   You can remove the rest.
   '
   printf '
-• How to update: curl -sSL https://git.io/JeGCO | sh
+• How to update: curl -sSL https://git.io/JeBcm | sh
   '
   printf '\n'
 }

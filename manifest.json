@@ -2,12 +2,12 @@
   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAveAdn/vMOuy+r0KZ+Um/yIZhu1Twnd7/f9zOuLFz4tU+uHEFZanI6Gp8Oymbw/Jj2bCNeM7KwDAv9IsC+NMI9SJih6cE2hel5TfZHqeN4bUyJ1hancQqMVEO/HqA8R5d17Pt+WHnVWIR852XHO58YGfvtzGWrRQgoSosRgOxKvl6g4gs0jfUhxvwiOgsDJK9/jH00On2RsipsJrnynoyJ75gHx+ob+L7qxIANL6ubsOpFXVuoTzVRxlegZOMPwcp5DwcIfv5KdAK7QATGn2wEun6tuWCD6vyJVSl4xjhuU22H5qSTJNCe/bYvpow9lEPCrfN05qoSyVwovUxR4kIJwIDAQAB",
   "browser_specific_settings": {
     "gecko": {
-      "id": "configuration@alexherbo2.github.com"
+      "id": "krabby@alexherbo2.github.com"
     }
   },
   "manifest_version": 2,
-  "name": "Configuration",
-  "description": "Configuration for Chrome",
+  "name": "Krabby",
+  "description": "A keyboard interface to the web",
   "version": "0.6.4",
   "content_scripts": [
     {
@@ -31,8 +31,8 @@
     }
   ],
   "icons": {
-    "16": "packages/kakoune.png",
-    "48": "packages/kakoune.png",
-    "128": "packages/kakoune.png"
+    "16": "packages/krabby.png",
+    "48": "packages/krabby.png",
+    "128": "packages/krabby.png"
   }
 }
