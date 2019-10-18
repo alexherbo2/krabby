@@ -1,17 +1,17 @@
-# Configuration for [Chrome]
+# Krabby
 
 ###### [Installation](#installation) | [Configuration](config.js) | [Guides](#guides) | [Documentation](#commands) | [Browser compatibility](#browser-compatibility) | [Contributing](CONTRIBUTING)
 
-> Configuration example to [create a keyboard interface to the web], heavily inspired by [Kakoune].
+> A keyboard interface to the web, heavily inspired by [Kakoune].
 
 ## TL;DR
 
-**Chrome extension** — **Configuration** — **Keyboard interface** — **Multiple selections** — **Kakoune-inspired** — **Firefox-compatible**
+**Chrome extension** — **Keyboard interface** — **Multiple selections** — **Kakoune-inspired** — **Firefox-compatible**
 
 Run the following in your terminal, then follow the onscreen instructions.
 
 ``` sh
-curl -sSL https://git.io/JeGCO | sh
+curl -sSL https://git.io/JeBcm | sh
 ```
 
 After installing, try to accomplish the following examples.
@@ -197,12 +197,12 @@ If you want to play around without installing, a live demo is available [here][L
 Run the following in your terminal, then follow the onscreen instructions.
 
 ``` sh
-curl -sSL https://git.io/JeGCO | sh
+curl -sSL https://git.io/JeBcm | sh
 ```
 
 ### Installing from the Chrome Web Store
 
-https://chrome.google.com/webstore/detail/configuration/gkmignamlolbclcnmhlijklgaenooonk
+https://chrome.google.com/webstore/detail/krabby/gkmignamlolbclcnmhlijklgaenooonk
 
 Note this extension is an example of configuration.  You are encouraged to fork the repository to make your own configuration.
 
@@ -410,6 +410,13 @@ Commands are bound to physical keys and displayed with the US layout.
 - [Kakoune] ([@mawww]) for [ideas][Why Kakoune] and [selection.cc].
 - [Saka Key] ([@eejdoowad]) was a reference, for implementation and its code quality.
 - [@ul], for his advice and proofreading, especially in the early stages.
+- [@GeoGavilanes] for the [Krabby icon].
+
+## References
+
+- [Create a keyboard interface to the web]
+
+[Krabby icon]: https://iconfinder.com/icons/877852/kanto_krabby_pokemon_water_icon
 
 [Chrome]: https://google.com/chrome/
 [Chrome Web Store]: https://chrome.google.com/webstore
@@ -452,6 +459,7 @@ Commands are bound to physical keys and displayed with the US layout.
 [@mawww]: https://github.com/mawww
 [@eejdoowad]: https://github.com/eejdoowad
 [@ul]: https://github.com/ul
+[@GeoGavilanes]: https://iconfinder.com/GeoGavilanes
 
 [Chrome – Getting Started Tutorial]: https://developer.chrome.com/extensions/getstarted
 [Firefox – Your first extension]: https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Your_first_WebExtension
