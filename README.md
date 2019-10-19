@@ -6,7 +6,7 @@
 
 ## TL;DR
 
-**Chrome extension** — **Keyboard interface** — **Multiple selections** — **Kakoune-inspired** — **Firefox-compatible**
+**Chrome extension** — **Keyboard interface** — **Subject–object–verb order** — **Multiple selections** — **Kakoune-inspired** — **Firefox-compatible**
 
 Run the following in your terminal, then follow the onscreen instructions.
 
@@ -60,6 +60,29 @@ F{hint}{hint}<page-down>{hint}<escape>m
 </details>
 
 If you want to play around without installing, a live demo is available [here][Live demo].
+
+## Features
+
+- [Subject–object–verb] order
+- Multiple selections as a central way of interacting
+- Powerful selection manipulation primitives
+- Link hints
+- Tab search
+- Contextual commands
+- Contextual help
+- Simple interaction with external programs
+- Limited scope.  Krabby is not [Vim], nor [Kakoune].  Krabby is trying to be a
+navigation tool and some concepts from code editors don’t translate well.  For
+example, there is no concept of mode in Krabby, but a system of contexts.
+- Composability.  Composability is better than extensibility.  Krabby tries hard
+to provide features that interact well with each other.  For example, <kbd>f</kbd>
+and <kbd>y</kbd> are two building blocks to focus a link and yank its URL.  Depending
+on the context, <kbd>y</kbd> will yank the page or a link URL.
+- Modular (think [Emacs]).  Krabby is divided into multiple small projects.  At
+its core Krabby just holds the configuration and grabs its functionalities from
+other projects.
+- [Chrome] and [Firefox] support.  It has also been tested on [Opera], [Vivaldi]
+and [Brave].
 
 ## Demos
 
@@ -418,6 +441,8 @@ Commands are bound to physical keys and displayed with the US layout.
 
 [Krabby icon]: https://iconfinder.com/icons/877852/kanto_krabby_pokemon_water_icon
 
+[Subject–object–verb]: https://en.wikipedia.org/wiki/Subject–object–verb
+
 [Chrome]: https://google.com/chrome/
 [Chrome Web Store]: https://chrome.google.com/webstore
 
@@ -441,6 +466,8 @@ Commands are bound to physical keys and displayed with the US layout.
 [safari.svg]: https://developer.mozilla.org/static/browsers/safari.aca6ae03b671.svg
 
 [Kakoune]: https://kakoune.org
+[Vim]: https://vim.org
+[Emacs]: https://gnu.org/software/emacs/
 [mpv]: https://mpv.io
 [dmenu]: https://tools.suckless.org/dmenu/
 [Zip]: http://infozip.sourceforge.net/Zip.html
