@@ -1,6 +1,6 @@
 # Krabby
 
-###### [Installation](#installation) | [Configuration](config.js) | [Guides](#guides) | [Documentation](#commands) | [Browser compatibility](#browser-compatibility) | [Contributing](CONTRIBUTING)
+###### [Installation](#installation) | [Configuration](src/krabby.js) | [Guides](#guides) | [Documentation](#commands) | [Browser compatibility](#browser-compatibility) | [Contributing](CONTRIBUTING)
 
 > A keyboard interface to the web, heavily inspired by [Kakoune].
 
@@ -11,7 +11,9 @@
 Run the following in your terminal, then follow the onscreen instructions.
 
 ``` sh
-curl -sSL https://git.io/JeBcm | sh
+git clone https://github.com/alexherbo2/krabby
+cd krabby
+make install
 ```
 
 After installing, try to accomplish the following examples.
@@ -205,7 +207,6 @@ and [Brave].
 ## Dependencies
 
 - [Zip] (Zip is used to package the extension)
-- [Inkscape] (Inkscape is used to convert SVG to PNG when uploading the extension)
 
 ### Extensions
 
@@ -215,36 +216,11 @@ and [Brave].
 
 ## Installation
 
-### Installing from the web (Recommended)
-
 Run the following in your terminal, then follow the onscreen instructions.
-
-``` sh
-curl -sSL https://git.io/JeBcm | sh
-```
-
-### Installing from the Chrome Web Store
-
-https://chrome.google.com/webstore/detail/krabby/gkmignamlolbclcnmhlijklgaenooonk
-
-Note this extension is an example of configuration.  You are encouraged to fork the repository to make your own configuration.
-
-### Installing from the source
 
 ``` sh
 make install
 ```
-
-#### Chrome
-
-Open the _Extensions_ page by navigating to `chrome://extensions`, enable _Developer mode_ then _Load unpacked_ to select the extension directory.
-
-![Load extension](https://developer.chrome.com/static/images/get_started/load_extension.png)
-
-#### Firefox
-
-- Open `about:config`, change `xpinstall.signatures.required` to `false`.
-- Open `about:addons` ❯ _Extensions_, click _Install add-on from file_ and select the package file.
 
 ## Guides
 
@@ -471,7 +447,6 @@ Commands are bound to physical keys and displayed with the US layout.
 [mpv]: https://mpv.io
 [dmenu]: https://tools.suckless.org/dmenu/
 [Zip]: http://infozip.sourceforge.net/Zip.html
-[Inkscape]: https://inkscape.org
 
 [Commands]: https://github.com/alexherbo2/chrome-commands
 [Shell]: https://github.com/alexherbo2/chrome-shell

@@ -1,0 +1,8 @@
+#!/bin/sh
+
+fetch() {
+  case $# in
+    1) curl -sSL --remote-name "$1" ;;
+    2) curl -sSL "$1" --output "$2" ;;
+  esac
+}
