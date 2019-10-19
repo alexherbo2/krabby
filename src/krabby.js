@@ -1,5 +1,7 @@
 // Environment variables ───────────────────────────────────────────────────────
 
+const VERSION = '0.6.4'
+
 switch (true) {
   case (typeof browser !== 'undefined'):
     var PLATFORM = 'firefox'

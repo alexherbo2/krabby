@@ -1,6 +1,7 @@
 #!/bin/sh
 
 # Environment variables
+ROOT=$PWD
 XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-~/.config}
 CONFIG=$XDG_CONFIG_HOME/krabby
 OS=$(uname -s)
@@ -37,15 +38,9 @@ main() {
     interactive_usage_face=$none
     non_interactive_usage_face=$green
   fi
-  if test -t 0; then
-    printf "${green}Usage${none}:\n"
-    printf "\$ ${interactive_usage_face}setup${none}\n"
-    printf "\$ ${non_interactive_usage_face}setup -no-confirm${none}\n"
-  else
-    printf "${green}Usage${none}:\n"
-    printf "\$ ${interactive_usage_face}curl -sSL https://git.io/JeBcm | sh${none}\n"
-    printf "\$ ${non_interactive_usage_face}curl -sSL https://git.io/JeBcm | sh -s -- -no-confirm${none}\n"
-  fi
+  printf "${green}Usage${none}:\n"
+  printf "\$ ${interactive_usage_face}setup${none}\n"
+  printf "\$ ${non_interactive_usage_face}setup -no-confirm${none}\n"
 
   # Dependencies
   print_horizontal_line
@@ -69,22 +64,17 @@ main() {
   dependencies='zip'
   print_horizontal_line
   print_info "$name" "$description" "$url" "$path" "$dependencies"
-  if test -e "$CONFIG"; then
-    printf "${yellow}Warning${none}: %s already exists\n" "$CONFIG"
-    printf 'It expects a copy of the repository\n'
-    if test "$INTERACTIVE" = true; then
-      on_key "Continue? (${green}y${none}/${red}n${none})"
-      if test "$key" != 'y'; then
-        exit
-      fi
-    fi
-  else
-    git clone "$url" "$CONFIG"
+  if test ! -e "$CONFIG"; then
+    printf "${green}Initializing${none}: %s\n" "$CONFIG"
+    cp -R share/krabby "$CONFIG"
+    find "$CONFIG" -maxdepth 1
+    git init "$CONFIG"
   fi
   cd "$CONFIG"
-  if test -e .git; then
-    git pull
-  fi
+  mkdir -p packages
+  printf "${green}Copying${none}: %s → %s\n" "$ROOT/src/krabby.js" "$CONFIG/packages/krabby.js"
+  cp "$ROOT/src/krabby.js" packages
+  (cd packages; "$ROOT/scripts/fetch")
   if test -e Makefile; then
     make
   fi
@@ -143,13 +133,6 @@ main() {
     │ $ cd ~/.config/krabby │
     │ $ kak config.js       │
     ╰───────────────────────╯
-  '
-  printf '
-• Important files: manifest.json config.js fetch Makefile (eventually .gitignore)
-  You can remove the rest.
-  '
-  printf '
-• How to update: curl -sSL https://git.io/JeBcm | sh
   '
   printf '\n'
 }
