@@ -184,7 +184,7 @@ const select = async (selections) => {
 
 // Help
 modal.map('Page', ['F1'], () => modal.help(), 'Show help')
-modal.map('Page', ['Shift', 'F1'], () => window.open('https://alexherbo2.github.io/blog/chrome/create-a-keyboard-interface-to-the-web/'), 'Open the documentation in a new tab')
+modal.map('Page', ['Shift', 'F1'], () => window.open('https://github.com/alexherbo2/krabby/tree/master/doc'), 'Open the documentation in a new tab')
 
 // Tab search
 modal.map('Command', ['KeyQ'], () => dmenu.send('tab-search'), 'Tab search with dmenu')
