@@ -1,6 +1,6 @@
 # Krabby
 
-###### [Installation](#installation) | [Configuration](src/krabby.js) | [Guides](#guides) | [Documentation](doc) | [Browser compatibility](#browser-compatibility) | [Contributing](CONTRIBUTING)
+###### [Installation](#installation) | [Configuration](src/krabby.js) | [Documentation](doc) | [Browser compatibility](#browser-compatibility) | [Contributing](CONTRIBUTING)
 
 > A keyboard interface to the web, heavily inspired by [Kakoune].
 
@@ -222,11 +222,6 @@ Run the following in your terminal, then follow the onscreen instructions.
 make install
 ```
 
-## Guides
-
-- [Chrome][Chrome – Getting Started Tutorial]
-- [Firefox][Firefox – Your first extension]
-
 ## Browser compatibility
 
 | Web browser | Support |             Engine              |
@@ -297,9 +292,6 @@ make install
 [@eejdoowad]: https://github.com/eejdoowad
 [@ul]: https://github.com/ul
 [@GeoGavilanes]: https://iconfinder.com/GeoGavilanes
-
-[Chrome – Getting Started Tutorial]: https://developer.chrome.com/extensions/getstarted
-[Firefox – Your first extension]: https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Your_first_WebExtension
 
 [Regular Expressions]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions
 
