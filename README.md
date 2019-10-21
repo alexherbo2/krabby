@@ -6,7 +6,7 @@
 
 ## TL;DR
 
-**Chrome extension** — **Keyboard interface** — **Subject–object–verb order** — **Multiple selections** — **Kakoune-inspired** — **Firefox-compatible**
+**WebExtension** — **Keyboard interface** — **Subject–object–verb order** — **Multiple selections** — **Kakoune-inspired**
 
 Run the following in your terminal, then follow the onscreen instructions.
 
