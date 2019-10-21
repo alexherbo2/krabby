@@ -1,5 +1,7 @@
 # Krabby
 
+[![IRC](https://img.shields.io/badge/IRC-%23krabby-blue)](https://webchat.freenode.net/#krabby)
+
 ###### [Installation](#installation) | [Configuration](src/krabby.js) | [Documentation](doc) | [Browser compatibility](#browser-compatibility) | [Contributing](CONTRIBUTING)
 
 > A keyboard interface to the web, heavily inspired by [Kakoune].
