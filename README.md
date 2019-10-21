@@ -206,6 +206,10 @@ and [Brave].
 
 ## Dependencies
 
+- [Crystal]
+- [jq]
+- [mpv]
+- [Rofi] ([dmenu] replacement)
 - [Zip] (Zip is used to package the extension)
 
 ### Extensions
@@ -274,8 +278,11 @@ make install
 [Kakoune]: https://kakoune.org
 [Vim]: https://vim.org
 [Emacs]: https://gnu.org/software/emacs/
+[Crystal]: https://crystal-lang.org
+[jq]: https://stedolan.github.io/jq/
 [mpv]: https://mpv.io
 [dmenu]: https://tools.suckless.org/dmenu/
+[Rofi]: https://github.com/davatorium/rofi
 [Zip]: http://infozip.sourceforge.net/Zip.html
 
 [Commands]: https://github.com/alexherbo2/chrome-commands
