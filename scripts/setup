@@ -29,19 +29,6 @@ main() {
     shift
   done
 
-  # Usage
-  print_horizontal_line
-  if test "$INTERACTIVE" = true; then
-    interactive_usage_face=$green
-    non_interactive_usage_face=$none
-  else
-    interactive_usage_face=$none
-    non_interactive_usage_face=$green
-  fi
-  printf "${green}Usage${none}:\n"
-  printf "\$ ${interactive_usage_face}setup${none}\n"
-  printf "\$ ${non_interactive_usage_face}setup -no-confirm${none}\n"
-
   # Dependencies
   print_horizontal_line
   printf "${green}Dependencies${none}: git zip crystal shards jq mpv\n"
