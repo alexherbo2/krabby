@@ -1,5 +1,7 @@
 # Krabby
 
+<img src="https://www.iconfinder.com/icons/877852/download/svg/512" height="168" align="right">
+
 [![IRC](https://img.shields.io/badge/IRC-%23krabby-blue)](https://webchat.freenode.net/#krabby)
 
 ###### [Installation](#installation) | [Configuration](src/krabby.js) | [Documentation](doc) | [Browser compatibility](#browser-compatibility) | [Contributing](CONTRIBUTING)
