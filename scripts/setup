@@ -21,7 +21,12 @@ cyan='\033[36m'
 main() {
 
   # Options
-  INTERACTIVE=true
+  # Run in non-interactive mode if ~/.config/krabby exists
+  if test -e "$CONFIG"; then
+    INTERACTIVE=false
+  else
+    INTERACTIVE=true
+  fi
   while test $# -gt 0; do
     case "$1" in
       -no-confirm) INTERACTIVE=false ;;
