@@ -48,6 +48,11 @@ const updateStatusLine = () => {
 
 // Modal
 const modal = new Modal('Modal')
+modal.activeElement = () => {
+  return selections.length
+    ? selections.mainSelection
+    : document.activeElement
+}
 modal.filter('Gmail', () => location.hostname === 'mail.google.com')
 modal.enable('Gmail', 'Video', 'Link', 'Text', 'Command')
 modal.on('context-change', (context) => updateStatusLine())
@@ -111,7 +116,7 @@ const notify = (message) => {
 }
 
 const click = (selections, modifierKeys = {}) => {
-  const elements = selections.includes(document.activeElement)
+  const elements = selections.length
     ? selections.collection
     : [document.activeElement]
   for (const element of elements) {
@@ -120,7 +125,7 @@ const click = (selections, modifierKeys = {}) => {
 }
 
 const open = (selections) => {
-  const links = selections.includes(document.activeElement)
+  const links = selections.length
     ? selections.collection
     : [document.activeElement]
   for (const link of links) {
@@ -129,7 +134,7 @@ const open = (selections) => {
 }
 
 const yank = (selections, callback, message) => {
-  const text = selections.includes(document.activeElement)
+  const text = selections.length
     ? selections.map(callback).join('\n')
     : callback(document.activeElement)
   copyToClipboard(text, message)
@@ -141,7 +146,7 @@ const copyToClipboard = (text, message) => {
 }
 
 const mpv = ({ selections, reverse = false } = {}) => {
-  const playlist = selections.includes(document.activeElement)
+  const playlist = selections.length
     ? selections.map((link) => link.href)
     : [document.activeElement.href]
   if (reverse) {
