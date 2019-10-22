@@ -232,15 +232,15 @@ make install
 
 ## Browser compatibility
 
-| Web browser | Support |             Engine              |
-| ----------- |:-------:|:-------------------------------:|
-| [Chrome]    |    ✓    | [![Blink][chrome.svg]][Blink]   |
-| [Firefox]   |    ✓    | [![Gecko][firefox.svg]][Gecko]  |
-| [Edge]      |    ?    | [![Blink][chrome.svg]][Blink]   |
-| [Opera]     |    ✓    | [![Blink][chrome.svg]][Blink]   |
-| [Safari]    |    ✗    | [![WebKit][safari.svg]][WebKit] |
-| [Vivaldi]   |    ✓    | [![Blink][chrome.svg]][Blink]   |
-| [Brave]     |    ✓    | [![Blink][chrome.svg]][Blink]   |
+| Web browser | Support |             Engine              | Comments |
+| ----------- |:-------:|:-------------------------------:|:--------:|
+| [Chrome]    |    ✓    | [![Blink][chrome.svg]][Blink]   ||
+| [Firefox]   |    ✓    | [![Gecko][firefox.svg]][Gecko]  | [Only developer or unbranded version](https://wiki.mozilla.org/Add-ons/Extension_Signing#FAQ) |
+| [Edge]      |    ?    | [![Blink][chrome.svg]][Blink]   ||
+| [Opera]     |    ✓    | [![Blink][chrome.svg]][Blink]   ||
+| [Safari]    |    ✗    | [![WebKit][safari.svg]][WebKit] ||
+| [Vivaldi]   |    ✓    | [![Blink][chrome.svg]][Blink]   ||
+| [Brave]     |    ✓    | [![Blink][chrome.svg]][Blink]   ||
 
 ## Credits
 

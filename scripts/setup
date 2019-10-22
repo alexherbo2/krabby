@@ -192,6 +192,7 @@ print_install_instructions() {
   printf "${cyan}Chrome${none}:\n"
   (cd "$chrome_target"; printf "Open the ${bold}Extensions${none} page by navigating to chrome://extensions, enable ${bold}Developer mode${none} then ${bold}Load unpacked${none} to select the extension directory: %s\n" "$PWD")
   printf "${cyan}Firefox${none}:\n"
+  printf "Only developer or unbranded version (see https://wiki.mozilla.org/Add-ons/Extension_Signing#FAQ)\n"
   printf "Open about:config, change ${bold}xpinstall.signatures.required${none} to ${bold}false${none}\n"
   (cd "$firefox_target"; printf "Open about:addons ❯ ${bold}Extensions${none}, click ${bold}Install add-on from file${none} and select the package file: %s\n" "$PWD/package.zip")
   if test "$INTERACTIVE" = true; then
