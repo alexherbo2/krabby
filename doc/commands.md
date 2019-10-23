@@ -83,7 +83,7 @@ Commands are bound to physical keys and displayed with the US layout.
 
 ## Discard tabs
 
-- <kbd>z</kbd> → Discard tab (**Command** context) – Requires [Commands]
+- <kbd>Shift</kbd> + <kbd>Escape</kbd> → Discard tab (**Command** context) – Requires [Commands]
 
 ## Mute tabs
 

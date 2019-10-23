@@ -254,7 +254,7 @@ modal.map('Command', ['KeyD'], () => commands.send('detach-tab'), 'Detach tab')
 modal.map('Command', ['Shift', 'KeyD'], () => commands.send('attach-tab'), 'Attach tab')
 
 // Discard tabs
-modal.map('Command', ['KeyZ'], () => commands.send('discard-tab'), 'Discard tab')
+modal.map('Command', ['Shift', 'Escape'], () => commands.send('discard-tab'), 'Discard tab')
 
 // Mute tabs
 modal.map('Command', ['Alt', 'KeyM'], () => commands.send('mute-tab'), 'Mute tab')
