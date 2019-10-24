@@ -127,6 +127,11 @@ Commands are bound to physical keys and displayed with the US layout.
 - <kbd>Alt</kbd> + <kbd>j</kbd> → Clear selections that match the given [RegExp][Regular Expressions] (**Command** context)
 - <kbd>Alt</kbd> + <kbd>J</kbd> → Clear links that match the given [RegExp][Regular Expressions] (**Command** context)
 
+## Phantom selections
+
+- <kbd>Z</kbd> → Save selections (**Command** context)
+- <kbd>z</kbd> → Restore selections (**Command** context)
+
 ## Unfocus
 
 - <kbd>Escape</kbd> → Unfocus active element (**Page** context)

@@ -293,6 +293,10 @@ modal.map('Command', ['Alt', 'Shift', 'KeyK'], () => keep(selections, true, 'hre
 modal.map('Command', ['Alt', 'KeyJ'], () => keep(selections, false, 'textContent'), 'Clear selections that match the given RegExp')
 modal.map('Command', ['Alt', 'Shift', 'KeyJ'], () => keep(selections, false, 'href'), 'Clear links that match the given RegExp')
 
+// Phantom selections
+modal.map('Command', ['Shift', 'KeyZ'], () => selections.save(), 'Save selections')
+modal.map('Command', ['KeyZ'], () => selections.restore(), 'Restore selections')
+
 // Unfocus
 modal.map('Page', ['Escape'], () => document.activeElement.blur(), 'Unfocus active element')
 
