@@ -248,6 +248,7 @@ make install
 - [Saka Key] ([@eejdoowad]) was a reference, for implementation and its code quality.
 - [@ul], for his advice and proofreading, especially in the early stages.
 - [@GeoGavilanes] for the [Krabby icon].
+- [@occivink], for his work on [phantom selections][kakoune-phantom-selection], from which the “save and restore selections” feature is inspired.
 
 ## References
 
@@ -297,6 +298,7 @@ make install
 [Kakoune]: https://kakoune.org
 [Why Kakoune]: https://kakoune.org/why-kakoune/why-kakoune.html
 [selection.cc]: https://github.com/mawww/kakoune/blob/master/src/selection.cc
+[kakoune-phantom-selection]: https://github.com/occivink/kakoune-phantom-selection
 
 [Saka Key]: https://key.saka.io
 
@@ -304,6 +306,7 @@ make install
 [@eejdoowad]: https://github.com/eejdoowad
 [@ul]: https://github.com/ul
 [@GeoGavilanes]: https://iconfinder.com/GeoGavilanes
+[@occivink]: https://github.com/occivink
 
 [Regular Expressions]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions
 
