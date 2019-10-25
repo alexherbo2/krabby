@@ -41,7 +41,13 @@ dmenu.send = (command, ...arguments) => {
 // Status line ─────────────────────────────────────────────────────────────────
 
 const updateStatusLine = () => {
-  modal.notify({ id: 'status-line', message: `${modal.context.name} (${selections.length})` })
+  const atoms = []
+  // Context
+  atoms.push(modal.context.name)
+  // Selections
+  atoms.push(`(${selections.length})`)
+  const statusLine = atoms.join(' ')
+  modal.notify({ id: 'status-line', message: statusLine })
 }
 
 // Modes ───────────────────────────────────────────────────────────────────────
