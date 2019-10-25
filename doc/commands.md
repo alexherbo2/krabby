@@ -148,6 +148,9 @@ Commands are bound to physical keys and displayed with the US layout.
 - <kbd>y</kbd> → Copy link address (**Link** context)
 - <kbd>Alt</kbd> + <kbd>y</kbd> → Copy link text (**Link** context)
 - <kbd>Y</kbd> → Copy link address and text (**Link** context)
+- <kbd>y</kbd> → Copy image address (**Image** context)
+- <kbd>Alt</kbd> + <kbd>y</kbd> → Copy image description (**Image** context)
+- <kbd>Y</kbd> → Copy image address and description (**Image** context)
 
 ## Player
 
