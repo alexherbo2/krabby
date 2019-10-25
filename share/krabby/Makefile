@@ -4,4 +4,7 @@ build: fetch
 fetch:
 	cd packages; ../fetch
 
+update:
+	cd extensions/krabby; git pull; make
+
 .PHONY: build fetch

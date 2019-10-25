@@ -62,6 +62,12 @@ main() {
     find "$CONFIG" -maxdepth 1
     git init "$CONFIG"
   fi
+  # Self-updates
+  path=$CONFIG/extensions/krabby
+  if test ! -e "$path"; then
+    printf "${green}Cloning Krabby for self-updates${none}: %s\n" "$path"
+    git clone . "$path"
+  fi
   cd "$CONFIG"
   mkdir -p packages
   printf "${green}Copying${none}: %s → %s\n" "$ROOT/src/krabby.js" "$CONFIG/packages/krabby.js"
@@ -124,6 +130,14 @@ main() {
     ╭───────────────────────╮
     │ $ cd ~/.config/krabby │
     │ $ kak config.js       │
+    ╰───────────────────────╯
+  '
+  printf '
+• How to update Krabby:
+
+    ╭───────────────────────╮
+    │ $ cd ~/.config/krabby │
+    │ $ make update         │
     ╰───────────────────────╯
   '
   printf '\n'
