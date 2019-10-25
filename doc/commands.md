@@ -1,6 +1,6 @@
 # Commands
 
-Commands are bound to physical keys and displayed with the US layout.
+Commands are bound to **physical keys** and **displayed** with the [US layout][QWERTY].
 
 ## Help
 
@@ -170,6 +170,8 @@ Commands are bound to physical keys and displayed with the US layout.
 - <kbd>Enter</kbd> → Play with [mpv] (**Video** context) – Requires [Shell]
 - <kbd>m</kbd> → Play with [mpv] (**Link** context) – Requires [Shell]
 - <kbd>Alt</kbd> + <kbd>m</kbd> → Play with [mpv] in reverse order (**Link** context) – Requires [Shell]
+
+[QWERTY]: https://en.wikipedia.org/wiki/QWERTY
 
 [mpv]: https://mpv.io
 [dmenu]: https://tools.suckless.org/dmenu/
