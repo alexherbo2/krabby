@@ -45,7 +45,15 @@ const updateStatusLine = () => {
   // Context
   atoms.push(modal.context.name)
   // Selections
-  atoms.push(`(${selections.length})`)
+  switch (selections.length) {
+    case 0:
+      break
+    case 1:
+      atoms.push('(1)')
+      break
+    default:
+      atoms.push(`(${selections.main + 1}/${selections.length})`)
+  }
   const statusLine = atoms.join(' ')
   modal.notify({ id: 'status-line', message: statusLine })
 }
