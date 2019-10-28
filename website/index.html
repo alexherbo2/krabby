@@ -1,0 +1,1858 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <!-- Responsive viewport meta tag for mobiles -->
+    <!-- https://developer.mozilla.org/en-US/docs/Mozilla/Mobile/Viewport_meta_tag -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Title and description -->
+    <title>Krabby</title>
+    <meta name="description" content="A keyboard interface to the web, inspired by Kakoune.">
+    <!-- Favicon -->
+    <link href="packages/krabby.png" rel="icon">
+    <!-- CSS -->
+    <link href="style.css" rel="stylesheet">
+    <!-- Packages -->
+    <script src="packages/modal.js"></script>
+    <script src="packages/prompt.js"></script>
+    <script src="packages/hint.js"></script>
+    <script src="packages/selection.js"></script>
+    <link href="packages/selection.css" rel="stylesheet">
+    <script src="packages/mouse.js"></script>
+    <script src="packages/clipboard.js"></script>
+    <script src="packages/scroll.js"></script>
+    <script src="packages/player.js"></script>
+    <!-- Configuration -->
+    <script src="krabby.js"></script>
+  </head>
+  <body>
+    <!-- Skip to content ------------------------------------------------------>
+    <a href="#content" class="skip-to-content">Skip to content</a>
+    <!-- Navigation bar ------------------------------------------------------->
+    <div id="header">
+      <header>
+        <a href=".">Krabby</a>
+      </header>
+      <nav>
+        <ul>
+          <li>
+            <a href="https://github.com/alexherbo2/krabby#installation">Installation</a>
+          </li>
+          <li>
+            <a href="https://github.com/alexherbo2/krabby/tree/master/doc">Documentation</a>
+          </li>
+          <li>
+            <a href="https://github.com/alexherbo2/krabby/issues">Issues</a>
+          </li>
+          <li>
+            <a href="https://github.com/search?q=topic:krabby+topic:plugin">Plugins</a>
+          </li>
+          <li>
+            Community
+            <ul>
+              <li>
+                <a href="https://webchat.freenode.net/#krabby">IRC</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <!-- Separator ------------------------------------------------------------>
+    <hr>
+    <!-- Splash --------------------------------------------------------------->
+    <figure class="splash">
+      <img src="packages/krabby.svg" height="512">
+      <figcaption>WebExtension · Keyboard interface · Subject–object–verb order · Multiple selections · Kakoune-inspired</figcaption>
+    </figure>
+    <!-- Main content -->
+    <main id="content">
+      <!-- Overview ----------------------------------------------------------->
+      <h2 id="overview"><a href="#overview">Overview</a></h2>
+      <p>A keyboard interface to the web, inspired by <a href="https://kakoune.org">Kakoune</a>.</p>
+      <!-- Features ----------------------------------------------------------->
+      <h2 id="features"><a href="#features">Features</a></h2>
+      <ul>
+        <li>
+          <a href="https://en.wikipedia.org/wiki/Subject–object–verb">Subject–object–verb</a> order
+        </li>
+        <li>
+          Keyboard layout agnostic.
+          Maps to physical keys, but displays with the <a href="https://en.wikipedia.org/wiki/QWERTY">US layout</a>.
+        </li>
+        <li>
+          Multiple selections as a central way of interacting
+        </li>
+        <li>
+          Powerful selection manipulation primitives
+        </li>
+        <li>
+          Link hints
+        </li>
+        <li>
+          Tab search
+        </li>
+        <li>
+          Contextual commands
+        </li>
+        <li>
+          Contextual help
+        </li>
+        <li>
+          Simple interaction with external programs
+        </li>
+        <li>
+          Limited scope.
+          Krabby is not <a href="https://vim.org">Vim</a>, nor <a href="https://kakoune.org">Kakoune</a>.
+          Krabby is trying to be a navigation tool and some concepts from code editors don’t translate well.
+          For example, there is no concept of mode in Krabby, but a system of contexts.
+        </li>
+        <li>
+          Composability.
+          Composability is better than extensibility.
+          Krabby tries hard to provide features that interact well with each other.
+          For example, <kbd>f</kbd> and <kbd>y</kbd> are two building blocks to focus a link and yank its URL.
+          Depending on the context, <kbd>y</kbd> will yank the page or a link URL.
+        </li>
+        <li>
+          Modular (think <a href="https://gnu.org/software/emacs/">Emacs</a>).
+          Krabby is divided into multiple small projects.
+          At its core Krabby just holds the configuration and grabs its functionalities from other projects.
+        </li>
+        <li>
+          <a href="https://google.com/chrome/">Chrome</a> and <a href="https://mozilla.org/firefox/">Firefox</a> support.
+          It has also been tested on
+          <a href="https://opera.com">Opera</a>,
+          <a href="https://vivaldi.com">Vivaldi</a> and
+          <a href="https://brave.com">Brave</a>.
+        </li>
+      </ul>
+      <!-- Live demo ---------------------------------------------------------->
+      <h2 id="live-demo"><a href="#live-demo">Live demo</a></h2>
+      <ul>
+        <li>
+          Make sure to deactivate your extension and browser bindings.
+        </li>
+        <li>
+          Press <kbd>Alt</kbd> + <kbd>Escape</kbd> to activate Krabby.
+        </li>
+        <li>
+          Press <kbd>F1</kbd> for help.
+        </li>
+      </ul>
+      <p>
+        <strong>Note</strong>: Commands are bound to <strong>physical keys</strong> and <strong>displayed</strong> with the <a href="https://en.wikipedia.org/wiki/QWERTY">US layout</a>.
+      </p>
+      <!-- Tutorial ----------------------------------------------------------->
+      <h2 id="tutorial"><a href="#tutorial">Tutorial</a></h2>
+      <table class="tutorial">
+        <!-- Example #1 -->
+        <tr id="1">
+          <td class="keys"><kbd title="Scroll down">j</kbd></td>
+          <td><kbd title="Scroll down">↓</kbd></td>
+        </tr>
+        <tr>
+          <td class="keys"><kbd title="Scroll up">k</kbd></td>
+          <td><kbd title="Scroll up">↑</kbd></td>
+        </tr>
+        <tr>
+          <td class="keys"><kbd title="Scroll to the bottom of the page">G</kbd></td>
+          <td><kbd title="Scroll to the bottom of the page">⇓</kbd></td>
+        </tr>
+        <tr>
+          <td class="keys"><kbd title="Scroll to the top of the page">g</kbd></td>
+          <td><kbd title="Scroll to the top of the page">⇑</kbd></td>
+        </tr>
+        <tr>
+          <td class="keys"><kbd title="Scroll down">j</kbd></td>
+          <td><kbd title="Scroll down">↓</kbd></td>
+        </tr>
+        <tr>
+          <td class="keys"><kbd title="Copy page address">y</kbd></td>
+          <td><kbd title="Copy page address">📋</kbd></td>
+        </tr>
+        <tr>
+          <td class="keys"><kbd title="Scroll down">j</kbd></td>
+          <td><kbd title="Scroll down">↓</kbd></td>
+        </tr>
+        <!-- Example #2 -->
+        <tr id="2">
+          <td class="keys">
+            <ul>
+              <li><kbd title="Focus link">f</kbd> <code>{hint}</code></li>
+              <li><span title="Open link in new tab"><kbd>Control</kbd> + <kbd>Enter</kbd></span></li>
+            </ul>
+          </td>
+          <td>
+            <figure>
+              <a href="https://www.pokemon.com"><img src="https://upload.wikimedia.org/wikipedia/commons/9/98/International_Pokémon_logo.svg" height="128"></a>
+              <figcaption><h1><a href="https://www.pokemon.com">The Official Pokémon Website</a></h1></figcaption>
+            </figure>
+          </td>
+        </tr>
+        <!-- Example #3 -->
+        <tr id="3">
+          <td class="keys">
+            <ul>
+              <li><kbd title="Focus link">f</kbd> <code>{hint}</code></li>
+              <li><kbd title="Select active element">s</kbd></li>
+              <li><span title="Select parent elements"><kbd>Alt</kbd> + <kbd>a</kbd></span></li>
+              <li><span title="Select child elements"><kbd>Alt</kbd> + <kbd>i</kbd></span></li>
+              <li><span title="Remove main selection"><kbd>Alt</kbd> + <kbd>Space</kbd></span></li>
+              <li>
+                <kbd title="Copy link address">y</kbd> or
+                <span title="Copy link text"><kbd>Alt</kbd> + <kbd>y</kbd></span> or
+                <kbd title="Copy link address and text">Y</kbd>
+              </li>
+              <li><kbd title="Clear selections">Space</kbd></li>
+            </ul>
+          </td>
+          <td>
+            In <a href="https://www.pokemon.com/us/pokemon-video-games/pokemon-red-version-and-pokemon-blue-version/">Pokémon Red and Blue</a>
+            and <a href="https://www.pokemon.com/us/pokemon-video-games/pokemon-firered-version-and-pokemon-leafgreen-version/">Pokémon FireRed and LeafGreen</a>,
+            the player receives one of the Kanto starters as his first Pokémon from <a href="https://www.pokemon.com/us/pokemon-news/trainer-spotlight-professor-oak/">Professor Oak</a>.
+            The player’s rival receives the starter Pokémon whose type is stronger against the player’s chosen starter.
+          </td>
+        </tr>
+        <!-- Example #4 -->
+        <tr id="4">
+          <td class="keys">
+            <ul>
+              <li><kbd title="Focus link">f</kbd> <code>{hint}</code></li>
+              <li><kbd title="Select active element">s</kbd></li>
+              <li><span title="Select parent elements"><kbd>Alt</kbd> + <kbd>a</kbd></span></li>
+              <li><span title="Select parent elements"><kbd>Alt</kbd> + <kbd>a</kbd></span></li>
+              <li><span title="Select links"><kbd>Alt</kbd> + <kbd>I</kbd></span></li>
+              <li><span title="Open link in new tab"><kbd>Control</kbd> + <kbd>Enter</kbd></span></li>
+              <li><kbd title="Clear selections">Space</kbd></li>
+            </ul>
+          </td>
+          <td>
+            <table>
+              <tr>
+                <td><img src="https://cdn.bulbagarden.net/upload/2/21/001Bulbasaur.png" height="128"></td>
+                <td><img src="https://cdn.bulbagarden.net/upload/7/73/004Charmander.png" height="128"></td>
+                <td><img src="https://cdn.bulbagarden.net/upload/3/39/007Squirtle.png" height="128"></td>
+              </tr>
+              <tr>
+                <td><a href="https://www.pokemon.com/us/pokedex/bulbasaur">Bulbasaur</a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/charmander">Charmander</a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/squirtle">Squirtle</a></td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <!-- Example #5 -->
+        <tr id="5">
+          <td class="keys top">
+            <ul>
+              <li><kbd title="Focus link">f</kbd> <code>{hint}</code></li>
+              <li><kbd title="Select active element">s</kbd></li>
+              <li><span title="Select parent elements"><kbd>Alt</kbd> + <kbd>a</kbd></span></li>
+              <li><span title="Select parent elements"><kbd>Alt</kbd> + <kbd>a</kbd></span></li>
+              <li><span title="Select parent elements"><kbd>Alt</kbd> + <kbd>a</kbd></span></li>
+              <li><span title="Select child elements"><kbd>Alt</kbd> + <kbd>i</kbd></span></li>
+              <li><kbd title="Focus next selection">)</kbd></li>
+              <li><kbd title="Select last child elements">]</kbd></li>
+              <li><span title="Select previous sibling elements"><kbd>Alt</kbd> + <kbd>(</kbd></span></li>
+              <li><span title="Select links"><kbd>Alt</kbd> + <kbd>I</kbd></span></li>
+              <li><kbd title="Copy link address and text">Y</kbd></li>
+              <li><kbd title="Clear selections">Space</kbd></li>
+            </ul>
+          </td>
+          <td>
+            <table>
+              <tr>
+                <td>#001</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/bulbasaur"><img src="https://cdn.bulbagarden.net/upload/e/ec/001MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/bulbasaur">Bulbasaur</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type grass"><a href="https://www.pokemon.com/us/pokedex?type=grass">Grass</a></li>
+                    <li class="pokemon type poison"><a href="https://www.pokemon.com/us/pokedex?type=poison">Poison</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#002</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/ivysaur"><img src="https://cdn.bulbagarden.net/upload/6/6b/002MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/ivysaur">Ivysaur</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type grass"><a href="https://www.pokemon.com/us/pokedex?type=grass">Grass</a></li>
+                    <li class="pokemon type poison"><a href="https://www.pokemon.com/us/pokedex?type=poison">Poison</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#003</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/venusaur"><img src="https://cdn.bulbagarden.net/upload/d/df/003MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/venusaur">Venusaur</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type grass"><a href="https://www.pokemon.com/us/pokedex?type=grass">Grass</a></li>
+                    <li class="pokemon type poison"><a href="https://www.pokemon.com/us/pokedex?type=poison">Poison</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#004</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/charmander"><img src="https://cdn.bulbagarden.net/upload/b/bb/004MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/charmander">Charmander</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type fire"><a href="https://www.pokemon.com/us/pokedex?type=fire">Fire</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#005</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/charmeleon"><img src="https://cdn.bulbagarden.net/upload/d/dc/005MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/charmeleon">Charmeleon</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type fire"><a href="https://www.pokemon.com/us/pokedex?type=fire">Fire</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#006</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/charizard"><img src="https://cdn.bulbagarden.net/upload/0/01/006MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/charizard">Charizard</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type fire"><a href="https://www.pokemon.com/us/pokedex?type=fire">Fire</a></li>
+                    <li class="pokemon type flying"><a href="https://www.pokemon.com/us/pokedex?type=flying">Flying</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#007</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/squirtle"><img src="https://cdn.bulbagarden.net/upload/9/92/007MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/squirtle">Squirtle</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type water"><a href="https://www.pokemon.com/us/pokedex?type=water">Water</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#008</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/wartortle"><img src="https://cdn.bulbagarden.net/upload/f/f3/008MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/wartortle">Wartortle</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type water"><a href="https://www.pokemon.com/us/pokedex?type=water">Water</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#009</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/blastoise"><img src="https://cdn.bulbagarden.net/upload/c/cb/009MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/blastoise">Blastoise</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type water"><a href="https://www.pokemon.com/us/pokedex?type=water">Water</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#010</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/caterpie"><img src="https://cdn.bulbagarden.net/upload/6/69/010MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/caterpie">Caterpie</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type bug"><a href="https://www.pokemon.com/us/pokedex?type=bug">Bug</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#011</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/metapod"><img src="https://cdn.bulbagarden.net/upload/c/ce/011MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/metapod">Metapod</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type bug"><a href="https://www.pokemon.com/us/pokedex?type=bug">Bug</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#012</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/butterfree"><img src="https://cdn.bulbagarden.net/upload/1/14/012MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/butterfree">Butterfree</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type bug"><a href="https://www.pokemon.com/us/pokedex?type=bug">Bug</a></li>
+                    <li class="pokemon type flying"><a href="https://www.pokemon.com/us/pokedex?type=flying">Flying</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#013</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/weedle"><img src="https://cdn.bulbagarden.net/upload/6/65/013MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/weedle">Weedle</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type bug"><a href="https://www.pokemon.com/us/pokedex?type=bug">Bug</a></li>
+                    <li class="pokemon type poison"><a href="https://www.pokemon.com/us/pokedex?type=poison">Poison</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#014</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/kakuna"><img src="https://cdn.bulbagarden.net/upload/8/81/014MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/kakuna">Kakuna</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type bug"><a href="https://www.pokemon.com/us/pokedex?type=bug">Bug</a></li>
+                    <li class="pokemon type poison"><a href="https://www.pokemon.com/us/pokedex?type=poison">Poison</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#015</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/beedrill"><img src="https://cdn.bulbagarden.net/upload/5/5a/015MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/beedrill">Beedrill</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type bug"><a href="https://www.pokemon.com/us/pokedex?type=bug">Bug</a></li>
+                    <li class="pokemon type poison"><a href="https://www.pokemon.com/us/pokedex?type=poison">Poison</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#016</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/pidgey"><img src="https://cdn.bulbagarden.net/upload/9/9c/016MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/pidgey">Pidgey</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type normal"><a href="https://www.pokemon.com/us/pokedex?type=normal">Normal</a></li>
+                    <li class="pokemon type flying"><a href="https://www.pokemon.com/us/pokedex?type=flying">Flying</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#017</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/pidgeotto"><img src="https://cdn.bulbagarden.net/upload/a/a9/017MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/pidgeotto">Pidgeotto</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type normal"><a href="https://www.pokemon.com/us/pokedex?type=normal">Normal</a></li>
+                    <li class="pokemon type flying"><a href="https://www.pokemon.com/us/pokedex?type=flying">Flying</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#018</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/pidgeot"><img src="https://cdn.bulbagarden.net/upload/6/68/018MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/pidgeot">Pidgeot</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type normal"><a href="https://www.pokemon.com/us/pokedex?type=normal">Normal</a></li>
+                    <li class="pokemon type flying"><a href="https://www.pokemon.com/us/pokedex?type=flying">Flying</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#019</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/rattata"><img src="https://cdn.bulbagarden.net/upload/4/4d/019MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/rattata">Rattata</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type normal"><a href="https://www.pokemon.com/us/pokedex?type=normal">Normal</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#020</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/raticate"><img src="https://cdn.bulbagarden.net/upload/4/4d/020MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/raticate">Raticate</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type normal"><a href="https://www.pokemon.com/us/pokedex?type=normal">Normal</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#021</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/spearow"><img src="https://cdn.bulbagarden.net/upload/5/5b/021MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/spearow">Spearow</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type normal"><a href="https://www.pokemon.com/us/pokedex?type=normal">Normal</a></li>
+                    <li class="pokemon type flying"><a href="https://www.pokemon.com/us/pokedex?type=flying">Flying</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#022</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/fearow"><img src="https://cdn.bulbagarden.net/upload/3/35/022MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/fearow">Fearow</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type normal"><a href="https://www.pokemon.com/us/pokedex?type=normal">Normal</a></li>
+                    <li class="pokemon type flying"><a href="https://www.pokemon.com/us/pokedex?type=flying">Flying</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#023</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/ekans"><img src="https://cdn.bulbagarden.net/upload/0/0d/023MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/ekans">Ekans</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type poison"><a href="https://www.pokemon.com/us/pokedex?type=poison">Poison</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#024</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/arbok"><img src="https://cdn.bulbagarden.net/upload/d/d3/024MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/arbok">Arbok</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type poison"><a href="https://www.pokemon.com/us/pokedex?type=poison">Poison</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#025</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/pikachu"><img src="https://cdn.bulbagarden.net/upload/0/0f/025MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/pikachu">Pikachu</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type electric"><a href="https://www.pokemon.com/us/pokedex?type=electric">Electric</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#026</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/raichu"><img src="https://cdn.bulbagarden.net/upload/d/da/026MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/raichu">Raichu</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type electric"><a href="https://www.pokemon.com/us/pokedex?type=electric">Electric</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#027</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/sandshrew"><img src="https://cdn.bulbagarden.net/upload/c/c3/027MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/sandshrew">Sandshrew</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type ground"><a href="https://www.pokemon.com/us/pokedex?type=ground">Ground</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#028</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/sandslash"><img src="https://cdn.bulbagarden.net/upload/e/e0/028MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/sandslash">Sandslash</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type ground"><a href="https://www.pokemon.com/us/pokedex?type=ground">Ground</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#029</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/nidoran-female"><img src="https://cdn.bulbagarden.net/upload/a/ab/029MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/nidoran-female">Nidoran ♀</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type poison"><a href="https://www.pokemon.com/us/pokedex?type=poison">Poison</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#030</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/nidorina"><img src="https://cdn.bulbagarden.net/upload/d/d0/030MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/nidorina">Nidorina</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type poison"><a href="https://www.pokemon.com/us/pokedex?type=poison">Poison</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#031</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/nidoqueen"><img src="https://cdn.bulbagarden.net/upload/3/31/031MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/nidoqueen">Nidoqueen</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type poison"><a href="https://www.pokemon.com/us/pokedex?type=poison">Poison</a></li>
+                    <li class="pokemon type ground"><a href="https://www.pokemon.com/us/pokedex?type=ground">Ground</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#032</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/nidoran-male"><img src="https://cdn.bulbagarden.net/upload/f/fb/032MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/nidoran-male">Nidoran ♂</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type poison"><a href="https://www.pokemon.com/us/pokedex?type=poison">Poison</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#033</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/nidorino"><img src="https://cdn.bulbagarden.net/upload/0/0e/033MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/nidorino">Nidorino</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type poison"><a href="https://www.pokemon.com/us/pokedex?type=poison">Poison</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#034</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/nidoking"><img src="https://cdn.bulbagarden.net/upload/1/18/034MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/nidoking">Nidoking</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type poison"><a href="https://www.pokemon.com/us/pokedex?type=poison">Poison</a></li>
+                    <li class="pokemon type ground"><a href="https://www.pokemon.com/us/pokedex?type=ground">Ground</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#035</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/clefairy"><img src="https://cdn.bulbagarden.net/upload/f/f9/035MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/clefairy">Clefairy</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type fairy"><a href="https://www.pokemon.com/us/pokedex?type=fairy">Fairy</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#036</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/clefable"><img src="https://cdn.bulbagarden.net/upload/7/75/036MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/clefable">Clefable</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type fairy"><a href="https://www.pokemon.com/us/pokedex?type=fairy">Fairy</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#037</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/vulpix"><img src="https://cdn.bulbagarden.net/upload/8/85/037MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/vulpix">Vulpix</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type fire"><a href="https://www.pokemon.com/us/pokedex?type=fire">Fire</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#038</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/ninetales"><img src="https://cdn.bulbagarden.net/upload/1/10/038MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/ninetales">Ninetales</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type fire"><a href="https://www.pokemon.com/us/pokedex?type=fire">Fire</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#039</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/jigglypuff"><img src="https://cdn.bulbagarden.net/upload/9/9c/039MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/jigglypuff">Jigglypuff</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type normal"><a href="https://www.pokemon.com/us/pokedex?type=normal">Normal</a></li>
+                    <li class="pokemon type fairy"><a href="https://www.pokemon.com/us/pokedex?type=fairy">Fairy</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#040</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/wigglytuff"><img src="https://cdn.bulbagarden.net/upload/f/f1/040MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/wigglytuff">Wigglytuff</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type normal"><a href="https://www.pokemon.com/us/pokedex?type=normal">Normal</a></li>
+                    <li class="pokemon type fairy"><a href="https://www.pokemon.com/us/pokedex?type=fairy">Fairy</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#041</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/zubat"><img src="https://cdn.bulbagarden.net/upload/9/96/041MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/zubat">Zubat</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type poison"><a href="https://www.pokemon.com/us/pokedex?type=poison">Poison</a></li>
+                    <li class="pokemon type flying"><a href="https://www.pokemon.com/us/pokedex?type=flying">Flying</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#042</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/golbat"><img src="https://cdn.bulbagarden.net/upload/d/d0/042MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/golbat">Golbat</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type poison"><a href="https://www.pokemon.com/us/pokedex?type=poison">Poison</a></li>
+                    <li class="pokemon type flying"><a href="https://www.pokemon.com/us/pokedex?type=flying">Flying</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#043</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/oddish"><img src="https://cdn.bulbagarden.net/upload/a/a5/043MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/oddish">Oddish</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type grass"><a href="https://www.pokemon.com/us/pokedex?type=grass">Grass</a></li>
+                    <li class="pokemon type poison"><a href="https://www.pokemon.com/us/pokedex?type=poison">Poison</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#044</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/gloom"><img src="https://cdn.bulbagarden.net/upload/d/d9/044MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/gloom">Gloom</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type grass"><a href="https://www.pokemon.com/us/pokedex?type=grass">Grass</a></li>
+                    <li class="pokemon type poison"><a href="https://www.pokemon.com/us/pokedex?type=poison">Poison</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#045</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/vileplume"><img src="https://cdn.bulbagarden.net/upload/3/3e/045MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/vileplume">Vileplume</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type grass"><a href="https://www.pokemon.com/us/pokedex?type=grass">Grass</a></li>
+                    <li class="pokemon type poison"><a href="https://www.pokemon.com/us/pokedex?type=poison">Poison</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#046</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/paras"><img src="https://cdn.bulbagarden.net/upload/7/7a/046MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/paras">Paras</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type bug"><a href="https://www.pokemon.com/us/pokedex?type=bug">Bug</a></li>
+                    <li class="pokemon type grass"><a href="https://www.pokemon.com/us/pokedex?type=grass">Grass</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#047</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/parasect"><img src="https://cdn.bulbagarden.net/upload/4/41/047MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/parasect">Parasect</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type bug"><a href="https://www.pokemon.com/us/pokedex?type=bug">Bug</a></li>
+                    <li class="pokemon type grass"><a href="https://www.pokemon.com/us/pokedex?type=grass">Grass</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#048</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/venonat"><img src="https://cdn.bulbagarden.net/upload/1/1e/048MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/venonat">Venonat</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type bug"><a href="https://www.pokemon.com/us/pokedex?type=bug">Bug</a></li>
+                    <li class="pokemon type poison"><a href="https://www.pokemon.com/us/pokedex?type=poison">Poison</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#049</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/venomoth"><img src="https://cdn.bulbagarden.net/upload/3/31/049MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/venomoth">Venomoth</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type bug"><a href="https://www.pokemon.com/us/pokedex?type=bug">Bug</a></li>
+                    <li class="pokemon type poison"><a href="https://www.pokemon.com/us/pokedex?type=poison">Poison</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#050</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/diglett"><img src="https://cdn.bulbagarden.net/upload/8/8b/050MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/diglett">Diglett</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type ground"><a href="https://www.pokemon.com/us/pokedex?type=ground">Ground</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#051</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/dugtrio"><img src="https://cdn.bulbagarden.net/upload/8/86/051MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/dugtrio">Dugtrio</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type ground"><a href="https://www.pokemon.com/us/pokedex?type=ground">Ground</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#052</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/meowth"><img src="https://cdn.bulbagarden.net/upload/5/50/052MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/meowth">Meowth</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type normal"><a href="https://www.pokemon.com/us/pokedex?type=normal">Normal</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#053</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/persian"><img src="https://cdn.bulbagarden.net/upload/a/a7/053MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/persian">Persian</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type normal"><a href="https://www.pokemon.com/us/pokedex?type=normal">Normal</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#054</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/psyduck"><img src="https://cdn.bulbagarden.net/upload/6/6b/054MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/psyduck">Psyduck</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type water"><a href="https://www.pokemon.com/us/pokedex?type=water">Water</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#055</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/golduck"><img src="https://cdn.bulbagarden.net/upload/6/64/055MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/golduck">Golduck</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type water"><a href="https://www.pokemon.com/us/pokedex?type=water">Water</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#056</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/mankey"><img src="https://cdn.bulbagarden.net/upload/a/ad/056MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/mankey">Mankey</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type fighting"><a href="https://www.pokemon.com/us/pokedex?type=fighting">Fighting</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#057</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/primeape"><img src="https://cdn.bulbagarden.net/upload/f/f1/057MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/primeape">Primeape</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type fighting"><a href="https://www.pokemon.com/us/pokedex?type=fighting">Fighting</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#058</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/growlithe"><img src="https://cdn.bulbagarden.net/upload/6/69/058MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/growlithe">Growlithe</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type fire"><a href="https://www.pokemon.com/us/pokedex?type=fire">Fire</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#059</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/arcanine"><img src="https://cdn.bulbagarden.net/upload/3/35/059MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/arcanine">Arcanine</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type fire"><a href="https://www.pokemon.com/us/pokedex?type=fire">Fire</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#060</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/poliwag"><img src="https://cdn.bulbagarden.net/upload/1/17/060MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/poliwag">Poliwag</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type water"><a href="https://www.pokemon.com/us/pokedex?type=water">Water</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#061</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/poliwhirl"><img src="https://cdn.bulbagarden.net/upload/3/36/061MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/poliwhirl">Poliwhirl</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type water"><a href="https://www.pokemon.com/us/pokedex?type=water">Water</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#062</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/poliwrath"><img src="https://cdn.bulbagarden.net/upload/5/5e/062MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/poliwrath">Poliwrath</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type water"><a href="https://www.pokemon.com/us/pokedex?type=water">Water</a></li>
+                    <li class="pokemon type fighting"><a href="https://www.pokemon.com/us/pokedex?type=fighting">Fighting</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#063</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/abra"><img src="https://cdn.bulbagarden.net/upload/c/cf/063MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/abra">Abra</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type psychic"><a href="https://www.pokemon.com/us/pokedex?type=psychic">Psychic</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#064</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/kadabra"><img src="https://cdn.bulbagarden.net/upload/b/b6/064MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/kadabra">Kadabra</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type psychic"><a href="https://www.pokemon.com/us/pokedex?type=psychic">Psychic</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#065</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/alakazam"><img src="https://cdn.bulbagarden.net/upload/c/ca/065MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/alakazam">Alakazam</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type psychic"><a href="https://www.pokemon.com/us/pokedex?type=psychic">Psychic</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#066</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/machop"><img src="https://cdn.bulbagarden.net/upload/6/6c/066MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/machop">Machop</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type fighting"><a href="https://www.pokemon.com/us/pokedex?type=fighting">Fighting</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#067</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/machoke"><img src="https://cdn.bulbagarden.net/upload/0/0f/067MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/machoke">Machoke</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type fighting"><a href="https://www.pokemon.com/us/pokedex?type=fighting">Fighting</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#068</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/machamp"><img src="https://cdn.bulbagarden.net/upload/1/1e/068MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/machamp">Machamp</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type fighting"><a href="https://www.pokemon.com/us/pokedex?type=fighting">Fighting</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#069</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/bellsprout"><img src="https://cdn.bulbagarden.net/upload/7/7b/069MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/bellsprout">Bellsprout</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type grass"><a href="https://www.pokemon.com/us/pokedex?type=grass">Grass</a></li>
+                    <li class="pokemon type poison"><a href="https://www.pokemon.com/us/pokedex?type=poison">Poison</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#070</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/weepinbell"><img src="https://cdn.bulbagarden.net/upload/d/d5/070MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/weepinbell">Weepinbell</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type grass"><a href="https://www.pokemon.com/us/pokedex?type=grass">Grass</a></li>
+                    <li class="pokemon type poison"><a href="https://www.pokemon.com/us/pokedex?type=poison">Poison</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#071</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/victreebel"><img src="https://cdn.bulbagarden.net/upload/9/9b/071MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/victreebel">Victreebel</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type grass"><a href="https://www.pokemon.com/us/pokedex?type=grass">Grass</a></li>
+                    <li class="pokemon type poison"><a href="https://www.pokemon.com/us/pokedex?type=poison">Poison</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#072</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/tentacool"><img src="https://cdn.bulbagarden.net/upload/4/42/072MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/tentacool">Tentacool</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type water"><a href="https://www.pokemon.com/us/pokedex?type=water">Water</a></li>
+                    <li class="pokemon type poison"><a href="https://www.pokemon.com/us/pokedex?type=poison">Poison</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#073</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/tentacruel"><img src="https://cdn.bulbagarden.net/upload/f/fc/073MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/tentacruel">Tentacruel</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type water"><a href="https://www.pokemon.com/us/pokedex?type=water">Water</a></li>
+                    <li class="pokemon type poison"><a href="https://www.pokemon.com/us/pokedex?type=poison">Poison</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#074</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/geodude"><img src="https://cdn.bulbagarden.net/upload/0/04/074MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/geodude">Geodude</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type rock"><a href="https://www.pokemon.com/us/pokedex?type=rock">Rock</a></li>
+                    <li class="pokemon type ground"><a href="https://www.pokemon.com/us/pokedex?type=ground">Ground</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#075</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/graveler"><img src="https://cdn.bulbagarden.net/upload/5/5c/075MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/graveler">Graveler</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type rock"><a href="https://www.pokemon.com/us/pokedex?type=rock">Rock</a></li>
+                    <li class="pokemon type ground"><a href="https://www.pokemon.com/us/pokedex?type=ground">Ground</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#076</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/golem"><img src="https://cdn.bulbagarden.net/upload/3/34/076MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/golem">Golem</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type rock"><a href="https://www.pokemon.com/us/pokedex?type=rock">Rock</a></li>
+                    <li class="pokemon type ground"><a href="https://www.pokemon.com/us/pokedex?type=ground">Ground</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#077</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/ponyta"><img src="https://cdn.bulbagarden.net/upload/5/55/077MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/ponyta">Ponyta</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type fire"><a href="https://www.pokemon.com/us/pokedex?type=fire">Fire</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#078</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/rapidash"><img src="https://cdn.bulbagarden.net/upload/6/66/078MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/rapidash">Rapidash</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type fire"><a href="https://www.pokemon.com/us/pokedex?type=fire">Fire</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#079</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/slowpoke"><img src="https://cdn.bulbagarden.net/upload/6/6a/079MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/slowpoke">Slowpoke</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type water"><a href="https://www.pokemon.com/us/pokedex?type=water">Water</a></li>
+                    <li class="pokemon type psychic"><a href="https://www.pokemon.com/us/pokedex?type=psychic">Psychic</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#080</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/slowbro"><img src="https://cdn.bulbagarden.net/upload/b/b6/080MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/slowbro">Slowbro</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type water"><a href="https://www.pokemon.com/us/pokedex?type=water">Water</a></li>
+                    <li class="pokemon type psychic"><a href="https://www.pokemon.com/us/pokedex?type=psychic">Psychic</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#081</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/magnemite"><img src="https://cdn.bulbagarden.net/upload/0/0f/081MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/magnemite">Magnemite</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type electric"><a href="https://www.pokemon.com/us/pokedex?type=electric">Electric</a></li>
+                    <li class="pokemon type steel"><a href="https://www.pokemon.com/us/pokedex?type=steel">Steel</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#082</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/magneton"><img src="https://cdn.bulbagarden.net/upload/0/0c/082MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/magneton">Magneton</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type electric"><a href="https://www.pokemon.com/us/pokedex?type=electric">Electric</a></li>
+                    <li class="pokemon type steel"><a href="https://www.pokemon.com/us/pokedex?type=steel">Steel</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#083</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/farfetchd"><img src="https://cdn.bulbagarden.net/upload/5/57/083MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/farfetchd">Farfetch’d</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type normal"><a href="https://www.pokemon.com/us/pokedex?type=normal">Normal</a></li>
+                    <li class="pokemon type flying"><a href="https://www.pokemon.com/us/pokedex?type=flying">Flying</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#084</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/doduo"><img src="https://cdn.bulbagarden.net/upload/f/fc/084MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/doduo">Doduo</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type normal"><a href="https://www.pokemon.com/us/pokedex?type=normal">Normal</a></li>
+                    <li class="pokemon type flying"><a href="https://www.pokemon.com/us/pokedex?type=flying">Flying</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#085</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/dodrio"><img src="https://cdn.bulbagarden.net/upload/1/19/085MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/dodrio">Dodrio</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type normal"><a href="https://www.pokemon.com/us/pokedex?type=normal">Normal</a></li>
+                    <li class="pokemon type flying"><a href="https://www.pokemon.com/us/pokedex?type=flying">Flying</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#086</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/seel"><img src="https://cdn.bulbagarden.net/upload/9/9b/086MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/seel">Seel</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type water"><a href="https://www.pokemon.com/us/pokedex?type=water">Water</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#087</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/dewgong"><img src="https://cdn.bulbagarden.net/upload/2/20/087MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/dewgong">Dewgong</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type water"><a href="https://www.pokemon.com/us/pokedex?type=water">Water</a></li>
+                    <li class="pokemon type ice"><a href="https://www.pokemon.com/us/pokedex?type=ice">Ice</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#088</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/grimer"><img src="https://cdn.bulbagarden.net/upload/5/50/088MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/grimer">Grimer</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type poison"><a href="https://www.pokemon.com/us/pokedex?type=poison">Poison</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#089</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/muk"><img src="https://cdn.bulbagarden.net/upload/b/b4/089MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/muk">Muk</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type poison"><a href="https://www.pokemon.com/us/pokedex?type=poison">Poison</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#090</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/shellder"><img src="https://cdn.bulbagarden.net/upload/4/41/090MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/shellder">Shellder</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type water"><a href="https://www.pokemon.com/us/pokedex?type=water">Water</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#091</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/cloyster"><img src="https://cdn.bulbagarden.net/upload/b/bc/091MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/cloyster">Cloyster</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type water"><a href="https://www.pokemon.com/us/pokedex?type=water">Water</a></li>
+                    <li class="pokemon type ice"><a href="https://www.pokemon.com/us/pokedex?type=ice">Ice</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#092</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/gastly"><img src="https://cdn.bulbagarden.net/upload/c/cf/092MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/gastly">Gastly</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type ghost"><a href="https://www.pokemon.com/us/pokedex?type=ghost">Ghost</a></li>
+                    <li class="pokemon type poison"><a href="https://www.pokemon.com/us/pokedex?type=poison">Poison</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#093</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/haunter"><img src="https://cdn.bulbagarden.net/upload/7/71/093MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/haunter">Haunter</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type ghost"><a href="https://www.pokemon.com/us/pokedex?type=ghost">Ghost</a></li>
+                    <li class="pokemon type poison"><a href="https://www.pokemon.com/us/pokedex?type=poison">Poison</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#094</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/gengar"><img src="https://cdn.bulbagarden.net/upload/a/a4/094MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/gengar">Gengar</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type ghost"><a href="https://www.pokemon.com/us/pokedex?type=ghost">Ghost</a></li>
+                    <li class="pokemon type poison"><a href="https://www.pokemon.com/us/pokedex?type=poison">Poison</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#095</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/onix"><img src="https://cdn.bulbagarden.net/upload/c/cd/095MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/onix">Onix</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type rock"><a href="https://www.pokemon.com/us/pokedex?type=rock">Rock</a></li>
+                    <li class="pokemon type ground"><a href="https://www.pokemon.com/us/pokedex?type=ground">Ground</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#096</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/drowzee"><img src="https://cdn.bulbagarden.net/upload/8/8e/096MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/drowzee">Drowzee</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type psychic"><a href="https://www.pokemon.com/us/pokedex?type=psychic">Psychic</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#097</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/hypno"><img src="https://cdn.bulbagarden.net/upload/9/98/097MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/hypno">Hypno</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type psychic"><a href="https://www.pokemon.com/us/pokedex?type=psychic">Psychic</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#098</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/krabby"><img src="https://cdn.bulbagarden.net/upload/4/40/098MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/krabby">Krabby</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type water"><a href="https://www.pokemon.com/us/pokedex?type=water">Water</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#099</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/kingler"><img src="https://cdn.bulbagarden.net/upload/5/5c/099MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/kingler">Kingler</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type water"><a href="https://www.pokemon.com/us/pokedex?type=water">Water</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#100</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/voltorb"><img src="https://cdn.bulbagarden.net/upload/c/c1/100MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/voltorb">Voltorb</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type electric"><a href="https://www.pokemon.com/us/pokedex?type=electric">Electric</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#101</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/electrode"><img src="https://cdn.bulbagarden.net/upload/6/69/101MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/electrode">Electrode</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type electric"><a href="https://www.pokemon.com/us/pokedex?type=electric">Electric</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#102</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/exeggcute"><img src="https://cdn.bulbagarden.net/upload/a/a6/102MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/exeggcute">Exeggcute</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type grass"><a href="https://www.pokemon.com/us/pokedex?type=grass">Grass</a></li>
+                    <li class="pokemon type psychic"><a href="https://www.pokemon.com/us/pokedex?type=psychic">Psychic</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#103</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/exeggutor"><img src="https://cdn.bulbagarden.net/upload/d/db/103MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/exeggutor">Exeggutor</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type grass"><a href="https://www.pokemon.com/us/pokedex?type=grass">Grass</a></li>
+                    <li class="pokemon type psychic"><a href="https://www.pokemon.com/us/pokedex?type=psychic">Psychic</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#104</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/cubone"><img src="https://cdn.bulbagarden.net/upload/2/2e/104MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/cubone">Cubone</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type ground"><a href="https://www.pokemon.com/us/pokedex?type=ground">Ground</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#105</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/marowak"><img src="https://cdn.bulbagarden.net/upload/6/6f/105MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/marowak">Marowak</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type ground"><a href="https://www.pokemon.com/us/pokedex?type=ground">Ground</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#106</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/hitmonlee"><img src="https://cdn.bulbagarden.net/upload/6/60/106MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/hitmonlee">Hitmonlee</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type fighting"><a href="https://www.pokemon.com/us/pokedex?type=fighting">Fighting</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#107</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/hitmonchan"><img src="https://cdn.bulbagarden.net/upload/1/1a/107MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/hitmonchan">Hitmonchan</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type fighting"><a href="https://www.pokemon.com/us/pokedex?type=fighting">Fighting</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#108</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/lickitung"><img src="https://cdn.bulbagarden.net/upload/2/25/108MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/lickitung">Lickitung</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type normal"><a href="https://www.pokemon.com/us/pokedex?type=normal">Normal</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#109</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/koffing"><img src="https://cdn.bulbagarden.net/upload/3/3f/109MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/koffing">Koffing</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type poison"><a href="https://www.pokemon.com/us/pokedex?type=poison">Poison</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#110</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/weezing"><img src="https://cdn.bulbagarden.net/upload/2/22/110MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/weezing">Weezing</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type poison"><a href="https://www.pokemon.com/us/pokedex?type=poison">Poison</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#111</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/rhyhorn"><img src="https://cdn.bulbagarden.net/upload/6/67/111MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/rhyhorn">Rhyhorn</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type ground"><a href="https://www.pokemon.com/us/pokedex?type=ground">Ground</a></li>
+                    <li class="pokemon type rock"><a href="https://www.pokemon.com/us/pokedex?type=rock">Rock</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#112</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/rhydon"><img src="https://cdn.bulbagarden.net/upload/c/ce/112MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/rhydon">Rhydon</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type ground"><a href="https://www.pokemon.com/us/pokedex?type=ground">Ground</a></li>
+                    <li class="pokemon type rock"><a href="https://www.pokemon.com/us/pokedex?type=rock">Rock</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#113</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/chansey"><img src="https://cdn.bulbagarden.net/upload/e/ea/113MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/chansey">Chansey</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type normal"><a href="https://www.pokemon.com/us/pokedex?type=normal">Normal</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#114</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/tangela"><img src="https://cdn.bulbagarden.net/upload/4/45/114MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/tangela">Tangela</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type grass"><a href="https://www.pokemon.com/us/pokedex?type=grass">Grass</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#115</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/kangaskhan"><img src="https://cdn.bulbagarden.net/upload/6/68/115MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/kangaskhan">Kangaskhan</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type normal"><a href="https://www.pokemon.com/us/pokedex?type=normal">Normal</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#116</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/horsea"><img src="https://cdn.bulbagarden.net/upload/2/23/116MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/horsea">Horsea</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type water"><a href="https://www.pokemon.com/us/pokedex?type=water">Water</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#117</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/seadra"><img src="https://cdn.bulbagarden.net/upload/8/81/117MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/seadra">Seadra</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type water"><a href="https://www.pokemon.com/us/pokedex?type=water">Water</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#118</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/goldeen"><img src="https://cdn.bulbagarden.net/upload/9/9b/118MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/goldeen">Goldeen</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type water"><a href="https://www.pokemon.com/us/pokedex?type=water">Water</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#119</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/seaking"><img src="https://cdn.bulbagarden.net/upload/8/88/119MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/seaking">Seaking</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type water"><a href="https://www.pokemon.com/us/pokedex?type=water">Water</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#120</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/staryu"><img src="https://cdn.bulbagarden.net/upload/6/60/120MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/staryu">Staryu</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type water"><a href="https://www.pokemon.com/us/pokedex?type=water">Water</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#121</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/starmie"><img src="https://cdn.bulbagarden.net/upload/5/55/121MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/starmie">Starmie</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type water"><a href="https://www.pokemon.com/us/pokedex?type=water">Water</a></li>
+                    <li class="pokemon type psychic"><a href="https://www.pokemon.com/us/pokedex?type=psychic">Psychic</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#122</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/mr-mime"><img src="https://cdn.bulbagarden.net/upload/5/58/122MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/mr-mime">Mr. Mime</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type psychic"><a href="https://www.pokemon.com/us/pokedex?type=psychic">Psychic</a></li>
+                    <li class="pokemon type fairy"><a href="https://www.pokemon.com/us/pokedex?type=fairy">Fairy</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#123</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/scyther"><img src="https://cdn.bulbagarden.net/upload/5/54/123MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/scyther">Scyther</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type bug"><a href="https://www.pokemon.com/us/pokedex?type=bug">Bug</a></li>
+                    <li class="pokemon type flying"><a href="https://www.pokemon.com/us/pokedex?type=flying">Flying</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#124</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/jynx"><img src="https://cdn.bulbagarden.net/upload/f/f5/124MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/jynx">Jynx</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type ice"><a href="https://www.pokemon.com/us/pokedex?type=ice">Ice</a></li>
+                    <li class="pokemon type psychic"><a href="https://www.pokemon.com/us/pokedex?type=psychic">Psychic</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#125</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/electabuzz"><img src="https://cdn.bulbagarden.net/upload/7/72/125MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/electabuzz">Electabuzz</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type electric"><a href="https://www.pokemon.com/us/pokedex?type=electric">Electric</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#126</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/magmar"><img src="https://cdn.bulbagarden.net/upload/e/e7/126MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/magmar">Magmar</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type fire"><a href="https://www.pokemon.com/us/pokedex?type=fire">Fire</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#127</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/pinsir"><img src="https://cdn.bulbagarden.net/upload/5/5c/127MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/pinsir">Pinsir</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type bug"><a href="https://www.pokemon.com/us/pokedex?type=bug">Bug</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#128</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/tauros"><img src="https://cdn.bulbagarden.net/upload/9/95/128MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/tauros">Tauros</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type normal"><a href="https://www.pokemon.com/us/pokedex?type=normal">Normal</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#129</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/magikarp"><img src="https://cdn.bulbagarden.net/upload/7/7c/129MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/magikarp">Magikarp</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type water"><a href="https://www.pokemon.com/us/pokedex?type=water">Water</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#130</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/gyarados"><img src="https://cdn.bulbagarden.net/upload/a/a0/130MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/gyarados">Gyarados</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type water"><a href="https://www.pokemon.com/us/pokedex?type=water">Water</a></li>
+                    <li class="pokemon type flying"><a href="https://www.pokemon.com/us/pokedex?type=flying">Flying</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#131</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/lapras"><img src="https://cdn.bulbagarden.net/upload/4/4b/131MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/lapras">Lapras</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type water"><a href="https://www.pokemon.com/us/pokedex?type=water">Water</a></li>
+                    <li class="pokemon type ice"><a href="https://www.pokemon.com/us/pokedex?type=ice">Ice</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#132</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/ditto"><img src="https://cdn.bulbagarden.net/upload/5/53/132MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/ditto">Ditto</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type normal"><a href="https://www.pokemon.com/us/pokedex?type=normal">Normal</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#133</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/eevee"><img src="https://cdn.bulbagarden.net/upload/d/de/133MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/eevee">Eevee</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type normal"><a href="https://www.pokemon.com/us/pokedex?type=normal">Normal</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#134</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/vaporeon"><img src="https://cdn.bulbagarden.net/upload/b/be/134MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/vaporeon">Vaporeon</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type water"><a href="https://www.pokemon.com/us/pokedex?type=water">Water</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#135</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/jolteon"><img src="https://cdn.bulbagarden.net/upload/1/16/135MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/jolteon">Jolteon</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type electric"><a href="https://www.pokemon.com/us/pokedex?type=electric">Electric</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#136</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/flareon"><img src="https://cdn.bulbagarden.net/upload/3/30/136MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/flareon">Flareon</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type fire"><a href="https://www.pokemon.com/us/pokedex?type=fire">Fire</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#137</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/porygon"><img src="https://cdn.bulbagarden.net/upload/f/f7/137MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/porygon">Porygon</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type normal"><a href="https://www.pokemon.com/us/pokedex?type=normal">Normal</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#138</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/omanyte"><img src="https://cdn.bulbagarden.net/upload/9/97/138MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/omanyte">Omanyte</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type rock"><a href="https://www.pokemon.com/us/pokedex?type=rock">Rock</a></li>
+                    <li class="pokemon type water"><a href="https://www.pokemon.com/us/pokedex?type=water">Water</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#139</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/omastar"><img src="https://cdn.bulbagarden.net/upload/2/2a/139MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/omastar">Omastar</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type rock"><a href="https://www.pokemon.com/us/pokedex?type=rock">Rock</a></li>
+                    <li class="pokemon type water"><a href="https://www.pokemon.com/us/pokedex?type=water">Water</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#140</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/kabuto"><img src="https://cdn.bulbagarden.net/upload/1/1e/140MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/kabuto">Kabuto</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type rock"><a href="https://www.pokemon.com/us/pokedex?type=rock">Rock</a></li>
+                    <li class="pokemon type water"><a href="https://www.pokemon.com/us/pokedex?type=water">Water</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#141</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/kabutops"><img src="https://cdn.bulbagarden.net/upload/0/08/141MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/kabutops">Kabutops</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type rock"><a href="https://www.pokemon.com/us/pokedex?type=rock">Rock</a></li>
+                    <li class="pokemon type water"><a href="https://www.pokemon.com/us/pokedex?type=water">Water</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#142</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/aerodactyl"><img src="https://cdn.bulbagarden.net/upload/d/d1/142MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/aerodactyl">Aerodactyl</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type rock"><a href="https://www.pokemon.com/us/pokedex?type=rock">Rock</a></li>
+                    <li class="pokemon type flying"><a href="https://www.pokemon.com/us/pokedex?type=flying">Flying</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#143</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/snorlax"><img src="https://cdn.bulbagarden.net/upload/d/d6/143MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/snorlax">Snorlax</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type normal"><a href="https://www.pokemon.com/us/pokedex?type=normal">Normal</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#144</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/articuno"><img src="https://cdn.bulbagarden.net/upload/0/04/144MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/articuno">Articuno</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type ice"><a href="https://www.pokemon.com/us/pokedex?type=ice">Ice</a></li>
+                    <li class="pokemon type flying"><a href="https://www.pokemon.com/us/pokedex?type=flying">Flying</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#145</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/zapdos"><img src="https://cdn.bulbagarden.net/upload/3/3f/145MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/zapdos">Zapdos</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type electric"><a href="https://www.pokemon.com/us/pokedex?type=electric">Electric</a></li>
+                    <li class="pokemon type flying"><a href="https://www.pokemon.com/us/pokedex?type=flying">Flying</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#146</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/moltres"><img src="https://cdn.bulbagarden.net/upload/f/fe/146MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/moltres">Moltres</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type fire"><a href="https://www.pokemon.com/us/pokedex?type=fire">Fire</a></li>
+                    <li class="pokemon type flying"><a href="https://www.pokemon.com/us/pokedex?type=flying">Flying</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#147</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/dratini"><img src="https://cdn.bulbagarden.net/upload/2/26/147MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/dratini">Dratini</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type dragon"><a href="https://www.pokemon.com/us/pokedex?type=dragon">Dragon</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#148</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/dragonair"><img src="https://cdn.bulbagarden.net/upload/4/4e/148MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/dragonair">Dragonair</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type dragon"><a href="https://www.pokemon.com/us/pokedex?type=dragon">Dragon</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#149</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/dragonite"><img src="https://cdn.bulbagarden.net/upload/c/cc/149MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/dragonite">Dragonite</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type dragon"><a href="https://www.pokemon.com/us/pokedex?type=dragon">Dragon</a></li>
+                    <li class="pokemon type flying"><a href="https://www.pokemon.com/us/pokedex?type=flying">Flying</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#150</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/mewtwo"><img src="https://cdn.bulbagarden.net/upload/1/1a/150MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/mewtwo">Mewtwo</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type psychic"><a href="https://www.pokemon.com/us/pokedex?type=psychic">Psychic</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>#151</td>
+                <td><a href="https://www.pokemon.com/us/pokedex/mew"><img src="https://cdn.bulbagarden.net/upload/a/a7/151MS.png"></a></td>
+                <td><a href="https://www.pokemon.com/us/pokedex/mew">Mew</a></td>
+                <td>
+                  <ul>
+                    <li class="pokemon type psychic"><a href="https://www.pokemon.com/us/pokedex?type=psychic">Psychic</a></li>
+                  </ul>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </main>
+    <!-- Separator ------------------------------------------------------------>
+    <hr>
+    <!-- Footer --------------------------------------------------------------->
+    <footer>
+      <ul>
+        <li>
+          <a href="https://github.com/alexherbo2/krabby">GitHub</a>
+        </li>
+      </ul>
+    </footer>
+  </body>
+</html>

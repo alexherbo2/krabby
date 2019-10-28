@@ -1,4 +1,4 @@
-# Krabby
+# [Krabby]
 
 <img src="https://www.iconfinder.com/icons/877852/download/svg/512" height="168" align="right">
 
@@ -255,6 +255,8 @@ make install
 
 - [Create a keyboard interface to the web]
 
+[Krabby]: https://krabby.netlify.com
+[Live demo]: https://krabby.netlify.com#live-demo
 [Krabby icon]: https://iconfinder.com/icons/877852/kanto_krabby_pokemon_water_icon
 
 [QWERTY]: https://en.wikipedia.org/wiki/QWERTY
@@ -313,4 +315,3 @@ make install
 [Regular Expressions]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions
 
 [Create a keyboard interface to the web]: https://alexherbo2.github.io/blog/chrome/create-a-keyboard-interface-to-the-web/
-[Live demo]: https://alexherbo2.github.io/blog/chrome/create-a-keyboard-interface-to-the-web#try-it
