@@ -1,5 +1,5 @@
 install:
-	scripts/setup
+	scripts/install
 
 uninstall:
 	scripts/uninstall
