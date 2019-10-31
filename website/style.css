@@ -1,3 +1,9 @@
+/* https://en.wikipedia.org/wiki/Shades_of_orange */
+:root {
+  --butterscotch: #e09540;
+  --persian-orange: #d99058;
+}
+
 /* Pokémon – https://www.pokemon.com */
 :root {
   --pokemon-type-bug-color: #729f3f;
@@ -20,6 +26,48 @@
   --pokemon-type-rock-color: #a38c21;
   --pokemon-type-steel-color: #9eb7b8;
   --pokemon-type-water-color: #4592c4;
+}
+
+body {
+  margin: 0;
+}
+
+#header {
+  color: white;
+  background-color: var(--persian-orange);
+  width: 100%;
+}
+
+#header, #header nav ul {
+  display: table;
+}
+
+#header > *, #header ul li {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+#header nav ul {
+  margin: 0 auto;
+}
+
+#header a {
+  color: white;
+  text-decoration: none;
+  display: inline-block;
+  padding: 20px;
+}
+
+#header a:focus, #header a:hover {
+  background-color: var(--butterscotch);
+}
+
+#header header {
+  font-weight: bold;
+}
+
+#header header a {
+  color: ghostwhite;
 }
 
 table {
