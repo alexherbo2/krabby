@@ -2,7 +2,7 @@ install:
 	scripts/setup
 
 uninstall:
-	rm -Rf ~/.config/krabby
+	scripts/uninstall
 
 netlify:
 	mkdir -p website/packages; cd website/packages; ../../scripts/fetch

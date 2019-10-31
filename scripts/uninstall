@@ -1,0 +1,12 @@
+#!/bin/sh
+
+# Environment variables
+XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-~/.config}
+CONFIG=$XDG_CONFIG_HOME/krabby
+
+# Faces
+none='\033[0m'
+green='\033[32m'
+
+printf "${green}Removing${none}: %s\n" "$CONFIG"
+rm -Rf "$CONFIG"
