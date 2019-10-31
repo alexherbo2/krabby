@@ -1,3 +1,7 @@
 [build]
   publish = "website"
-  command = "make netlify"
+  command = '''
+    mkdir -p website/packages
+    cd website/packages
+    ../../scripts/fetch
+  '''
