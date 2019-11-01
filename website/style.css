@@ -101,6 +101,33 @@ main > ul li::before {
   content: "–";
 }
 
+footer {
+  width: 100%;
+  border-top: 1px solid var(--pokemon-background-color);
+}
+
+footer, footer ul {
+  display: table;
+}
+
+footer > *, footer ul li {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+footer a {
+  color: dimgray;
+}
+
+footer .icons {
+  margin: 0 auto;
+}
+
+footer .icons i {
+  font-size: 18px;
+  padding: 5px;
+}
+
 table {
   width: 60%;
   border-collapse: collapse;
