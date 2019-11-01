@@ -101,6 +101,31 @@ main > ul li::before {
   content: "–";
 }
 
+#next-steps {
+  text-align: center;
+  font-size: 23px;
+}
+
+#next-steps p {
+  color: var(--persian-orange);
+}
+
+#next-steps .icons {
+  display: table;
+  margin: 0 auto;
+}
+
+#next-steps .icons > * {
+  display: table-cell;
+  padding: 20px;
+}
+
+#next-steps .icons .text {
+  display: block;
+  margin: 20px;
+  color: dimgray;
+}
+
 footer {
   width: 100%;
   border-top: 1px solid var(--pokemon-background-color);
@@ -190,6 +215,19 @@ kbd {
 
 .keys.top {
   vertical-align: top;
+}
+
+i.big-circle {
+  color: white;
+  background-color: var(--persian-orange);
+  border-radius: 50%;
+  padding: 0.8em;
+  width: 1em;
+  font-size: 150%;
+}
+
+a i.big-circle:hover {
+  background-color: var(--butterscotch);
 }
 
 .pokemon.type {
