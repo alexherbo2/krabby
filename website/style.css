@@ -92,6 +92,11 @@ a:hover {
   padding-bottom: 20px;
 }
 
+main {
+  max-width: 60%;
+  margin: 0 auto;
+}
+
 main > ul {
   list-style: none;
   padding-left: 20px;
@@ -154,7 +159,7 @@ footer .icons i {
 }
 
 table {
-  width: 60%;
+  width: 100%;
   border-collapse: collapse;
   border: 1px solid black;
 }
