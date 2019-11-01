@@ -3,3 +3,6 @@ install:
 
 uninstall:
 	scripts/uninstall
+
+site:
+	scripts/build-site

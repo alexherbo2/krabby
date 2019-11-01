@@ -1,0 +1,5 @@
+#!/bin/sh
+
+mkdir -p website/packages
+cd website/packages
+../../scripts/fetch

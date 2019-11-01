@@ -1,7 +1,3 @@
 [build]
   publish = "website"
-  command = '''
-    mkdir -p website/packages
-    cd website/packages
-    ../../scripts/fetch
-  '''
+  command = "make site"
