@@ -33,6 +33,16 @@ body {
   margin: 0;
 }
 
+a {
+  color: var(--persian-orange);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--butterscotch);
+  text-decoration: underline;
+}
+
 #header {
   color: white;
   background-color: var(--persian-orange);
