@@ -92,6 +92,15 @@ a:hover {
   padding-bottom: 20px;
 }
 
+main > ul {
+  list-style: none;
+  padding-left: 20px;
+}
+
+main > ul li::before {
+  content: "–";
+}
+
 table {
   width: 60%;
   border-collapse: collapse;
