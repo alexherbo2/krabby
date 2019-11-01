@@ -6,6 +6,7 @@
 
 /* Pokémon – https://www.pokemon.com */
 :root {
+  --pokemon-background-color: #f2f2f2;
   --pokemon-type-bug-color: #729f3f;
   --pokemon-type-dragon-color: #53a4cf;
   --pokemon-type-dragon-color: #f16e57;
@@ -70,6 +71,17 @@ body {
   color: ghostwhite;
 }
 
+.splash {
+  color: dimgray;
+  background-color: var(--pokemon-background-color);
+  text-align: center;
+}
+
+.splash figure {
+  margin: 0;
+  padding-bottom: 20px;
+}
+
 table {
   width: 60%;
   border-collapse: collapse;
@@ -124,10 +136,6 @@ kbd {
   top: unset;
   left: unset;
   overflow: unset;
-}
-
-.splash {
-  text-align: center;
 }
 
 .keys {
