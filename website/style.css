@@ -83,6 +83,7 @@ a:hover {
 }
 
 .splash {
+  width: 100%;
   color: dimgray;
   background-color: var(--pokemon-background-color);
   text-align: center;
