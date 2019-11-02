@@ -250,6 +250,7 @@ make install
 - [@ul], for his advice and proofreading, especially in the early stages.
 - [@GeoGavilanes] for the [Krabby icon].
 - [@occivink], for his work on [phantom selections][kakoune-phantom-selection], from which the “save and restore selections” feature is inspired.
+- [mpv] and [Kakoune] for their website, from which [Krabby] is inspired.
 
 ## References
 
