@@ -82,14 +82,14 @@ a:hover {
   color: ghostwhite;
 }
 
-.splash {
+#splash {
   width: 100%;
   color: dimgray;
   background-color: var(--pokemon-background-color);
   text-align: center;
 }
 
-.splash figure {
+#splash figure {
   margin: 0;
   padding-bottom: 20px;
 }
