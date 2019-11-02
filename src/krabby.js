@@ -130,21 +130,39 @@ const notify = (message) => {
 }
 
 const click = (selections, modifierKeys = {}) => {
-  const elements = selections.length
-    ? selections.collection
-    : [document.activeElement]
-  for (const element of elements) {
+  for (const element of getElements(selections)) {
     Mouse.click(element, modifierKeys)
   }
 }
 
-const open = (selections) => {
-  const links = selections.length
-    ? selections.collection
-    : [document.activeElement]
-  for (const link of links) {
+const openInNewTab = (selections) => {
+  for (const link of getElements(selections)) {
+    commands.send('new-tab', link.href)
+  }
+}
+
+const openInNewWindow = (selections) => {
+  for (const link of getElements(selections)) {
+    commands.send('new-window', link.href)
+  }
+}
+
+const download = (selections) => {
+  for (const link of getElements(selections)) {
+    commands.send('download', link.href)
+  }
+}
+
+const xdgOpen = (selections) => {
+  for (const link of getElements(selections)) {
     shell.send('xdg-open', link.href)
   }
+}
+
+const getElements = (selections) => {
+  return selections.length
+    ? selections.collection
+    : [document.activeElement]
 }
 
 const yank = (selections, callback, message) => {
@@ -285,10 +303,10 @@ modal.map('Command', ['KeyV'], () => hint({ selectors: HINT_VIDEO_SELECTORS }).s
 
 // Open links
 modal.map('Link', ['Enter'], () => click(selections), 'Open link')
-modal.map('Link', ['Control', 'Enter'], () => click(selections, { ctrlKey: true }), 'Open link in new tab')
-modal.map('Link', ['Shift', 'Enter'], () => click(selections, { shiftKey: true }), 'Open link in new window')
-modal.map('Link', ['Alt', 'Enter'], () => click(selections, { altKey: true }), 'Download link')
-modal.map('Link', ['Alt', 'Shift', 'Enter'], () => open(selections), 'Open link in the associated application')
+modal.map('Link', ['Control', 'Enter'], () => openInNewTab(selections), 'Open link in new tab')
+modal.map('Link', ['Shift', 'Enter'], () => openInNewWindow(selections), 'Open link in new window')
+modal.map('Link', ['Alt', 'Enter'], () => download(selections), 'Download link')
+modal.map('Link', ['Alt', 'Shift', 'Enter'], () => xdgOpen(selections), 'Open link in the associated application')
 
 // Selection manipulation
 modal.map('Command', ['KeyS'], () => selections.add(document.activeElement), 'Select active element')

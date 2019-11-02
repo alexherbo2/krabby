@@ -89,12 +89,15 @@ const notify = (message) => {
 }
 
 const click = (selections, modifierKeys = {}) => {
-  const elements = selections.length
-    ? selections.collection
-    : [document.activeElement]
-  for (const element of elements) {
+  for (const element of getElements(selections)) {
     Mouse.click(element, modifierKeys)
   }
+}
+
+const getElements = (selections) => {
+  return selections.length
+    ? selections.collection
+    : [document.activeElement]
 }
 
 const yank = (selections, callback, message) => {
