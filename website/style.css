@@ -223,6 +223,16 @@ kbd {
   vertical-align: top;
 }
 
+.keys kbd.may-require-install, .keys .may-require-install kbd {
+  color: white;
+  background-color: var(--butterscotch);
+}
+
+.keys kbd.require-install, .keys .require-install kbd {
+  color: white;
+  background-color: dimgray;
+}
+
 i.big-circle {
   color: white;
   background-color: var(--persian-orange);
