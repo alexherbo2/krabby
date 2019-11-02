@@ -183,6 +183,10 @@ td li {
   list-style: none;
 }
 
+label {
+  display: block;
+}
+
 /* Style from GitHub */
 code {
   padding: 0.2em 0.4em;
