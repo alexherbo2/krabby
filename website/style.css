@@ -150,6 +150,16 @@ footer .icons i {
   padding: 5px;
 }
 
+figure, img, video {
+  max-width: 100%;
+}
+
+figcaption {
+  font-style: italic;
+  text-align: center;
+  margin: 20px;
+}
+
 table {
   width: 100%;
   border-collapse: collapse;
