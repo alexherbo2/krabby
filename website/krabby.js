@@ -55,6 +55,9 @@ const hint = ({ selections, selectors = '*', lock = false } = {}) => {
       }
     } else {
       target.focus()
+      if (document.activeElement !== target) {
+        selections.add(target)
+      }
     }
   })
   hint.on('start', () => {
@@ -166,12 +169,13 @@ modal.map('Command', ['KeyR'], () => location.reload(), 'Reload the page')
 modal.map('Command', ['Shift', 'KeyR'], () => location.reload(true), 'Reload the page, ignoring cached content')
 
 // Link hints
-modal.map('Command', ['KeyF'], () => hint().start(), 'Focus link')
+modal.map('Command', ['KeyF'], () => hint({ selections }).start(), 'Focus link')
 modal.map('Command', ['Shift', 'KeyF'], () => hint({ selections, lock: true }).start(), 'Select multiple links')
 modal.map('Command', ['KeyI'], () => hint({ selectors: HINT_TEXT_SELECTORS }).start(), 'Focus input')
 modal.map('Command', ['KeyV'], () => hint({ selectors: HINT_VIDEO_SELECTORS }).start(), 'Focus video')
 
 // Open links
+modal.map('Command', ['Enter'], () => click(selections), 'Open selection')
 modal.map('Link', ['Enter'], () => click(selections), 'Open link')
 modal.map('Link', ['Control', 'Enter'], () => click(selections, { ctrlKey: true }), 'Open link in new tab')
 modal.map('Link', ['Shift', 'Enter'], () => click(selections, { shiftKey: true }), 'Open link in new window')

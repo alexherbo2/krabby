@@ -103,6 +103,7 @@ Commands are bound to **physical keys** and **displayed** with the [US layout][Q
 
 ## Open links
 
+- <kbd>Enter</kbd> → Open selection (**Command** context)
 - <kbd>Enter</kbd> → Open link (**Link** context)
 - <kbd>Control</kbd> + <kbd>Enter</kbd> → Open link in new tab (**Link** context) – Requires [Commands]
 - <kbd>Shift</kbd> + <kbd>Enter</kbd> → Open link in new window (**Link** context) – Requires [Commands]

@@ -96,6 +96,9 @@ const hint = ({ selections, selectors = '*', lock = false } = {}) => {
       }
     } else {
       target.focus()
+      if (document.activeElement !== target) {
+        selections.add(target)
+      }
     }
   })
   hint.on('start', () => {
@@ -296,12 +299,13 @@ modal.map('Command', ['Alt', 'Shift', 'KeyM'], () => commands.send('mute-all-tab
 modal.map('Command', ['Alt', 'KeyP'], () => commands.send('pin-tab'), 'Pin tab')
 
 // Link hints
-modal.map('Command', ['KeyF'], () => hint().start(), 'Focus link')
+modal.map('Command', ['KeyF'], () => hint({ selections }).start(), 'Focus link')
 modal.map('Command', ['Shift', 'KeyF'], () => hint({ selections, lock: true }).start(), 'Select multiple links')
 modal.map('Command', ['KeyI'], () => hint({ selectors: HINT_TEXT_SELECTORS }).start(), 'Focus input')
 modal.map('Command', ['KeyV'], () => hint({ selectors: HINT_VIDEO_SELECTORS }).start(), 'Focus video')
 
 // Open links
+modal.map('Command', ['Enter'], () => click(selections), 'Open selection')
 modal.map('Link', ['Enter'], () => click(selections), 'Open link')
 modal.map('Link', ['Control', 'Enter'], () => openInNewTab(selections), 'Open link in new tab')
 modal.map('Link', ['Shift', 'Enter'], () => openInNewWindow(selections), 'Open link in new window')
