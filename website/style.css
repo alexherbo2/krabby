@@ -30,8 +30,10 @@
 }
 
 body {
-  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
   margin: 0;
+  font-family: sans-serif;
 }
 
 a {
@@ -45,22 +47,16 @@ a:hover {
 }
 
 #header {
+  display: flex;
+  justify-content: space-between;
   color: white;
   background-color: var(--persian-orange);
-  width: 100%;
-}
-
-#header, #header nav ul {
-  display: table;
-}
-
-#header > *, #header ul li {
-  display: table-cell;
-  vertical-align: middle;
 }
 
 #header nav ul {
-  margin: 0 auto;
+  display: flex;
+  list-style: none;
+  margin: 0;
 }
 
 #header a {
@@ -83,7 +79,6 @@ a:hover {
 }
 
 #splash {
-  width: 100%;
   color: dimgray;
   background-color: var(--pokemon-background-color);
   text-align: center;
@@ -122,13 +117,9 @@ main > ul li::before {
 }
 
 #next-steps .icons {
-  display: table;
-  margin: 0 auto;
-}
-
-#next-steps .icons > * {
-  display: table-cell;
-  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
 }
 
 #next-steps .icons .text {
@@ -138,26 +129,20 @@ main > ul li::before {
 }
 
 footer {
-  max-width: 60%;
-  margin: 0 auto;
+  display: flex;
+  justify-content: center;
   border-top: 1px solid var(--pokemon-background-color);
 }
 
 footer ul {
-  display: table;
-}
-
-footer ul li {
-  display: table-cell;
-  vertical-align: middle;
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  margin: 0;
 }
 
 footer a {
   color: dimgray;
-}
-
-footer .icons {
-  margin: 0 auto;
 }
 
 footer .icons i {
