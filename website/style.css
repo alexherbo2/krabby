@@ -1,3 +1,6 @@
+/* Variables ───────────────────────────────────────────────────────────────────
+*/
+
 /* https://en.wikipedia.org/wiki/Shades_of_orange */
 :root {
   --butterscotch: #e09540;
@@ -28,6 +31,9 @@
   --pokemon-type-steel-color: #9eb7b8;
   --pokemon-type-water-color: #4592c4;
 }
+
+/* Layout ──────────────────────────────────────────────────────────────────────
+*/
 
 body {
   display: flex;
@@ -150,6 +156,30 @@ footer .icons i {
   padding: 5px;
 }
 
+/* Specific rules ──────────────────────────────────────────────────────────────
+*/
+
+.keys {
+  white-space: nowrap;
+}
+
+.keys.top {
+  vertical-align: top;
+}
+
+.keys kbd.may-require-install, .keys .may-require-install kbd {
+  color: white;
+  background-color: var(--butterscotch);
+}
+
+.keys kbd.require-install, .keys .require-install kbd {
+  color: white;
+  background-color: dimgray;
+}
+
+/* General rules ───────────────────────────────────────────────────────────────
+*/
+
 figure, img, video {
   max-width: 100%;
 }
@@ -206,6 +236,9 @@ kbd {
   box-shadow: inset 0 -1px 0 #d1d5da;
 }
 
+/* Helpers ─────────────────────────────────────────────────────────────────────
+*/
+
 .skip-to-content {
   position: absolute;
   top: -100%;
@@ -218,24 +251,6 @@ kbd {
   top: unset;
   left: unset;
   overflow: unset;
-}
-
-.keys {
-  white-space: nowrap;
-}
-
-.keys.top {
-  vertical-align: top;
-}
-
-.keys kbd.may-require-install, .keys .may-require-install kbd {
-  color: white;
-  background-color: var(--butterscotch);
-}
-
-.keys kbd.require-install, .keys .require-install kbd {
-  color: white;
-  background-color: dimgray;
 }
 
 i.big-circle {
