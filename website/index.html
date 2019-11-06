@@ -111,8 +111,8 @@
           Composability.
           Composability is better than extensibility.
           Krabby tries hard to provide features that interact well with each other.
-          For example, <kbd>f</kbd> and <kbd>y</kbd> are two building blocks to focus a link and yank its URL.
-          Depending on the context, <kbd>y</kbd> will yank the page or a link URL.
+          For example, <button class="krabby" mode="modal"><kbd code="KeyF">f</kbd></button> and <button class="krabby" mode="modal"><kbd code="KeyY">y</kbd></button> are two building blocks to focus a link and yank its URL.
+          Depending on the context, <button class="krabby" mode="modal"><kbd code="KeyY">y</kbd></button> will yank the page or a link URL.
         </li>
         <li>
           Modular (think <a href="https://gnu.org/software/emacs/">Emacs</a>).
@@ -196,10 +196,10 @@
           Make sure to deactivate your extension and browser bindings.
         </li>
         <li>
-          Press <kbd>Alt</kbd> + <kbd>Escape</kbd> to activate Krabby.
+          Press <button class="krabby" mode="pass"><kbd>Alt</kbd> + <kbd>Escape</kbd></button> to activate Krabby.
         </li>
         <li>
-          Press <kbd>F1</kbd> for help.
+          Press <button class="krabby" mode="modal"><kbd>F1</kbd></button> for help.
         </li>
       </ul>
       <p>
@@ -217,39 +217,39 @@
         <tbody>
           <!-- Example #1 -->
           <tr id="1">
-            <td class="keys"><kbd title="Scroll down">j</kbd></td>
+            <td class="keys"><button class="krabby" mode="modal" title="Scroll down"><kbd code="KeyJ">j</kbd></button></td>
             <td class="example"><kbd title="Scroll down">↓</kbd></td>
           </tr>
           <tr>
-            <td class="keys"><kbd title="Scroll up">k</kbd></td>
+            <td class="keys"><button class="krabby" mode="modal" title="Scroll up"><kbd code="KeyK">k</kbd></button></td>
             <td class="example"><kbd title="Scroll up">↑</kbd></td>
           </tr>
           <tr>
-            <td class="keys"><kbd title="Scroll to the bottom of the page">G</kbd></td>
+            <td class="keys"><button class="krabby" mode="modal" title="Scroll to the bottom of the page"><kbd shift code="KeyG">G</kbd></button></td>
             <td class="example"><kbd title="Scroll to the bottom of the page">⇓</kbd></td>
           </tr>
           <tr>
-            <td class="keys"><kbd title="Scroll to the top of the page">g</kbd></td>
+            <td class="keys"><button class="krabby" mode="modal" title="Scroll to the top of the page"><kbd code="KeyG">g</kbd></button></td>
             <td class="example"><kbd title="Scroll to the top of the page">⇑</kbd></td>
           </tr>
           <tr>
-            <td class="keys"><kbd title="Scroll down">j</kbd></td>
+            <td class="keys"><button class="krabby" mode="modal" title="Scroll down"><kbd code="KeyJ">j</kbd></button></td>
             <td class="example"><kbd title="Scroll down">↓</kbd></td>
           </tr>
           <tr>
-            <td class="keys"><kbd title="Copy page address">y</kbd></td>
+            <td class="keys"><button class="krabby" mode="modal" title="Copy page address"><kbd code="KeyY">y</kbd></button></td>
             <td class="example"><kbd title="Copy page address">📋</kbd></td>
           </tr>
           <tr>
-            <td class="keys"><kbd title="Scroll down">j</kbd></td>
+            <td class="keys"><button class="krabby" mode="modal" title="Scroll down"><kbd code="KeyJ">j</kbd></button></td>
             <td class="example"><kbd title="Scroll down">↓</kbd></td>
           </tr>
           <!-- Example #2 -->
           <tr id="2">
             <td class="keys">
               <ul>
-                <li><kbd title="Focus link">f</kbd> <code>{hint}</code></li>
-                <li><kbd title="Open link">Enter</kbd></li>
+                <li><button class="krabby" mode="modal" title="Focus link"><kbd code="KeyF">f</kbd></button> <code>{hint}</code></li>
+                <li><button class="krabby" mode="modal" title="Open link"><kbd>Enter</kbd></button></li>
               </ul>
             </td>
             <td class="example">
@@ -263,17 +263,17 @@
           <tr id="3">
             <td class="keys">
               <ul>
-                <li><kbd title="Focus link">f</kbd> <code>{hint}</code></li>
-                <li><kbd title="Select active element">s</kbd></li>
-                <li><span title="Select parent elements"><kbd>Alt</kbd> + <kbd>a</kbd></span></li>
-                <li><span title="Select child elements"><kbd>Alt</kbd> + <kbd>i</kbd></span></li>
-                <li><span title="Remove main selection"><kbd>Alt</kbd> + <kbd>Space</kbd></span></li>
+                <li><button class="krabby" mode="modal" title="Focus link"><kbd code="KeyF">f</kbd></button> <code>{hint}</code></li>
+                <li><button class="krabby" mode="modal" title="Select active element"><kbd code="KeyS">s</kbd></button></li>
+                <li><button class="krabby" mode="modal" title="Select parent elements"><kbd>Alt</kbd> + <kbd code="KeyA">a</kbd></button></li>
+                <li><button class="krabby" mode="modal" title="Select child elements"><kbd>Alt</kbd> + <kbd code="KeyI">i</kbd></button></li>
+                <li><button class="krabby" mode="modal" title="Remove main selection"><kbd>Alt</kbd> + <kbd>Space</kbd></button></li>
                 <li>
-                  <kbd title="Copy link address">y</kbd> or
-                  <span title="Copy link text"><kbd>Alt</kbd> + <kbd>y</kbd></span> or
-                  <kbd title="Copy link address and text">Y</kbd>
+                  <button class="krabby" mode="modal" title="Copy link address"><kbd code="KeyY">y</kbd></button> or
+                  <button class="krabby" mode="modal" title="Copy link text"><kbd>Alt</kbd> + <kbd code="KeyY">y</kbd></button> or
+                  <button class="krabby" mode="modal" title="Copy link address and text"><kbd shift code="KeyY">Y</kbd></button>
                 </li>
-                <li><kbd title="Clear selections">Space</kbd></li>
+                <li><button class="krabby" mode="modal" title="Clear selections"><kbd>Space</kbd></button></li>
               </ul>
             </td>
             <td class="example">
@@ -287,14 +287,14 @@
           <tr id="4">
             <td class="keys">
               <ul>
-                <li><kbd title="Focus link">f</kbd> <code>{hint}</code></li>
-                <li><kbd title="Select active element">s</kbd></li>
-                <li><span title="Select parent elements"><kbd>Alt</kbd> + <kbd>a</kbd></span></li>
-                <li><span title="Select parent elements"><kbd>Alt</kbd> + <kbd>a</kbd></span></li>
-                <li><span title="Select links"><kbd>Alt</kbd> + <kbd>I</kbd></span></li>
-                <li><span title="Open link in new tab – Requires install on Firefox" class="may-require-install"><kbd>Control</kbd> + <kbd>Enter</kbd></span></li>
-                <li><span title="Close tabs to the right – Requires install" class="require-install"><kbd>Alt</kbd> + <kbd>x</kbd></span></li>
-                <li><kbd title="Clear selections">Space</kbd></li>
+                <li><button class="krabby" mode="modal" title="Focus link"><kbd code="KeyF">f</kbd></button> <code>{hint}</code></li>
+                <li><button class="krabby" mode="modal" title="Select active element"><kbd code="KeyS">s</kbd></button></li>
+                <li><button class="krabby" mode="modal" title="Select parent elements"><kbd>Alt</kbd> + <kbd code="KeyA">a</kbd></button></li>
+                <li><button class="krabby" mode="modal" title="Select parent elements"><kbd>Alt</kbd> + <kbd code="KeyA">a</kbd></button></li>
+                <li><button class="krabby" mode="modal" title="Select links"><kbd>Alt</kbd> + <kbd shift code="KeyI">I</kbd></button></li>
+                <li><button class="krabby may-require-install" mode="modal" title="Open link in new tab – Requires install on Firefox"><kbd>Control</kbd> + <kbd>Enter</kbd></button></li>
+                <li><button class="krabby require-install" mode="modal" title="Close tabs to the right – Requires install"><kbd>Alt</kbd> + <kbd code="KeyX">x</kbd></button></li>
+                <li><button class="krabby" mode="modal" title="Clear selections"><kbd>Space</kbd></button></li>
               </ul>
             </td>
             <td class="example">
@@ -334,8 +334,8 @@
           <tr id="5">
             <td class="keys">
               <ul>
-                <li><kbd title="Focus input">i</kbd> <code>{hint}</code></li>
-                <li><kbd title="Unfocus active element">Escape</kbd></li>
+                <li><button class="krabby" mode="modal" title="Focus input"><kbd code="KeyI">i</kbd></button> <code>{hint}</code></li>
+                <li><button class="krabby" mode="modal" title="Unfocus active element"><kbd>Escape</kbd></button></li>
               </ul>
             </td>
             <td class="example">
@@ -347,28 +347,28 @@
           <tr id="6">
             <td class="keys top">
               <ul id="6.1">
-                <li><kbd title="Focus link">f</kbd> <code>{hint}</code></li>
-                <li><kbd title="Select active element">s</kbd></li>
-                <li><span title="Select parent elements"><kbd>Alt</kbd> + <kbd>a</kbd></span></li>
-                <li><span title="Select parent elements"><kbd>Alt</kbd> + <kbd>a</kbd></span></li>
-                <li><span title="Select parent elements"><kbd>Alt</kbd> + <kbd>a</kbd></span></li>
-                <li><span title="Select child elements"><kbd>Alt</kbd> + <kbd>i</kbd></span></li>
-                <li><kbd title="Select last child elements">]</kbd></li>
-                <li><kbd title="Save selections">Z</kbd></li>
-                <li><kbd title="Focus next selection">)</kbd></li>
-                <li><span title="Select previous sibling elements"><kbd>Alt</kbd> + <kbd>(</kbd></span></li>
-                <li><span title="Select links"><kbd>Alt</kbd> + <kbd>I</kbd></span></li>
-                <li><kbd title="Copy link address and text">Y</kbd></li>
-                <li><kbd title="Clear selections">Space</kbd></li>
+                <li><button class="krabby" mode="modal" title="Focus link"><kbd code="KeyF">f</kbd></button> <code>{hint}</code></li>
+                <li><button class="krabby" mode="modal" title="Select active element"><kbd code="KeyS">s</kbd></button></li>
+                <li><button class="krabby" mode="modal" title="Select parent elements"><kbd>Alt</kbd> + <kbd code="KeyA">a</kbd></button></li>
+                <li><button class="krabby" mode="modal" title="Select parent elements"><kbd>Alt</kbd> + <kbd code="KeyA">a</kbd></button></li>
+                <li><button class="krabby" mode="modal" title="Select parent elements"><kbd>Alt</kbd> + <kbd code="KeyA">a</kbd></button></li>
+                <li><button class="krabby" mode="modal" title="Select child elements"><kbd>Alt</kbd> + <kbd code="KeyI">i</kbd></button></li>
+                <li><button class="krabby" mode="modal" title="Select last child elements"><kbd code="BracketRight">]</kbd></button></li>
+                <li><button class="krabby" mode="modal" title="Save selections"><kbd shift code="KeyZ">Z</kbd></button></li>
+                <li><button class="krabby" mode="modal" title="Focus next selection"><kbd shift code="Digit0">)</kbd></button></li>
+                <li><button class="krabby" mode="modal" title="Select previous sibling elements"><kbd>Alt</kbd> + <kbd shift code="Digit9">(</kbd></button></li>
+                <li><button class="krabby" mode="modal" title="Select links"><kbd>Alt</kbd> + <kbd shift code="KeyI">I</kbd></button></li>
+                <li><button class="krabby" mode="modal" title="Copy link address and text"><kbd shift code="KeyY">Y</kbd></button></li>
+                <li><button class="krabby" mode="modal" title="Clear selections"><kbd>Space</kbd></button></li>
               </ul>
               <ul id="6.2">
-                <li><kbd title="Restore selections">z</kbd></li>
-                <li><kbd title="Focus next selection">)</kbd></li>
-                <li><span title="Keep selections that match the given RegExp"><kbd>Alt</kbd> + <kbd>k</kbd></span> <code title="RegExp">Water</code></li>
-                <li><span title="Select previous sibling elements"><kbd>Alt</kbd> + <kbd>(</kbd></span></li>
-                <li><span title="Select links"><kbd>Alt</kbd> + <kbd>I</kbd></span></li>
-                <li><kbd title="Copy link address and text">Y</kbd></li>
-                <li><kbd title="Clear selections">Space</kbd></li>
+                <li><button class="krabby" mode="modal" title="Restore selections"><kbd code="KeyZ">z</kbd></button></li>
+                <li><button class="krabby" mode="modal" title="Focus next selection"><kbd shift code="Digit0">)</kbd></button></li>
+                <li><button class="krabby" mode="modal" title="Keep selections that match the given RegExp"><kbd>Alt</kbd> + <kbd code="KeyK">k</kbd></button> <code title="RegExp">Water</code></li>
+                <li><button class="krabby" mode="modal" title="Select previous sibling elements"><kbd>Alt</kbd> + <kbd shift code="Digit9">(</kbd></button></li>
+                <li><button class="krabby" mode="modal" title="Select links"><kbd>Alt</kbd> + <kbd shift code="KeyI">I</kbd></button></li>
+                <li><button class="krabby" mode="modal" title="Copy link address and text"><kbd shift code="KeyY">Y</kbd></button></li>
+                <li><button class="krabby" mode="modal" title="Clear selections"><kbd>Space</kbd></button></li>
               </ul>
             </td>
             <td class="example">

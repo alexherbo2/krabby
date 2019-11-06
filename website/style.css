@@ -167,12 +167,12 @@ footer .icons i {
   vertical-align: top;
 }
 
-.keys kbd.may-require-install, .keys .may-require-install kbd {
+.krabby.may-require-install kbd {
   color: white;
   background-color: var(--butterscotch);
 }
 
-.keys kbd.require-install, .keys .require-install kbd {
+.krabby.require-install kbd {
   color: white;
   background-color: dimgray;
 }
@@ -211,6 +211,12 @@ td li {
 
 label {
   display: block;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 }
 
 /* Style from GitHub */
