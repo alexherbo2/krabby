@@ -6,12 +6,28 @@ const parseButtonKeys = (button) => {
   return keyChord
 }
 
+const preventFocus = (event) => {
+  event.preventDefault()
+  if (event.relatedTarget) {
+    // Revert focus back to the previous blurring element.
+    event.relatedTarget.focus()
+  } else {
+    // No previous focus target, blur instead.
+    event.currentTarget.blur()
+  }
+}
+
 const DOMContentLoaded = (event) => {
   const modes = { modal, pass }
   for (const button of document.querySelectorAll('button.krabby')) {
     const mode = modes[button.getAttribute('mode')]
     const keyChord = parseButtonKeys(button)
-    button.addEventListener('click', (event) => mode.play(keyChord))
+    button.addEventListener('click', (event) => {
+      // Prevent propagation, so hint mode does not quit immediately.
+      event.stopImmediatePropagation()
+      mode.play(keyChord)
+    })
+    button.addEventListener('focus', preventFocus)
   }
   for (const carousel of document.querySelectorAll('.carousel')) {
     new Carousel(carousel)
