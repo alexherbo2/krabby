@@ -32,6 +32,10 @@ const DOMContentLoaded = (event) => {
   for (const carousel of document.querySelectorAll('.carousel')) {
     new Carousel(carousel)
   }
+  // Link hints
+  const HINT_SELECTORS = ':not(.krabby)'
+  modal.map('Command', ['KeyF'], () => hint({ selections, selectors: HINT_SELECTORS }).start(), 'Focus link')
+  modal.map('Command', ['Shift', 'KeyF'], () => hint({ selections, selectors: HINT_SELECTORS, lock: true }).start(), 'Select multiple links')
 }
 
 document.addEventListener('DOMContentLoaded', DOMContentLoaded)
