@@ -10,7 +10,7 @@ const preventFocus = (event) => {
   event.preventDefault()
   if (event.relatedTarget) {
     // Revert focus back to the previous blurring element.
-    event.relatedTarget.focus()
+    event.relatedTarget.focus({ preventScroll: true })
   } else {
     // No previous focus target, blur instead.
     event.currentTarget.blur()
