@@ -1,9 +1,20 @@
 // Status line ─────────────────────────────────────────────────────────────────
 
-const updateStatusLine = () => {
+const updateStatusLine = (mode = modal) => {
   const atoms = []
+  // Mode
+  switch (mode.name) {
+    case 'Modal':
+      atoms.push('🦀')
+      break
+    case 'Pass':
+      atoms.push('⏾')
+      break
+    default:
+      atoms.push(mode.name)
+  }
   // Context
-  atoms.push(modal.context.name)
+  atoms.push(mode.context.name)
   // Selections
   switch (selections.length) {
     case 0:
@@ -15,7 +26,7 @@ const updateStatusLine = () => {
       atoms.push(`(${selections.main + 1}/${selections.length})`)
   }
   const statusLine = atoms.join(' ')
-  modal.notify({ id: 'status-line', message: statusLine })
+  mode.notify({ id: 'status-line', message: statusLine })
 }
 
 // Modes ───────────────────────────────────────────────────────────────────────
@@ -28,7 +39,8 @@ modal.activeElement = () => {
     : Modal.getDeepActiveElement()
 }
 modal.enable('Video', 'Image', 'Link', 'Text', 'Command')
-modal.on('context-change', (context) => updateStatusLine())
+modal.on('start', () => updateStatusLine(modal))
+modal.on('context-change', (context) => updateStatusLine(modal))
 
 // Prompt
 const prompt = new Prompt
@@ -37,6 +49,7 @@ prompt.on('close', () => modal.listen())
 
 // Pass
 const pass = new Modal('Pass')
+pass.on('start', () => updateStatusLine(pass))
 
 // Hint
 const HINT_TEXT_SELECTORS = 'input:not([type="submit"]):not([type="button"]):not([type="reset"]):not([type="file"]), textarea, select'
