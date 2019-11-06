@@ -25,7 +25,7 @@ const modal = new Modal('Modal')
 modal.activeElement = () => {
   return selections.length
     ? selections.mainSelection
-    : document.activeElement
+    : Modal.getDeepActiveElement()
 }
 modal.enable('Video', 'Image', 'Link', 'Text', 'Command')
 modal.on('context-change', (context) => updateStatusLine())

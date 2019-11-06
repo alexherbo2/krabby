@@ -65,7 +65,7 @@ const modal = new Modal('Modal')
 modal.activeElement = () => {
   return selections.length
     ? selections.mainSelection
-    : document.activeElement
+    : Modal.getDeepActiveElement()
 }
 modal.filter('Gmail', () => location.hostname === 'mail.google.com')
 modal.enable('Gmail', 'Video', 'Image', 'Link', 'Text', 'Command')
