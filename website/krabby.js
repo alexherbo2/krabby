@@ -1,20 +1,19 @@
 // Status line ─────────────────────────────────────────────────────────────────
 
-const updateStatusLine = (mode = modal) => {
+const state = {}
+state.enabled = false
+state.mode = ''
+
+const updateStatusLine = () => {
   const atoms = []
-  // Mode
-  switch (mode.name) {
-    case 'Modal':
-      atoms.push('🦀')
-      break
-    case 'Pass':
-      atoms.push('⏾')
-      break
-    default:
-      atoms.push(mode.name)
+  // Enabled
+  if (state.enabled) {
+    atoms.push('🦀')
+  } else {
+    atoms.push('⏾')
   }
-  // Context
-  atoms.push(mode.context.name)
+  // Mode
+  atoms.push(state.mode)
   // Selections
   switch (selections.length) {
     case 0:
@@ -26,7 +25,7 @@ const updateStatusLine = (mode = modal) => {
       atoms.push(`(${selections.main + 1}/${selections.length})`)
   }
   const statusLine = atoms.join(' ')
-  mode.notify({ id: 'status-line', message: statusLine })
+  modal.notify({ id: 'status-line', message: statusLine })
 }
 
 // Modes ───────────────────────────────────────────────────────────────────────
@@ -39,17 +38,32 @@ modal.activeElement = () => {
     : Modal.getDeepActiveElement()
 }
 modal.enable('Video', 'Image', 'Link', 'Text', 'Command')
-modal.on('start', () => updateStatusLine(modal))
-modal.on('context-change', (context) => updateStatusLine(modal))
+modal.on('start', () => {
+  state.enabled = true
+  state.mode = modal.context.name
+  updateStatusLine()
+})
+modal.on('context-change', (context) => {
+  state.mode = context.name
+  updateStatusLine()
+})
 
 // Prompt
 const prompt = new Prompt
-prompt.on('open', () => modal.unlisten())
+prompt.on('open', () => {
+  state.mode = 'Prompt'
+  modal.unlisten()
+  updateStatusLine()
+})
 prompt.on('close', () => modal.listen())
 
 // Pass
 const pass = new Modal('Pass')
-pass.on('start', () => updateStatusLine(pass))
+pass.on('start', () => {
+  state.enabled = false
+  state.mode = 'Pass'
+  updateStatusLine()
+})
 
 // Hint
 const HINT_TEXT_SELECTORS = 'input:not([type="submit"]):not([type="button"]):not([type="reset"]):not([type="file"]), textarea, select'
@@ -74,12 +88,14 @@ const hint = ({ selections, selectors = '*', lock = false } = {}) => {
     }
   })
   hint.on('start', () => {
+    state.mode = 'Hint'
     modal.unlisten()
     // Show video controls
     const videos = document.querySelectorAll('video')
     for (const video of videos) {
       mouse.hover(video)
     }
+    updateStatusLine()
   })
   hint.on('exit', () => {
     mouse.clear()
