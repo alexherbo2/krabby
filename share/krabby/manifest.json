@@ -26,7 +26,8 @@
         "config.js"
       ],
       "css": [
-        "packages/selection.css"
+        "packages/selection.css",
+        "packages/krabby.css"
       ]
     }
   ],
