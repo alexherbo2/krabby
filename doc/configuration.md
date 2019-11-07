@@ -17,11 +17,11 @@ Krabby’s default configuration is located in [`~/.config/krabby/packages/krabb
 Creating and removing mappings boils down to the following commands:
 
 ``` javascript
-modal.map(context, keys, command, description)
+krabby.modes.modal.map(context, keys, command, description)
 ```
 
 ``` javascript
-modal.unmap(context, keys)
+krabby.modes.modal.unmap(context, keys)
 ```
 
 The **context** dictates in what context the mapping will be available:

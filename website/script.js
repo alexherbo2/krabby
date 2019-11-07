@@ -18,20 +18,17 @@ const preventFocus = (event) => {
 }
 
 const DOMContentLoaded = (event) => {
-  const modes = { modal, pass }
-  // Current mode
-  let currentMode = pass
-  modal.on('start', () => currentMode = modal)
-  pass.on('start', () => currentMode = pass)
+  // Link hints
+  krabby.env.HINT_SELECTORS = ':not(.krabby)'
   for (const button of document.querySelectorAll('button.krabby')) {
-    const commandMode = modes[button.getAttribute('mode')]
+    const commandMode = krabby.modes[button.getAttribute('mode')]
     const keyChord = parseButtonKeys(button)
     button.addEventListener('click', (event) => {
       // Prevent propagation, so hint mode does not quit immediately.
       event.stopImmediatePropagation()
       // Use the mode attribute to switch to the correct mode before executing commands.
-      if (currentMode !== commandMode) {
-        currentMode.mode(commandMode)
+      if (krabby.mode !== commandMode && krabby.mode instanceof Modal) {
+        krabby.mode.mode(commandMode)
       }
       commandMode.play(keyChord)
     })
@@ -40,10 +37,6 @@ const DOMContentLoaded = (event) => {
   for (const carousel of document.querySelectorAll('.carousel')) {
     new Carousel(carousel)
   }
-  // Link hints
-  const HINT_SELECTORS = ':not(.krabby)'
-  modal.map('Command', ['KeyF'], () => hint({ selections, selectors: HINT_SELECTORS }).start(), 'Focus link')
-  modal.map('Command', ['Shift', 'KeyF'], () => hint({ selections, selectors: HINT_SELECTORS, lock: true }).start(), 'Select multiple links')
 }
 
 document.addEventListener('DOMContentLoaded', DOMContentLoaded)

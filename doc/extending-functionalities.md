@@ -11,28 +11,28 @@ Example with [dmenu for Chrome].
 
 switch (true) {
   case (typeof browser !== 'undefined'):
-    var PLATFORM = 'firefox'
-    var DMENU_EXTENSION_ID = 'dmenu@alexherbo2.github.com'
+    krabby.env.PLATFORM = 'firefox'
+    krabby.env.DMENU_EXTENSION_ID = 'dmenu@alexherbo2.github.com'
     break
   case (typeof chrome !== 'undefined'):
-    var PLATFORM = 'chrome'
-    var DMENU_EXTENSION_ID = 'gonendiemfggilnopogmkafgadobkoeh'
+    krabby.env.PLATFORM = 'chrome'
+    krabby.env.DMENU_EXTENSION_ID = 'gonendiemfggilnopogmkafgadobkoeh'
     break
 }
 
 // Extensions ──────────────────────────────────────────────────────────────────
 
 // dmenu
-const dmenu = {}
-dmenu.port = chrome.runtime.connect(DMENU_EXTENSION_ID)
-dmenu.send = (command, ...arguments) => {
-  dmenu.port.postMessage({ command, arguments })
+krabby.extensions.dmenu = {}
+krabby.extensions.dmenu.port = chrome.runtime.connect(krabby.env.DMENU_EXTENSION_ID)
+krabby.extensions.dmenu.send = (command, ...arguments) => {
+  krabby.extensions.dmenu.port.postMessage({ command, arguments })
 }
 
 // Mappings ────────────────────────────────────────────────────────────────────
 
 // Tab search
-modal.map('Command', ['KeyQ'], () => dmenu.send('tab-search'), 'Tab search with dmenu')
+krabby.modes.modal.map('Command', ['KeyQ'], () => krabby.extensions.dmenu.send('tab-search'), 'Tab search with dmenu')
 ```
 
 ## Scripts
@@ -42,9 +42,9 @@ Example with [Launchlet for Krabby] to run commands by name.
 `~/.config/krabby/plugins/launchlet.js`
 
 ``` javascript
-const launchlet = () => {
-  const LCHOptionRecipes = Object.entries(modal.context.commands).map(([keyChord, { command, description }]) => {
-    const key = modal.keyValues(JSON.parse(keyChord)).join('+')
+krabby.commands.launchlet = () => {
+  const LCHOptionRecipes = Object.entries(krabby.modes.modal.context.commands).map(([keyChord, { command, description }]) => {
+    const key = krabby.modes.modal.keyValues(JSON.parse(keyChord)).join('+')
     const LCHRecipeName = `${key}: ${description}`
     return {
       LCHRecipeName,
@@ -57,7 +57,7 @@ const launchlet = () => {
   })
 }
 
-modal.map('Page', ['Alt', 'F1'], () => launchlet(), 'Run Launchlet')
+krabby.modes.modal.map('Page', ['Alt', 'F1'], () => krabby.commands.launchlet(), 'Run Launchlet')
 ```
 
 Update your [`manifest.json`](/share/krabby/manifest.json) and [`fetch`](/share/krabby/fetch) files.
