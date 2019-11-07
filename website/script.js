@@ -19,13 +19,21 @@ const preventFocus = (event) => {
 
 const DOMContentLoaded = (event) => {
   const modes = { modal, pass }
+  // Current mode
+  let currentMode = pass
+  modal.on('start', () => currentMode = modal)
+  pass.on('start', () => currentMode = pass)
   for (const button of document.querySelectorAll('button.krabby')) {
-    const mode = modes[button.getAttribute('mode')]
+    const commandMode = modes[button.getAttribute('mode')]
     const keyChord = parseButtonKeys(button)
     button.addEventListener('click', (event) => {
       // Prevent propagation, so hint mode does not quit immediately.
       event.stopImmediatePropagation()
-      mode.play(keyChord)
+      // Use the mode attribute to switch to the correct mode before executing commands.
+      if (currentMode !== commandMode) {
+        currentMode.mode(commandMode)
+      }
+      commandMode.play(keyChord)
     })
     button.addEventListener('focus', preventFocus)
   }
