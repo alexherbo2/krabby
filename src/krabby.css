@@ -1,4 +1,4 @@
-:focus {
+:not(.primary-selection):focus {
   --webkit-focus-ring-color: hsla(217, 99%, 65%, 0.5);
   outline: var(--webkit-focus-ring-color) solid 2px !important;
 }
