@@ -18,6 +18,7 @@ const preventFocus = (event) => {
 }
 
 const DOMContentLoaded = (event) => {
+  const krabby = new Krabby
   // Link hints
   krabby.env.HINT_SELECTORS = ':not(.krabby)'
   for (const button of document.querySelectorAll('button.krabby')) {
