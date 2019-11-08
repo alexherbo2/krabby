@@ -23,6 +23,15 @@ function Krabby({ dormant = true } = {}) {
       break
   }
 
+  switch (true) {
+    case (/^(Linux|FreeBSD|OpenBSD)/.test(navigator.platform)):
+      this.env.OPENER = 'xdg-open'
+      break
+    case (/^(Mac)/.test(navigator.platform)):
+      this.env.OPENER = 'open'
+      break
+  }
+
   // Extensions ────────────────────────────────────────────────────────────────
 
   this.extensions = {}
@@ -201,9 +210,9 @@ function Krabby({ dormant = true } = {}) {
     }
   }
 
-  this.commands.xdgOpen = (selections) => {
+  this.commands.open = (selections) => {
     for (const link of this.commands.getElements(selections)) {
-      this.extensions.shell.send('xdg-open', link.href)
+      this.extensions.shell.send(this.env.OPENER, link.href)
     }
   }
 
@@ -355,7 +364,7 @@ function Krabby({ dormant = true } = {}) {
   this.modes.modal.map('Link', ['Control', 'Enter'], () => this.commands.openInNewTab(this.selections), 'Open link in new tab')
   this.modes.modal.map('Link', ['Shift', 'Enter'], () => this.commands.openInNewWindow(this.selections), 'Open link in new window')
   this.modes.modal.map('Link', ['Alt', 'Enter'], () => this.commands.download(this.selections), 'Download link')
-  this.modes.modal.map('Link', ['Alt', 'Shift', 'Enter'], () => this.commands.xdgOpen(this.selections), 'Open link in the associated application')
+  this.modes.modal.map('Link', ['Alt', 'Shift', 'Enter'], () => this.commands.open(this.selections), 'Open link in the associated application')
 
   // Selection manipulation
   this.modes.modal.map('Command', ['KeyS'], () => this.selections.add(document.activeElement), 'Select active element')
