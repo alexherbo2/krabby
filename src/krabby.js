@@ -23,15 +23,6 @@ function Krabby({ dormant = true } = {}) {
       break
   }
 
-  switch (true) {
-    case (/^(Linux|FreeBSD|OpenBSD)/.test(navigator.platform)):
-      this.env.OPENER = 'xdg-open'
-      break
-    case (/^(Mac)/.test(navigator.platform)):
-      this.env.OPENER = 'open'
-      break
-  }
-
   // Extensions ────────────────────────────────────────────────────────────────
 
   this.extensions = {}
@@ -56,6 +47,23 @@ function Krabby({ dormant = true } = {}) {
   this.extensions.dmenu.send = (command, ...arguments) => {
     this.extensions.dmenu.port.postMessage({ command, arguments })
   }
+
+  this.extensions.commands.send('get-platform')
+  this.extensions.commands.port.onMessage.addListener((response) => {
+    switch (response.id) {
+      case 'get-platform':
+        switch (response.platform.os) {
+          case 'linux':
+          case 'openbsd':
+            this.env.OPENER = 'xdg-open'
+            break
+          case 'mac':
+            this.env.OPENER = 'open'
+            break
+        }
+        break
+    }
+  })
 
   // Status line ───────────────────────────────────────────────────────────────
 
