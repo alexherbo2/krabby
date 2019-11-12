@@ -145,6 +145,11 @@ function Krabby({ dormant = true } = {}) {
     hint.selectors = selectors
     hint.lock = lock
     hint.on('validate', (target) => {
+      // Leverage the `tabindex` attribute to force focus.
+      // https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex
+      if (target.tabIndex === -1) {
+        target.tabIndex = 0
+      }
       if (hint.lock) {
         if (selections.includes(target)) {
           selections.remove(target)
@@ -153,9 +158,6 @@ function Krabby({ dormant = true } = {}) {
         }
       } else {
         target.focus()
-        if (document.activeElement !== target) {
-          selections.add(target)
-        }
       }
     })
     hint.on('start', () => {
