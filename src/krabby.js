@@ -140,9 +140,10 @@ function Krabby({ dormant = true } = {}) {
   this.env.HINT_TEXT_SELECTORS = 'input:not([type="submit"]):not([type="button"]):not([type="reset"]):not([type="file"]), textarea, select'
   this.env.HINT_VIDEO_SELECTORS = 'video'
 
-  this.modes.hint = ({ selections, selectors = '*', lock = false } = {}) => {
+  this.modes.hint = ({ selections, selectors = '*', filters = [Hint.isClickable], lock = false } = {}) => {
     const hint = new Hint
     hint.selectors = selectors
+    hint.filters = filters
     hint.lock = lock
     hint.on('validate', (target) => {
       Hint.focus(target)
