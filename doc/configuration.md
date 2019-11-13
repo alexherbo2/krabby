@@ -17,7 +17,7 @@ Krabby’s default configuration is located in [`~/.config/krabby/packages/krabb
 Creating and removing mappings boils down to the following commands:
 
 ``` javascript
-krabby.modes.modal.map(context, keys, command, description)
+krabby.modes.modal.map(context, keys, command, description, label)
 ```
 
 ``` javascript
@@ -35,6 +35,8 @@ optional [modifiers].  For special keys, the list of key values can be found
 The **command** is the function to evaluate.
 
 The **description** is the description of the command.
+
+The **label** is the label of the command.
 
 [Krabby]: https://github.com/alexherbo2/krabby
 [Krabby icon]: https://iconfinder.com/icons/877852/kanto_krabby_pokemon_water_icon
