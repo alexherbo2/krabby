@@ -43,8 +43,8 @@ Example with [Launchlet for Krabby] to run commands by name.
 
 ``` javascript
 krabby.commands.launchlet = () => {
-  const LCHOptionRecipes = Object.entries(krabby.modes.modal.context.commands).map(([keyChord, { command, description }]) => {
-    const key = krabby.modes.modal.keyValues(JSON.parse(keyChord)).join('+')
+  const LCHOptionRecipes = Object.values(krabby.modes.modal.context.commands).map(({ keyChord, command, description }) => {
+    const key = krabby.modes.modal.keyValues(keyChord).join('+')
     const LCHRecipeName = `${key}: ${description}`
     return {
       LCHRecipeName,
