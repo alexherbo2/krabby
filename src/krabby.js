@@ -228,9 +228,7 @@ function Krabby({ dormant = true } = {}) {
   }
 
   this.commands.yank = (selections, callback, message) => {
-    const text = selections.length
-      ? selections.map(callback).join('\n')
-      : callback(document.activeElement)
+    const text = this.commands.getElements(selections).map(callback).join('\n')
     this.commands.copyToClipboard(text, message)
   }
 
@@ -240,9 +238,7 @@ function Krabby({ dormant = true } = {}) {
   }
 
   this.commands.mpv = ({ selections, reverse = false } = {}) => {
-    const playlist = selections.length
-      ? selections.map((link) => link.href)
-      : [document.activeElement.href]
+    const playlist = this.commands.getElements(selections).map((link) => link.href)
     if (reverse) {
       playlist.reverse()
     }

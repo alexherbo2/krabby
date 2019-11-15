@@ -149,9 +149,7 @@ function Krabby({ dormant = true } = {}) {
   }
 
   this.commands.yank = (selections, callback, message) => {
-    const text = selections.length
-      ? selections.map(callback).join('\n')
-      : callback(document.activeElement)
+    const text = this.commands.getElements(selections).map(callback).join('\n')
     this.commands.copyToClipboard(text, message)
   }
 
