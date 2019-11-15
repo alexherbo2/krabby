@@ -197,25 +197,25 @@ function Krabby({ dormant = true } = {}) {
     }
   }
 
-  this.commands.openInNewTab = (selections, callback) => {
+  this.commands.openInNewTab = (selections, callback = (link) => link.href) => {
     for (const link of this.commands.getElements(selections)) {
       this.extensions.commands.send('new-tab', callback(link))
     }
   }
 
-  this.commands.openInNewWindow = (selections, callback) => {
+  this.commands.openInNewWindow = (selections, callback = (link) => link.href) => {
     for (const link of this.commands.getElements(selections)) {
       this.extensions.commands.send('new-window', callback(link))
     }
   }
 
-  this.commands.download = (selections, callback) => {
+  this.commands.download = (selections, callback = (link) => link.href) => {
     for (const link of this.commands.getElements(selections)) {
       this.extensions.commands.send('download', callback(link))
     }
   }
 
-  this.commands.open = (selections, callback) => {
+  this.commands.open = (selections, callback = (link) => link.href) => {
     for (const link of this.commands.getElements(selections)) {
       this.extensions.shell.send(this.env.OPENER, callback(link))
     }
@@ -237,7 +237,7 @@ function Krabby({ dormant = true } = {}) {
     this.commands.notify(message)
   }
 
-  this.commands.mpv = ({ selections, callback, reverse = false } = {}) => {
+  this.commands.mpv = ({ selections, callback = (link) => link.href, reverse = false } = {}) => {
     const playlist = this.commands.getElements(selections).map(callback)
     if (reverse) {
       playlist.reverse()
@@ -362,10 +362,10 @@ function Krabby({ dormant = true } = {}) {
   // Open links
   this.modes.modal.map('Command', ['Enter'], () => this.commands.click(this.selections), 'Open selection', 'Open links')
   this.modes.modal.map('Link', ['Enter'], () => this.commands.click(this.selections), 'Open link', 'Open links')
-  this.modes.modal.map('Link', ['Control', 'Enter'], () => this.commands.openInNewTab(this.selections, (selection) => selection.href), 'Open link in new tab', 'Open links')
-  this.modes.modal.map('Link', ['Shift', 'Enter'], () => this.commands.openInNewWindow(this.selections, (selection) => selection.href), 'Open link in new window', 'Open links')
-  this.modes.modal.map('Link', ['Alt', 'Enter'], () => this.commands.download(this.selections, (selection) => selection.href), 'Download link', 'Open links')
-  this.modes.modal.map('Link', ['Alt', 'Shift', 'Enter'], () => this.commands.open(this.selections, (selection) => selection.href), 'Open link in the associated application', 'Open links')
+  this.modes.modal.map('Link', ['Control', 'Enter'], () => this.commands.openInNewTab(this.selections), 'Open link in new tab', 'Open links')
+  this.modes.modal.map('Link', ['Shift', 'Enter'], () => this.commands.openInNewWindow(this.selections), 'Open link in new window', 'Open links')
+  this.modes.modal.map('Link', ['Alt', 'Enter'], () => this.commands.download(this.selections), 'Download link', 'Open links')
+  this.modes.modal.map('Link', ['Alt', 'Shift', 'Enter'], () => this.commands.open(this.selections), 'Open link in the associated application', 'Open links')
   this.modes.modal.map('Image', ['Enter'], () => location.assign(this.modes.modal.activeElement.src), 'Open image', 'Open links')
   this.modes.modal.map('Image', ['Control', 'Enter'], () => this.commands.openInNewTab(this.selections, (selection) => selection.src), 'Open image in new tab', 'Open links')
   this.modes.modal.map('Image', ['Shift', 'Enter'], () => this.commands.openInNewWindow(this.selections, (selection) => selection.src), 'Open image in new window', 'Open links')
@@ -429,8 +429,8 @@ function Krabby({ dormant = true } = {}) {
 
   // mpv
   this.modes.modal.map('Video', ['Enter'], () => this.commands.mpvResume(), 'Play with mpv', 'mpv')
-  this.modes.modal.map('Link', ['KeyM'], () => this.commands.mpv({ selections: this.selections, callback: (link) => link.href }), 'Play with mpv', 'mpv')
-  this.modes.modal.map('Link', ['Alt', 'KeyM'], () => this.commands.mpv({ selections: this.selections, callback: (link) => link.href, reverse: true }), 'Play with mpv in reverse order', 'mpv')
+  this.modes.modal.map('Link', ['KeyM'], () => this.commands.mpv({ selections: this.selections }), 'Play with mpv', 'mpv')
+  this.modes.modal.map('Link', ['Alt', 'KeyM'], () => this.commands.mpv({ selections: this.selections, reverse: true }), 'Play with mpv in reverse order', 'mpv')
   this.modes.modal.map('Image', ['KeyM'], () => this.commands.mpv({ selections: this.selections, callback: (image) => image.src }), 'Play with mpv', 'mpv')
   this.modes.modal.map('Image', ['Alt', 'KeyM'], () => this.commands.mpv({ selections: this.selections, callback: (image) => image.src, reverse: true }), 'Play with mpv in reverse order', 'mpv')
 

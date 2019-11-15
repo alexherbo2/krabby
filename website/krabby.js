@@ -136,7 +136,7 @@ function Krabby({ dormant = true } = {}) {
     }
   }
 
-  this.commands.openInNewTab = (selections, callback) => {
+  this.commands.openInNewTab = (selections, callback = (link) => link.href) => {
     for (const link of this.commands.getElements(selections)) {
       window.open(callback(link))
     }
