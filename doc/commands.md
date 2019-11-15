@@ -109,6 +109,11 @@ Commands are bound to **physical keys** and **displayed** with the [US layout][Q
 - <kbd>Shift</kbd> + <kbd>Enter</kbd> → Open link in new window (**Link** context) – Requires [Commands]
 - <kbd>Alt</kbd> + <kbd>Enter</kbd> → Download link (**Link** context) – Requires [Commands]
 - <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>Enter</kbd> → Open link in the associated application (**Link** context) – Requires [Shell]
+- <kbd>Enter</kbd> → Open image (**Image** context)
+- <kbd>Control</kbd> + <kbd>Enter</kbd> → Open image in new tab (**Image** context) – Requires [Commands]
+- <kbd>Shift</kbd> + <kbd>Enter</kbd> → Open image in new window (**Image** context) – Requires [Commands]
+- <kbd>Alt</kbd> + <kbd>Enter</kbd> → Download image (**Image** context) – Requires [Commands]
+- <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>Enter</kbd> → Open image in the associated application (**Image** context) – Requires [Shell]
 
 ## Selection manipulation
 

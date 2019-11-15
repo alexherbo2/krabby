@@ -136,6 +136,12 @@ function Krabby({ dormant = true } = {}) {
     }
   }
 
+  this.commands.openInNewTab = (selections, callback) => {
+    for (const link of this.commands.getElements(selections)) {
+      window.open(callback(link))
+    }
+  }
+
   this.commands.getElements = (selections) => {
     return selections.length
       ? selections.collection
@@ -219,6 +225,8 @@ function Krabby({ dormant = true } = {}) {
   this.modes.modal.map('Link', ['Control', 'Enter'], () => this.commands.click(this.selections, { ctrlKey: true }), 'Open link in new tab', 'Open links')
   this.modes.modal.map('Link', ['Shift', 'Enter'], () => this.commands.click(this.selections, { shiftKey: true }), 'Open link in new window', 'Open links')
   this.modes.modal.map('Link', ['Alt', 'Enter'], () => this.commands.click(this.selections, { altKey: true }), 'Download link', 'Open links')
+  this.modes.modal.map('Image', ['Enter'], () => location.assign(this.modes.modal.activeElement.src), 'Open image', 'Open links')
+  this.modes.modal.map('Image', ['Control', 'Enter'], () => this.commands.openInNewTab(this.selections, (selection) => selection.src), 'Open image in new tab', 'Open links')
 
   // Selection manipulation
   this.modes.modal.map('Command', ['KeyS'], () => this.selections.add(document.activeElement), 'Select active element', 'Selection manipulation')

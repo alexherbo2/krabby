@@ -197,27 +197,27 @@ function Krabby({ dormant = true } = {}) {
     }
   }
 
-  this.commands.openInNewTab = (selections) => {
+  this.commands.openInNewTab = (selections, callback) => {
     for (const link of this.commands.getElements(selections)) {
-      this.extensions.commands.send('new-tab', link.href)
+      this.extensions.commands.send('new-tab', callback(link))
     }
   }
 
-  this.commands.openInNewWindow = (selections) => {
+  this.commands.openInNewWindow = (selections, callback) => {
     for (const link of this.commands.getElements(selections)) {
-      this.extensions.commands.send('new-window', link.href)
+      this.extensions.commands.send('new-window', callback(link))
     }
   }
 
-  this.commands.download = (selections) => {
+  this.commands.download = (selections, callback) => {
     for (const link of this.commands.getElements(selections)) {
-      this.extensions.commands.send('download', link.href)
+      this.extensions.commands.send('download', callback(link))
     }
   }
 
-  this.commands.open = (selections) => {
+  this.commands.open = (selections, callback) => {
     for (const link of this.commands.getElements(selections)) {
-      this.extensions.shell.send(this.env.OPENER, link.href)
+      this.extensions.shell.send(this.env.OPENER, callback(link))
     }
   }
 
@@ -366,10 +366,15 @@ function Krabby({ dormant = true } = {}) {
   // Open links
   this.modes.modal.map('Command', ['Enter'], () => this.commands.click(this.selections), 'Open selection', 'Open links')
   this.modes.modal.map('Link', ['Enter'], () => this.commands.click(this.selections), 'Open link', 'Open links')
-  this.modes.modal.map('Link', ['Control', 'Enter'], () => this.commands.openInNewTab(this.selections), 'Open link in new tab', 'Open links')
-  this.modes.modal.map('Link', ['Shift', 'Enter'], () => this.commands.openInNewWindow(this.selections), 'Open link in new window', 'Open links')
-  this.modes.modal.map('Link', ['Alt', 'Enter'], () => this.commands.download(this.selections), 'Download link', 'Open links')
-  this.modes.modal.map('Link', ['Alt', 'Shift', 'Enter'], () => this.commands.open(this.selections), 'Open link in the associated application', 'Open links')
+  this.modes.modal.map('Link', ['Control', 'Enter'], () => this.commands.openInNewTab(this.selections, (selection) => selection.href), 'Open link in new tab', 'Open links')
+  this.modes.modal.map('Link', ['Shift', 'Enter'], () => this.commands.openInNewWindow(this.selections, (selection) => selection.href), 'Open link in new window', 'Open links')
+  this.modes.modal.map('Link', ['Alt', 'Enter'], () => this.commands.download(this.selections, (selection) => selection.href), 'Download link', 'Open links')
+  this.modes.modal.map('Link', ['Alt', 'Shift', 'Enter'], () => this.commands.open(this.selections, (selection) => selection.href), 'Open link in the associated application', 'Open links')
+  this.modes.modal.map('Image', ['Enter'], () => location.assign(this.modes.modal.activeElement.src), 'Open image', 'Open links')
+  this.modes.modal.map('Image', ['Control', 'Enter'], () => this.commands.openInNewTab(this.selections, (selection) => selection.src), 'Open image in new tab', 'Open links')
+  this.modes.modal.map('Image', ['Shift', 'Enter'], () => this.commands.openInNewWindow(this.selections, (selection) => selection.src), 'Open image in new window', 'Open links')
+  this.modes.modal.map('Image', ['Alt', 'Enter'], () => this.commands.download(this.selections, (selection) => selection.src), 'Download image', 'Open links')
+  this.modes.modal.map('Image', ['Alt', 'Shift', 'Enter'], () => this.commands.open(this.selections, (selection) => selection.src), 'Open image in the associated application', 'Open links')
 
   // Selection manipulation
   this.modes.modal.map('Command', ['KeyS'], () => this.selections.add(document.activeElement), 'Select active element', 'Selection manipulation')
