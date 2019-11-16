@@ -38,6 +38,24 @@ The **description** is the description of the command.
 
 The **label** is the label of the command.
 
+## Examples
+
+### [Read Berserk] with [mpv]
+
+`~/.config/krabby/config.js`
+
+``` javascript
+const { extensions, modes } = krabby
+const { shell } = extensions
+const { modal } = modes
+
+modal.filter('Read Berserk', () => location.hostname === 'readberserk.com', 'Command')
+modal.filter('Read Berserk · Chapter', () => location.pathname.startsWith('/chapter'), 'Read Berserk')
+modal.enable('Read Berserk · Chapter', 'Read Berserk', ...modal.context.filters)
+
+modal.map('Read Berserk · Chapter', ['KeyM'], () => shell.send('mpv', ...Array.from(document.querySelectorAll('.pages__img'), (image) => image.src)), 'Read Berserk with mpv', 'Read Berserk · Chapter')
+```
+
 [Krabby]: https://github.com/alexherbo2/krabby
 [Krabby icon]: https://iconfinder.com/icons/877852/kanto_krabby_pokemon_water_icon
 
@@ -53,6 +71,10 @@ The **label** is the label of the command.
 [Commands]: https://github.com/alexherbo2/chrome-commands
 [Shell]: https://github.com/alexherbo2/chrome-shell
 [dmenu]: https://github.com/alexherbo2/chrome-dmenu
+
+[mpv]: https://mpv.io
+
+[Read Berserk]: https://readberserk.com
 
 [KeyboardEvent.code]: https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/code
 [Key Values]: https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key/Key_Values
