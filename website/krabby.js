@@ -115,7 +115,10 @@ function Krabby({ dormant = true } = {}) {
   // Selections ────────────────────────────────────────────────────────────────
 
   this.selections = new SelectionList
-  this.selections.on('selection-change', (selections) => this.statusLine.update())
+  this.selections.on('selection-change', (selections) => {
+    this.modes.modal.updateContext()
+    this.statusLine.update()
+  })
 
   // Tools ─────────────────────────────────────────────────────────────────────
 
