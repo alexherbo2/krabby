@@ -9,7 +9,7 @@ Commands are bound to **physical keys** and **displayed** with the [US layout][Q
 
 ## Tab search
 
-- <kbd>q</kbd> → Tab search with [dmenu] (**Command** context) – Requires [dmenu][chrome-dmenu]
+- <kbd>q</kbd> → Tab search with [dmenu] (**Command** context)
 
 ## Scroll
 
@@ -35,64 +35,64 @@ Commands are bound to **physical keys** and **displayed** with the [US layout][Q
 
 ## Zoom
 
-- <kbd>+</kbd> → Zoom in (**Command** context) – Requires [Commands]
-- <kbd>-</kbd> → Zoom out (**Command** context) – Requires [Commands]
-- <kbd>=</kbd> → Reset to default zoom level (**Command** context) – Requires [Commands]
+- <kbd>+</kbd> → Zoom in (**Command** context)
+- <kbd>-</kbd> → Zoom out (**Command** context)
+- <kbd>=</kbd> → Reset to default zoom level (**Command** context)
 
 ## Create tabs
 
-- <kbd>t</kbd> → New tab (**Command** context) – Requires [Commands]
-- <kbd>T</kbd> → Restore tab (**Command** context) – Requires [Commands]
-- <kbd>b</kbd> → Duplicate tab (**Command** context) – Requires [Commands]
+- <kbd>t</kbd> → New tab (**Command** context)
+- <kbd>T</kbd> → Restore tab (**Command** context)
+- <kbd>b</kbd> → Duplicate tab (**Command** context)
 
 ## Create windows
 
-- <kbd>n</kbd> → New window (**Command** context) – Requires [Commands]
-- <kbd>N</kbd> → New incognito window (**Command** context) – Requires [Commands]
+- <kbd>n</kbd> → New window (**Command** context)
+- <kbd>N</kbd> → New incognito window (**Command** context)
 
 ## Close tabs
 
-- <kbd>x</kbd> → Close tab (**Command** context) – Requires [Commands]
-- <kbd>X</kbd> → Close other tabs (**Command** context) – Requires [Commands]
-- <kbd>Alt</kbd> + <kbd>x</kbd> → Close tabs to the right (**Command** context) – Requires [Commands]
+- <kbd>x</kbd> → Close tab (**Command** context)
+- <kbd>X</kbd> → Close other tabs (**Command** context)
+- <kbd>Alt</kbd> + <kbd>x</kbd> → Close tabs to the right (**Command** context)
 
 ## Refresh tabs
 
 - <kbd>r</kbd> → Reload the page (**Command** context)
 - <kbd>R</kbd> → Reload the page, ignoring cached content (**Command** context)
-- <kbd>Alt</kbd> + <kbd>r</kbd> → Reload all tabs (**Command** context) – Requires [Commands]
+- <kbd>Alt</kbd> + <kbd>r</kbd> → Reload all tabs (**Command** context)
 
 ## Switch tabs
 
-- <kbd>Alt</kbd> + <kbd>l</kbd> → Next tab (**Command** context) – Requires [Commands]
-- <kbd>Alt</kbd> + <kbd>h</kbd> → Previous tab (**Command** context) – Requires [Commands]
-- <kbd>1</kbd> → First tab (**Command** context) – Requires [Commands]
-- <kbd>0</kbd> → Last tab (**Command** context) – Requires [Commands]
+- <kbd>Alt</kbd> + <kbd>l</kbd> → Next tab (**Command** context)
+- <kbd>Alt</kbd> + <kbd>h</kbd> → Previous tab (**Command** context)
+- <kbd>1</kbd> → First tab (**Command** context)
+- <kbd>0</kbd> → Last tab (**Command** context)
 
 ## Move tabs
 
-- <kbd>Alt</kbd> + <kbd>L</kbd> → Move tab right (**Command** context) – Requires [Commands]
-- <kbd>Alt</kbd> + <kbd>H</kbd> → Move tab left (**Command** context) – Requires [Commands]
-- <kbd>Alt</kbd> + <kbd>1</kbd> → Move tab first (**Command** context) – Requires [Commands]
-- <kbd>Alt</kbd> + <kbd>0</kbd> → Move tab last (**Command** context) – Requires [Commands]
+- <kbd>Alt</kbd> + <kbd>L</kbd> → Move tab right (**Command** context)
+- <kbd>Alt</kbd> + <kbd>H</kbd> → Move tab left (**Command** context)
+- <kbd>Alt</kbd> + <kbd>1</kbd> → Move tab first (**Command** context)
+- <kbd>Alt</kbd> + <kbd>0</kbd> → Move tab last (**Command** context)
 
 ## Detach tabs
 
-- <kbd>d</kbd> → Detach tab (**Command** context) – Requires [Commands]
-- <kbd>D</kbd> → Attach tab (**Command** context) – Requires [Commands]
+- <kbd>d</kbd> → Detach tab (**Command** context)
+- <kbd>D</kbd> → Attach tab (**Command** context)
 
 ## Discard tabs
 
-- <kbd>Shift</kbd> + <kbd>Escape</kbd> → Discard tab (**Command** context) – Requires [Commands]
+- <kbd>Shift</kbd> + <kbd>Escape</kbd> → Discard tab (**Command** context)
 
 ## Mute tabs
 
-- <kbd>Alt</kbd> + <kbd>m</kbd> → Mute tab (**Command** context) – Requires [Commands]
-- <kbd>Alt</kbd> + <kbd>M</kbd> → Mute all tabs (**Command** context) – Requires [Commands]
+- <kbd>Alt</kbd> + <kbd>m</kbd> → Mute tab (**Command** context)
+- <kbd>Alt</kbd> + <kbd>M</kbd> → Mute all tabs (**Command** context)
 
 ## Pin tabs
 
-- <kbd>Alt</kbd> + <kbd>p</kbd> → Pin tab (**Command** context) – Requires [Commands]
+- <kbd>Alt</kbd> + <kbd>p</kbd> → Pin tab (**Command** context)
 
 ## Link hints
 
@@ -105,15 +105,15 @@ Commands are bound to **physical keys** and **displayed** with the [US layout][Q
 
 - <kbd>Enter</kbd> → Open selection (**Command** context)
 - <kbd>Enter</kbd> → Open link (**Link** context)
-- <kbd>Control</kbd> + <kbd>Enter</kbd> → Open link in new tab (**Link** context) – Requires [Commands]
-- <kbd>Shift</kbd> + <kbd>Enter</kbd> → Open link in new window (**Link** context) – Requires [Commands]
-- <kbd>Alt</kbd> + <kbd>Enter</kbd> → Download link (**Link** context) – Requires [Commands]
-- <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>Enter</kbd> → Open link in the associated application (**Link** context) – Requires [Shell]
+- <kbd>Control</kbd> + <kbd>Enter</kbd> → Open link in new tab (**Link** context)
+- <kbd>Shift</kbd> + <kbd>Enter</kbd> → Open link in new window (**Link** context)
+- <kbd>Alt</kbd> + <kbd>Enter</kbd> → Download link (**Link** context)
+- <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>Enter</kbd> → Open link in the associated application (**Link** context)
 - <kbd>Enter</kbd> → Open image (**Image** context)
-- <kbd>Control</kbd> + <kbd>Enter</kbd> → Open image in new tab (**Image** context) – Requires [Commands]
-- <kbd>Shift</kbd> + <kbd>Enter</kbd> → Open image in new window (**Image** context) – Requires [Commands]
-- <kbd>Alt</kbd> + <kbd>Enter</kbd> → Download image (**Image** context) – Requires [Commands]
-- <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>Enter</kbd> → Open image in the associated application (**Image** context) – Requires [Shell]
+- <kbd>Control</kbd> + <kbd>Enter</kbd> → Open image in new tab (**Image** context)
+- <kbd>Shift</kbd> + <kbd>Enter</kbd> → Open image in new window (**Image** context)
+- <kbd>Alt</kbd> + <kbd>Enter</kbd> → Download image (**Image** context)
+- <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>Enter</kbd> → Open image in the associated application (**Image** context)
 
 ## Selection manipulation
 
@@ -177,20 +177,16 @@ Commands are bound to **physical keys** and **displayed** with the [US layout][Q
 
 ## mpv
 
-- <kbd>m</kbd> → Play with [mpv] (**Command** context) – Requires [Shell]
-- <kbd>Enter</kbd> → Play with [mpv] (**Video** context) – Requires [Shell]
-- <kbd>m</kbd> → Play with [mpv] (**Link** context) – Requires [Shell]
-- <kbd>Alt</kbd> + <kbd>m</kbd> → Play with [mpv] in reverse order (**Link** context) – Requires [Shell]
-- <kbd>m</kbd> → Play with [mpv] (**Image** context) – Requires [Shell]
-- <kbd>Alt</kbd> + <kbd>m</kbd> → Play with [mpv] in reverse order (**Image** context) – Requires [Shell]
+- <kbd>m</kbd> → Play with [mpv] (**Command** context)
+- <kbd>Enter</kbd> → Play with [mpv] (**Video** context)
+- <kbd>m</kbd> → Play with [mpv] (**Link** context)
+- <kbd>Alt</kbd> + <kbd>m</kbd> → Play with [mpv] in reverse order (**Link** context)
+- <kbd>m</kbd> → Play with [mpv] (**Image** context)
+- <kbd>Alt</kbd> + <kbd>m</kbd> → Play with [mpv] in reverse order (**Image** context)
 
 [QWERTY]: https://en.wikipedia.org/wiki/QWERTY
 
 [mpv]: https://mpv.io
 [dmenu]: https://tools.suckless.org/dmenu/
-
-[Commands]: https://github.com/alexherbo2/chrome-commands
-[Shell]: https://github.com/alexherbo2/chrome-shell
-[chrome-dmenu]: https://github.com/alexherbo2/chrome-dmenu
 
 [Regular Expressions]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions
