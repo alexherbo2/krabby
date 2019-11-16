@@ -1,0 +1,6 @@
+#!/bin/sh
+
+mkdir -p target/firefox
+cp -R config.js packages target/firefox
+jq '.browser_specific_settings.gecko.id = "krabby@mozilla.org"' manifest.json > target/firefox/manifest.json
+(cd target/firefox; zip --recurse-paths package.zip manifest.json config.js packages)
