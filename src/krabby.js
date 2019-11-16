@@ -431,6 +431,7 @@ function Krabby({ dormant = true } = {}) {
   this.modes.modal.map('Video', ['KeyP'], () => this.commands.player().pictureInPicture(), 'Toggle picture-in-picture mode', 'Player')
 
   // mpv
+  this.modes.modal.map('Command', ['KeyM'], () => this.extensions.shell.send('mpv', location.href), 'Play with mpv', 'mpv')
   this.modes.modal.map('Video', ['Enter'], () => this.commands.mpvResume(), 'Play with mpv', 'mpv')
   this.modes.modal.map('Link', ['KeyM'], () => this.commands.mpv({ selections: this.selections }), 'Play with mpv', 'mpv')
   this.modes.modal.map('Link', ['Alt', 'KeyM'], () => this.commands.mpv({ selections: this.selections, reverse: true }), 'Play with mpv in reverse order', 'mpv')

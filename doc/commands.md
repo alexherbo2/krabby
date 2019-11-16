@@ -177,6 +177,7 @@ Commands are bound to **physical keys** and **displayed** with the [US layout][Q
 
 ## mpv
 
+- <kbd>m</kbd> → Play with [mpv] (**Command** context) – Requires [Shell]
 - <kbd>Enter</kbd> → Play with [mpv] (**Video** context) – Requires [Shell]
 - <kbd>m</kbd> → Play with [mpv] (**Link** context) – Requires [Shell]
 - <kbd>Alt</kbd> + <kbd>m</kbd> → Play with [mpv] in reverse order (**Link** context) – Requires [Shell]
