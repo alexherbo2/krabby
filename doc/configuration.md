@@ -8,7 +8,7 @@
   - [`fetch`](/share/krabby/fetch): shell script to fetch plugins.
   - [`Makefile`](/share/krabby/Makefile): contains commands to build and update Krabby.
   - `packages`: contains files used by Krabby: [Modal], [Prompt], [Hint], [Selection], [Mouse], [Clipboard], [Scroll], [Player], [icons][Krabby icon] and [`krabby.js`](/src/krabby.js).
-  - `extensions`: contains extensions used by Krabby: [Commands], [Shell] and [dmenu].  [Krabby] repository can be found here, to update the extension when you run `make update`.
+  - `extensions`: contains extensions used by Krabby: [Commands], [Shell], [Editor] and [dmenu].  [Krabby] repository can be found here, to update the extension when you run `make update`.
 
 Krabby’s default configuration is located in [`~/.config/krabby/packages/krabby.js`](/src/krabby.js).
 
@@ -37,6 +37,16 @@ The **command** is the function to evaluate.
 The **description** is the description of the command.
 
 The **label** is the label of the command.
+
+## External editor
+
+`~/.config/krabby/config.js`
+
+``` javascript
+const { env } = krabby
+
+env.EDITOR = 'kitty kak "$1" -e "select $2.$3,$4.$5"'
+```
 
 ## Examples
 
@@ -70,6 +80,7 @@ modal.map('Read Berserk · Chapter', ['KeyM'], () => shell.send('mpv', ...Array.
 
 [Commands]: https://github.com/alexherbo2/chrome-commands
 [Shell]: https://github.com/alexherbo2/chrome-shell
+[Editor]: https://github.com/alexherbo2/chrome-editor
 [dmenu]: https://github.com/alexherbo2/chrome-dmenu
 
 [mpv]: https://mpv.io

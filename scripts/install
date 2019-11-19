@@ -114,6 +114,20 @@ main() {
   make
   print_install_instructions
 
+  # Extension: Editor
+  name='Editor'
+  description='Open an external editor to edit text inputs'
+  url='https://github.com/alexherbo2/chrome-editor'
+  path=$CONFIG/extensions/editor
+  dependencies='zip'
+  print_horizontal_line
+  print_info "$name" "$description" "$url" "$path" "$dependencies"
+  clone_repo "$url" "$path"
+  cd "$path"
+  git pull
+  make
+  print_install_instructions
+
   # Extension: dmenu
   name='dmenu'
   description='Tab search with dmenu'

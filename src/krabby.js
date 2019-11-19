@@ -13,15 +13,19 @@ function Krabby({ dormant = true } = {}) {
       this.env.PLATFORM = 'firefox'
       this.env.COMMANDS_EXTENSION_ID = 'commands@alexherbo2.github.com'
       this.env.SHELL_EXTENSION_ID = 'shell@alexherbo2.github.com'
+      this.env.EDITOR_EXTENSION_ID = 'editor@alexherbo2.github.com'
       this.env.DMENU_EXTENSION_ID = 'dmenu@alexherbo2.github.com'
       break
     case (typeof chrome !== 'undefined'):
       this.env.PLATFORM = 'chrome'
       this.env.COMMANDS_EXTENSION_ID = 'cabmgmngameccclicfmcpffnbinnmopc'
       this.env.SHELL_EXTENSION_ID = 'ohgecdnlcckpfnhjepfdcdgcfgebkdgl'
+      this.env.EDITOR_EXTENSION_ID = 'oaagifcpibmdpajhjfcdjliekffjcnnk'
       this.env.DMENU_EXTENSION_ID = 'gonendiemfggilnopogmkafgadobkoeh'
       break
   }
+
+  this.env.EDITOR = undefined
 
   // Extensions ────────────────────────────────────────────────────────────────
 
@@ -39,6 +43,13 @@ function Krabby({ dormant = true } = {}) {
   this.extensions.shell.port = chrome.runtime.connect(this.env.SHELL_EXTENSION_ID)
   this.extensions.shell.send = (command, ...arguments) => {
     this.extensions.shell.port.postMessage({ command, arguments })
+  }
+
+  // Editor
+  this.extensions.editor = {}
+  this.extensions.editor.port = chrome.runtime.connect(this.env.EDITOR_EXTENSION_ID)
+  this.extensions.editor.send = (command, ...arguments) => {
+    this.extensions.editor.port.postMessage({ command, arguments })
   }
 
   // dmenu
@@ -283,6 +294,9 @@ function Krabby({ dormant = true } = {}) {
   // Help
   this.modes.modal.map('Page', ['F1'], () => this.modes.modal.help(), 'Show help', 'Help')
   this.modes.modal.map('Page', ['Shift', 'F1'], () => window.open('https://github.com/alexherbo2/krabby/tree/master/doc'), 'Open the documentation in a new tab', 'Help')
+
+  // External editor
+  this.modes.modal.map('Text', ['Alt', 'KeyI'], () => this.extensions.editor.send('edit', this.env.EDITOR), 'Open your favorite editor', 'External editor')
 
   // Tab search
   this.modes.modal.map('Command', ['KeyQ'], () => this.extensions.dmenu.send('tab-search'), 'Tab search with dmenu', 'Tab search')

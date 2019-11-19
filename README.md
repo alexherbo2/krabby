@@ -74,6 +74,7 @@ If you want to play around without installing, a live demo is available [here][L
 - Multiple selections as a central way of interacting
 - Powerful selection manipulation primitives
 - Link hints
+- External editor support.  Open your favorite editor on text inputs.
 - Tab search
 - Contextual commands
 - Contextual help
@@ -221,6 +222,7 @@ and [Brave].
 
 - [Commands] (Chrome API to perform browser actions)
 - [Shell] (Chrome API to execute external commands)
+- [Editor] (Open an external editor to edit text inputs)
 - [dmenu][chrome-dmenu] (Tab search with [dmenu])
 
 ## Installation
@@ -298,6 +300,7 @@ make install
 
 [Commands]: https://github.com/alexherbo2/chrome-commands
 [Shell]: https://github.com/alexherbo2/chrome-shell
+[Editor]: https://github.com/alexherbo2/chrome-editor
 [chrome-dmenu]: https://github.com/alexherbo2/chrome-dmenu
 
 [Kakoune]: https://kakoune.org

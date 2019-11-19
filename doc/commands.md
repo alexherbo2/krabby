@@ -7,6 +7,10 @@ Commands are bound to **physical keys** and **displayed** with the [US layout][Q
 - <kbd>F1</kbd> → Show help (**Page** context)
 - <kbd>Shift</kbd> + <kbd>F1</kbd> → Open the documentation in a new tab (**Page** context)
 
+## External editor
+
+- <kbd>Alt</kbd> + <kbd>i</kbd> → Open your favorite editor (**Text** context)
+
 ## Tab search
 
 - <kbd>q</kbd> → Tab search with [dmenu] (**Command** context)
