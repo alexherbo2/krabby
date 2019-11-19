@@ -45,7 +45,7 @@ The **label** is the label of the command.
 ``` javascript
 const { env } = krabby
 
-env.EDITOR = 'kitty kak "$1" -e "select $2.$3,$4.$5"'
+env.EDITOR = 'kitty --class kitty-float --override background_opacity=0.75 kak "$1" -e "select $2.$3,$4.$5"'
 ```
 
 ## Examples
