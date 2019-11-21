@@ -25,7 +25,7 @@ krabby.modes.modal.unmap(context, keys)
 ```
 
 The **context** dictates in what context the mapping will be available:
-**Command**, **Text**, **Link**, **Image**, **Video** or **Page**.
+**Command**, **Text**, **Link**, **Image**, **Video**, **Document** or **Page**.
 
 The **keys** represent a chord – a key sequence in which the keys are pressed at
 the same time.  They are composed of a single [key code][KeyboardEvent.code] and

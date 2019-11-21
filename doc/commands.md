@@ -156,9 +156,9 @@ Commands are bound to **physical keys** and **displayed** with the [US layout][Q
 
 ## Clipboard
 
-- <kbd>y</kbd> → Copy page address (**Command** context)
-- <kbd>Alt</kbd> + <kbd>y</kbd> → Copy page title (**Command** context)
-- <kbd>Y</kbd> → Copy page address and title (**Command** context)
+- <kbd>y</kbd> → Copy page address (**Document** context)
+- <kbd>Alt</kbd> + <kbd>y</kbd> → Copy page title (**Document** context)
+- <kbd>Y</kbd> → Copy page address and title (**Document** context)
 - <kbd>y</kbd> → Copy link address (**Link** context)
 - <kbd>Alt</kbd> + <kbd>y</kbd> → Copy link text (**Link** context)
 - <kbd>Y</kbd> → Copy link address and text (**Link** context)
@@ -181,7 +181,7 @@ Commands are bound to **physical keys** and **displayed** with the [US layout][Q
 
 ## mpv
 
-- <kbd>m</kbd> → Play with [mpv] (**Command** context)
+- <kbd>m</kbd> → Play with [mpv] (**Document** context)
 - <kbd>Enter</kbd> → Play with [mpv] (**Video** context)
 - <kbd>m</kbd> → Play with [mpv] (**Link** context)
 - <kbd>Alt</kbd> + <kbd>m</kbd> → Play with [mpv] in reverse order (**Link** context)
