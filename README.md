@@ -216,6 +216,7 @@ and [Brave].
 - [jq]
 - [mpv]
 - [Rofi] ([dmenu] replacement)
+- [Pandoc] (Pandoc is used to filter HTML)
 - [Zip] (Zip is used to package the extension)
 
 ### Extensions
@@ -296,6 +297,7 @@ make install
 [mpv]: https://mpv.io
 [dmenu]: https://tools.suckless.org/dmenu/
 [Rofi]: https://github.com/davatorium/rofi
+[Pandoc]: https://pandoc.org
 [Zip]: http://infozip.sourceforge.net/Zip.html
 
 [Commands]: https://github.com/alexherbo2/chrome-commands

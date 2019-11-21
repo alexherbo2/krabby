@@ -159,6 +159,8 @@ Commands are bound to **physical keys** and **displayed** with the [US layout][Q
 - <kbd>y</kbd> → Copy page address (**Document** context)
 - <kbd>Alt</kbd> + <kbd>y</kbd> → Copy page title (**Document** context)
 - <kbd>Y</kbd> → Copy page address and title (**Document** context)
+- <kbd>y</kbd> → Copy HTML selection (**Command** context)
+- <kbd>Y</kbd> → Copy selection, using an HTML filter (**Command** context)
 - <kbd>y</kbd> → Copy link address (**Link** context)
 - <kbd>Alt</kbd> + <kbd>y</kbd> → Copy link text (**Link** context)
 - <kbd>Y</kbd> → Copy link address and text (**Link** context)

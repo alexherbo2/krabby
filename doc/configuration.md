@@ -48,6 +48,16 @@ const { env } = krabby
 env.EDITOR = 'kitty --class kitty-float --override background_opacity=0.75 kak "$1" -e "select $2.$3,$4.$5"'
 ```
 
+## HTML filter
+
+`~/.config/krabby/config.js`
+
+``` javascript
+const { env } = krabby
+
+env.HTML_FILTER = 'pandoc --from html --to asciidoc'
+```
+
 ## Examples
 
 ### [Read Berserk] with [mpv]

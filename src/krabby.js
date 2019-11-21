@@ -26,6 +26,7 @@ function Krabby({ dormant = true } = {}) {
   }
 
   this.env.EDITOR = undefined
+  this.env.HTML_FILTER = 'pandoc --from html --to markdown'
 
   // Extensions ────────────────────────────────────────────────────────────────
 
@@ -44,6 +45,14 @@ function Krabby({ dormant = true } = {}) {
   this.extensions.shell.send = (command, ...arguments) => {
     this.extensions.shell.port.postMessage({ command, arguments })
   }
+
+  this.extensions.shell.port.onMessage.addListener((response) => {
+    switch (response.id) {
+      case 'html-filter':
+        this.commands.copyToClipboard(response.output, 'HTML selection filtered and copied')
+        break
+    }
+  })
 
   // Editor
   this.extensions.editor = {}
@@ -246,6 +255,16 @@ function Krabby({ dormant = true } = {}) {
     this.commands.copyToClipboard(text, message)
   }
 
+  this.commands.yankFilteredHTML = (selections, filter) => {
+    const input = this.commands.getElements(selections).map((element) => element.outerHTML).join('\n')
+    this.extensions.shell.port.postMessage({
+      id: 'html-filter',
+      shell: true,
+      command: filter,
+      input
+    })
+  }
+
   this.commands.copyToClipboard = (text, message) => {
     Clipboard.copy(text)
     this.commands.notify(message)
@@ -425,6 +444,8 @@ function Krabby({ dormant = true } = {}) {
   this.modes.modal.map('Document', ['KeyY'], () => this.commands.copyToClipboard(location.href, 'Page address copied'), 'Copy page address', 'Clipboard')
   this.modes.modal.map('Document', ['Alt', 'KeyY'], () => this.commands.copyToClipboard(document.title, 'Page title copied'), 'Copy page title', 'Clipboard')
   this.modes.modal.map('Document', ['Shift', 'KeyY'], () => this.commands.copyToClipboard(`[${document.title}](${location.href})`, 'Page address and title copied'), 'Copy page address and title', 'Clipboard')
+  this.modes.modal.map('Command', ['KeyY'], () => this.commands.yank(this.selections, (selection) => selection.outerHTML, 'HTML selection copied'), 'Copy HTML selection', 'Clipboard')
+  this.modes.modal.map('Command', ['Shift', 'KeyY'], () => this.commands.yankFilteredHTML(this.selections, this.env.HTML_FILTER), 'Copy selection, using an HTML filter', 'Clipboard')
   this.modes.modal.map('Link', ['KeyY'], () => this.commands.yank(this.selections, (selection) => selection.href, 'Link address copied'), 'Copy link address', 'Clipboard')
   this.modes.modal.map('Link', ['Alt', 'KeyY'], () => this.commands.yank(this.selections, (selection) => selection.textContent, 'Link text copied'), 'Copy link text', 'Clipboard')
   this.modes.modal.map('Link', ['Shift', 'KeyY'], () => this.commands.yank(this.selections, (selection) => `[${selection.textContent}](${selection.href})`, 'Link address and text copied'), 'Copy link address and text', 'Clipboard')

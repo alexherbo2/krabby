@@ -36,13 +36,14 @@ main() {
 
   # Dependencies
   print_horizontal_line
-  printf "${green}Dependencies${none}: git zip crystal shards jq mpv\n"
+  printf "${green}Dependencies${none}: git zip crystal shards jq mpv pandoc\n"
   verify_dependency git Git https://git-scm.com
   verify_dependency zip Zip http://infozip.sourceforge.net/Zip.html
   verify_dependency crystal Crystal https://crystal-lang.org
   verify_dependency shards Shards https://crystal-lang.org
   verify_dependency jq jq https://stedolan.github.io/jq/
   verify_dependency mpv mpv https://mpv.io
+  verify_dependency pandoc Pandoc https://pandoc.org
   if test "$OS" = Linux; then
     printf "${green}Dependencies${none}: rofi (Linux-only)\n"
     verify_dependency rofi Rofi https://github.com/davatorium/rofi
