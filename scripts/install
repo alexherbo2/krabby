@@ -54,7 +54,7 @@ main() {
   description='A keyboard interface to the web'
   url='https://github.com/alexherbo2/krabby'
   path=$CONFIG
-  dependencies='zip'
+  dependencies='jq zip'
   print_horizontal_line
   print_info "$name" "$description" "$url" "$path" "$dependencies"
   if test ! -e "$CONFIG"; then
@@ -89,7 +89,7 @@ main() {
   description='Chrome API to perform browser actions'
   url='https://github.com/alexherbo2/chrome-commands'
   path=$CONFIG/extensions/commands
-  dependencies='zip'
+  dependencies='jq zip'
   print_horizontal_line
   print_info "$name" "$description" "$url" "$path" "$dependencies"
   clone_repo "$url" "$path"
@@ -120,7 +120,7 @@ main() {
   description='Open an external editor to edit text inputs'
   url='https://github.com/alexherbo2/chrome-editor'
   path=$CONFIG/extensions/editor
-  dependencies='zip'
+  dependencies='jq zip'
   print_horizontal_line
   print_info "$name" "$description" "$url" "$path" "$dependencies"
   clone_repo "$url" "$path"
@@ -134,7 +134,7 @@ main() {
   description='Tab search with dmenu'
   url='https://github.com/alexherbo2/chrome-dmenu'
   path=$CONFIG/extensions/dmenu
-  dependencies='rofi zip'
+  dependencies='rofi jq zip'
   print_horizontal_line
   print_info "$name" "$description" "$url" "$path" "$dependencies"
   clone_repo "$url" "$path"
