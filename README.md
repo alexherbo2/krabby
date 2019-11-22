@@ -210,6 +210,22 @@ and [Brave].
 
 </details>
 
+<details>
+
+<summary>Copy selection with Pandoc</summary>
+
+[![Copy selection with Pandoc](https://img.youtube.com/vi_webp/gmx3eEm6L3M/maxresdefault.webp)](https://youtu.be/gmx3eEm6L3M)
+
+**Commands**
+
+- <kbd>f</kbd> → Focus link
+  - Input: <kbd>s</kbd>
+- <kbd>s</kbd> → Select active element
+- <kbd>Alt</kbd> + <kbd>a</kbd> → Select parent elements (4 times)
+- <kbd>Y</kbd> → Copy selection, using an HTML filter
+
+</details>
+
 ## Dependencies
 
 - [Crystal]
