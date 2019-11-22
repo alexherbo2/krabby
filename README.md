@@ -226,6 +226,27 @@ and [Brave].
 
 </details>
 
+<details>
+
+<summary>Copy multiple links</summary>
+
+[![Copy multiple links](https://img.youtube.com/vi_webp/rRGmuJhopJg/maxresdefault.webp)](https://youtu.be/rRGmuJhopJg)
+
+**Commands**
+
+- <kbd>f</kbd> → Focus link
+  - Input: <kbd>s</kbd>
+- <kbd>s</kbd> → Select active element
+- <kbd>Alt</kbd> + <kbd>a</kbd> → Select parent elements (3 times)
+- <kbd>Alt</kbd> + <kbd>i</kbd> → Select child elements
+- <kbd>Alt</kbd> + <kbd>]</kbd> → Select last child elements
+- <kbd>Alt</kbd> + <kbd>(</kbd> → Select previous sibling elements
+- <kbd>Alt</kbd> + <kbd>I</kbd> → Select links
+- <kbd>y</kbd> → Copy link address
+- <kbd>Y</kbd> → Copy link address and text
+
+</details>
+
 ## Dependencies
 
 - [Crystal]
