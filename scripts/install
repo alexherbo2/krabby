@@ -5,6 +5,7 @@ ROOT=$PWD
 XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-~/.config}
 CONFIG=$XDG_CONFIG_HOME/krabby
 OS=$(uname -s)
+STATIC_BUILD=${STATIC_BUILD:-no}
 
 # Faces
 none='\033[0m'
@@ -36,14 +37,20 @@ main() {
 
   # Dependencies
   print_horizontal_line
-  printf "${green}Dependencies${none}: git zip crystal shards jq mpv pandoc\n"
+  printf "${green}Dependencies${none}: git zip jq mpv pandoc\n"
   verify_dependency git Git https://git-scm.com
   verify_dependency zip Zip http://infozip.sourceforge.net/Zip.html
-  verify_dependency crystal Crystal https://crystal-lang.org
-  verify_dependency shards Shards https://crystal-lang.org
   verify_dependency jq jq https://stedolan.github.io/jq/
   verify_dependency mpv mpv https://mpv.io
   verify_dependency pandoc Pandoc https://pandoc.org
+  if test "$STATIC_BUILD" = yes; then
+    printf "${green}Dependencies${none}: docker (Static build)\n"
+    verify_dependency docker Docker https://docker.com
+  else
+    printf "${green}Dependencies${none}: crystal shards (Non-static build)\n"
+    verify_dependency crystal Crystal https://crystal-lang.org
+    verify_dependency shards Shards https://crystal-lang.org
+  fi
   if test "$OS" = Linux; then
     printf "${green}Dependencies${none}: rofi (Linux-only)\n"
     verify_dependency rofi Rofi https://github.com/davatorium/rofi
@@ -103,14 +110,19 @@ main() {
   description='Chrome API to execute external commands through native messaging'
   url='https://github.com/alexherbo2/chrome-shell'
   path=$CONFIG/extensions/shell
-  dependencies='crystal shards jq zip'
+  if test "$STATIC_BUILD" = yes; then
+    dependencies='docker'
+  else
+    dependencies='crystal shards'
+  fi
+  dependencies="$dependencies jq zip"
   print_horizontal_line
   print_info "$name" "$description" "$url" "$path" "$dependencies"
   clone_repo "$url" "$path"
   cd "$path"
   git pull
   cd "$path/host"
-  make install
+  make install static="$STATIC_BUILD"
   cd "$path/extension"
   make
   print_install_instructions
@@ -155,10 +167,10 @@ Installation finished 🦀
 
 • How to update Krabby:
 
-    ╭───────────────────────╮
-    │ $ cd ~/.config/krabby │
-    │ $ make update         │
-    ╰───────────────────────╯
+    ╭───────────────────────────╮
+    │ $ cd ~/.config/krabby     │
+    │ $ make update [static=no] │
+    ╰───────────────────────────╯
 EOF
 }
 

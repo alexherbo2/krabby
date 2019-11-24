@@ -1,5 +1,7 @@
+static ?= no
+
 install:
-	scripts/install
+	STATIC_BUILD="$(static)" scripts/install
 
 uninstall:
 	scripts/uninstall

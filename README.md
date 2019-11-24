@@ -17,7 +17,7 @@ Run the following in your terminal, then follow the onscreen instructions.
 ``` sh
 git clone https://github.com/alexherbo2/krabby
 cd krabby
-make install
+make install [static=no]
 ```
 
 After installing, try to accomplish the following examples.
@@ -250,6 +250,7 @@ and [Brave].
 ## Dependencies
 
 - [Crystal]
+- [Docker] (for static builds)
 - [jq]
 - [mpv]
 - [Rofi] ([dmenu] replacement)
@@ -268,7 +269,7 @@ and [Brave].
 Run the following in your terminal, then follow the onscreen instructions.
 
 ``` sh
-make install
+make install [static=no]
 ```
 
 ## Browser compatibility
@@ -330,6 +331,7 @@ make install
 [Vim]: https://vim.org
 [Emacs]: https://gnu.org/software/emacs/
 [Crystal]: https://crystal-lang.org
+[Docker]: https://docker.com
 [jq]: https://stedolan.github.io/jq/
 [mpv]: https://mpv.io
 [dmenu]: https://tools.suckless.org/dmenu/

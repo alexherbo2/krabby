@@ -1,3 +1,5 @@
+static ?= no
+
 all: chrome firefox
 
 chrome: fetch
@@ -9,6 +11,6 @@ fetch:
 	cd packages; ../fetch
 
 update:
-	cd extensions/krabby; git pull; make
+	cd extensions/krabby; git pull; make static="$(static)"
 
 .PHONY: build fetch
