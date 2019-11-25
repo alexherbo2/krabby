@@ -445,6 +445,7 @@ function Krabby({ dormant = true } = {}) {
   this.modes.modal.map('Document', ['Alt', 'KeyY'], () => this.commands.copyToClipboard(document.title, 'Page title copied'), 'Copy page title', 'Clipboard')
   this.modes.modal.map('Document', ['Shift', 'KeyY'], () => this.commands.copyToClipboard(`[${document.title}](${location.href})`, 'Page address and title copied'), 'Copy page address and title', 'Clipboard')
   this.modes.modal.map('Command', ['KeyY'], () => this.commands.yank(this.selections, (selection) => selection.outerHTML, 'HTML selection copied'), 'Copy HTML selection', 'Clipboard')
+  this.modes.modal.map('Command', ['Alt', 'KeyY'], () => this.commands.yank(this.selections, (selection) => selection.textContent, 'Selection copied as plain text'), 'Copy as plain text', 'Clipboard')
   this.modes.modal.map('Command', ['Shift', 'KeyY'], () => this.commands.yankFilteredHTML(this.selections, this.env.HTML_FILTER), 'Copy selection, using an HTML filter', 'Clipboard')
   this.modes.modal.map('Link', ['KeyY'], () => this.commands.yank(this.selections, (selection) => selection.href, 'Link address copied'), 'Copy link address', 'Clipboard')
   this.modes.modal.map('Link', ['Alt', 'KeyY'], () => this.commands.yank(this.selections, (selection) => selection.textContent, 'Link text copied'), 'Copy link text', 'Clipboard')
