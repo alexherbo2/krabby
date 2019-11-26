@@ -69,7 +69,7 @@ If you want to play around without installing, a live demo is available [here][L
 
 ## Features
 
-- [Subject–object–verb] order
+- [Subject–object–verb] order.  Learn more at [Differences with Vi(m)][A linguistic twist].
 - Keyboard layout agnostic.  Maps to physical keys, but displays with the [US layout][QWERTY].
 - Multiple selections as a central way of interacting
 - Powerful selection manipulation primitives
@@ -300,6 +300,8 @@ make install [static=no]
 [Krabby]: https://krabby.netlify.com
 [Live demo]: https://krabby.netlify.com#live-demo
 [Krabby icon]: https://iconfinder.com/icons/877852/kanto_krabby_pokemon_water_icon
+
+[A linguistic twist]: https://github.com/alexherbo2/krabby/blob/master/doc/differences-with-vim.md#a-linguistic-twist
 
 [QWERTY]: https://en.wikipedia.org/wiki/QWERTY
 [Subject–object–verb]: https://en.wikipedia.org/wiki/Subject–object–verb
