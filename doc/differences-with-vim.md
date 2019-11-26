@@ -17,7 +17,7 @@ chaining actions, combined with instantaneous feedback.
 For example, in [Vimium], you have <kbd>f</kbd> to open a link, <kbd>y</kbd>
 <kbd>f</kbd> to yank a link, while in Krabby, objects and actions are two
 building blocks: <kbd>f</kbd> to select a link, followed by the action:
-<kbd>Enter</kbd> to open, <kbd>y</kbd> to yank.
+<kbd>Enter</kbd> to open, <kbd>y</kbd> to yank, etc.
 
 After selecting a link, you can apply your actions, or continue refining your
 selection(s) to reach something more complex (see the 3-gatsu no Lion example
