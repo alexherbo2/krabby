@@ -7,7 +7,7 @@
   - [`config.js`](/share/krabby/config.js): contains the user configuration.
   - [`fetch`](/share/krabby/fetch): shell script to fetch plugins.
   - [`Makefile`](/share/krabby/Makefile): contains commands to build and update Krabby.
-  - `packages`: contains files used by Krabby: [Modal], [Prompt], [Hint], [Selection], [Mouse], [Clipboard], [Scroll], [Player], [icons][Krabby icon] and [`krabby.js`](/src/krabby.js).
+  - `packages`: contains files used by Krabby: [Modal], [Prompt], [Hint], [Mark], [Selection], [Mouse], [Clipboard], [Scroll], [Player], [icons][Krabby icon] and [`krabby.js`](/src/krabby.js).
   - `extensions`: contains extensions used by Krabby: [Commands], [Shell], [Editor] and [dmenu].  [Krabby] repository can be found here, to update the extension when you run `make update`.
 
 Krabby’s default configuration is located in [`~/.config/krabby/packages/krabby.js`](/src/krabby.js).
@@ -82,6 +82,7 @@ modal.map('Read Berserk · Chapter', ['KeyM'], () => shell.send('mpv', ...Array.
 [Modal]: https://github.com/alexherbo2/modal.js
 [Prompt]: https://github.com/alexherbo2/prompt.js
 [Hint]: https://github.com/alexherbo2/hint.js
+[Mark]: https://github.com/alexherbo2/mark.js
 [Selection]: https://github.com/alexherbo2/selection.js
 [Mouse]: https://github.com/alexherbo2/mouse.js
 [Clipboard]: https://github.com/alexherbo2/clipboard.js

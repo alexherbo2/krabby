@@ -19,6 +19,7 @@ fetch() {
 fetch https://github.com/alexherbo2/modal.js/raw/master/scripts/modal.js
 fetch https://github.com/alexherbo2/prompt.js/raw/master/scripts/prompt.js
 fetch https://github.com/alexherbo2/hint.js/raw/master/scripts/hint.js
+fetch https://github.com/alexherbo2/mark.js/raw/master/scripts/mark.js
 fetch https://github.com/alexherbo2/selection.js/raw/master/scripts/selection.js
 fetch https://github.com/alexherbo2/selection.js/raw/master/styles/selection.css
 fetch https://github.com/alexherbo2/mouse.js/raw/master/scripts/mouse.js

@@ -12,6 +12,7 @@
         "packages/modal.js",
         "packages/prompt.js",
         "packages/hint.js",
+        "packages/mark.js",
         "packages/selection.js",
         "packages/mouse.js",
         "packages/clipboard.js",

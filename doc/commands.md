@@ -37,6 +37,11 @@ Commands are bound to **physical keys** and **displayed** with the [US layout][Q
 - <kbd>U</kbd> → Go to the home page (**Command** context)
 - <kbd>Alt</kbd> + <kbd>u</kbd> → Remove any URL parameter (**Command** context)
 
+## Marks
+
+- <kbd>"</kbd> → Push mark (**Command** context)
+- <kbd>'</kbd> → Jump to mark (**Command** context)
+
 ## Zoom
 
 - <kbd>+</kbd> → Zoom in (**Command** context)

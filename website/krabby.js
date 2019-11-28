@@ -125,6 +125,11 @@ function Krabby({ dormant = true } = {}) {
   this.scroll = new Scroll
   this.mouse = new Mouse
 
+  // Marks
+  this.mark = new Mark
+  this.mark.on('push', (x, y, index) => this.commands.notify(`Position #${index} saved`))
+  this.mark.on('jump', (x, y, index) => this.commands.notify(`Jumped to #${index}`))
+
   // Commands ──────────────────────────────────────────────────────────────────
 
   this.commands = {}
@@ -209,6 +214,10 @@ function Krabby({ dormant = true } = {}) {
   this.modes.modal.map('Command', ['KeyU'], () => location.assign('..'), 'Go up in hierarchy', 'Navigation')
   this.modes.modal.map('Command', ['Shift', 'KeyU'], () => location.assign('/'), 'Go to the home page', 'Navigation')
   this.modes.modal.map('Command', ['Alt', 'KeyU'], () => location.assign('.'), 'Remove any URL parameter', 'Navigation')
+
+  // Marks
+  this.modes.modal.map('Command', ['Shift', 'Quote'], () => this.mark.push(), 'Push mark', 'Marks')
+  this.modes.modal.map('Command', ['Quote'], () => this.mark.jump(), 'Jump to mark', 'Marks')
 
   // Reload pages
   this.modes.modal.map('Command', ['KeyR'], () => location.reload(), 'Reload the page', 'Reload pages')
