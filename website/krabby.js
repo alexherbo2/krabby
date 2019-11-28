@@ -128,7 +128,9 @@ function Krabby({ dormant = true } = {}) {
   // Marks
   this.mark = new Mark
   this.mark.on('push', (x, y, index) => this.commands.notify(`Position #${index} saved`))
+  this.mark.on('pop', (x, y, index) => this.commands.notify(`Position #${index} deleted`))
   this.mark.on('jump', (x, y, index) => this.commands.notify(`Jumped to #${index}`))
+  this.mark.on('clear', () => this.commands.notify('All marks removed'))
 
   // Commands ──────────────────────────────────────────────────────────────────
 
@@ -218,6 +220,8 @@ function Krabby({ dormant = true } = {}) {
   // Marks
   this.modes.modal.map('Command', ['Shift', 'Quote'], () => this.mark.push(), 'Push mark', 'Marks')
   this.modes.modal.map('Command', ['Quote'], () => this.mark.jump(), 'Jump to mark', 'Marks')
+  this.modes.modal.map('Command', ['Alt', 'Quote'], () => this.mark.pop(), 'Pop mark', 'Marks')
+  this.modes.modal.map('Command', ['Alt', 'Shift', 'Quote'], () => this.mark.clear(), 'Clear marks', 'Marks')
 
   // Reload pages
   this.modes.modal.map('Command', ['KeyR'], () => location.reload(), 'Reload the page', 'Reload pages')

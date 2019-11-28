@@ -41,6 +41,8 @@ Commands are bound to **physical keys** and **displayed** with the [US layout][Q
 
 - <kbd>"</kbd> → Push mark (**Command** context)
 - <kbd>'</kbd> → Jump to mark (**Command** context)
+- <kbd>Alt</kbd> + <kbd>'</kbd> → Pop mark (**Command** context)
+- <kbd>Alt</kbd> + <kbd>"</kbd> → Clear marks (**Command** context)
 
 ## Zoom
 
