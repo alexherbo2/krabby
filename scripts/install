@@ -37,12 +37,10 @@ main() {
 
   # Dependencies
   print_horizontal_line
-  printf "${green}Dependencies${none}: git zip jq mpv pandoc\n"
+  printf "${green}Dependencies${none}: git zip jq\n"
   verify_dependency git Git https://git-scm.com
   verify_dependency zip Zip http://infozip.sourceforge.net/Zip.html
   verify_dependency jq jq https://stedolan.github.io/jq/
-  verify_dependency mpv mpv https://mpv.io
-  verify_dependency pandoc Pandoc https://pandoc.org
   if test "$STATIC_BUILD" = yes; then
     printf "${green}Dependencies${none}: docker (Static build)\n"
     verify_dependency docker Docker https://docker.com
@@ -55,6 +53,9 @@ main() {
     printf "${green}Dependencies${none}: rofi (Linux-only)\n"
     verify_dependency rofi Rofi https://github.com/davatorium/rofi
   fi
+  printf "${green}Dependencies${none}: mpv pandoc (Optional)\n"
+  verify_dependency mpv mpv https://mpv.io yes
+  verify_dependency pandoc Pandoc https://pandoc.org yes
 
   # Extension: Krabby
   name='Krabby'
@@ -198,13 +199,16 @@ verify_dependency() {
   command=$1
   name=$2
   url=$3
+  optional=${4:-no}
   if command -v "$command" > /dev/null 2>&1; then
     printf "❯ ${green}%s${none}\n" "$name"
   else
     printf "❯ ${red}%s${none}\n" "$name" > /dev/stderr
     printf 'Please install %s\n' "$name" > /dev/stderr
     printf '%s\n' "$url" > /dev/stderr
-    exit 1
+    if test "$optional" != yes; then
+      exit 1
+    fi
   fi
 }
 

@@ -254,9 +254,9 @@ and [Brave].
 - [Crystal]
 - [Docker] (for static builds)
 - [jq]
-- [mpv]
+- [mpv] (Optional, for playing videos)
 - [Rofi] ([dmenu] replacement)
-- [Pandoc] (Pandoc is used to filter HTML)
+- [Pandoc] (Optional, for HTML filtering)
 - [Zip] (Zip is used to package the extension)
 
 ### Extensions
