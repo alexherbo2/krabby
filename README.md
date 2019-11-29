@@ -6,7 +6,9 @@
 
 ###### [Installation](#installation) | [Configuration](doc/configuration.md) | [Documentation](doc) | [Browser compatibility](#browser-compatibility) | [Contributing](CONTRIBUTING)
 
-> A keyboard interface to the web, heavily inspired by [Kakoune].
+> Krabby is a [WebExtension] for keyboard-based navigation, inspired by [Kakoune].
+>
+> The main differences with existing extensions are: multiple selections, keyboard layout agnostic, SOV ([subject–object–verb]) constructs and simple interaction with external programs.
 
 ## TL;DR
 
@@ -303,6 +305,7 @@ make install [static=no]
 
 [A linguistic twist]: https://github.com/alexherbo2/krabby/blob/master/doc/differences-with-vim.md#a-linguistic-twist
 
+[WebExtension]: https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions
 [QWERTY]: https://en.wikipedia.org/wiki/QWERTY
 [Subject–object–verb]: https://en.wikipedia.org/wiki/Subject–object–verb
 
