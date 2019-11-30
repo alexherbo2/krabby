@@ -294,6 +294,7 @@ make install [static=no]
 - [@GeoGavilanes] for the [Krabby icon].
 - [@occivink], for his work on [phantom selections][kakoune-phantom-selection], from which the “save and restore selections” feature is inspired.
 - [mpv] and [Kakoune] for their website, from which [Krabby] is inspired.
+- [@AdamWagner] for his work to unify scrolling mechanisms.
 
 ## References
 
@@ -361,6 +362,7 @@ make install [static=no]
 [@ul]: https://github.com/ul
 [@GeoGavilanes]: https://iconfinder.com/GeoGavilanes
 [@occivink]: https://github.com/occivink
+[@AdamWagner]: https://github.com/AdamWagner
 
 [Regular Expressions]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions
 
