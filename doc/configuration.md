@@ -37,6 +37,18 @@ argument, the [`keydown`] event that triggered the command.  For most commands,
 this argument can be ignored.  The command can also be an instance of **Modal**
 to facilitate command chaining.
 
+**Example** – Example where `event` parameter can be useful for smooth scrolling:
+
+`~/.config/krabby/config.js`
+
+``` javascript
+const { modes, scroll } = krabby
+const { modal } = modes
+
+modal.map('Command', ['KeyJ'], ({ repeat }) => scroll.down(repeat), 'Scroll down', 'Scroll')
+modal.map('Command', ['KeyK'], ({ repeat }) => scroll.up(repeat), 'Scroll up', 'Scroll')
+```
+
 The **description** is the description of the command.
 
 The **label** is the label of the command.
