@@ -32,7 +32,10 @@ the same time.  They are composed of a single [key code][KeyboardEvent.code] and
 optional [modifiers].  For special keys, the list of key values can be found
 [here][Key Values].
 
-The **command** is the function to evaluate.
+The **command** is the function to evaluate.  The function takes exactly one
+argument, the [`keydown`] event that triggered the command.  For most commands,
+this argument can be ignored.  The command can also be an instance of **Modal**
+to facilitate command chaining.
 
 The **description** is the description of the command.
 
@@ -98,6 +101,7 @@ modal.map('Read Berserk · Chapter', ['KeyM'], () => shell.send('mpv', ...Array.
 
 [Read Berserk]: https://readberserk.com
 
+[`keydown`]: https://developer.mozilla.org/en-US/docs/Web/API/Document/keydown_event
 [KeyboardEvent.code]: https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/code
 [Key Values]: https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key/Key_Values
 [Modifiers]: https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key/Key_Values#Modifier_keys
