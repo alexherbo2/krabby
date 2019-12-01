@@ -199,16 +199,16 @@ function Krabby({ dormant = true } = {}) {
   this.modes.modal.map('Page', ['Shift', 'F1'], () => window.open('https://github.com/alexherbo2/krabby/tree/master/doc'), 'Open the documentation in a new tab', 'Help')
 
   // Scroll
-  this.modes.modal.map('Command', ['KeyJ'], (event) => this.scroll.down(event.repeat), 'Scroll down', 'Scroll')
-  this.modes.modal.map('Command', ['KeyK'], (event) => this.scroll.up(event.repeat), 'Scroll up', 'Scroll')
-  this.modes.modal.map('Command', ['KeyL'], (event) => this.scroll.right(event.repeat), 'Scroll right', 'Scroll')
-  this.modes.modal.map('Command', ['KeyH'], (event) => this.scroll.left(event.repeat), 'Scroll left', 'Scroll')
+  this.modes.modal.map('Command', ['KeyJ'], ({ repeat }) => this.scroll.down(repeat), 'Scroll down', 'Scroll')
+  this.modes.modal.map('Command', ['KeyK'], ({ repeat }) => this.scroll.up(repeat), 'Scroll up', 'Scroll')
+  this.modes.modal.map('Command', ['KeyL'], ({ repeat }) => this.scroll.right(repeat), 'Scroll right', 'Scroll')
+  this.modes.modal.map('Command', ['KeyH'], ({ repeat }) => this.scroll.left(repeat), 'Scroll left', 'Scroll')
 
   // Scroll faster
-  this.modes.modal.map('Command', ['Shift', 'KeyJ'], (event) => this.scroll.pageDown(event.repeat), 'Scroll page down', 'Scroll faster')
-  this.modes.modal.map('Command', ['Shift', 'KeyK'], (event) => this.scroll.pageUp(event.repeat), 'Scroll page up', 'Scroll faster')
-  this.modes.modal.map('Command', ['KeyG'], (event) => this.scroll.top(event.repeat), 'Scroll to the top of the page', 'Scroll faster')
-  this.modes.modal.map('Command', ['Shift', 'KeyG'], (event) => this.scroll.bottom(event.repeat), 'Scroll to the bottom of the page', 'Scroll faster')
+  this.modes.modal.map('Command', ['Shift', 'KeyJ'], ({ repeat }) => this.scroll.pageDown(repeat), 'Scroll page down', 'Scroll faster')
+  this.modes.modal.map('Command', ['Shift', 'KeyK'], ({ repeat }) => this.scroll.pageUp(repeat), 'Scroll page up', 'Scroll faster')
+  this.modes.modal.map('Command', ['KeyG'], ({ repeat }) => this.scroll.top(repeat), 'Scroll to the top of the page', 'Scroll faster')
+  this.modes.modal.map('Command', ['Shift', 'KeyG'], ({ repeat }) => this.scroll.bottom(repeat), 'Scroll to the bottom of the page', 'Scroll faster')
 
   // Navigation
   this.modes.modal.map('Command', ['Shift', 'KeyH'], () => history.back(), 'Go back in history', 'Navigation')
