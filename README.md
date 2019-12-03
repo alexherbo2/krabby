@@ -279,6 +279,7 @@ make install [static=no]
 | Web browser | Support |             Engine              |                                 Comments                                 |
 | ----------- |:-------:|:-------------------------------:| ------------------------------------------------------------------------ |
 | [Chrome]    |    ✓    | [![Blink][chrome.svg]][Blink]   |                                                                          |
+| [Chromium]  |    ✓    | [![Blink][chrome.svg]][Blink]   |                                                                          |
 | [Firefox]   |    ✓    | [![Gecko][firefox.svg]][Gecko]  | [Only developer or unbranded version][Firefox – Extension Signing – FAQ] |
 | [Edge]      |    ?    | [![Blink][chrome.svg]][Blink]   |                                                                          |
 | [Opera]     |    ✓    | [![Blink][chrome.svg]][Blink]   |                                                                          |
@@ -318,6 +319,7 @@ make install [static=no]
 [Firefox – Extension Signing – FAQ]: https://wiki.mozilla.org/Add-ons/Extension_Signing#FAQ
 
 [Chrome]: https://google.com/chrome/
+[Chromium]: https://chromium.org
 [Firefox]: https://mozilla.org/firefox/
 [Edge]: https://microsoft.com/en-us/windows/microsoft-edge
 [Opera]: https://opera.com
