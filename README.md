@@ -8,7 +8,11 @@
 
 > Krabby is a [WebExtension] for keyboard-based navigation, inspired by [Kakoune].
 >
-> The main differences with existing extensions are: multiple selections, keyboard layout agnostic, SOV ([subject–object–verb]) constructs and simple interaction with external programs.
+> The main differences with existing extensions are:
+> multiple selections,
+> keyboard layout agnostic,
+> SOV ([subject–object–verb]) constructs and
+> simple interaction with external programs.
 > It is also quite usable with the mouse.
 
 ## TL;DR
