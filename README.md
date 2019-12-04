@@ -263,7 +263,7 @@ and [Brave].
 - [Docker] (for static builds)
 - [jq]
 - [mpv] (Optional, for playing videos)
-- [Rofi] ([dmenu] replacement)
+- [Rofi] (Optional, for tab search, [dmenu] replacement)
 - [Pandoc] (Optional, for HTML filtering)
 - [Zip] (Zip is used to package the extension)
 

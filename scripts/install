@@ -50,8 +50,8 @@ main() {
     verify_dependency shards Shards https://crystal-lang.org
   fi
   if test "$OS" = Linux; then
-    printf "${green}Dependencies${none}: rofi (Linux-only)\n"
-    verify_dependency rofi Rofi https://github.com/davatorium/rofi
+    printf "${green}Dependencies${none}: rofi (Optional, Linux-only)\n"
+    verify_dependency rofi Rofi https://github.com/davatorium/rofi yes
   fi
   printf "${green}Dependencies${none}: mpv pandoc (Optional)\n"
   verify_dependency mpv mpv https://mpv.io yes
