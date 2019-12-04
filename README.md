@@ -9,6 +9,7 @@
 > Krabby is a [WebExtension] for keyboard-based navigation, inspired by [Kakoune].
 >
 > The main differences with existing extensions are: multiple selections, keyboard layout agnostic, SOV ([subject–object–verb]) constructs and simple interaction with external programs.
+> It is also quite usable with the mouse.
 
 ## TL;DR
 
@@ -81,6 +82,9 @@ If you want to play around without installing, a live demo is available [here][L
 - Contextual commands
 - Contextual help
 - Simple interaction with external programs
+- Usable with the mouse.  You can for example create a selection by grabbing a
+link with the mouse and <kbd>s</kbd> to create the selection.  Or create multiple
+selections by clicking on hints with <kbd>F</kbd>.
 - Limited scope.  Krabby is not [Vim], nor [Kakoune].  Krabby is trying to be a
 navigation tool and some concepts from code editors don’t translate well.  For
 example, there is no concept of mode in Krabby, but a system of contexts.
