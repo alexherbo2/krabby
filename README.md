@@ -3,6 +3,7 @@
 <img src="https://www.iconfinder.com/icons/877852/download/svg/512" height="168" align="right">
 
 [![IRC](https://img.shields.io/badge/IRC-%23krabby-blue)](https://webchat.freenode.net/#krabby)
+[![Plugins](https://img.shields.io/badge/Plugins-%23krabby%20%23plugin-green)](https://github.com/search?q=topic:krabby+topic:plugin)
 
 ###### [Installation](#installation) | [Configuration](doc/configuration.md) | [Documentation](doc) | [Browser compatibility](#browser-compatibility) | [Contributing](CONTRIBUTING)
 
