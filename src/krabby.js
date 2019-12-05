@@ -429,7 +429,7 @@ function Krabby({ dormant = true } = {}) {
   this.modes.modal.map('Command', ['Shift', 'Digit9'], () => this.selections.previous(), 'Focus previous selection', 'Selection manipulation')
   this.modes.modal.map('Command', ['Space'], () => this.selections.clear(), 'Clear selections', 'Selection manipulation')
   this.modes.modal.map('Command', ['Control', 'Space'], () => this.selections.focus(), 'Focus main selection', 'Selection manipulation')
-  this.modes.modal.map('Command', ['Alt', 'Space'], () => this.selections.remove(), 'Remove main selection', 'Selection manipulation')
+  this.modes.modal.map('Command', ['Alt', 'Space'], () => this.selections.remove(this.selections.mainSelection), 'Remove main selection', 'Selection manipulation')
   this.modes.modal.map('Command', ['Alt', 'KeyA'], () => this.selections.parent(), 'Select parent elements', 'Selection manipulation')
   this.modes.modal.map('Command', ['Alt', 'KeyI'], () => this.selections.children(), 'Select child elements', 'Selection manipulation')
   this.modes.modal.map('Command', ['Alt', 'Shift', 'KeyI'], () => this.selections.select('a'), 'Select links', 'Selection manipulation')
