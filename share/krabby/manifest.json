@@ -19,6 +19,7 @@
         "packages/scroll.js",
         "packages/player.js",
         "packages/krabby.js",
+        "packages/krabby/extension.js",
         "packages/krabby/init.js",
         "config.js"
       ],

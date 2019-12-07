@@ -1,1 +1,1 @@
-const krabby = Krabby({ dormant: false })
+const krabby = KrabbyExtension(Krabby({ dormant: false }))

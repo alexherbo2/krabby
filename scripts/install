@@ -81,6 +81,9 @@ main() {
   mkdir -p packages
   printf "${green}Copying${none}: %s → %s\n" "$ROOT/src/krabby.js" "$CONFIG/packages/krabby.js"
   cp "$ROOT/src/krabby.js" packages
+  printf "${green}Copying${none}: %s → %s\n" "$ROOT/src/krabby/extension.js" "$CONFIG/packages/krabby/extension.js"
+  mkdir -p packages/krabby
+  cp "$ROOT/src/krabby/extension.js" packages/krabby
   printf "${green}Copying${none}: %s → %s\n" "$ROOT/src/krabby/init.js" "$CONFIG/packages/krabby/init.js"
   mkdir -p packages/krabby
   cp "$ROOT/src/krabby/init.js" packages/krabby
