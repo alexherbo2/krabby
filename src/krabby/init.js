@@ -1,1 +1,1 @@
-const krabby = new Krabby({ dormant: false })
+const krabby = Krabby({ dormant: false })
