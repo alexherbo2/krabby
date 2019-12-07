@@ -25,7 +25,7 @@ Run the following in your terminal, then follow the onscreen instructions.
 ``` sh
 git clone https://github.com/alexherbo2/krabby
 cd krabby
-make install [static=no]
+make install [static=no] [extensions=yes]
 ```
 
 After installing, try to accomplish the following examples.
@@ -281,7 +281,7 @@ and [Brave].
 Run the following in your terminal, then follow the onscreen instructions.
 
 ``` sh
-make install [static=no]
+make install [static=no] [extensions=yes]
 ```
 
 ## Browser compatibility

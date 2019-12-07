@@ -6,6 +6,7 @@ XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-~/.config}
 CONFIG=$XDG_CONFIG_HOME/krabby
 OS=$(uname -s)
 STATIC_BUILD=${STATIC_BUILD:-no}
+BUILD_EXTENSIONS=${BUILD_EXTENSIONS:-yes}
 
 # Faces
 none='\033[0m'
@@ -41,21 +42,23 @@ main() {
   verify_dependency git Git https://git-scm.com
   verify_dependency zip Zip http://infozip.sourceforge.net/Zip.html
   verify_dependency jq jq https://stedolan.github.io/jq/
-  if test "$STATIC_BUILD" = yes; then
-    printf "${green}Dependencies${none}: docker (Static build)\n"
-    verify_dependency docker Docker https://docker.com
-  else
-    printf "${green}Dependencies${none}: crystal shards (Non-static build)\n"
-    verify_dependency crystal Crystal https://crystal-lang.org
-    verify_dependency shards Shards https://crystal-lang.org
+  if test "$BUILD_EXTENSIONS" = yes; then
+    if test "$STATIC_BUILD" = yes; then
+      printf "${green}Dependencies${none}: docker (Static build)\n"
+      verify_dependency docker Docker https://docker.com
+    else
+      printf "${green}Dependencies${none}: crystal shards (Non-static build)\n"
+      verify_dependency crystal Crystal https://crystal-lang.org
+      verify_dependency shards Shards https://crystal-lang.org
+    fi
+    if test "$OS" = Linux; then
+      printf "${green}Dependencies${none}: rofi (Optional, Linux-only)\n"
+      verify_dependency rofi Rofi https://github.com/davatorium/rofi yes
+    fi
+    printf "${green}Dependencies${none}: mpv pandoc (Optional)\n"
+    verify_dependency mpv mpv https://mpv.io yes
+    verify_dependency pandoc Pandoc https://pandoc.org yes
   fi
-  if test "$OS" = Linux; then
-    printf "${green}Dependencies${none}: rofi (Optional, Linux-only)\n"
-    verify_dependency rofi Rofi https://github.com/davatorium/rofi yes
-  fi
-  printf "${green}Dependencies${none}: mpv pandoc (Optional)\n"
-  verify_dependency mpv mpv https://mpv.io yes
-  verify_dependency pandoc Pandoc https://pandoc.org yes
 
   # Extension: Krabby
   name='Krabby'
@@ -95,69 +98,71 @@ main() {
   fi
   print_install_instructions .
 
-  # Extension: Commands
-  name='Commands'
-  description='Chrome API to perform browser actions'
-  url='https://github.com/alexherbo2/chrome-commands'
-  path=$CONFIG/extensions/commands
-  dependencies='jq zip'
-  print_horizontal_line
-  print_info "$name" "$description" "$url" "$path" "$dependencies"
-  clone_repo "$url" "$path"
-  cd "$path"
-  git pull
-  make
-  print_install_instructions
+  if test "$BUILD_EXTENSIONS" = yes; then
+    # Extension: Commands
+    name='Commands'
+    description='Chrome API to perform browser actions'
+    url='https://github.com/alexherbo2/chrome-commands'
+    path=$CONFIG/extensions/commands
+    dependencies='jq zip'
+    print_horizontal_line
+    print_info "$name" "$description" "$url" "$path" "$dependencies"
+    clone_repo "$url" "$path"
+    cd "$path"
+    git pull
+    make
+    print_install_instructions
 
-  # Extension: Shell
-  name='Shell'
-  description='Chrome API to execute external commands through native messaging'
-  url='https://github.com/alexherbo2/chrome-shell'
-  path=$CONFIG/extensions/shell
-  if test "$STATIC_BUILD" = yes; then
-    dependencies='docker'
-  else
-    dependencies='crystal shards'
+    # Extension: Shell
+    name='Shell'
+    description='Chrome API to execute external commands through native messaging'
+    url='https://github.com/alexherbo2/chrome-shell'
+    path=$CONFIG/extensions/shell
+    if test "$STATIC_BUILD" = yes; then
+      dependencies='docker'
+    else
+      dependencies='crystal shards'
+    fi
+    dependencies="$dependencies jq zip"
+    print_horizontal_line
+    print_info "$name" "$description" "$url" "$path" "$dependencies"
+    clone_repo "$url" "$path"
+    cd "$path"
+    git pull
+    cd "$path/host"
+    make install static="$STATIC_BUILD"
+    cd "$path/extension"
+    make
+    print_install_instructions
+
+    # Extension: Editor
+    name='Editor'
+    description='Open an external editor to edit text inputs'
+    url='https://github.com/alexherbo2/chrome-editor'
+    path=$CONFIG/extensions/editor
+    dependencies='jq zip'
+    print_horizontal_line
+    print_info "$name" "$description" "$url" "$path" "$dependencies"
+    clone_repo "$url" "$path"
+    cd "$path"
+    git pull
+    make
+    print_install_instructions
+
+    # Extension: dmenu
+    name='dmenu'
+    description='Tab search with dmenu'
+    url='https://github.com/alexherbo2/chrome-dmenu'
+    path=$CONFIG/extensions/dmenu
+    dependencies='rofi jq zip'
+    print_horizontal_line
+    print_info "$name" "$description" "$url" "$path" "$dependencies"
+    clone_repo "$url" "$path"
+    cd "$path"
+    git pull
+    make
+    print_install_instructions
   fi
-  dependencies="$dependencies jq zip"
-  print_horizontal_line
-  print_info "$name" "$description" "$url" "$path" "$dependencies"
-  clone_repo "$url" "$path"
-  cd "$path"
-  git pull
-  cd "$path/host"
-  make install static="$STATIC_BUILD"
-  cd "$path/extension"
-  make
-  print_install_instructions
-
-  # Extension: Editor
-  name='Editor'
-  description='Open an external editor to edit text inputs'
-  url='https://github.com/alexherbo2/chrome-editor'
-  path=$CONFIG/extensions/editor
-  dependencies='jq zip'
-  print_horizontal_line
-  print_info "$name" "$description" "$url" "$path" "$dependencies"
-  clone_repo "$url" "$path"
-  cd "$path"
-  git pull
-  make
-  print_install_instructions
-
-  # Extension: dmenu
-  name='dmenu'
-  description='Tab search with dmenu'
-  url='https://github.com/alexherbo2/chrome-dmenu'
-  path=$CONFIG/extensions/dmenu
-  dependencies='rofi jq zip'
-  print_horizontal_line
-  print_info "$name" "$description" "$url" "$path" "$dependencies"
-  clone_repo "$url" "$path"
-  cd "$path"
-  git pull
-  make
-  print_install_instructions
 
   # Post-installation
   print_horizontal_line
@@ -171,10 +176,10 @@ Installation finished 🦀
 
 • How to update Krabby:
 
-    ╭───────────────────────────╮
-    │ $ cd ~/.config/krabby     │
-    │ $ make update [static=no] │
-    ╰───────────────────────────╯
+    ╭────────────────────────────────────────────╮
+    │ $ cd ~/.config/krabby                      │
+    │ $ make update [static=no] [extensions=yes] │
+    ╰────────────────────────────────────────────╯
 EOF
 }
 
