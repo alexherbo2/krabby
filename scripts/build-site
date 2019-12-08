@@ -3,6 +3,6 @@
 mkdir -p website/packages
 cd website/packages
 ../../scripts/fetch
-cp ../../src/krabby.js .
-cp ../../src/krabby.css .
+cp ../../src/krabby/web/krabby.js .
+cp ../../src/krabby/web/krabby.css .
 curl -sSL -O https://github.com/alexherbo2/carousel.js/raw/master/scripts/carousel.js

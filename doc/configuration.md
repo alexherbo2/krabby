@@ -7,10 +7,10 @@
   - [`config.js`](/share/krabby/config.js): contains the user configuration.
   - [`fetch`](/share/krabby/fetch): shell script to fetch plugins.
   - [`Makefile`](/share/krabby/Makefile): contains commands to build and update Krabby.
-  - `packages`: contains files used by Krabby: [Modal], [Prompt], [Hint], [Mark], [Selection], [Mouse], [Clipboard], [Scroll], [Player], [icons][Krabby icon] and [`krabby.js`](/src/krabby.js).
+  - `packages`: contains files used by Krabby: [Modal], [Prompt], [Hint], [Mark], [Selection], [Mouse], [Clipboard], [Scroll], [Player], [icons][Krabby icon] and [`krabby`](/src/krabby).
   - `extensions`: contains extensions used by Krabby: [Commands], [Shell], [Editor] and [dmenu].  [Krabby] repository can be found here, to update the extension when you run `make update`.
 
-Krabby’s default configuration is located in [`~/.config/krabby/packages/krabby.js`](/src/krabby.js).
+Krabby’s default configuration is located in [`~/.config/krabby/packages/krabby`](/src/krabby).
 
 ## Mapping
 
