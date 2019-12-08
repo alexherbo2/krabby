@@ -4,10 +4,10 @@ extensions ?= yes
 all: chrome firefox
 
 chrome: fetch
-	scripts/build-target chrome
+	extensions/krabby/scripts/build-target chrome
 
 firefox: fetch
-	scripts/build-target firefox
+	extensions/krabby/scripts/build-target firefox
 
 fetch:
 	cd packages; ../fetch
