@@ -7,7 +7,7 @@
   - [`config.js`](/share/krabby/config.js): contains the user configuration.
   - [`fetch`](/share/krabby/fetch): shell script to fetch plugins.
   - [`Makefile`](/share/krabby/Makefile): contains commands to build and update Krabby.
-  - `packages`: contains files used by Krabby: [Modal], [Prompt], [Hint], [Mark], [Selection], [Mouse], [Clipboard], [Scroll], [Player], [icons][Krabby icon] and [`krabby`](/src/krabby).
+  - `packages`: contains files used by Krabby: [Modal], [Mouse Selection], [Prompt], [Hint], [Mark], [Selection], [Mouse], [Clipboard], [Scroll], [Player], [icons][Krabby icon] and [`krabby`](/src/krabby).
   - `extensions`: contains extensions used by Krabby: [Commands], [Shell], [Editor] and [dmenu].  [Krabby] repository can be found here, to update the extension when you run `make update`.
 
 Krabby’s default configuration is located in [`~/.config/krabby/packages/krabby`](/src/krabby).
@@ -95,6 +95,7 @@ modal.map('Read Berserk · Chapter', ['KeyM'], () => shell.send('mpv', ...Array.
 [Krabby icon]: https://iconfinder.com/icons/877852/kanto_krabby_pokemon_water_icon
 
 [Modal]: https://github.com/alexherbo2/modal.js
+[Mouse Selection]: https://simonwep.github.io/selection/
 [Prompt]: https://github.com/alexherbo2/prompt.js
 [Hint]: https://github.com/alexherbo2/hint.js
 [Mark]: https://github.com/alexherbo2/mark.js

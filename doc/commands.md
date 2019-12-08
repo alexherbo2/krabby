@@ -2,6 +2,10 @@
 
 Commands are bound to **physical keys** and **displayed** with the [US layout][QWERTY].
 
+## Mouse
+
+- Hold <kbd>Control</kbd> or <kbd>Command</kbd>, then click and drag <kbd>Left Mouse</kbd> to make a multi-selection.
+
 ## Help
 
 - <kbd>F1</kbd> → Show help (**Page** context)

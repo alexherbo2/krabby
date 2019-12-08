@@ -17,6 +17,7 @@ fetch() {
 }
 
 fetch https://github.com/alexherbo2/modal.js/raw/master/scripts/modal.js
+fetch https://cdn.jsdelivr.net/npm/@simonwep/selection-js/dist/selection.min.js mouse-selection.js
 fetch https://github.com/alexherbo2/prompt.js/raw/master/scripts/prompt.js
 fetch https://github.com/alexherbo2/hint.js/raw/master/scripts/hint.js
 fetch https://github.com/alexherbo2/mark.js/raw/master/scripts/mark.js

@@ -89,8 +89,8 @@ If you want to play around without installing, a live demo is available [here][L
 - Simple interaction with external programs
 - Usable with the mouse.  You can for example create a selection by grabbing a
 link with the mouse and <kbd>s</kbd> to create the selection.  Or create multiple
-selections by clicking on hints with <kbd>F</kbd>.  If you have [krabby-selection]
-installed, you can even make selections with the mouse selection area.
+selections by clicking on hints with <kbd>F</kbd>.  If you hold <kbd>Control</kbd>
+or <kbd>Command</kbd>, you can even make selections with the mouse selection area.
 - Limited scope.  Krabby is not [Vim], nor [Kakoune].  Krabby is trying to be a
 navigation tool and some concepts from code editors don’t translate well.  For
 example, there is no concept of mode in Krabby, but a system of contexts.
@@ -314,7 +314,6 @@ make install [static=no] [extensions=yes]
 [Krabby]: https://krabby.netlify.com
 [Live demo]: https://krabby.netlify.com#live-demo
 [Krabby icon]: https://iconfinder.com/icons/877852/kanto_krabby_pokemon_water_icon
-[krabby-selection]: https://github.com/alexherbo2/krabby-selection
 
 [A linguistic twist]: https://github.com/alexherbo2/krabby/blob/master/doc/differences-with-vim.md#a-linguistic-twist
 
