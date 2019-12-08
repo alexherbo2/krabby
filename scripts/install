@@ -89,7 +89,7 @@ main() {
   if test -e Makefile; then
     make
   fi
-  print_install_instructions .
+  print_install_instructions
 
   if test "$BUILD_EXTENSIONS" = yes; then
     # Extension: Commands

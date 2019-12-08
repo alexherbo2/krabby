@@ -4,9 +4,10 @@ extensions ?= yes
 all: chrome firefox
 
 chrome: fetch
+	scripts/build-target chrome
 
 firefox: fetch
-	scripts/build-firefox
+	scripts/build-target firefox
 
 fetch:
 	cd packages; ../fetch
