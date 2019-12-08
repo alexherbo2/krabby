@@ -286,17 +286,17 @@ make install [static=no] [extensions=yes]
 
 ## Browser compatibility
 
-| Web browser | Support |             Engine              |                                 Comments                                 |
-| ----------- |:-------:|:-------------------------------:| ------------------------------------------------------------------------ |
-| [Chrome]    |    ✓    | [![Blink][chrome.svg]][Blink]   |                                                                          |
-| [Chromium]  |    ✓    | [![Blink][chrome.svg]][Blink]   |                                                                          |
-| [Firefox]   |    ✓    | [![Gecko][firefox.svg]][Gecko]  | [Only developer or unbranded version][Firefox – Extension Signing – FAQ] |
-| [surf]      |    ✓    | [![WebKit][safari.svg]][WebKit] |                                                                          |
-| [Edge]      |    ?    | [![Blink][chrome.svg]][Blink]   |                                                                          |
-| [Opera]     |    ✓    | [![Blink][chrome.svg]][Blink]   |                                                                          |
-| [Safari]    |    ✗    | [![WebKit][safari.svg]][WebKit] |                                                                          |
-| [Vivaldi]   |    ✓    | [![Blink][chrome.svg]][Blink]   |                                                                          |
-| [Brave]     |    ✓    | [![Blink][chrome.svg]][Blink]   |                                                                          |
+| Web browser | Support |             Engine              |                                      Comments                                       |
+| ----------- |:-------:|:-------------------------------:| ----------------------------------------------------------------------------------- |
+| [Chrome]    |    ✓    | [![Blink][chrome.svg]][Blink]   |                                                                                     |
+| [Chromium]  |    ✓    | [![Blink][chrome.svg]][Blink]   |                                                                                     |
+| [Firefox]   |    ✓    | [![Gecko][firefox.svg]][Gecko]  | [Only developer or unbranded version][Firefox – Extension Signing – FAQ]            |
+| [surf]      |    ✓    | [![WebKit][safari.svg]][WebKit] | Limited support (does not have [WebExtension] features, such as [native messaging]) |
+| [Edge]      |    ?    | [![Blink][chrome.svg]][Blink]   |                                                                                     |
+| [Opera]     |    ✓    | [![Blink][chrome.svg]][Blink]   |                                                                                     |
+| [Safari]    |    ✗    | [![WebKit][safari.svg]][WebKit] |                                                                                     |
+| [Vivaldi]   |    ✓    | [![Blink][chrome.svg]][Blink]   |                                                                                     |
+| [Brave]     |    ✓    | [![Blink][chrome.svg]][Blink]   |                                                                                     |
 
 ## Credits
 
@@ -378,6 +378,7 @@ make install [static=no] [extensions=yes]
 [@occivink]: https://github.com/occivink
 [@AdamWagner]: https://github.com/AdamWagner
 
+[Native messaging]: https://developer.chrome.com/extensions/nativeMessaging
 [Regular Expressions]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions
 
 [Create a keyboard interface to the web]: https://alexherbo2.github.io/blog/chrome/create-a-keyboard-interface-to-the-web/
