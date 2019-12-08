@@ -7,7 +7,7 @@
 
 ###### [Installation](#installation) | [Configuration](doc/configuration.md) | [Documentation](doc) | [Browser compatibility](#browser-compatibility) | [Contributing](CONTRIBUTING)
 
-> Krabby is a [WebExtension] for keyboard-based navigation, inspired by [Kakoune].
+> Krabby is a web extension (for [Chrome], [Firefox] and [surf]) for keyboard-based navigation, inspired by [Kakoune].
 >
 > The main differences with existing extensions are:
 > multiple selections,
@@ -101,8 +101,8 @@ on the context, <kbd>y</kbd> will yank the page or a link URL.
 - Modular (think [Emacs]).  Krabby is divided into multiple small projects.  At
 its core Krabby just holds the configuration and grabs its functionalities from
 other projects.
-- [Chrome] and [Firefox] support.  It has also been tested on [Opera], [Vivaldi]
-and [Brave].
+- [Chrome], [Firefox] and [surf] support.  It has also been tested on [Opera],
+[Vivaldi] and [Brave].
 
 ## Demos
 
@@ -291,6 +291,7 @@ make install [static=no] [extensions=yes]
 | [Chrome]    |    ✓    | [![Blink][chrome.svg]][Blink]   |                                                                          |
 | [Chromium]  |    ✓    | [![Blink][chrome.svg]][Blink]   |                                                                          |
 | [Firefox]   |    ✓    | [![Gecko][firefox.svg]][Gecko]  | [Only developer or unbranded version][Firefox – Extension Signing – FAQ] |
+| [surf]      |    ✓    | [![WebKit][safari.svg]][WebKit] |                                                                          |
 | [Edge]      |    ?    | [![Blink][chrome.svg]][Blink]   |                                                                          |
 | [Opera]     |    ✓    | [![Blink][chrome.svg]][Blink]   |                                                                          |
 | [Safari]    |    ✗    | [![WebKit][safari.svg]][WebKit] |                                                                          |
@@ -331,6 +332,7 @@ make install [static=no] [extensions=yes]
 [Chrome]: https://google.com/chrome/
 [Chromium]: https://chromium.org
 [Firefox]: https://mozilla.org/firefox/
+[surf]: https://surf.suckless.org
 [Edge]: https://microsoft.com/en-us/windows/microsoft-edge
 [Opera]: https://opera.com
 [Safari]: https://apple.com/safari/

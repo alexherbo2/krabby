@@ -1,0 +1,9 @@
+#!/bin/sh
+
+mkdir -p ~/.surf/styles
+jq --raw-output '
+  @sh "
+    cat \(.js) > ~/.surf/script.js
+    cat \(.css) > ~/.surf/styles/default.css
+  "
+' manifest/surf.json | sh

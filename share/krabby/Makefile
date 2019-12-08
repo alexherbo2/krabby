@@ -9,6 +9,9 @@ chrome: fetch
 firefox: fetch
 	extensions/krabby/scripts/build-target firefox
 
+surf: fetch
+	extensions/krabby/scripts/build-surf
+
 fetch:
 	cd packages; ../fetch
 
