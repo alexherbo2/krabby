@@ -82,16 +82,9 @@ main() {
   fi
   cd "$CONFIG"
   mkdir -p packages
-  printf "${green}Copying${none}: %s → %s\n" "$ROOT/src/krabby.js" "$CONFIG/packages/krabby.js"
-  cp "$ROOT/src/krabby.js" packages
-  printf "${green}Copying${none}: %s → %s\n" "$ROOT/src/krabby/extension.js" "$CONFIG/packages/krabby/extension.js"
-  mkdir -p packages/krabby
-  cp "$ROOT/src/krabby/extension.js" packages/krabby
-  printf "${green}Copying${none}: %s → %s\n" "$ROOT/src/krabby/init.js" "$CONFIG/packages/krabby/init.js"
-  mkdir -p packages/krabby
-  cp "$ROOT/src/krabby/init.js" packages/krabby
-  printf "${green}Copying${none}: %s → %s\n" "$ROOT/src/krabby.css" "$CONFIG/packages/krabby.css"
-  cp "$ROOT/src/krabby.css" packages
+  printf "${green}Copying${none}: %s → %s\n" "$ROOT/src/." "$CONFIG/packages"
+  cp -R "$ROOT/src/." packages
+  (cd "$ROOT/src"; find)
   (cd packages; "$ROOT/scripts/fetch")
   if test -e Makefile; then
     make
