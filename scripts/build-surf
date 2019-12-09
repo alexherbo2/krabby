@@ -3,7 +3,9 @@
 mkdir -p ~/.surf/styles
 jq --raw-output '
   @sh "
-    cat \(.js) > ~/.surf/script.js
-    cat \(.css) > ~/.surf/styles/default.css
+    awk 1 \(.js) > ~/.surf/script.js
+    awk 1 \(.css) > ~/.surf/styles/default.css
   "
 ' manifest/surf.json | sh
+
+# Note: Minified files do not end with a newline, hence using awk to mitigate, instead of cat.
