@@ -15,8 +15,11 @@ css_target=$target/styles/default.css
 
 # JavaScript
 printf "${green}Installing${none}: %s → %s\n" "$js_target" "$js_config"
-ln -sf "$js_target" "$js_config"
+ln -sf "$js_target" "$js_config" > /dev/null 2>&1
 
 # CSS
 printf "${green}Installing${none}: %s → %s\n" "$css_target" "$css_config"
-ln -sf "$css_target" "$css_config"
+ln -sf "$css_target" "$css_config" > /dev/null 2>&1
+
+# Note: Run ln command silently.
+# Motivation: Suppress “ln: A and B are the same file” error message.
