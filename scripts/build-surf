@@ -1,10 +1,20 @@
 #!/bin/sh
 
-mkdir -p ~/.surf/styles
+# Faces
+none='\033[0m'
+green='\033[32m'
+
+target=$PWD/target/surf
+printf "${green}Building${none}: %s\n" "$target"
+mkdir -p "$target/styles"
+
+# Environment variables for jq
+js_target=$target/script.js \
+css_target=$target/styles/default.css \
 jq --raw-output '
   @sh "
-    awk 1 \(.js) > ~/.surf/script.js
-    awk 1 \(.css) > ~/.surf/styles/default.css
+    awk 1 \(.js) > \(env.js_target)
+    awk 1 \(.css) > \(env.css_target)
   "
 ' manifest/surf.json | sh
 
