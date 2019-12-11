@@ -1,7 +1,7 @@
 static ?= no
 extensions ?= yes
 
-all: chrome firefox
+all: chrome firefox surf
 
 chrome: fetch
 	extensions/krabby/scripts/build-target chrome
