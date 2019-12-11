@@ -23,3 +23,6 @@ ln -sf "$css_target" "$css_config" > /dev/null 2>&1
 
 # Note: Run ln command silently.
 # Motivation: Suppress “ln: A and B are the same file” error message.
+
+# Do not exit with the last command (ln) status.
+exit 0
