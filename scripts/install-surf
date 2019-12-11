@@ -1,0 +1,22 @@
+#!/bin/sh
+
+# Faces
+none='\033[0m'
+green='\033[32m'
+
+# Configuration
+js_config=~/.surf/script.js
+css_config=~/.surf/styles/default.css
+
+# Targets
+target=$PWD/target/surf
+js_target=$target/script.js
+css_target=$target/styles/default.css
+
+# JavaScript
+printf "${green}Installing${none}: %s → %s\n" "$js_target" "$js_config"
+ln -sf "$js_target" "$js_config"
+
+# CSS
+printf "${green}Installing${none}: %s → %s\n" "$css_target" "$css_config"
+ln -sf "$css_target" "$css_config"

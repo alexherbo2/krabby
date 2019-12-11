@@ -89,6 +89,12 @@ main() {
   if test -e Makefile; then
     make
   fi
+  if test "$INTERACTIVE" = true; then
+    on_key 'Install surf? (y/n)'
+    if test "$key" = 'y'; then
+      extensions/krabby/scripts/install-surf
+    fi
+  fi
   print_install_instructions
 
   if test "$BUILD_EXTENSIONS" = yes; then
