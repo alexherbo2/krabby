@@ -9,6 +9,8 @@
   - [`Makefile`](/share/krabby/Makefile): contains commands to build and update Krabby.
   - `packages`: contains files used by Krabby: [Modal], [Mouse Selection], [Prompt], [Hint], [Mark], [Selection], [Mouse], [Clipboard], [Scroll], [Player], [icons][Krabby icon] and [`krabby`](/src/krabby).
   - `extensions`: contains extensions used by Krabby: [Commands], [Shell], [Editor] and [dmenu].  [Krabby] repository can be found here, to update the extension when you run `make update`.
+- [`~/.local/bin`](/bin)
+  - [`plumb`](/bin/plumb)
 
 Krabby’s default configuration is located in [`~/.config/krabby/packages/krabby`](/src/krabby).
 
@@ -80,7 +82,7 @@ env.MPV_CONFIG = ['-no-config', '-no-terminal']
 ``` javascript
 const { env } = krabby
 
-env.HTML_FILTER = 'pandoc --from html --to asciidoc'
+env.HTML_FILTER = ['pandoc', '--from', 'html', '--to', 'asciidoc']
 ```
 
 ## Examples

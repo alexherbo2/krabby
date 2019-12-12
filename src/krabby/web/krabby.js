@@ -5,7 +5,21 @@ function Krabby({ dormant = true } = {}) {
   krabby.enabled = false
   krabby.mode = undefined
   krabby.modeName = ''
+
+  // Environment variables ─────────────────────────────────────────────────────
+
   krabby.env = {}
+  krabby.env.MPV_CONFIG = ['-no-terminal']
+  krabby.env.HTML_FILTER = ['pandoc', '--from', 'html', '--to', 'markdown']
+
+  switch (true) {
+    case (/^(Linux|FreeBSD|OpenBSD)/.test(navigator.platform)):
+      krabby.env.OPENER = 'xdg-open'
+      break
+    case (/^(Mac)/.test(navigator.platform)):
+      krabby.env.OPENER = 'open'
+      break
+  }
 
   // Status line ───────────────────────────────────────────────────────────────
 
@@ -221,6 +235,42 @@ function Krabby({ dormant = true } = {}) {
     selections.select(value)
   }
 
+  krabby.commands.plumb = (command, ...arguments) => {
+    const selection = [command, ...arguments]
+    Clipboard.copy(JSON.stringify(selection))
+    krabby.commands.notify(`Plumbing ${command}`)
+  }
+
+  krabby.commands.plumbInput = (input, command, ...arguments) => {
+    const selection = ['input', input, command, ...arguments]
+    Clipboard.copy(JSON.stringify(selection))
+    krabby.commands.notify(`Plumbing input ${command}`)
+  }
+
+  krabby.commands.open = (selections, callback = (link) => link.href) => {
+    const urls = krabby.commands.getElements(selections).map(callback)
+    krabby.commands.plumb(krabby.env.OPENER, ...urls)
+  }
+
+  krabby.commands.yankFilteredHTML = (selections, filter) => {
+    const input = krabby.commands.getElements(selections).map((element) => element.outerHTML).join('\n')
+    krabby.commands.plumbInput(input, ...filter)
+  }
+
+  krabby.commands.mpv = ({ selections, callback = (link) => link.href, reverse = false } = {}) => {
+    const playlist = krabby.commands.getElements(selections).map(callback)
+    if (reverse) {
+      playlist.reverse()
+    }
+    krabby.commands.plumb('mpv', ...krabby.env.MPV_CONFIG, ...playlist)
+  }
+
+  krabby.commands.mpvResume = () => {
+    const media = krabby.commands.player().media
+    media.pause()
+    krabby.commands.plumb('mpv', ...krabby.env.MPV_CONFIG, location.href, '-start', media.currentTime.toString())
+  }
+
   // Mappings ──────────────────────────────────────────────────────────────────
 
   // Help
@@ -268,8 +318,10 @@ function Krabby({ dormant = true } = {}) {
   krabby.modes.modal.map('Link', ['Control', 'Enter'], () => krabby.commands.click(krabby.selections, { ctrlKey: true }), 'Open link in new tab', 'Open links')
   krabby.modes.modal.map('Link', ['Shift', 'Enter'], () => krabby.commands.click(krabby.selections, { shiftKey: true }), 'Open link in new window', 'Open links')
   krabby.modes.modal.map('Link', ['Alt', 'Enter'], () => krabby.commands.click(krabby.selections, { altKey: true }), 'Download link', 'Open links')
+  krabby.modes.modal.map('Link', ['Alt', 'Shift', 'Enter'], () => krabby.commands.open(krabby.selections), 'Open link in the associated application', 'Open links')
   krabby.modes.modal.map('Image', ['Enter'], () => location.assign(krabby.modes.modal.activeElement.src), 'Open image', 'Open links')
   krabby.modes.modal.map('Image', ['Control', 'Enter'], () => krabby.commands.openInNewTab(krabby.selections, (selection) => selection.src), 'Open image in new tab', 'Open links')
+  krabby.modes.modal.map('Image', ['Alt', 'Shift', 'Enter'], () => krabby.commands.open(krabby.selections, (selection) => selection.src), 'Open image in the associated application', 'Open links')
 
   // Selection manipulation
   krabby.modes.modal.map('Command', ['KeyS'], () => krabby.selections.add(document.activeElement), 'Select active element', 'Selection manipulation')
@@ -309,6 +361,7 @@ function Krabby({ dormant = true } = {}) {
   krabby.modes.modal.map('Document', ['Shift', 'KeyY'], () => krabby.commands.copyToClipboard(`[${document.title}](${location.href})`, 'Page address and title copied'), 'Copy page address and title', 'Clipboard')
   krabby.modes.modal.map('Command', ['KeyY'], () => krabby.commands.yank(krabby.selections, (selection) => selection.outerHTML, 'HTML selection copied'), 'Copy HTML selection', 'Clipboard')
   krabby.modes.modal.map('Command', ['Alt', 'KeyY'], () => krabby.commands.yank(krabby.selections, (selection) => selection.textContent, 'Selection copied as plain text'), 'Copy as plain text', 'Clipboard')
+  krabby.modes.modal.map('Command', ['Shift', 'KeyY'], () => krabby.commands.yankFilteredHTML(krabby.selections, krabby.env.HTML_FILTER), 'Copy selection, using an HTML filter', 'Clipboard')
   krabby.modes.modal.map('Link', ['KeyY'], () => krabby.commands.yank(krabby.selections, (selection) => selection.href, 'Link address copied'), 'Copy link address', 'Clipboard')
   krabby.modes.modal.map('Link', ['Alt', 'KeyY'], () => krabby.commands.yank(krabby.selections, (selection) => selection.textContent, 'Link text copied'), 'Copy link text', 'Clipboard')
   krabby.modes.modal.map('Link', ['Shift', 'KeyY'], () => krabby.commands.yank(krabby.selections, (selection) => `[${selection.textContent}](${selection.href})`, 'Link address and text copied'), 'Copy link address and text', 'Clipboard')
@@ -327,6 +380,14 @@ function Krabby({ dormant = true } = {}) {
   krabby.modes.modal.map('Video', ['KeyJ'], () => krabby.commands.player().decreaseVolume(0.1), 'Decrease volume', 'Player')
   krabby.modes.modal.map('Video', ['KeyF'], () => krabby.commands.player().fullscreen(), 'Toggle full-screen mode', 'Player')
   krabby.modes.modal.map('Video', ['KeyP'], () => krabby.commands.player().pictureInPicture(), 'Toggle picture-in-picture mode', 'Player')
+
+  // mpv
+  krabby.modes.modal.map('Document', ['KeyM'], () => krabby.commands.plumb('mpv', ...krabby.env.MPV_CONFIG, location.href), 'Play with mpv', 'mpv')
+  krabby.modes.modal.map('Video', ['Enter'], () => krabby.commands.mpvResume(), 'Play with mpv', 'mpv')
+  krabby.modes.modal.map('Link', ['KeyM'], () => krabby.commands.mpv({ selections: krabby.selections }), 'Play with mpv', 'mpv')
+  krabby.modes.modal.map('Link', ['Alt', 'KeyM'], () => krabby.commands.mpv({ selections: krabby.selections, reverse: true }), 'Play with mpv in reverse order', 'mpv')
+  krabby.modes.modal.map('Image', ['KeyM'], () => krabby.commands.mpv({ selections: krabby.selections, callback: (image) => image.src }), 'Play with mpv', 'mpv')
+  krabby.modes.modal.map('Image', ['Alt', 'KeyM'], () => krabby.commands.mpv({ selections: krabby.selections, callback: (image) => image.src, reverse: true }), 'Play with mpv in reverse order', 'mpv')
 
   // Initialization ────────────────────────────────────────────────────────────
 

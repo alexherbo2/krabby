@@ -2,6 +2,7 @@
 
 # Environment variables
 ROOT=$PWD
+BIN=~/.local/bin
 XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-~/.config}
 CONFIG=$XDG_CONFIG_HOME/krabby
 OS=$(uname -s)
@@ -55,7 +56,8 @@ main() {
       printf "${green}Dependencies${none}: rofi (Optional, Linux-only)\n"
       verify_dependency rofi Rofi https://github.com/davatorium/rofi yes
     fi
-    printf "${green}Dependencies${none}: mpv pandoc (Optional)\n"
+    printf "${green}Dependencies${none}: xclip mpv pandoc (Optional)\n"
+    verify_dependency xclip xclip https://github.com/astrand/xclip yes
     verify_dependency mpv mpv https://mpv.io yes
     verify_dependency pandoc Pandoc https://pandoc.org yes
   fi
@@ -85,6 +87,10 @@ main() {
   printf "${green}Copying${none}: %s → %s\n" "$ROOT/src/." "$CONFIG/packages"
   cp -R "$ROOT/src/." packages
   (cd "$ROOT/src"; find)
+  mkdir -p "$BIN"
+  printf "${green}Copying${none}: %s → %s\n" "$ROOT/bin/." "$BIN"
+  cp -R "$ROOT/bin/." "$BIN"
+  (cd "$ROOT/bin"; find)
   (cd packages; "$ROOT/scripts/fetch")
   if test -e Makefile; then
     make

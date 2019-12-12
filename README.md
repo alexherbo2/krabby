@@ -264,8 +264,9 @@ other projects.
 - [Crystal]
 - [Docker] (for static builds)
 - [jq]
+- [xclip] (Optional, for [plumbing](bin/plumb))
 - [mpv] (Optional, for playing videos)
-- [Rofi] (Optional, for tab search, [dmenu] replacement)
+- [Rofi] (Optional, for tab search and [plumbing](bin/plumb), [dmenu] replacement)
 - [Pandoc] (Optional, for HTML filtering)
 - [Zip] (Zip is used to package the extension)
 
@@ -353,6 +354,7 @@ make install [static=no] [extensions=yes]
 [Crystal]: https://crystal-lang.org
 [Docker]: https://docker.com
 [jq]: https://stedolan.github.io/jq/
+[xclip]: https://github.com/astrand/xclip
 [mpv]: https://mpv.io
 [dmenu]: https://tools.suckless.org/dmenu/
 [Rofi]: https://github.com/davatorium/rofi

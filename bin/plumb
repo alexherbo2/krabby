@@ -1,0 +1,125 @@
+#!/bin/sh
+
+# Description
+# ‾‾‾‾‾‾‾‾‾‾‾
+# Plumber from Plan 9.
+# Use xclip to access the clipboard and jq for JSON.
+# Rofi (dmenu) is used for validating execution.
+#
+# Dependencies
+# ‾‾‾‾‾‾‾‾‾‾‾‾
+# – xclip (https://github.com/astrand/xclip)
+# – jq (https://stedolan.github.io/jq/)
+# – Rofi (https://github.com/davatorium/rofi)
+#
+# Usage
+# ‾‾‾‾‾
+# $ plumb [commands]
+#
+# Allowed commands are passed through the command-line, and a validation step
+# (with dmenu) is required before proceeding.
+#
+# Primary selection (JSON) format:
+# ❯ [<command>, <arguments>]
+# ❯ ["input", <input>, <command>, <arguments>]
+#
+# The primary selection is used as input for the command (in a JSON array of strings)
+# and will be escaped suitable (list of single-quoted strings, separated by spaces)
+# for use in a command-line for a POSIX shell.  The output of the command will be
+# copied to the clipboard.
+#
+# Examples
+# ‾‾‾‾‾‾‾‾
+# $ plumb mpv pandoc xdg-open
+#
+# Primary selection contents:
+# ❯ ["mpv", "https://youtu.be/dP1xVpMPn8M"]
+# ❯ ["input", "<p>Tchou</p>", "pandoc", "--from", "html", "--to", "markdown"]
+#
+# A Tour of the Acme Editor: https://research.swtch.com/acme
+
+# List of allowed commands
+PLUMBERS=$@
+
+# Get message from the primary selection
+script=$(
+  xclip -out |
+  jq --raw-output '
+    @sh "
+      set -- \(.)
+    "
+  '
+)
+
+# Abort if invalid JSON
+if test $? != 0; then
+  notify-send --urgency critical 'Plumb' 'Invalid JSON'
+  exit 1
+fi
+
+# Get the argument list – now it is safe to proceed.
+eval "$script"
+
+# Requires validation before proceeding commands.
+validate_command() {
+  # Display one item per argument.
+  # Separator for dmenu: '\0'
+  # Newline display: '\t'
+  # Note: '␤' could be nice, but `tr` only supports ASCII characters.
+  printf '%s\0' "$@" |
+  tr '\n\0' '\t\n' |
+  rofi -dmenu -p 'Plumb? (Enter/Escape)' > /dev/null 2>&1
+}
+
+plumb() {
+  command=$1
+  plumbed=no
+  # Iterate allowed commands
+  for plumber in $PLUMBERS; do
+    if test "$plumber" = "$command"; then
+      # Validate command:
+      if ! validate_command "$@"; then
+        exit 1
+      fi
+      # Execute the command and copy its output to the clipboard
+      "$@" | xclip -filter -selection clipboard | xclip
+      notify-send 'Plumb' "Command finished: $command"
+      plumbed=yes
+      break
+    fi
+  done
+  # Reject other commands
+  if test "$plumbed" = no; then
+    notify-send --urgency critical 'Plumb' "Command not allowed: $command"
+    exit 1
+  fi
+}
+
+# Wrapper function to open multiple URLs.
+xdg_open() {
+  for url do
+    xdg-open "$url" < /dev/null > /dev/null 2>&1 &
+  done
+}
+
+# Input handler
+if test "$1" = 'input'; then
+  exec <<EOF
+$2
+EOF
+  shift 2
+fi
+
+# Use `xdg_open` wrapper function
+if test "$1" = xdg-open; then
+  for plumber in $PLUMBERS; do
+    if test "$plumber" = xdg-open; then
+      PLUMBERS=xdg_open
+      shift
+      set -- xdg_open "$@"
+      break
+    fi
+  done
+fi
+
+plumb "$@"

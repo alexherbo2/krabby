@@ -20,8 +20,6 @@ function KrabbyExtension(krabby) {
   }
 
   krabby.env.EDITOR = undefined
-  krabby.env.MPV_CONFIG = ['-no-terminal']
-  krabby.env.HTML_FILTER = 'pandoc --from html --to markdown'
 
   // Extensions ────────────────────────────────────────────────────────────────
 
@@ -190,22 +188,12 @@ function KrabbyExtension(krabby) {
   krabby.modes.modal.map('Link', ['Control', 'Enter'], () => krabby.commands.openInNewTab(krabby.selections), 'Open link in new tab', 'Open links')
   krabby.modes.modal.map('Link', ['Shift', 'Enter'], () => krabby.commands.openInNewWindow(krabby.selections), 'Open link in new window', 'Open links')
   krabby.modes.modal.map('Link', ['Alt', 'Enter'], () => krabby.commands.download(krabby.selections), 'Download link', 'Open links')
-  krabby.modes.modal.map('Link', ['Alt', 'Shift', 'Enter'], () => krabby.commands.open(krabby.selections), 'Open link in the associated application', 'Open links')
   krabby.modes.modal.map('Image', ['Control', 'Enter'], () => krabby.commands.openInNewTab(krabby.selections, (selection) => selection.src), 'Open image in new tab', 'Open links')
   krabby.modes.modal.map('Image', ['Shift', 'Enter'], () => krabby.commands.openInNewWindow(krabby.selections, (selection) => selection.src), 'Open image in new window', 'Open links')
   krabby.modes.modal.map('Image', ['Alt', 'Enter'], () => krabby.commands.download(krabby.selections, (selection) => selection.src), 'Download image', 'Open links')
-  krabby.modes.modal.map('Image', ['Alt', 'Shift', 'Enter'], () => krabby.commands.open(krabby.selections, (selection) => selection.src), 'Open image in the associated application', 'Open links')
-
-  // Clipboard
-  krabby.modes.modal.map('Command', ['Shift', 'KeyY'], () => krabby.commands.yankFilteredHTML(krabby.selections, krabby.env.HTML_FILTER), 'Copy selection, using an HTML filter', 'Clipboard')
 
   // mpv
   krabby.modes.modal.map('Document', ['KeyM'], () => krabby.extensions.shell.send('mpv', ...krabby.env.MPV_CONFIG, location.href), 'Play with mpv', 'mpv')
-  krabby.modes.modal.map('Video', ['Enter'], () => krabby.commands.mpvResume(), 'Play with mpv', 'mpv')
-  krabby.modes.modal.map('Link', ['KeyM'], () => krabby.commands.mpv({ selections: krabby.selections }), 'Play with mpv', 'mpv')
-  krabby.modes.modal.map('Link', ['Alt', 'KeyM'], () => krabby.commands.mpv({ selections: krabby.selections, reverse: true }), 'Play with mpv in reverse order', 'mpv')
-  krabby.modes.modal.map('Image', ['KeyM'], () => krabby.commands.mpv({ selections: krabby.selections, callback: (image) => image.src }), 'Play with mpv', 'mpv')
-  krabby.modes.modal.map('Image', ['Alt', 'KeyM'], () => krabby.commands.mpv({ selections: krabby.selections, callback: (image) => image.src, reverse: true }), 'Play with mpv in reverse order', 'mpv')
 
   return krabby
 }
