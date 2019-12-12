@@ -63,6 +63,16 @@ const { env } = krabby
 env.EDITOR = 'kitty --class kitty-float --override background_opacity=0.75 kak "$1" -e "select $2.$3,$4.$5"'
 ```
 
+## mpv
+
+`~/.config/krabby/config.js`
+
+``` javascript
+const { env } = krabby
+
+env.MPV_CONFIG = ['-no-config', '-no-terminal']
+```
+
 ## HTML filter
 
 `~/.config/krabby/config.js`

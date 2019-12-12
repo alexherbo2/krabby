@@ -20,6 +20,7 @@ function KrabbyExtension(krabby) {
   }
 
   krabby.env.EDITOR = undefined
+  krabby.env.MPV_CONFIG = ['-no-terminal']
   krabby.env.HTML_FILTER = 'pandoc --from html --to markdown'
 
   // Extensions ────────────────────────────────────────────────────────────────
@@ -120,13 +121,13 @@ function KrabbyExtension(krabby) {
     if (reverse) {
       playlist.reverse()
     }
-    krabby.extensions.shell.send('mpv', ...playlist)
+    krabby.extensions.shell.send('mpv', ...krabby.env.MPV_CONFIG, ...playlist)
   }
 
   krabby.commands.mpvResume = () => {
     const media = krabby.commands.player().media
     media.pause()
-    krabby.extensions.shell.send('mpv', location.href, '-start', media.currentTime.toString())
+    krabby.extensions.shell.send('mpv', ...krabby.env.MPV_CONFIG, location.href, '-start', media.currentTime.toString())
   }
 
   // Mappings ──────────────────────────────────────────────────────────────────
@@ -199,7 +200,7 @@ function KrabbyExtension(krabby) {
   krabby.modes.modal.map('Command', ['Shift', 'KeyY'], () => krabby.commands.yankFilteredHTML(krabby.selections, krabby.env.HTML_FILTER), 'Copy selection, using an HTML filter', 'Clipboard')
 
   // mpv
-  krabby.modes.modal.map('Document', ['KeyM'], () => krabby.extensions.shell.send('mpv', location.href), 'Play with mpv', 'mpv')
+  krabby.modes.modal.map('Document', ['KeyM'], () => krabby.extensions.shell.send('mpv', ...krabby.env.MPV_CONFIG, location.href), 'Play with mpv', 'mpv')
   krabby.modes.modal.map('Video', ['Enter'], () => krabby.commands.mpvResume(), 'Play with mpv', 'mpv')
   krabby.modes.modal.map('Link', ['KeyM'], () => krabby.commands.mpv({ selections: krabby.selections }), 'Play with mpv', 'mpv')
   krabby.modes.modal.map('Link', ['Alt', 'KeyM'], () => krabby.commands.mpv({ selections: krabby.selections, reverse: true }), 'Play with mpv in reverse order', 'mpv')
