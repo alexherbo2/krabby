@@ -39,6 +39,7 @@ main() {
 
   # Dependencies
   print_horizontal_line
+  # Build dependencies
   printf "${green}Dependencies${none}: git zip jq\n"
   verify_dependency git Git https://git-scm.com
   verify_dependency zip Zip http://infozip.sourceforge.net/Zip.html
@@ -52,6 +53,7 @@ main() {
       verify_dependency crystal Crystal https://crystal-lang.org
       verify_dependency shards Shards https://crystal-lang.org
     fi
+    # Runtime dependencies
     if test "$OS" = Linux; then
       printf "${green}Dependencies${none}: rofi (Optional, Linux-only)\n"
       verify_dependency rofi Rofi https://github.com/davatorium/rofi yes
@@ -70,6 +72,7 @@ main() {
   dependencies='jq zip'
   print_horizontal_line
   print_info "$name" "$description" "$url" "$path" "$dependencies"
+  # Initialize ~/.config/krabby if it does not exist.
   if test ! -e "$CONFIG"; then
     printf "${green}Initializing${none}: %s\n" "$CONFIG"
     cp -R share/krabby "$CONFIG"
@@ -77,30 +80,38 @@ main() {
     git init "$CONFIG"
   fi
   # Self-updates
+  # Create ~/.config/krabby/extensions/krabby if it does not exist.
   path=$CONFIG/extensions/krabby
   if test ! -e "$path"; then
     printf "${green}Cloning Krabby for self-updates${none}: %s\n" "$path"
     git clone . "$path"
   fi
+  # Navigate to ~/.config/krabby
   cd "$CONFIG"
+  # Copy krabby/src to ~/.config/krabby/packages
   mkdir -p packages
   printf "${green}Copying${none}: %s → %s\n" "$ROOT/src/." "$CONFIG/packages"
   cp -R "$ROOT/src/." packages
   (cd "$ROOT/src"; find)
+  # Copy krabby/bin to ~/.local/bin
   mkdir -p "$BIN"
   printf "${green}Copying${none}: %s → %s\n" "$ROOT/bin/." "$BIN"
   cp -R "$ROOT/bin/." "$BIN"
   (cd "$ROOT/bin"; find)
+  # Fetch packages to ~/.config/krabby/packages
   (cd packages; "$ROOT/scripts/fetch")
+  # Run user’s Makefile (~/.config/krabby)
   if test -e Makefile; then
     make
   fi
+  # Install ~/.config/krabby/target/surf to ~/.surf
   if test "$INTERACTIVE" = true; then
     on_key 'Install surf? (y/n)'
     if test "$key" = 'y'; then
       extensions/krabby/scripts/install-surf
     fi
   fi
+  # Print install instructions for Chrome and Firefox
   print_install_instructions
 
   if test "$BUILD_EXTENSIONS" = yes; then
