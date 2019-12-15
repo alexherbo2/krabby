@@ -259,6 +259,8 @@ other projects.
 
 </details>
 
+See [krabby-resources] for all available demos.
+
 ## Dependencies
 
 - [Crystal]
@@ -316,6 +318,7 @@ make install [static=no] [extensions=yes]
 [Krabby]: https://krabby.netlify.com
 [Live demo]: https://krabby.netlify.com#live-demo
 [Krabby icon]: https://iconfinder.com/icons/877852/kanto_krabby_pokemon_water_icon
+[krabby-resources]: https://github.com/alexherbo2/krabby-resources
 
 [A linguistic twist]: https://github.com/alexherbo2/krabby/blob/master/doc/differences-with-vim.md#a-linguistic-twist
 
