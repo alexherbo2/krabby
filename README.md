@@ -2,10 +2,11 @@
 
 <img src="https://www.iconfinder.com/icons/877852/download/svg/512" height="168" align="right">
 
+[![Platform](https://img.shields.io/badge/Platform-Linux%20|%20FreeBSD%20|%20OpenBSD%20|%20macOS-lightgray)](#supported-platforms)
 [![IRC](https://img.shields.io/badge/IRC-%23krabby-blue)](https://webchat.freenode.net/#krabby)
 [![Plugins](https://img.shields.io/badge/Plugins-%23krabby%20%23plugin-green)](https://github.com/search?q=topic:krabby+topic:plugin)
 
-###### [Installation](#installation) | [Configuration](doc/configuration.md) | [Documentation](doc) | [Browser compatibility](#browser-compatibility) | [Contributing](CONTRIBUTING)
+###### [Installation](#installation) | [Configuration](doc/configuration.md) | [Documentation](doc) | [Supported platforms](#supported-platforms) | [Browser compatibility](#browser-compatibility) | [Contributing](CONTRIBUTING)
 
 > Krabby is a web extension (for [Chrome], [Firefox] and [surf]) for keyboard-based navigation, inspired by [Kakoune].
 >
@@ -287,6 +288,13 @@ Run the following in your terminal, then follow the onscreen instructions.
 make install [static=no] [extensions=yes]
 ```
 
+## Supported platforms
+
+- [Linux]
+- [FreeBSD]
+- [OpenBSD]
+- [macOS]
+
 ## Browser compatibility
 
 | Web browser | Support |             Engine              |                                      Comments                                       |
@@ -332,6 +340,11 @@ make install [static=no] [extensions=yes]
 [Firefox]: https://mozilla.org/firefox/
 [Firefox Add-ons]: https://addons.mozilla.org
 [Firefox – Extension Signing – FAQ]: https://wiki.mozilla.org/Add-ons/Extension_Signing#FAQ
+
+[Linux]: https://kernel.org
+[FreeBSD]: https://freebsd.org
+[OpenBSD]: https://openbsd.org
+[macOS]: https://apple.com/macos/
 
 [Chrome]: https://google.com/chrome/
 [Chromium]: https://chromium.org
