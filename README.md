@@ -297,7 +297,7 @@ make install [static=no] [extensions=yes]
 
 ## Browser compatibility
 
-| Web browser | Support |             Engine              |                                      Comments                                       |
+| Web browser | Support |             Engine              |                                        Notes                                        |
 | ----------- |:-------:|:-------------------------------:| ----------------------------------------------------------------------------------- |
 | [Chrome]    |    ✓    | [![Blink][chrome.svg]][Blink]   |                                                                                     |
 | [Chromium]  |    ✓    | [![Blink][chrome.svg]][Blink]   |                                                                                     |
