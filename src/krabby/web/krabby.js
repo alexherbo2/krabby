@@ -389,6 +389,9 @@ function Krabby({ dormant = true } = {}) {
   krabby.modes.modal.map('Image', ['KeyM'], () => krabby.commands.mpv({ selections: krabby.selections, callback: (image) => image.src }), 'Play with mpv', 'mpv')
   krabby.modes.modal.map('Image', ['Alt', 'KeyM'], () => krabby.commands.mpv({ selections: krabby.selections, callback: (image) => image.src, reverse: true }), 'Play with mpv in reverse order', 'mpv')
 
+  // Text
+  krabby.modes.modal.map('Text', ['Control', 'Enter'], ({ target: { form } }) => form.submit(), 'Submit form', 'Text')
+
   // Initialization ────────────────────────────────────────────────────────────
 
   if (dormant) {

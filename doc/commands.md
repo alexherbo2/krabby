@@ -202,6 +202,10 @@ Commands are bound to **physical keys** and **displayed** with the [US layout][Q
 - <kbd>m</kbd> → Play with [mpv] (**Image** context)
 - <kbd>Alt</kbd> + <kbd>m</kbd> → Play with [mpv] in reverse order (**Image** context)
 
+## Text
+
+- <kbd>Control</kbd> + <kbd>Enter</kbd> → Submit form (**Text** context)
+
 [QWERTY]: https://en.wikipedia.org/wiki/QWERTY
 
 [mpv]: https://mpv.io
