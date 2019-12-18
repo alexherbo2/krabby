@@ -3,6 +3,7 @@
 <img src="https://www.iconfinder.com/icons/877852/download/svg/512" height="168" align="right">
 
 [![Platform](https://img.shields.io/badge/Platform-Linux%20|%20FreeBSD%20|%20OpenBSD%20|%20macOS-lightgray)](#supported-platforms)
+[![Browser](https://img.shields.io/badge/Browser-Chrome%20|%20Firefox%20|%20surf-lightgray)](#browser-compatibility)
 [![IRC](https://img.shields.io/badge/IRC-%23krabby-blue)](https://webchat.freenode.net/#krabby)
 [![Plugins](https://img.shields.io/badge/Plugins-%23krabby%20%23plugin-green)](https://github.com/search?q=topic:krabby+topic:plugin)
 
