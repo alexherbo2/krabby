@@ -11,7 +11,7 @@
 
 > Krabby is a web extension (for [Chrome], [Firefox] and [surf]) for keyboard-based navigation, inspired by [Kakoune].
 >
-> The main differences with existing extensions are:
+> The main differences with [existing extensions](doc/alternatives.md) are:
 > multiple selections,
 > keyboard layout agnostic,
 > SOV ([subject–object–verb]) constructs and
