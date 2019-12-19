@@ -113,6 +113,7 @@ other projects.
 <summary>Download 3-gatsu no Lion episodes from HorribleSubs</summary>
 
 [![Download 3-gatsu no Lion episodes from HorribleSubs](https://img.youtube.com/vi_webp/aXaFt75lIqo/maxresdefault.webp)](https://youtu.be/aXaFt75lIqo "YouTube – Download 3-gatsu no Lion episodes from HorribleSubs")
+[![YouTube Play Button](https://www.iconfinder.com/icons/317714/download/png/16)](https://youtu.be/aXaFt75lIqo) · [Download 3-gatsu no Lion episodes from HorribleSubs](https://youtu.be/aXaFt75lIqo)
 
 **Commands**
 
@@ -137,6 +138,7 @@ other projects.
 <summary>Extract from Wikipedia the list of cities and towns in Russia</summary>
 
 [![Extract from Wikipedia the list of cities and towns in Russia](https://img.youtube.com/vi_webp/PJXCnRBkHDY/maxresdefault.webp)](https://youtu.be/PJXCnRBkHDY "YouTube – Extract from Wikipedia the list of cities and towns in Russia")
+[![YouTube Play Button](https://www.iconfinder.com/icons/317714/download/png/16)](https://youtu.be/PJXCnRBkHDY) · [Extract from Wikipedia the list of cities and towns in Russia](https://youtu.be/PJXCnRBkHDY)
 
 **Commands**
 
@@ -156,6 +158,7 @@ other projects.
 <summary>Quickly move around a document with no table of contents</summary>
 
 [![Quickly move around a document with no table of contents](https://img.youtube.com/vi_webp/gp4_6VGXkOk/maxresdefault.webp)](https://youtu.be/gp4_6VGXkOk "YouTube – Quickly move around a document with no table of contents")
+[![YouTube Play Button](https://www.iconfinder.com/icons/317714/download/png/16)](https://youtu.be/gp4_6VGXkOk) · [Quickly move around a document with no table of contents](https://youtu.be/gp4_6VGXkOk)
 
 **Commands**
 
@@ -171,6 +174,7 @@ other projects.
 <summary>Tab search with dmenu</summary>
 
 [![Tab search with dmenu](https://img.youtube.com/vi_webp/tgrmss3u2aE/maxresdefault.webp)](https://youtu.be/tgrmss3u2aE "YouTube – Tab search with dmenu")
+[![YouTube Play Button](https://www.iconfinder.com/icons/317714/download/png/16)](https://youtu.be/tgrmss3u2aE) · [Tab search with dmenu](https://youtu.be/tgrmss3u2aE)
 
 **Commands**
 
@@ -183,6 +187,7 @@ other projects.
 <summary>Playing videos in picture-in-picture mode</summary>
 
 [![Playing videos in picture-in-picture mode](https://img.youtube.com/vi_webp/zgSx1AE6pig/maxresdefault.webp)](https://youtu.be/zgSx1AE6pig "YouTube – Playing videos in picture-in-picture mode")
+[![YouTube Play Button](https://www.iconfinder.com/icons/317714/download/png/16)](https://youtu.be/zgSx1AE6pig) · [Playing videos in picture-in-picture mode](https://youtu.be/zgSx1AE6pig)
 
 **Commands**
 
@@ -195,6 +200,7 @@ other projects.
 <summary>Opening links in a paragraph</summary>
 
 [![Opening links in a paragraph](https://img.youtube.com/vi_webp/v2Jvk1rhIlc/maxresdefault.webp)](https://youtu.be/v2Jvk1rhIlc "YouTube – Opening links in a paragraph")
+[![YouTube Play Button](https://www.iconfinder.com/icons/317714/download/png/16)](https://youtu.be/v2Jvk1rhIlc) · [Opening links in a paragraph](https://youtu.be/v2Jvk1rhIlc)
 
 **Commands**
 
@@ -212,6 +218,7 @@ other projects.
 <summary>Play videos with mpv</summary>
 
 [![Play videos with mpv](https://img.youtube.com/vi_webp/gYTi-eXuWdI/maxresdefault.webp)](https://youtu.be/gYTi-eXuWdI "YouTube – Play videos with mpv")
+[![YouTube Play Button](https://www.iconfinder.com/icons/317714/download/png/16)](https://youtu.be/gYTi-eXuWdI) · [Play videos with mpv](https://youtu.be/gYTi-eXuWdI)
 
 **Commands**
 
@@ -229,6 +236,7 @@ other projects.
 <summary>Copy selection with Pandoc</summary>
 
 [![Copy selection with Pandoc](https://img.youtube.com/vi_webp/gmx3eEm6L3M/maxresdefault.webp)](https://youtu.be/gmx3eEm6L3M "YouTube – Copy selection with Pandoc")
+[![YouTube Play Button](https://www.iconfinder.com/icons/317714/download/png/16)](https://youtu.be/gmx3eEm6L3M) · [Copy selection with Pandoc](https://youtu.be/gmx3eEm6L3M)
 
 **Commands**
 
@@ -245,6 +253,7 @@ other projects.
 <summary>Copy multiple links</summary>
 
 [![Copy multiple links](https://img.youtube.com/vi_webp/rRGmuJhopJg/maxresdefault.webp)](https://youtu.be/rRGmuJhopJg "YouTube – Copy multiple links")
+[![YouTube Play Button](https://www.iconfinder.com/icons/317714/download/png/16)](https://youtu.be/rRGmuJhopJg) · [Copy multiple links](https://youtu.be/rRGmuJhopJg)
 
 **Commands**
 
