@@ -5,6 +5,7 @@
 <summary>Status</summary>
 
 - **Active**
+  - [⚓](#link-hints) [Link Hints] ([Chrome], [Firefox])
   - [⚓](#vim-vixen) [Vim Vixen] ([Firefox])
   - [⚓](#tridactyl) [Tridactyl] ([Firefox])
   - [⚓](#next) [Next] ([WebKit] or [Blink])
@@ -40,6 +41,7 @@
 <summary>Type</summary>
 
 - [WebExtensions]
+  - [⚓](#link-hints) [Link Hints] (Active) ([Chrome], [Firefox])
   - [⚓](#vim-vixen) [Vim Vixen] (Active) ([Firefox])
   - [⚓](#saka-key) [Saka Key] (Inactive) ([Chrome], [Firefox])
   - [⚓](#tridactyl) [Tridactyl] (Active) ([Firefox])
@@ -77,6 +79,9 @@
 
 <summary>History</summary>
 
+- **2018**
+  - **May**
+    - [⚓](#link-hints) [Link Hints] (Active) ([Chrome], [Firefox])
 - **2017**
   - **August**
     - [⚓](#vim-vixen) [Vim Vixen] (Active) ([Firefox])
@@ -133,6 +138,20 @@
     - [⚓](#conkeror) [Conkeror] (Inactive) ([Waterfox], [Pale Moon], [Basilisk])
 
 </details>
+
+## [Link Hints]
+
+- **Description**: A browser extension that lets you click with your keyboard.
+- **Aired**: 2018-05-10 → Present
+- **Status**: Active
+- **Type**: [WebExtensions]
+- **Browsers**: [Chrome], [Firefox]
+- **Languages**: [JavaScript]
+- **License**: [MIT]
+- **Website**: https://lydell.github.io/LinkHints/
+- **Repository**: https://github.com/lydell/LinkHints
+
+[Link Hints]: https://lydell.github.io/LinkHints/
 
 ## [Vim Vixen]
 
