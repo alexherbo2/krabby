@@ -301,7 +301,7 @@ EOF
     on_key 'Press any key to continue'
   fi
 
-  printf "${bold}${magenta}FURTHER INTSTRUCTIONS${none}\n\n"
+  printf "${bold}${magenta}FURTHER INSTRUCTIONS${none}\n\n"
   cat <<'EOF'    
     ╭──────────────────────────────────╮
     │ $ cd ~/.config/krabby            │
