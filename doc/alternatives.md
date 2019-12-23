@@ -10,6 +10,7 @@
   - [⚓](#tridactyl) [Tridactyl] ([Firefox])
   - [⚓](#next) [Next] ([WebKit] or [Blink])
   - [⚓](#surfingkeys) [Surfingkeys] ([Chrome], [Firefox])
+  - [⚓](#vimium-c) [Vimium C] ([Chrome], [Firefox])
   - [⚓](#qutebrowser) [qutebrowser] ([Blink] or [WebKit])
   - [⚓](#vimb) [Vimb] ([WebKit])
   - [⚓](#vimari) [Vimari] ([Safari])
@@ -46,6 +47,7 @@
   - [⚓](#saka-key) [Saka Key] (Inactive) ([Chrome], [Firefox])
   - [⚓](#tridactyl) [Tridactyl] (Active) ([Firefox])
   - [⚓](#surfingkeys) [Surfingkeys] (Active) ([Chrome], [Firefox])
+  - [⚓](#vimium-c) [Vimium C] (Active) ([Chrome], [Firefox])
   - [⚓](#cvim) [cVim] (Inactive) ([Chrome])
   - [⚓](#gleebox) [gleeBox] (Inactive) ([Chrome], [Firefox], [Safari])
   - [⚓](#vrome) [Vrome] (Inactive) ([Chrome])
@@ -94,6 +96,8 @@
   - **September**
     - [⚓](#surfingkeys) [Surfingkeys] (Active) ([Chrome], [Firefox])
 - **2014**
+  - **May**
+    - [⚓](#vimium-c) [Vimium C] (Active) ([Chrome], [Firefox])
   - **March**
     - [⚓](#cvim) [cVim] (Inactive) ([Chrome])
 - **2013**
@@ -235,6 +239,23 @@
   - Is not just a navigation tool (editor integration, emoji completion).
 
 [Surfingkeys]: https://github.com/brookhong/Surfingkeys
+
+## [Vimium C]
+
+- **Description**: Chrome extension with Chinese support, forked from [Vimium].
+- **Aired**: 2014-05-14 → Present
+- **Status**: Active
+- **Type**: [WebExtensions]
+- **Browsers**: [Chrome], [Firefox]
+- **Languages**: [TypeScript]
+- **License**: [MIT]
+- **Website**: https://github.com/gdh1995/vimium-c
+- **Repository**: https://github.com/gdh1995/vimium-c
+- **Notes**:
+  - Formerly known as Vimium++ (2018-08-21).
+  - Has been ported to [Firefox].
+
+[Vimium C]: https://github.com/gdh1995/vimium-c
 
 ## [cVim]
 
