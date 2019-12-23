@@ -34,26 +34,35 @@ main() {
 
   # Dependencies
   print_horizontal_line
-  # Build dependencies
+
+  ## Build dependencies
   printf "${green}Dependencies${none}: git zip jq\n"
+
   verify_dependency git Git https://git-scm.com
   verify_dependency zip Zip http://infozip.sourceforge.net/Zip.html
   verify_dependency jq jq https://stedolan.github.io/jq/
+
   if test "$BUILD_EXTENSIONS" = yes; then
     if test "$STATIC_BUILD" = yes; then
       printf "${green}Dependencies${none}: docker (Static build)\n"
+
       verify_dependency docker Docker https://docker.com
     else
       printf "${green}Dependencies${none}: crystal shards (Non-static build)\n"
+
       verify_dependency crystal Crystal https://crystal-lang.org
       verify_dependency shards Shards https://crystal-lang.org
     fi
-    # Runtime dependencies
+
+    ### Runtime dependencies
     if test "$OS" = Linux; then
       printf "${green}Dependencies${none}: rofi (Optional, Linux-only)\n"
+
       verify_dependency rofi Rofi https://github.com/davatorium/rofi yes
     fi
+
     printf "${green}Dependencies${none}: xclip mpv pandoc (Optional)\n"
+
     verify_dependency xclip xclip https://github.com/astrand/xclip yes
     verify_dependency mpv mpv https://mpv.io yes
     verify_dependency pandoc Pandoc https://pandoc.org yes
@@ -65,49 +74,65 @@ main() {
   url='https://github.com/alexherbo2/krabby'
   path=$CONFIG
   dependencies='jq zip'
+
   print_horizontal_line
   print_info "$name" "$description" "$url" "$path" "$dependencies"
-  # Initialize ~/.config/krabby if it does not exist.
+
+
+  ## Initialize ~/.config/krabby if it does not exist.
   if test ! -e "$CONFIG"; then
     printf "${green}Initializing${none}: %s\n" "$CONFIG"
+
     cp -R share/krabby "$CONFIG"
     find "$CONFIG" -maxdepth 1
     git init "$CONFIG"
   fi
-  # Self-updates
-  # Create ~/.config/krabby/extensions/krabby if it does not exist.
+
+  ## Self-updates
+  ## Create ~/.config/krabby/extensions/krabby if it does not exist.
   path=$CONFIG/extensions/krabby
+
   if test ! -e "$path"; then
     printf "${green}Cloning Krabby for self-updates${none}: %s\n" "$path"
+
     git clone . "$path"
   fi
-  # Navigate to ~/.config/krabby
+
+  ## Navigate to ~/.config/krabby
   cd "$CONFIG"
-  # Copy krabby/src to ~/.config/krabby/packages
+
+  ## Copy krabby/src to ~/.config/krabby/packages
   mkdir -p packages
+
   printf "${green}Copying${none}: %s → %s\n" "$ROOT/src/." "$CONFIG/packages"
+
   cp -R "$ROOT/src/." packages
   (cd "$ROOT/src"; find)
-  # Copy krabby/bin to ~/.local/bin
+
+  ## Copy krabby/bin to ~/.local/bin
   mkdir -p "$BIN"
+
   printf "${green}Copying${none}: %s → %s\n" "$ROOT/bin/." "$BIN"
+
   cp -R "$ROOT/bin/." "$BIN"
   (cd "$ROOT/bin"; find)
-  # Fetch packages to ~/.config/krabby/packages
+
+  ## Fetch packages to ~/.config/krabby/packages
   (cd packages; "$ROOT/scripts/fetch")
-  # Run user’s Makefile (~/.config/krabby)
+
+  ## Run user’s Makefile (~/.config/krabby)
   if test -e Makefile; then
     make
   fi
-  # Install ~/.config/krabby/target/surf to ~/.surf
+
+  ## Install ~/.config/krabby/target/surf to ~/.surf
   if test "$INTERACTIVE" = yes; then
     on_key 'Install surf? (y/n)'
+
     if test "$key" = 'y'; then
       extensions/krabby/scripts/install-surf
     fi
   fi
-  # Print install instructions for Chrome and Firefox
-  print_install_instructions
 
   if test "$BUILD_EXTENSIONS" = yes; then
     # Extension: Commands
@@ -116,27 +141,33 @@ main() {
     url='https://github.com/alexherbo2/chrome-commands'
     path=$CONFIG/extensions/commands
     dependencies='jq zip'
+
     print_horizontal_line
     print_info "$name" "$description" "$url" "$path" "$dependencies"
+
     clone_repo "$url" "$path"
     cd "$path"
     git pull
     make
-    print_install_instructions
+
 
     # Extension: Shell
     name='Shell'
     description='Chrome API to execute external commands through native messaging'
     url='https://github.com/alexherbo2/chrome-shell'
     path=$CONFIG/extensions/shell
+
     if test "$STATIC_BUILD" = yes; then
       dependencies='docker'
     else
       dependencies='crystal shards'
     fi
+
     dependencies="$dependencies jq zip"
+
     print_horizontal_line
     print_info "$name" "$description" "$url" "$path" "$dependencies"
+
     clone_repo "$url" "$path"
     cd "$path"
     git pull
@@ -144,7 +175,7 @@ main() {
     make install static="$STATIC_BUILD"
     cd "$path/extension"
     make
-    print_install_instructions
+
 
     # Extension: Editor
     name='Editor'
@@ -152,13 +183,15 @@ main() {
     url='https://github.com/alexherbo2/chrome-editor'
     path=$CONFIG/extensions/editor
     dependencies='jq zip'
+
     print_horizontal_line
     print_info "$name" "$description" "$url" "$path" "$dependencies"
+
     clone_repo "$url" "$path"
     cd "$path"
     git pull
     make
-    print_install_instructions
+
 
     # Extension: dmenu
     name='dmenu'
@@ -166,33 +199,20 @@ main() {
     url='https://github.com/alexherbo2/chrome-dmenu'
     path=$CONFIG/extensions/dmenu
     dependencies='rofi jq zip'
+
     print_horizontal_line
     print_info "$name" "$description" "$url" "$path" "$dependencies"
+
     clone_repo "$url" "$path"
     cd "$path"
     git pull
     make
-    print_install_instructions
   fi
 
   # Post-installation
   print_horizontal_line
-  cat <<'EOF'
-Installation finished 🦀
-
-    ╭──────────────────────────────────╮
-    │ $ cd ~/.config/krabby            │
-    │ $ kak config.js                  │
-    │ $ make [chrome] [firefox] [surf] │
-    ╰──────────────────────────────────╯
-
-• How to update Krabby:
-
-    ╭──────────────────────────────────────────────────────────────╮
-    │ $ cd ~/.config/krabby                                        │
-    │ $ make update [static=no] [extensions=yes] [interactive=yes] │
-    ╰──────────────────────────────────────────────────────────────╯
-EOF
+  printf 'Installation finished 🦀\n'
+  print_further_instructions
 }
 
 # Helpers ──────────────────────────────────────────────────────────────────────
@@ -208,10 +228,12 @@ print_horizontal_line() {
   COLUMNS=$(tput cols)
   line=''
   index=0
+
   while test "$index" -lt "$COLUMNS"; do
     index=$((index + 1))
     line="${line}─"
   done
+
   printf '%s\n' "$line"
 }
 
@@ -220,12 +242,14 @@ verify_dependency() {
   name=$2
   url=$3
   optional=${4:-no}
+
   if command -v "$command" > /dev/null 2>&1; then
     printf "❯ ${green}%s${none}\n" "$name"
   else
     printf "❯ ${red}%s${none}\n" "$name" > /dev/stderr
     printf 'Please install %s\n' "$name" > /dev/stderr
     printf '%s\n' "$url" > /dev/stderr
+
     if test "$optional" != yes; then
       exit 1
     fi
@@ -238,6 +262,7 @@ print_info() {
   url=$3
   path=$4
   dependencies=$5
+
   printf "${green}Extension${none}: ${bold}%s${none}\n" "$name"
   printf "${green}Description${none}: %s\n" "$description"
   printf "${green}Repository${none}: %s\n" "$url"
@@ -249,12 +274,49 @@ print_info() {
 print_install_instructions() {
   chrome_target=${1:-target/chrome}
   firefox_target=${2:-target/firefox}
-  printf "${green}Installing${none}:\n"
-  printf "${cyan}Chrome${none}:\n"
-  (cd "$chrome_target"; printf "Open the ${bold}Extensions${none} page by navigating to chrome://extensions, enable ${bold}Developer mode${none} then ${bold}Load unpacked${none} to select the extension directory: %s\n" "$PWD")
-  printf "${cyan}Firefox${none}: only developer or unbranded version (see https://wiki.mozilla.org/Add-ons/Extension_Signing#FAQ)\n"
+
+  printf "\n\n${bold}${magenta}ADDING KRABBY TO YOUR BROWSER${none}:\n\n"
+
+  # Adding Krabby to Chrome
+  printf "${green}Adding krabby to Chrome${none}:\n"
+  (cd "$chrome_target"; printf "Open the ${bold}Extensions${none} page by navigating to chrome://extensions, enable ${bold}Developer mode${none} then ${bold}Load unpacked${none} to select the extension directory: %s\n\n" "$PWD")
+
+  # Adding Krabby to Firefox
+  printf "${green}Adding Krabby to Firefox${none} (only developer or unbranded version, see https://wiki.mozilla.org/Add-ons/Extension_Signing#FAQ):\n"
   printf "Open about:config, change ${bold}xpinstall.signatures.required${none} to ${bold}false${none}\n"
-  (cd "$firefox_target"; printf "Open about:addons ❯ ${bold}Extensions${none}, click ${bold}Install add-on from file${none} and select the package file: %s\n" "$PWD/package.zip")
+  (cd "$firefox_target"; printf "Open about:addons ❯ ${bold}Extensions${none}, click ${bold}Install add-on from file${none} and select the package file: %s\n\n" "$PWD/package.zip")
+}
+
+print_further_instructions() {
+  printf "\n${bold}${magenta}UPDATING KRABBY${none}\n\n"
+  cat <<'EOF'
+    ╭──────────────────────────────────────────────────────────────╮
+    │ $ cd ~/.config/krabby                                        │
+    │ $ make update [static=no] [extensions=yes] [interactive=yes] │
+    ╰──────────────────────────────────────────────────────────────╯
+
+EOF
+
+  if test "$INTERACTIVE" = yes; then
+    on_key 'Press any key to continue'
+  fi
+
+  printf "${bold}${magenta}FURTHER INTSTRUCTIONS${none}\n\n"
+  cat <<'EOF'    
+    ╭──────────────────────────────────╮
+    │ $ cd ~/.config/krabby            │
+    │ $ kak config.js                  │
+    │ $ make [chrome] [firefox] [surf] │
+    ╰──────────────────────────────────╯
+
+EOF
+
+  if test "$INTERACTIVE" = yes; then
+    on_key 'Press any key to continue'
+  fi
+    
+  print_install_instructions
+
   if test "$INTERACTIVE" = yes; then
     on_key 'Press any key to continue'
   fi
@@ -263,6 +325,7 @@ print_install_instructions() {
 clone_repo() {
   url=$1
   path=$2
+
   if test ! -e "$path"; then
     git clone "$url" "$path"
   fi
