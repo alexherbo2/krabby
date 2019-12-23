@@ -8,6 +8,7 @@ CONFIG=$XDG_CONFIG_HOME/krabby
 OS=$(uname -s)
 STATIC_BUILD=${STATIC_BUILD:-no}
 BUILD_EXTENSIONS=${BUILD_EXTENSIONS:-yes}
+INTERACTIVE=${INTERACTIVE:-yes}
 
 # Faces
 none='\033[0m'
@@ -24,15 +25,9 @@ cyan='\033[36m'
 main() {
 
   # Options
-  # Run in non-interactive mode if ~/.config/krabby exists
-  if test -e "$CONFIG"; then
-    INTERACTIVE=false
-  else
-    INTERACTIVE=true
-  fi
   while test $# -gt 0; do
     case "$1" in
-      -no-confirm) INTERACTIVE=false ;;
+      -no-confirm) INTERACTIVE=no ;;
     esac
     shift
   done
@@ -105,7 +100,7 @@ main() {
     make
   fi
   # Install ~/.config/krabby/target/surf to ~/.surf
-  if test "$INTERACTIVE" = true; then
+  if test "$INTERACTIVE" = yes; then
     on_key 'Install surf? (y/n)'
     if test "$key" = 'y'; then
       extensions/krabby/scripts/install-surf
@@ -193,10 +188,10 @@ Installation finished 🦀
 
 • How to update Krabby:
 
-    ╭────────────────────────────────────────────╮
-    │ $ cd ~/.config/krabby                      │
-    │ $ make update [static=no] [extensions=yes] │
-    ╰────────────────────────────────────────────╯
+    ╭──────────────────────────────────────────────────────────────╮
+    │ $ cd ~/.config/krabby                                        │
+    │ $ make update [static=no] [extensions=yes] [interactive=yes] │
+    ╰──────────────────────────────────────────────────────────────╯
 EOF
 }
 
@@ -260,7 +255,7 @@ print_install_instructions() {
   printf "${cyan}Firefox${none}: only developer or unbranded version (see https://wiki.mozilla.org/Add-ons/Extension_Signing#FAQ)\n"
   printf "Open about:config, change ${bold}xpinstall.signatures.required${none} to ${bold}false${none}\n"
   (cd "$firefox_target"; printf "Open about:addons ❯ ${bold}Extensions${none}, click ${bold}Install add-on from file${none} and select the package file: %s\n" "$PWD/package.zip")
-  if test "$INTERACTIVE" = true; then
+  if test "$INTERACTIVE" = yes; then
     on_key 'Press any key to continue'
   fi
 }

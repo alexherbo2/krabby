@@ -1,5 +1,6 @@
 static ?= no
 extensions ?= yes
+interactive ?= yes
 
 all: chrome firefox surf
 
@@ -16,6 +17,6 @@ fetch:
 	cd packages; ../fetch
 
 update:
-	cd extensions/krabby; git pull; make static="$(static)" extensions="$(extensions)"
+	cd extensions/krabby; git pull; make static="$(static)" extensions="$(extensions)" interactive="$(interactive)"
 
 .PHONY: build fetch
