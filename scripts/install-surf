@@ -21,6 +21,21 @@ ln -sf "$js_target" "$js_config" > /dev/null 2>&1
 printf "${green}Installing${none}: %s → %s\n" "$css_target" "$css_config"
 ln -sf "$css_target" "$css_config" > /dev/null 2>&1
 
+# Add a note to remove the Escape key-binding from config.h
+cat <<'EOF'
+Note: Make sure surf has been compiled without the following settings.
+
+config.h
+
+```
+static Key keys[] = {
+  { 0, GDK_KEY_Escape, stop, { 0 } }
+}
+```
+
+https://git.suckless.org/surf/file/config.def.h.html
+EOF
+
 # Note: Run ln command silently.
 # Motivation: Suppress “ln: A and B are the same file” error message.
 
