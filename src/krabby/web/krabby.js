@@ -95,12 +95,14 @@ function Krabby({ dormant = true } = {}) {
   krabby.env.HINT_SELECTORS = '*'
   krabby.env.HINT_TEXT_SELECTORS = 'input:not([type="submit"]):not([type="button"]):not([type="reset"]):not([type="file"]), textarea, select'
   krabby.env.HINT_VIDEO_SELECTORS = 'video'
+  krabby.env.HINT_STYLE = {}
 
-  krabby.modes.hint = ({ selections, selectors = '*', filters = [Hint.isClickable], lock = false } = {}) => {
+  krabby.modes.hint = ({ selections, selectors = '*', filters = [Hint.isClickable], lock = false, style = {} } = {}) => {
     const hint = new Hint
     hint.selectors = selectors
     hint.filters = filters
     hint.lock = lock
+    hint.style = style
     hint.on('validate', (target) => {
       Hint.focus(target)
       if (hint.lock) {
@@ -307,10 +309,10 @@ function Krabby({ dormant = true } = {}) {
   krabby.modes.modal.map('Command', ['Shift', 'KeyR'], () => location.reload(true), 'Reload the page, ignoring cached content', 'Refresh tabs')
 
   // Link hints
-  krabby.modes.modal.map('Command', ['KeyF'], () => krabby.modes.hint({ selections: krabby.selections, selectors: krabby.env.HINT_SELECTORS }).start(), 'Focus link', 'Link hints')
-  krabby.modes.modal.map('Command', ['Shift', 'KeyF'], () => krabby.modes.hint({ selections: krabby.selections, selectors: krabby.env.HINT_SELECTORS, lock: true }).start(), 'Select multiple links', 'Link hints')
-  krabby.modes.modal.map('Command', ['KeyI'], () => krabby.modes.hint({ selectors: krabby.env.HINT_TEXT_SELECTORS }).start(), 'Focus input', 'Link hints')
-  krabby.modes.modal.map('Command', ['KeyV'], () => krabby.modes.hint({ selectors: krabby.env.HINT_VIDEO_SELECTORS }).start(), 'Focus video', 'Link hints')
+  krabby.modes.modal.map('Command', ['KeyF'], () => krabby.modes.hint({ selections: krabby.selections, selectors: krabby.env.HINT_SELECTORS, style: krabby.env.HINT_STYLE }).start(), 'Focus link', 'Link hints')
+  krabby.modes.modal.map('Command', ['Shift', 'KeyF'], () => krabby.modes.hint({ selections: krabby.selections, selectors: krabby.env.HINT_SELECTORS, lock: true, style: krabby.env.HINT_STYLE }).start(), 'Select multiple links', 'Link hints')
+  krabby.modes.modal.map('Command', ['KeyI'], () => krabby.modes.hint({ selectors: krabby.env.HINT_TEXT_SELECTORS, style: krabby.env.HINT_STYLE }).start(), 'Focus input', 'Link hints')
+  krabby.modes.modal.map('Command', ['KeyV'], () => krabby.modes.hint({ selectors: krabby.env.HINT_VIDEO_SELECTORS, style: krabby.env.HINT_STYLE }).start(), 'Focus video', 'Link hints')
 
   // Open links
   krabby.modes.modal.map('Command', ['Enter'], () => krabby.commands.click(krabby.selections), 'Open selection', 'Open links')

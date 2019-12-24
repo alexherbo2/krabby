@@ -55,6 +55,24 @@ The **description** is the description of the command.
 
 The **label** is the label of the command.
 
+## Hint appearance
+
+`~/.config/krabby/config.js`
+
+``` javascript
+const { env } = krabby
+
+env.HINT_STYLE = {
+  textColor: 'royalblue',
+  activeCharacterTextColor: 'lightsteelblue',
+  backgroundColorStart: 'white',
+  backgroundColorEnd: 'ghostwhite',
+  borderColor: 'ghostwhite'
+}
+```
+
+See [Hint – Appearance] for more information.
+
 ## External editor
 
 `~/.config/krabby/config.js`
@@ -110,6 +128,7 @@ modal.map('Read Berserk · Chapter', ['KeyM'], () => shell.send('mpv', ...Array.
 [Mouse Selection]: https://simonwep.github.io/selection/
 [Prompt]: https://github.com/alexherbo2/prompt.js
 [Hint]: https://github.com/alexherbo2/hint.js
+[Hint – Appearance]: https://github.com/alexherbo2/hint.js#appearance
 [Mark]: https://github.com/alexherbo2/mark.js
 [Selection]: https://github.com/alexherbo2/selection.js
 [Mouse]: https://github.com/alexherbo2/mouse.js
