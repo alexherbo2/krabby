@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# Notes:
+# – macOS `find` requires a path parameter.
+
 # Environment variables
 ROOT=$PWD
 BIN=~/.local/bin
@@ -87,12 +90,12 @@ main() {
   mkdir -p packages
   printf "${green}Copying${none}: %s → %s\n" "$ROOT/src/." "$CONFIG/packages"
   cp -R "$ROOT/src/." packages
-  (cd "$ROOT/src"; find)
+  (cd "$ROOT/src"; find .)
   # Copy krabby/bin to ~/.local/bin
   mkdir -p "$BIN"
   printf "${green}Copying${none}: %s → %s\n" "$ROOT/bin/." "$BIN"
   cp -R "$ROOT/bin/." "$BIN"
-  (cd "$ROOT/bin"; find)
+  (cd "$ROOT/bin"; find .)
   # Fetch packages to ~/.config/krabby/packages
   (cd packages; "$ROOT/scripts/fetch")
   # Run user’s Makefile (~/.config/krabby)
