@@ -52,10 +52,12 @@ main() {
       verify_dependency shards Shards https://crystal-lang.org
     fi
     # Runtime dependencies
-    if test "$OS" = Linux; then
-      printf "${green}Dependencies${none}: rofi (Optional, Linux-only)\n"
-      verify_dependency rofi Rofi https://github.com/davatorium/rofi yes
-    fi
+    case "$OS" in
+      Linux|FreeBSD|OpenBSD)
+        printf "${green}Dependencies${none}: rofi (Optional, (Linux|FreeBSD|OpenBSD)-only)\n"
+        verify_dependency rofi Rofi https://github.com/davatorium/rofi yes
+        ;;
+    esac
     printf "${green}Dependencies${none}: xclip mpv pandoc (Optional)\n"
     verify_dependency xclip xclip https://github.com/astrand/xclip yes
     verify_dependency mpv mpv https://mpv.io yes
