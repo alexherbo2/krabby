@@ -277,7 +277,7 @@ See [krabby-resources] for all available demos.
 - [Crystal]
 - [Docker] (for static builds)
 - [jq]
-- [wl-clipboard] or [xclip] (Optional, for [plumbing](bin/plumb))
+- [wl-clipboard] for [Wayland] _or_ [xclip] for [X11] (Optional, for [plumbing](bin/plumb))
 - [mpv] (Optional, for playing videos)
 - [Rofi] (Optional, for tab search and [plumbing](bin/plumb), [dmenu] replacement)
 - [Pandoc] (Optional, for HTML filtering)
@@ -355,6 +355,9 @@ make install [static=no] [extensions=yes] [interactive=yes]
 [FreeBSD]: https://freebsd.org
 [OpenBSD]: https://openbsd.org
 [macOS]: https://apple.com/macos/
+
+[Wayland]: https://wayland.freedesktop.org
+[X11]: https://x.org
 
 [Chrome]: https://google.com/chrome/
 [Chromium]: https://chromium.org
