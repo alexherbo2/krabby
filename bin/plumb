@@ -3,12 +3,14 @@
 # Description
 # ‾‾‾‾‾‾‾‾‾‾‾
 # Plumber from Plan 9.
-# Use xclip to access the clipboard and jq for JSON.
+# Use (wl-clipboard|xclip|pb{copy,paste}) to access the clipboard and jq for JSON.
 # Rofi (dmenu) is used for validating execution.
 #
 # Dependencies
 # ‾‾‾‾‾‾‾‾‾‾‾‾
-# – xclip (https://github.com/astrand/xclip)
+# – Clipboard
+#   – Wayland: wl-clipboard (https://github.com/bugaevc/wl-clipboard)
+#   – X11: xclip (https://github.com/astrand/xclip)
 # – jq (https://stedolan.github.io/jq/)
 # – Rofi (https://github.com/davatorium/rofi)
 #
@@ -38,12 +40,55 @@
 #
 # A Tour of the Acme Editor: https://research.swtch.com/acme
 
+# Environment variables
+OS=$(uname -s)
+
+# Clipboard handler
+case "$OS" in
+  Linux|FreeBSD|OpenBSD)
+    case "$XDG_SESSION_TYPE" in
+      wayland)
+        copy() {
+          wl-copy
+        }
+        paste() {
+          wl-paste
+        }
+        ;;
+      x11)
+        copy() {
+          xclip -filter -selection clipboard | xclip
+        }
+        paste() {
+          xclip -out
+        }
+        ;;
+      *)
+        printf 'Please set XDG_SESSION_TYPE: %s\n' "$XDG_SESSION_TYPE" > /dev/stderr
+        exit 1
+        ;;
+    esac
+    ;;
+  Darwin)
+    copy() {
+      pbcopy
+    }
+    paste() {
+      pbpaste
+    }
+    ;;
+  *)
+    printf 'Unsupported platform: %s\n' "$OS" > /dev/stderr
+    exit 1
+    ;;
+esac
+
 # List of allowed commands
 PLUMBERS=$@
 
 # Get message from the primary selection
 script=$(
-  xclip -out |
+  paste |
   jq --raw-output '
     @sh "
       set -- \(.)
@@ -82,7 +127,7 @@ plumb() {
         exit 1
       fi
       # Execute the command and copy its output to the clipboard
-      "$@" | xclip -filter -selection clipboard | xclip
+      "$@" | copy
       notify-send 'Plumb' "Command finished: $command"
       plumbed=yes
       break

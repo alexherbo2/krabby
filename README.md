@@ -277,7 +277,7 @@ See [krabby-resources] for all available demos.
 - [Crystal]
 - [Docker] (for static builds)
 - [jq]
-- [xclip] (Optional, for [plumbing](bin/plumb))
+- [wl-clipboard] or [xclip] (Optional, for [plumbing](bin/plumb))
 - [mpv] (Optional, for playing videos)
 - [Rofi] (Optional, for tab search and [plumbing](bin/plumb), [dmenu] replacement)
 - [Pandoc] (Optional, for HTML filtering)
@@ -380,6 +380,7 @@ make install [static=no] [extensions=yes] [interactive=yes]
 [Crystal]: https://crystal-lang.org
 [Docker]: https://docker.com
 [jq]: https://stedolan.github.io/jq/
+[wl-clipboard]: https://github.com/bugaevc/wl-clipboard
 [xclip]: https://github.com/astrand/xclip
 [mpv]: https://mpv.io
 [dmenu]: https://tools.suckless.org/dmenu/

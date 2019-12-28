@@ -56,10 +56,23 @@ main() {
       Linux|FreeBSD|OpenBSD)
         printf "${green}Dependencies${none}: rofi (Optional, (Linux|FreeBSD|OpenBSD)-only)\n"
         verify_dependency rofi Rofi https://github.com/davatorium/rofi yes
+        case "$XDG_SESSION_TYPE" in
+          wayland)
+            printf "${green}Dependencies${none}: wl-clipboard (Optional, Wayland)\n"
+            verify_dependency wl-copy wl-clipboard https://github.com/bugaevc/wl-clipboard yes
+            verify_dependency wl-paste wl-clipboard https://github.com/bugaevc/wl-clipboard yes
+            ;;
+          x11)
+            printf "${green}Dependencies${none}: xclip (Optional, X11)\n"
+            verify_dependency xclip xclip https://github.com/astrand/xclip yes
+            ;;
+          *)
+            printf "${red}Warning${none}: Please set XDG_SESSION_TYPE for plumbing (https://github.com/alexherbo2/krabby/blob/master/bin/plumb)\n" > /dev/stderr
+            ;;
+        esac
         ;;
     esac
-    printf "${green}Dependencies${none}: xclip mpv pandoc (Optional)\n"
-    verify_dependency xclip xclip https://github.com/astrand/xclip yes
+    printf "${green}Dependencies${none}: mpv pandoc (Optional)\n"
     verify_dependency mpv mpv https://mpv.io yes
     verify_dependency pandoc Pandoc https://pandoc.org yes
   fi
