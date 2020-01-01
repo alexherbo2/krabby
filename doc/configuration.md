@@ -75,6 +75,8 @@ See [Hint – Appearance] for more information.
 
 ## External editor
 
+### [kitty]
+
 `~/.config/krabby/config.js`
 
 ``` javascript
@@ -149,3 +151,5 @@ modal.map('Read Berserk · Chapter', ['KeyM'], () => shell.send('mpv', ...Array.
 [KeyboardEvent.code]: https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/code
 [Key Values]: https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key/Key_Values
 [Modifiers]: https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key/Key_Values#Modifier_keys
+
+[kitty]: https://sw.kovidgoyal.net/kitty/
