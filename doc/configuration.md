@@ -75,6 +75,16 @@ See [Hint – Appearance] for more information.
 
 ## External editor
 
+### [Alacritty]
+
+`~/.config/krabby/config.js`
+
+``` javascript
+const { env } = krabby
+
+env.EDITOR = 'alacritty --class alacritty-float --command kak "$1" -e "select $2.$3,$4.$5"'
+```
+
 ### [kitty]
 
 `~/.config/krabby/config.js`
@@ -152,4 +162,5 @@ modal.map('Read Berserk · Chapter', ['KeyM'], () => shell.send('mpv', ...Array.
 [Key Values]: https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key/Key_Values
 [Modifiers]: https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key/Key_Values#Modifier_keys
 
+[Alacritty]: https://github.com/jwilm/alacritty
 [kitty]: https://sw.kovidgoyal.net/kitty/
