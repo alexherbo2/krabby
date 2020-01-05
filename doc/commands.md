@@ -113,6 +113,8 @@ Commands are bound to **physical keys** and **displayed** with the [US layout][Q
 
 - <kbd>f</kbd> → Focus link (**Command** context)
 - <kbd>F</kbd> → Select multiple links (**Command** context)
+- <kbd>c</kbd> → Click link (**Command** context)
+- <kbd>C</kbd> → Click multiple links (**Command** context)
 - <kbd>i</kbd> → Focus input (**Command** context)
 - <kbd>v</kbd> → Focus video (**Command** context)
 
