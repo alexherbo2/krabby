@@ -90,7 +90,7 @@ env.EDITOR = `
   CONFIG=$XDG_CONFIG_HOME/alacritty/alacritty.yml
   # Create a temporary config file
   config=$(mktemp)
-  trap "rm -f $config" EXIT
+  trap 'rm -f "$config"' EXIT
   # Populate configuration if available
   if test -f "$CONFIG"; then
     cp "$CONFIG" "$config"
