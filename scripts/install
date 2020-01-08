@@ -39,32 +39,32 @@ main() {
   print_horizontal_line
   # Build dependencies
   printf "${green}Dependencies${none}: git zip jq\n"
-  verify_dependency git Git https://git-scm.com
-  verify_dependency zip Zip http://infozip.sourceforge.net/Zip.html
-  verify_dependency jq jq https://stedolan.github.io/jq/
+  check_dependency git Git https://git-scm.com
+  check_dependency zip Zip http://infozip.sourceforge.net/Zip.html
+  check_dependency jq jq https://stedolan.github.io/jq/
   if test "$BUILD_EXTENSIONS" = yes; then
     if test "$STATIC_BUILD" = yes; then
       printf "${green}Dependencies${none}: docker (Static build)\n"
-      verify_dependency docker Docker https://docker.com
+      check_dependency docker Docker https://docker.com
     else
       printf "${green}Dependencies${none}: crystal shards (Non-static build)\n"
-      verify_dependency crystal Crystal https://crystal-lang.org
-      verify_dependency shards Shards https://crystal-lang.org
+      check_dependency crystal Crystal https://crystal-lang.org
+      check_dependency shards Shards https://crystal-lang.org
     fi
     # Runtime dependencies
     case "$OS" in
       Linux|FreeBSD|OpenBSD)
         printf "${green}Dependencies${none}: rofi (Optional, (Linux|FreeBSD|OpenBSD)-only)\n"
-        verify_dependency rofi Rofi https://github.com/davatorium/rofi yes
+        check_dependency rofi Rofi https://github.com/davatorium/rofi yes
         case "$XDG_SESSION_TYPE" in
           wayland)
             printf "${green}Dependencies${none}: wl-clipboard (Optional, Wayland)\n"
-            verify_dependency wl-copy wl-clipboard https://github.com/bugaevc/wl-clipboard yes
-            verify_dependency wl-paste wl-clipboard https://github.com/bugaevc/wl-clipboard yes
+            check_dependency wl-copy wl-clipboard https://github.com/bugaevc/wl-clipboard yes
+            check_dependency wl-paste wl-clipboard https://github.com/bugaevc/wl-clipboard yes
             ;;
           x11)
             printf "${green}Dependencies${none}: xclip (Optional, X11)\n"
-            verify_dependency xclip xclip https://github.com/astrand/xclip yes
+            check_dependency xclip xclip https://github.com/astrand/xclip yes
             ;;
           *)
             printf "${red}Warning${none}: Please set XDG_SESSION_TYPE for plumbing (https://github.com/alexherbo2/krabby/blob/master/bin/plumb)\n" > /dev/stderr
@@ -73,8 +73,8 @@ main() {
         ;;
     esac
     printf "${green}Dependencies${none}: mpv pandoc (Optional)\n"
-    verify_dependency mpv mpv https://mpv.io yes
-    verify_dependency pandoc Pandoc https://pandoc.org yes
+    check_dependency mpv mpv https://mpv.io yes
+    check_dependency pandoc Pandoc https://pandoc.org yes
   fi
 
   # Extension: Krabby
@@ -233,7 +233,7 @@ print_horizontal_line() {
   printf '%s\n' "$line"
 }
 
-verify_dependency() {
+check_dependency() {
   command=$1
   name=$2
   url=$3
