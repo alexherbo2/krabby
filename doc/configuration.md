@@ -75,6 +75,8 @@ See [Hint – Appearance] for more information.
 
 ## Tab search
 
+### [dmenu]
+
 Change the [dmenu] command:
 
 `~/.config/krabby/config.js`
@@ -90,6 +92,40 @@ dmenu.send('set-dmenu', {
 ```
 
 [dmenu]: https://tools.suckless.org/dmenu/
+
+### [fzf] and [Alacritty]
+
+Run with [fzf] and [Alacritty]:
+
+`~/.config/krabby/config.js`
+
+``` javascript
+const { extensions } = krabby
+const { dmenu } = extensions
+
+dmenu.send('set-dmenu', {
+  command: 'sh',
+  arguments: [
+    '-c',
+    `
+      # Create IO files
+      state=$(mktemp -d)
+      input=$state/input
+      output=$state/output
+      trap 'rm -Rf "$state"' EXIT
+      # Get input from /dev/stdin
+      cat > "$input"
+      # Run fzf with Alacritty
+      alacritty --command sh -c 'fzf < "$1" > "$2"' -- "$input" "$output"
+      # Write output to /dev/stdout
+      cat "$output"
+    `
+  ]
+})
+```
+
+[fzf]: https://github.com/junegunn/fzf
+[Alacritty]: https://github.com/alacritty/alacritty
 
 ## External editor
 
