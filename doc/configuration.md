@@ -73,6 +73,24 @@ env.HINT_STYLE = {
 
 See [Hint – Appearance] for more information.
 
+## Tab search
+
+Change the [dmenu] command:
+
+`~/.config/krabby/config.js`
+
+``` javascript
+const { extensions } = krabby
+const { dmenu } = extensions
+
+dmenu.send('set-dmenu', {
+  command: 'dmenu',
+  arguments: ['-l', '20', '-i', '-p', 'Tab search']
+})
+```
+
+[dmenu]: https://tools.suckless.org/dmenu/
+
 ## External editor
 
 ### [Alacritty]
