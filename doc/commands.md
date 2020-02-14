@@ -57,6 +57,7 @@ Commands are bound to **physical keys** and **displayed** with the [US layout][Q
 ## Create tabs
 
 - <kbd>t</kbd> → New tab (**Command** context)
+- <kbd>Alt</kbd> + <kbd>t</kbd> → New tab to the right (**Command** context)
 - <kbd>T</kbd> → Restore tab (**Command** context)
 - <kbd>b</kbd> → Duplicate tab (**Command** context)
 

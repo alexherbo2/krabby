@@ -143,6 +143,7 @@ function KrabbyExtension(krabby) {
 
   // Create tabs
   krabby.modes.modal.map('Command', ['KeyT'], () => krabby.extensions.commands.send('new-tab'), 'New tab', 'Create tabs')
+  krabby.modes.modal.map('Command', ['Alt', 'KeyT'], () => krabby.extensions.commands.send('new-tab-right'), 'New tab to the right', 'Create tabs')
   krabby.modes.modal.map('Command', ['Shift', 'KeyT'], () => krabby.extensions.commands.send('restore-tab'), 'Restore tab', 'Create tabs')
   krabby.modes.modal.map('Command', ['KeyB'], () => krabby.extensions.commands.send('duplicate-tab'), 'Duplicate tab', 'Create tabs')
 
