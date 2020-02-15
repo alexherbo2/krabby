@@ -4,7 +4,7 @@
 # ‾‾‾‾‾‾‾‾‾‾‾
 # Plumber from Plan 9.
 # Use (wl-clipboard|xclip|pb{copy,paste}) to access the clipboard and jq for JSON.
-# Rofi (dmenu) is used for validating execution.
+# dmenu is used for validating execution.
 #
 # Dependencies
 # ‾‾‾‾‾‾‾‾‾‾‾‾
@@ -12,7 +12,7 @@
 #   – Wayland: wl-clipboard (https://github.com/bugaevc/wl-clipboard)
 #   – X11: xclip (https://github.com/astrand/xclip)
 # – jq (https://stedolan.github.io/jq/)
-# – Rofi (https://github.com/davatorium/rofi)
+# – dmenu (https://tools.suckless.org/dmenu/)
 #
 # Usage
 # ‾‾‾‾‾
@@ -113,7 +113,7 @@ validate_command() {
   # Note: '␤' could be nice, but `tr` only supports ASCII characters.
   printf '%s\0' "$@" |
   tr '\n\0' '\t\n' |
-  rofi -dmenu -p 'Plumb? (Enter/Escape)' > /dev/null 2>&1
+  dmenu -l 20 -p 'Plumb? (Enter/Escape)' > /dev/null 2>&1
 }
 
 plumb() {

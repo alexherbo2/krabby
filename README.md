@@ -279,7 +279,7 @@ See [krabby-resources] for all available demos.
 - [jq]
 - [wl-clipboard] for [Wayland] _or_ [xclip] for [X11] (Optional, for [plumbing](bin/plumb))
 - [mpv] (Optional, for playing videos)
-- [Rofi] (Optional, for tab search and [plumbing](bin/plumb), [dmenu] replacement)
+- [dmenu] (Optional, for tab search and [plumbing](bin/plumb))
 - [Pandoc] (Optional, for HTML filtering)
 - [Zip] (Zip is used to package the extension)
 
@@ -387,7 +387,6 @@ make install [static=no] [extensions=yes] [interactive=yes]
 [xclip]: https://github.com/astrand/xclip
 [mpv]: https://mpv.io
 [dmenu]: https://tools.suckless.org/dmenu/
-[Rofi]: https://github.com/davatorium/rofi
 [Pandoc]: https://pandoc.org
 [Zip]: http://infozip.sourceforge.net/Zip.html
 

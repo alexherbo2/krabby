@@ -54,8 +54,8 @@ main() {
     # Runtime dependencies
     case "$OS" in
       Linux|FreeBSD|OpenBSD)
-        printf "${green}Dependencies${none}: rofi (Optional, (Linux|FreeBSD|OpenBSD)-only)\n"
-        check_dependency rofi Rofi https://github.com/davatorium/rofi yes
+        printf "${green}Dependencies${none}: dmenu (Optional, (Linux|FreeBSD|OpenBSD)-only)\n"
+        check_dependency dmenu dmenu https://tools.suckless.org/dmenu/ yes
         case "$XDG_SESSION_TYPE" in
           wayland)
             printf "${green}Dependencies${none}: wl-clipboard (Optional, Wayland)\n"
@@ -183,7 +183,7 @@ main() {
     description='Tab search with dmenu'
     url='https://github.com/alexherbo2/chrome-dmenu'
     path=$CONFIG/extensions/dmenu
-    dependencies='rofi jq zip'
+    dependencies='dmenu jq zip'
     print_horizontal_line
     print_info "$name" "$description" "$url" "$path" "$dependencies"
     clone_repo "$url" "$path"
