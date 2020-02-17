@@ -117,19 +117,19 @@ other projects.
 
 **Commands**
 
-- <kbd>f</kbd> → Focus link
+- <kbd>f</kbd> ⇒ Focus link
   - Input: <kbd>o</kbd>
-- <kbd>s</kbd> → Select active element
-- <kbd>Alt</kbd> + <kbd>a</kbd> → Select parent elements (2 times)
-- <kbd>Alt</kbd> + <kbd>i</kbd> → Select child elements (2 times)
-- <kbd>Enter</kbd> → Open link
-- <kbd>Alt</kbd> + <kbd>i</kbd> → Select child elements
-- <kbd>Alt</kbd> + <kbd>k</kbd> → Keep selections that match the given [RegExp][Regular Expressions]
+- <kbd>s</kbd> ⇒ Select active element
+- <kbd>Alt</kbd> + <kbd>a</kbd> ⇒ Select parent elements (2 times)
+- <kbd>Alt</kbd> + <kbd>i</kbd> ⇒ Select child elements (2 times)
+- <kbd>Enter</kbd> ⇒ Open link
+- <kbd>Alt</kbd> + <kbd>i</kbd> ⇒ Select child elements
+- <kbd>Alt</kbd> + <kbd>k</kbd> ⇒ Keep selections that match the given [RegExp][Regular Expressions]
   - Input: `720p`
-- <kbd>Alt</kbd> + <kbd>I</kbd> → Select links
-- <kbd>Alt</kbd> + <kbd>k</kbd> → Keep selections that match the given [RegExp][Regular Expressions]
+- <kbd>Alt</kbd> + <kbd>I</kbd> ⇒ Select links
+- <kbd>Alt</kbd> + <kbd>k</kbd> ⇒ Keep selections that match the given [RegExp][Regular Expressions]
   - Input: `Magnet`
-- <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>Enter</kbd> → Open link in the associated application
+- <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>Enter</kbd> ⇒ Open link in the associated application
 
 </details>
 
@@ -142,14 +142,14 @@ other projects.
 
 **Commands**
 
-- <kbd>f</kbd> → Focus link
+- <kbd>f</kbd> ⇒ Focus link
   - Input: <kbd>a</kbd>, <kbd>l</kbd>
-- <kbd>s</kbd> → Select active element
-- <kbd>Alt</kbd> + <kbd>a</kbd> → Select parent elements (3 times)
-- <kbd>S</kbd> → Select elements that match the specified group of selectors
+- <kbd>s</kbd> ⇒ Select active element
+- <kbd>Alt</kbd> + <kbd>a</kbd> ⇒ Select parent elements (3 times)
+- <kbd>S</kbd> ⇒ Select elements that match the specified group of selectors
   - Input: `tr td:first-child`
-- <kbd>Alt</kbd> + <kbd>I</kbd> → Select links
-- <kbd>Alt</kbd> + <kbd>y</kbd> → Copy link text
+- <kbd>Alt</kbd> + <kbd>I</kbd> ⇒ Select links
+- <kbd>Alt</kbd> + <kbd>y</kbd> ⇒ Copy link text
 
 </details>
 
@@ -162,10 +162,10 @@ other projects.
 
 **Commands**
 
-- <kbd>%</kbd> → Select document
-- <kbd>S</kbd> → Select elements that match the specified group of selectors
+- <kbd>%</kbd> ⇒ Select document
+- <kbd>S</kbd> ⇒ Select elements that match the specified group of selectors
   - Input: `h1, h2, h3`
-- <kbd>(</kbd> → Focus previous selection
+- <kbd>(</kbd> ⇒ Focus previous selection
 
 </details>
 
@@ -178,7 +178,7 @@ other projects.
 
 **Commands**
 
-- <kbd>q</kbd> → Tab search with [dmenu]
+- <kbd>q</kbd> ⇒ Tab search with [dmenu]
 
 </details>
 
@@ -191,7 +191,7 @@ other projects.
 
 **Commands**
 
-- <kbd>p</kbd> → Toggle picture-in-picture mode
+- <kbd>p</kbd> ⇒ Toggle picture-in-picture mode
 
 </details>
 
@@ -204,12 +204,12 @@ other projects.
 
 **Commands**
 
-- <kbd>f</kbd> → Focus link
+- <kbd>f</kbd> ⇒ Focus link
   - Input: <kbd>e</kbd>
-- <kbd>s</kbd> → Select active element
-- <kbd>Alt</kbd> + <kbd>a</kbd> → Select parent elements
-- <kbd>Alt</kbd> + <kbd>I</kbd> → Select links
-- <kbd>Control</kbd> + <kbd>Enter</kbd> → Open link in new tab
+- <kbd>s</kbd> ⇒ Select active element
+- <kbd>Alt</kbd> + <kbd>a</kbd> ⇒ Select parent elements
+- <kbd>Alt</kbd> + <kbd>I</kbd> ⇒ Select links
+- <kbd>Control</kbd> + <kbd>Enter</kbd> ⇒ Open link in new tab
 
 </details>
 
@@ -222,12 +222,12 @@ other projects.
 
 **Commands**
 
-- <kbd>f</kbd> → Focus link
+- <kbd>f</kbd> ⇒ Focus link
   - Input: <kbd>a</kbd>, <kbd>w</kbd>
-- <kbd>s</kbd> → Select active element
-- <kbd>Alt</kbd> + <kbd>a</kbd> → Select parent elements (3 times)
-- <kbd>Alt</kbd> + <kbd>I</kbd> → Select links
-- <kbd>Alt</kbd> + <kbd>m</kbd> → Play with [mpv] in reverse order
+- <kbd>s</kbd> ⇒ Select active element
+- <kbd>Alt</kbd> + <kbd>a</kbd> ⇒ Select parent elements (3 times)
+- <kbd>Alt</kbd> + <kbd>I</kbd> ⇒ Select links
+- <kbd>Alt</kbd> + <kbd>m</kbd> ⇒ Play with [mpv] in reverse order
 
 </details>
 
@@ -240,11 +240,11 @@ other projects.
 
 **Commands**
 
-- <kbd>f</kbd> → Focus link
+- <kbd>f</kbd> ⇒ Focus link
   - Input: <kbd>s</kbd>
-- <kbd>s</kbd> → Select active element
-- <kbd>Alt</kbd> + <kbd>a</kbd> → Select parent elements (4 times)
-- <kbd>Y</kbd> → Copy selection, using an HTML filter
+- <kbd>s</kbd> ⇒ Select active element
+- <kbd>Alt</kbd> + <kbd>a</kbd> ⇒ Select parent elements (4 times)
+- <kbd>Y</kbd> ⇒ Copy selection, using an HTML filter
 
 </details>
 
@@ -257,16 +257,16 @@ other projects.
 
 **Commands**
 
-- <kbd>f</kbd> → Focus link
+- <kbd>f</kbd> ⇒ Focus link
   - Input: <kbd>s</kbd>
-- <kbd>s</kbd> → Select active element
-- <kbd>Alt</kbd> + <kbd>a</kbd> → Select parent elements (3 times)
-- <kbd>Alt</kbd> + <kbd>i</kbd> → Select child elements
-- <kbd>Alt</kbd> + <kbd>]</kbd> → Select last child elements
-- <kbd>Alt</kbd> + <kbd>(</kbd> → Select previous sibling elements
-- <kbd>Alt</kbd> + <kbd>I</kbd> → Select links
-- <kbd>y</kbd> → Copy link address
-- <kbd>Y</kbd> → Copy link address and text
+- <kbd>s</kbd> ⇒ Select active element
+- <kbd>Alt</kbd> + <kbd>a</kbd> ⇒ Select parent elements (3 times)
+- <kbd>Alt</kbd> + <kbd>i</kbd> ⇒ Select child elements
+- <kbd>Alt</kbd> + <kbd>]</kbd> ⇒ Select last child elements
+- <kbd>Alt</kbd> + <kbd>(</kbd> ⇒ Select previous sibling elements
+- <kbd>Alt</kbd> + <kbd>I</kbd> ⇒ Select links
+- <kbd>y</kbd> ⇒ Copy link address
+- <kbd>Y</kbd> ⇒ Copy link address and text
 
 </details>
 
