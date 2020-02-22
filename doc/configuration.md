@@ -116,7 +116,7 @@ dmenu.send('set-dmenu', {
       # Get input from /dev/stdin
       cat > "$input"
       # Run fzf with Alacritty
-      alacritty --command sh -c 'fzf < "$1" > "$2"' -- "$input" "$output"
+      alacritty --class 'Alacritty · Floating' --command sh -c 'fzf < "$1" > "$2"' -- "$input" "$output"
       # Write output to /dev/stdout
       cat "$output"
     `
@@ -153,7 +153,7 @@ env.EDITOR = `
   cat <<'EOF' >> "$config"
 background_opacity: 0.75
 EOF
-  alacritty --config-file "$config" --class alacritty-float --command kak "$1" -e "select $2.$3,$4.$5"
+  alacritty --config-file "$config" --class 'Alacritty · Floating' --command kak "$1" -e "select $2.$3,$4.$5"
 `
 ```
 
@@ -164,7 +164,7 @@ EOF
 ``` javascript
 const { env } = krabby
 
-env.EDITOR = 'kitty --class kitty-float --override background_opacity=0.75 kak "$1" -e "select $2.$3,$4.$5"'
+env.EDITOR = `kitty --class 'kitty · Floating' --override background_opacity=0.75 kak "$1" -e "select $2.$3,$4.$5"`
 ```
 
 ## mpv
