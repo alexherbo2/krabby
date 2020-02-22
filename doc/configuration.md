@@ -131,30 +131,12 @@ dmenu.send('set-dmenu', {
 
 ### [Alacritty]
 
-Override individual configuration options with a temporary config file.
-
 `~/.config/krabby/config.js`
 
 ``` javascript
 const { env } = krabby
 
-env.EDITOR = `
-  # Environment variables
-  XDG_CONFIG_HOME=\${XDG_CONFIG_HOME:-~/.config}
-  CONFIG=$XDG_CONFIG_HOME/alacritty/alacritty.yml
-  # Create a temporary config file
-  config=$(mktemp)
-  trap 'rm -f "$config"' EXIT
-  # Populate configuration if available
-  if test -f "$CONFIG"; then
-    cp "$CONFIG" "$config"
-  fi
-  # Additional settings
-  cat <<'EOF' >> "$config"
-background_opacity: 0.75
-EOF
-  alacritty --config-file "$config" --class 'Alacritty · Floating' --command kak "$1" -e "select $2.$3,$4.$5"
-`
+env.EDITOR = `alacritty --class 'Alacritty · Floating' --command kak "$1" -e "select $2.$3,$4.$5"`
 ```
 
 ### [kitty]
