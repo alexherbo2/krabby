@@ -180,7 +180,7 @@ main() {
 
     # Extension: dmenu
     name='dmenu'
-    description='Tab search with dmenu'
+    description='Tab search with a dmenu filter program'
     url='https://github.com/alexherbo2/chrome-dmenu'
     path=$CONFIG/extensions/dmenu
     dependencies='dmenu jq zip'
