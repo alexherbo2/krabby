@@ -9,15 +9,19 @@ function Krabby({ dormant = true } = {}) {
   // Environment variables ─────────────────────────────────────────────────────
 
   krabby.env = {}
-  krabby.env.MPV_CONFIG = ['-no-terminal']
-  krabby.env.HTML_FILTER = ['pandoc', '--from', 'html', '--to', 'markdown']
+
+  // Settings ──────────────────────────────────────────────────────────────────
+
+  krabby.settings = {}
+  krabby.settings['mpv-config'] = ['-no-terminal']
+  krabby.settings['html-filter'] = ['pandoc', '--from', 'html', '--to', 'markdown']
 
   switch (true) {
     case (/^(Linux|FreeBSD|OpenBSD)/.test(navigator.platform)):
-      krabby.env.OPENER = 'xdg-open'
+      krabby.settings['opener'] = 'xdg-open'
       break
     case (/^(Mac)/.test(navigator.platform)):
-      krabby.env.OPENER = 'open'
+      krabby.settings['opener'] = 'open'
       break
   }
 
@@ -92,10 +96,10 @@ function Krabby({ dormant = true } = {}) {
   })
 
   // Hint
-  krabby.env.HINT_SELECTORS = '*'
-  krabby.env.HINT_TEXT_SELECTORS = 'input:not([type="submit"]):not([type="button"]):not([type="reset"]):not([type="file"]), textarea, select'
-  krabby.env.HINT_VIDEO_SELECTORS = 'video'
-  krabby.env.HINT_STYLE = {}
+  krabby.settings['hint-selectors'] = '*'
+  krabby.settings['hint-text-selectors'] = 'input:not([type="submit"]):not([type="button"]):not([type="reset"]):not([type="file"]), textarea, select'
+  krabby.settings['hint-video-selectors'] = 'video'
+  krabby.settings['hint-style'] = {}
 
   krabby.modes.hint = ({ selections, selectors = '*', filters = [Hint.isClickable], lock = false, click = false, style = {} } = {}) => {
     const hint = new Hint
@@ -255,7 +259,7 @@ function Krabby({ dormant = true } = {}) {
 
   krabby.commands.open = (selections, callback = (link) => link.href) => {
     const urls = krabby.commands.getElements(selections).map(callback)
-    krabby.commands.plumb(krabby.env.OPENER, ...urls)
+    krabby.commands.plumb(krabby.settings['opener'], ...urls)
   }
 
   krabby.commands.yankFilteredHTML = (selections, filter) => {
@@ -268,13 +272,13 @@ function Krabby({ dormant = true } = {}) {
     if (reverse) {
       playlist.reverse()
     }
-    krabby.commands.plumb('mpv', ...krabby.env.MPV_CONFIG, ...playlist)
+    krabby.commands.plumb('mpv', ...krabby.settings['mpv-config'], ...playlist)
   }
 
   krabby.commands.mpvResume = () => {
     const media = krabby.commands.player().media
     media.pause()
-    krabby.commands.plumb('mpv', ...krabby.env.MPV_CONFIG, location.href, '-start', media.currentTime.toString())
+    krabby.commands.plumb('mpv', ...krabby.settings['mpv-config'], location.href, '-start', media.currentTime.toString())
   }
 
   // Mappings ──────────────────────────────────────────────────────────────────
@@ -313,12 +317,12 @@ function Krabby({ dormant = true } = {}) {
   krabby.modes.modal.map('Command', ['Shift', 'KeyR'], () => location.reload(true), 'Reload the page, ignoring cached content', 'Refresh tabs')
 
   // Link hints
-  krabby.modes.modal.map('Command', ['KeyF'], () => krabby.modes.hint({ selections: krabby.selections, selectors: krabby.env.HINT_SELECTORS, style: krabby.env.HINT_STYLE }).start(), 'Focus link', 'Link hints')
-  krabby.modes.modal.map('Command', ['Shift', 'KeyF'], () => krabby.modes.hint({ selections: krabby.selections, selectors: krabby.env.HINT_SELECTORS, lock: true, style: krabby.env.HINT_STYLE }).start(), 'Select multiple links', 'Link hints')
-  krabby.modes.modal.map('Command', ['KeyC'], () => krabby.modes.hint({ selectors: krabby.env.HINT_SELECTORS, click: true, style: krabby.env.HINT_STYLE }).start(), 'Click link', 'Link hints')
-  krabby.modes.modal.map('Command', ['Shift', 'KeyC'], () => krabby.modes.hint({ selectors: krabby.env.HINT_SELECTORS, lock: true, click: true, style: krabby.env.HINT_STYLE }).start(), 'Click multiple links', 'Link hints')
-  krabby.modes.modal.map('Command', ['KeyI'], () => krabby.modes.hint({ selectors: krabby.env.HINT_TEXT_SELECTORS, style: krabby.env.HINT_STYLE }).start(), 'Focus input', 'Link hints')
-  krabby.modes.modal.map('Command', ['KeyV'], () => krabby.modes.hint({ selectors: krabby.env.HINT_VIDEO_SELECTORS, style: krabby.env.HINT_STYLE }).start(), 'Focus video', 'Link hints')
+  krabby.modes.modal.map('Command', ['KeyF'], () => krabby.modes.hint({ selections: krabby.selections, selectors: krabby.settings['hint-selectors'], style: krabby.settings['hint-style'] }).start(), 'Focus link', 'Link hints')
+  krabby.modes.modal.map('Command', ['Shift', 'KeyF'], () => krabby.modes.hint({ selections: krabby.selections, selectors: krabby.settings['hint-selectors'], lock: true, style: krabby.settings['hint-style'] }).start(), 'Select multiple links', 'Link hints')
+  krabby.modes.modal.map('Command', ['KeyC'], () => krabby.modes.hint({ selectors: krabby.settings['hint-selectors'], click: true, style: krabby.settings['hint-style'] }).start(), 'Click link', 'Link hints')
+  krabby.modes.modal.map('Command', ['Shift', 'KeyC'], () => krabby.modes.hint({ selectors: krabby.settings['hint-selectors'], lock: true, click: true, style: krabby.settings['hint-style'] }).start(), 'Click multiple links', 'Link hints')
+  krabby.modes.modal.map('Command', ['KeyI'], () => krabby.modes.hint({ selectors: krabby.settings['hint-text-selectors'], style: krabby.settings['hint-style'] }).start(), 'Focus input', 'Link hints')
+  krabby.modes.modal.map('Command', ['KeyV'], () => krabby.modes.hint({ selectors: krabby.settings['hint-video-selectors'], style: krabby.settings['hint-style'] }).start(), 'Focus video', 'Link hints')
 
   // Open links
   krabby.modes.modal.map('Command', ['Enter'], () => krabby.commands.click(krabby.selections), 'Open selection', 'Open links')
@@ -369,7 +373,7 @@ function Krabby({ dormant = true } = {}) {
   krabby.modes.modal.map('Document', ['Shift', 'KeyY'], () => krabby.commands.copyToClipboard(`[${document.title}](${location.href})`, 'Page address and title copied'), 'Copy page address and title', 'Clipboard')
   krabby.modes.modal.map('Command', ['KeyY'], () => krabby.commands.yank(krabby.selections, (selection) => selection.outerHTML, 'HTML selection copied'), 'Copy HTML selection', 'Clipboard')
   krabby.modes.modal.map('Command', ['Alt', 'KeyY'], () => krabby.commands.yank(krabby.selections, (selection) => selection.textContent, 'Selection copied as plain text'), 'Copy as plain text', 'Clipboard')
-  krabby.modes.modal.map('Command', ['Shift', 'KeyY'], () => krabby.commands.yankFilteredHTML(krabby.selections, krabby.env.HTML_FILTER), 'Copy selection, using an HTML filter', 'Clipboard')
+  krabby.modes.modal.map('Command', ['Shift', 'KeyY'], () => krabby.commands.yankFilteredHTML(krabby.selections, krabby.settings['html-filter']), 'Copy selection, using an HTML filter', 'Clipboard')
   krabby.modes.modal.map('Link', ['KeyY'], () => krabby.commands.yank(krabby.selections, (selection) => selection.href, 'Link address copied'), 'Copy link address', 'Clipboard')
   krabby.modes.modal.map('Link', ['Alt', 'KeyY'], () => krabby.commands.yank(krabby.selections, (selection) => selection.textContent, 'Link text copied'), 'Copy link text', 'Clipboard')
   krabby.modes.modal.map('Link', ['Shift', 'KeyY'], () => krabby.commands.yank(krabby.selections, (selection) => `[${selection.textContent}](${selection.href})`, 'Link address and text copied'), 'Copy link address and text', 'Clipboard')
@@ -390,7 +394,7 @@ function Krabby({ dormant = true } = {}) {
   krabby.modes.modal.map('Video', ['KeyP'], () => krabby.commands.player().pictureInPicture(), 'Toggle picture-in-picture mode', 'Player')
 
   // mpv
-  krabby.modes.modal.map('Document', ['KeyM'], () => krabby.commands.plumb('mpv', ...krabby.env.MPV_CONFIG, location.href), 'Play with mpv', 'mpv')
+  krabby.modes.modal.map('Document', ['KeyM'], () => krabby.commands.plumb('mpv', ...krabby.settings['mpv-config'], location.href), 'Play with mpv', 'mpv')
   krabby.modes.modal.map('Video', ['Enter'], () => krabby.commands.mpvResume(), 'Play with mpv', 'mpv')
   krabby.modes.modal.map('Link', ['KeyM'], () => krabby.commands.mpv({ selections: krabby.selections }), 'Play with mpv', 'mpv')
   krabby.modes.modal.map('Link', ['Alt', 'KeyM'], () => krabby.commands.mpv({ selections: krabby.selections, reverse: true }), 'Play with mpv in reverse order', 'mpv')

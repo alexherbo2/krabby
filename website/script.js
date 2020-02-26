@@ -20,7 +20,7 @@ const preventFocus = (event) => {
 const DOMContentLoaded = (event) => {
   const krabby = Krabby()
   // Link hints
-  krabby.env.HINT_SELECTORS = ':not(.krabby)'
+  krabby.settings['hint-selectors'] = ':not(.krabby)'
   for (const button of document.querySelectorAll('button.krabby')) {
     const commandMode = krabby.modes[button.getAttribute('mode')]
     const keyChord = parseButtonKeys(button)

@@ -60,9 +60,9 @@ The **label** is the label of the command.
 `~/.config/krabby/config.js`
 
 ``` javascript
-const { env } = krabby
+const { settings } = krabby
 
-env.HINT_STYLE = {
+settings['hint-style'] = {
   textColor: 'royalblue',
   activeCharacterTextColor: 'lightsteelblue',
   backgroundColorStart: 'white',
@@ -164,9 +164,9 @@ editor.send('set', {
 `~/.config/krabby/config.js`
 
 ``` javascript
-const { env } = krabby
+const { settings } = krabby
 
-env.MPV_CONFIG = ['-no-config', '-no-terminal']
+settings['mpv-config'] = ['-no-config', '-no-terminal']
 ```
 
 ## HTML filter
@@ -174,9 +174,9 @@ env.MPV_CONFIG = ['-no-config', '-no-terminal']
 `~/.config/krabby/config.js`
 
 ``` javascript
-const { env } = krabby
+const { settings } = krabby
 
-env.HTML_FILTER = ['pandoc', '--from', 'html', '--to', 'asciidoc']
+settings['html-filter'] = ['pandoc', '--from', 'html', '--to', 'asciidoc']
 ```
 
 ## Examples

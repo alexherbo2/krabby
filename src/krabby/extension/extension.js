@@ -66,10 +66,10 @@ function KrabbyExtension(krabby) {
         switch (response.platform.os) {
           case 'linux':
           case 'openbsd':
-            krabby.env.OPENER = 'xdg-open'
+            krabby.settings['opener'] = 'xdg-open'
             break
           case 'mac':
-            krabby.env.OPENER = 'open'
+            krabby.settings['opener'] = 'open'
             break
         }
         break
@@ -98,7 +98,7 @@ function KrabbyExtension(krabby) {
 
   krabby.commands.open = (selections, callback = (link) => link.href) => {
     for (const link of krabby.commands.getElements(selections)) {
-      krabby.extensions.shell.send(krabby.env.OPENER, callback(link))
+      krabby.extensions.shell.send(krabby.settings['opener'], callback(link))
     }
   }
 
@@ -117,13 +117,13 @@ function KrabbyExtension(krabby) {
     if (reverse) {
       playlist.reverse()
     }
-    krabby.extensions.shell.send('mpv', ...krabby.env.MPV_CONFIG, ...playlist)
+    krabby.extensions.shell.send('mpv', ...krabby.settings['mpv-config'], ...playlist)
   }
 
   krabby.commands.mpvResume = () => {
     const media = krabby.commands.player().media
     media.pause()
-    krabby.extensions.shell.send('mpv', ...krabby.env.MPV_CONFIG, location.href, '-start', media.currentTime.toString())
+    krabby.extensions.shell.send('mpv', ...krabby.settings['mpv-config'], location.href, '-start', media.currentTime.toString())
   }
 
   // Mappings ──────────────────────────────────────────────────────────────────
@@ -192,7 +192,7 @@ function KrabbyExtension(krabby) {
   krabby.modes.modal.map('Image', ['Alt', 'Enter'], () => krabby.commands.download(krabby.selections, (selection) => selection.src), 'Download image', 'Open links')
 
   // mpv
-  krabby.modes.modal.map('Document', ['KeyM'], () => krabby.extensions.shell.send('mpv', ...krabby.env.MPV_CONFIG, location.href), 'Play with mpv', 'mpv')
+  krabby.modes.modal.map('Document', ['KeyM'], () => krabby.extensions.shell.send('mpv', ...krabby.settings['mpv-config'], location.href), 'Play with mpv', 'mpv')
 
   return krabby
 }
