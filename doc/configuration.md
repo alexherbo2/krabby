@@ -142,7 +142,7 @@ const { extensions } = krabby
 const { editor } = extensions
 
 editor.send('set', {
-  editor: `alacritty --class 'Alacritty · Floating' --command kak "$1" -e "select $2.$3,$4.$5"`
+  editor: `alacritty --class 'Alacritty · Floating' --command kak "${file}" -e "select ${anchor_line}.${anchor_column},${cursor_line}.${cursor_column}"`
 })
 ```
 
@@ -155,7 +155,7 @@ const { extensions } = krabby
 const { editor } = extensions
 
 editor.send('set', {
-  editor: `kitty --class 'kitty · Floating' --override background_opacity=0.75 kak "$1" -e "select $2.$3,$4.$5"`
+  editor: `kitty --class 'kitty · Floating' --override background_opacity=0.75 kak "${file}" -e "select ${anchor_line}.${anchor_column},${cursor_line}.${cursor_column}"`
 })
 ```
 
