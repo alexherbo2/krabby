@@ -85,9 +85,11 @@ Change the [dmenu] command:
 const { extensions } = krabby
 const { dmenu } = extensions
 
-dmenu.send('set-dmenu', {
-  command: 'dmenu',
-  arguments: ['-l', '20', '-i', '-p', 'Tab search']
+dmenu.send('set', {
+  dmenu: {
+    command: 'dmenu',
+    arguments: ['-l', '20', '-i']
+  }
 })
 ```
 
@@ -103,24 +105,26 @@ Run with [fzf] and [Alacritty]:
 const { extensions } = krabby
 const { dmenu } = extensions
 
-dmenu.send('set-dmenu', {
-  command: 'sh',
-  arguments: [
-    '-c',
-    `
-      # Create IO files
-      state=$(mktemp -d)
-      input=$state/input
-      output=$state/output
-      trap 'rm -Rf "$state"' EXIT
-      # Get input from /dev/stdin
-      cat > "$input"
-      # Run fzf with Alacritty
-      alacritty --class 'Alacritty · Floating' --command sh -c 'fzf < "$1" > "$2"' -- "$input" "$output"
-      # Write output to /dev/stdout
-      cat "$output"
-    `
-  ]
+dmenu.send('set', {
+  dmenu: {
+    command: 'sh',
+    arguments: [
+      '-c',
+      `
+        # Create IO files
+        state=$(mktemp -d)
+        input=$state/input
+        output=$state/output
+        trap 'rm -Rf "$state"' EXIT
+        # Get input from /dev/stdin
+        cat > "$input"
+        # Run fzf with Alacritty
+        alacritty --class 'Alacritty · Floating' --command sh -c 'fzf < "$1" > "$2"' -- "$input" "$output"
+        # Write output to /dev/stdout
+        cat "$output"
+      `
+    ]
+  }
 })
 ```
 
@@ -134,9 +138,12 @@ dmenu.send('set-dmenu', {
 `~/.config/krabby/config.js`
 
 ``` javascript
-const { env } = krabby
+const { extensions } = krabby
+const { editor } = extensions
 
-env.EDITOR = `alacritty --class 'Alacritty · Floating' --command kak "$1" -e "select $2.$3,$4.$5"`
+editor.send('set', {
+  editor: `alacritty --class 'Alacritty · Floating' --command kak "$1" -e "select $2.$3,$4.$5"`
+})
 ```
 
 ### [kitty]
@@ -144,9 +151,12 @@ env.EDITOR = `alacritty --class 'Alacritty · Floating' --command kak "$1" -e "s
 `~/.config/krabby/config.js`
 
 ``` javascript
-const { env } = krabby
+const { extensions } = krabby
+const { editor } = extensions
 
-env.EDITOR = `kitty --class 'kitty · Floating' --override background_opacity=0.75 kak "$1" -e "select $2.$3,$4.$5"`
+editor.send('set', {
+  editor: `kitty --class 'kitty · Floating' --override background_opacity=0.75 kak "$1" -e "select $2.$3,$4.$5"`
+})
 ```
 
 ## mpv

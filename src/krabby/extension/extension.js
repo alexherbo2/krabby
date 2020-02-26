@@ -19,8 +19,6 @@ function KrabbyExtension(krabby) {
       break
   }
 
-  krabby.env.EDITOR = undefined
-
   // Extensions ────────────────────────────────────────────────────────────────
 
   krabby.extensions = {}
@@ -131,7 +129,7 @@ function KrabbyExtension(krabby) {
   // Mappings ──────────────────────────────────────────────────────────────────
 
   // External editor
-  krabby.modes.modal.map('Text', ['Alt', 'KeyI'], () => krabby.extensions.editor.send('edit', krabby.env.EDITOR), 'Open your favorite editor', 'External editor')
+  krabby.modes.modal.map('Text', ['Alt', 'KeyI'], () => krabby.extensions.editor.send('edit'), 'Open your favorite editor', 'External editor')
 
   // Tab search
   krabby.modes.modal.map('Command', ['KeyQ'], () => krabby.extensions.dmenu.send('tab-search'), 'Tab search with dmenu', 'Tab search')
