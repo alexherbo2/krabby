@@ -3,7 +3,7 @@
 ## Files
 
 - [`~/.config/krabby`](/share/krabby)
-  - [`manifest.json`](/share/krabby/manifest.json): extension’s entry point.
+  - [`manifest`](/share/krabby/manifest): extension’s entry point.
   - [`config.js`](/share/krabby/config.js): contains the user configuration.
   - [`fetch`](/share/krabby/fetch): shell script to fetch plugins.
   - [`Makefile`](/share/krabby/Makefile): contains commands to build and update Krabby.
