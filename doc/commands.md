@@ -18,6 +18,7 @@ Commands are bound to **physical keys** and **displayed** with the [US layout][Q
 ## Tab search
 
 - <kbd>q</kbd> ⇒ Tab search with [dmenu] (**Command** context)
+- <kbd>Q</kbd> ⇒ Bring tab (**Command** context)
 
 ## Scroll
 
