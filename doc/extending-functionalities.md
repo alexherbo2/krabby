@@ -1,98 +1,47 @@
 # Extending functionalities
 
-## Extensions
+**Table of contents**
 
-Example with [dmenu for Chrome].
+- [Cross-extension messaging](#cross-extension-messaging)
+- [Plugins](#plugins)
+
+## Cross-extension messaging
+
+See the following examples:
+
+- [chrome-commands](https://github.com/alexherbo2/chrome-commands)
+- [chrome-shell](https://github.com/alexherbo2/chrome-shell)
+- [chrome-editor](https://github.com/alexherbo2/chrome-editor)
+- [chrome-dmenu](https://github.com/alexherbo2/chrome-dmenu)
 
 `~/.config/krabby/config.js`
 
 ``` javascript
-// Environment variables ───────────────────────────────────────────────────────
+const { extensions, modes } = krabby
+const { modal } = modes
 
-switch (true) {
-  case (typeof browser !== 'undefined'):
-    krabby.env.PLATFORM = 'firefox'
-    krabby.env.DMENU_EXTENSION_ID = 'dmenu@alexherbo2.github.com'
-    break
-  case (typeof chrome !== 'undefined'):
-    krabby.env.PLATFORM = 'chrome'
-    krabby.env.DMENU_EXTENSION_ID = 'gonendiemfggilnopogmkafgadobkoeh'
-    break
+// Your awesome extension
+extensions.your_awesome_extension = {}
+extensions.your_awesome_extension.port = chrome.runtime.connect(your_awesome_extension_id)
+extensions.your_awesome_extension.send = (command, ...arguments) => {
+  extensions.your_awesome_extension.port.postMessage({ command, arguments })
 }
 
-// Extensions ──────────────────────────────────────────────────────────────────
-
-// dmenu
-krabby.extensions.dmenu = {}
-krabby.extensions.dmenu.port = chrome.runtime.connect(krabby.env.DMENU_EXTENSION_ID)
-krabby.extensions.dmenu.send = (command, ...arguments) => {
-  krabby.extensions.dmenu.port.postMessage({ command, arguments })
-}
-
-// Mappings ────────────────────────────────────────────────────────────────────
-
-// Tab search
-krabby.modes.modal.map('Command', ['KeyQ'], () => krabby.extensions.dmenu.send('tab-search'), 'Tab search with dmenu', 'Tab search')
+// Mappings
+modal.map('Command', ['F2'], () => extensions.your_awesome_extension.send('something'), 'Call something from your awesome extension', 'Your awesome extension')
 ```
 
-## Scripts
+See [Cross-extension messaging] for a complete reference.
 
-Example with [Launchlet for Krabby] to run commands by name.
+[Cross-extension messaging]: https://developer.chrome.com/extensions/messaging#external
 
-`~/.config/krabby/plugins/launchlet.js`
+## Plugins
 
-``` javascript
-krabby.commands.launchlet = () => {
-  const LCHOptionRecipes = Object.values(krabby.modes.modal.context.commands).map(({ keyChord, command, description }) => {
-    const key = krabby.modes.modal.keyValues(keyChord).join('+')
-    const LCHRecipeName = `${key}: ${description}`
-    return {
-      LCHRecipeName,
-      LCHRecipeCallback: command
-    }
-  })
-  Launchlet.LCHSingletonCreate({
-    LCHOptionRecipes,
-    LCHOptionMode: Launchlet.LCHModeCommit
-  })
-}
+See the following examples:
 
-krabby.modes.modal.map('Page', ['Alt', 'F1'], () => krabby.commands.launchlet(), 'Run Launchlet', 'Launchlet')
-```
+- [krabby-launchlet](https://github.com/alexherbo2/krabby-launchlet)
+- [krabby-selection](https://github.com/alexherbo2/krabby-selection)
 
-Update your [`manifest.json`](/share/krabby/manifest.json) and [`fetch`](/share/krabby/fetch) files.
+Search the following topics [`#krabby #plugin`] for other plugins.
 
-`~/.config/krabby/fetch`
-
-``` sh
-fetch https://launchlet.dev/launchlet.js
-fetch https://launchlet.dev/launchlet.css
-```
-
-`~/.config/krabby/manifest.json`
-
-``` json
-{
-  "content_scripts": [
-    {
-      "js": [
-        "packages/launchlet.js",
-        "plugins/launchlet.js"
-      ],
-      "css": [
-        "packages/launchlet.css"
-      ]
-    }
-  ]
-}
-```
-
-Run the following in your terminal.
-
-``` sh
-cd ~/.config/krabby
-make
-```
-
-[dmenu for Chrome]: https://github.com/alexherbo2/chrome-dmenu
-[Launchlet for Krabby]: https://github.com/alexherbo2/krabby-launchlet
+[`#krabby #plugin`]: https://github.com/search?q=topic:krabby+topic:plugin
