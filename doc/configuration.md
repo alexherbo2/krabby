@@ -1,5 +1,16 @@
 # Configuration
 
+**Table of contents**
+
+- [Files](#files)
+- [Mapping](#mapping)
+- [Keyboard layout](#keyboard-layout)
+- [Hint appearance](#hint-appearance)
+- [Tab search](#tab-search)
+- [External editor](#external-editor)
+- [mpv](#mpv)
+- [HTML filter](#html-filter)
+
 ## Files
 
 - [`~/.config/krabby`](/share/krabby)
@@ -7,53 +18,87 @@
   - [`config.js`](/share/krabby/config.js): contains the user configuration.
   - [`fetch`](/share/krabby/fetch): shell script to fetch plugins.
   - [`Makefile`](/share/krabby/Makefile): contains commands to build and update Krabby.
-  - `packages`: contains files used by Krabby: [Modal], [Mouse Selection], [Prompt], [Hint], [Mark], [Selection], [Mouse], [Clipboard], [Scroll], [Player], [icons][Krabby icon] and [`krabby`](/src/krabby).
-  - `extensions`: contains extensions used by Krabby: [Commands], [Shell], [Editor] and [dmenu].  [Krabby] repository can be found here, to update the extension when you run `make update`.
-- [`~/.local/bin`](/bin)
-  - [`plumb`](/bin/plumb)
+  - `packages`: contains files used by Krabby.
+    - [modal.js]
+    - [mouse-selection.js]
+    - [prompt.js]
+    - [hint.js]
+    - [mark.js]
+    - [selection.js]
+    - [mouse.js]
+    - [clipboard.js]
+    - [scroll.js]
+    - [player.js]
+    - [icons][Krabby icon]
+    - [`krabby`](/src/krabby)
+  - `extensions`: contains extensions used by Krabby.
+    - [chrome-commands]
+    - [chrome-shell]
+    - [chrome-editor]
+    - [chrome-dmenu]
+    - [Krabby] (self-update)
+  - [`~/.local/bin`](/bin): contains executables used by Krabby.
+    - [`plumb`](/bin/plumb)
 
 Krabby’s default configuration is located in [`~/.config/krabby/packages/krabby`](/src/krabby).
 
+[Krabby]: https://github.com/alexherbo2/krabby
+[Krabby icon]: https://iconfinder.com/icons/877852/kanto_krabby_pokemon_water_icon
+
+[modal.js]: https://github.com/alexherbo2/modal.js
+[mouse-selection.js]: https://simonwep.github.io/selection/
+[prompt.js]: https://github.com/alexherbo2/prompt.js
+[hint.js]: https://github.com/alexherbo2/hint.js
+[mark.js]: https://github.com/alexherbo2/mark.js
+[selection.js]: https://github.com/alexherbo2/selection.js
+[mouse.js]: https://github.com/alexherbo2/mouse.js
+[clipboard.js]: https://github.com/alexherbo2/clipboard.js
+[scroll.js]: https://github.com/alexherbo2/scroll.js
+[player.js]: https://github.com/alexherbo2/player.js
+
+[chrome-commands]: https://github.com/alexherbo2/chrome-commands
+[chrome-shell]: https://github.com/alexherbo2/chrome-shell
+[chrome-editor]: https://github.com/alexherbo2/chrome-editor
+[chrome-dmenu]: https://github.com/alexherbo2/chrome-dmenu
+
 ## Mapping
-
-Creating and removing mappings boils down to the following commands:
-
-``` javascript
-krabby.modes.modal.map(context, keys, command, description, label)
-```
-
-``` javascript
-krabby.modes.modal.unmap(context, keys)
-```
-
-The **context** dictates in what context the mapping will be available:
-**Command**, **Text**, **Link**, **Image**, **Video**, **Document** or **Page**.
-
-The **keys** represent a chord – a key sequence in which the keys are pressed at
-the same time.  They are composed of a single [key code][KeyboardEvent.code] and
-optional [modifiers].  For special keys, the list of key values can be found
-[here][Key Values].
-
-The **command** is the function to evaluate.  The function takes exactly one
-argument, the [`keydown`] event that triggered the command.  For most commands,
-this argument can be ignored.  The command can also be an instance of **Modal**
-to facilitate command chaining.
-
-**Example** – Example where `event` parameter can be useful for smooth scrolling:
 
 `~/.config/krabby/config.js`
 
 ``` javascript
-const { modes, scroll } = krabby
+const { modes } = krabby
 const { modal } = modes
 
-modal.map('Command', ['KeyJ'], ({ repeat }) => scroll.down(repeat), 'Scroll down', 'Scroll')
-modal.map('Command', ['KeyK'], ({ repeat }) => scroll.up(repeat), 'Scroll up', 'Scroll')
+modal.map('Command', ['F2'], (event) => console.log(krabby.settings), 'Display settings in the console', 'Help')
 ```
 
-The **description** is the description of the command.
+You are encouraged to read the default configuration.
 
-The **label** is the label of the command.
+See [modal.js] for a complete reference.
+
+## Keyboard layout
+
+Display keys with the [US layout][QWERTY]:
+
+`~/.config/krabby/config.js`
+
+``` javascript
+const { modes } = krabby
+const { modal } = modes
+
+modal.keyMap = {
+  Backquote: { key: '`', shiftKey: '~' }, Digit1: { key: '1', shiftKey: '!' }, Digit2: { key: '2', shiftKey: '@' }, Digit3: { key: '3', shiftKey: '#' }, Digit4: { key: '4', shiftKey: '$' }, Digit5: { key: '5', shiftKey: '%' }, Digit6: { key: '6', shiftKey: '^' }, Digit7: { key: '7', shiftKey: '&' }, Digit8: { key: '8', shiftKey: '*' }, Digit9: { key: '9', shiftKey: '(' }, Digit0: { key: '0', shiftKey: ')' }, Minus: { key: '-', shiftKey: '_' }, Equal: { key: '=', shiftKey: '+' },
+  KeyQ: { key: 'q', shiftKey: 'Q' }, KeyW: { key: 'w', shiftKey: 'W' }, KeyE: { key: 'e', shiftKey: 'E' }, KeyR: { key: 'r', shiftKey: 'R' }, KeyT: { key: 't', shiftKey: 'T' }, KeyY: { key: 'y', shiftKey: 'Y' }, KeyU: { key: 'u', shiftKey: 'U' }, KeyI: { key: 'i', shiftKey: 'I' }, KeyO: { key: 'o', shiftKey: 'O' }, KeyP: { key: 'p', shiftKey: 'P' }, BracketLeft: { key: '[', shiftKey: '{' }, BracketRight: { key: ']', shiftKey: '}' }, Backslash: { key: '\\', shiftKey: '|' },
+  KeyA: { key: 'a', shiftKey: 'A' }, KeyS: { key: 's', shiftKey: 'S' }, KeyD: { key: 'd', shiftKey: 'D' }, KeyF: { key: 'f', shiftKey: 'F' }, KeyG: { key: 'g', shiftKey: 'G' }, KeyH: { key: 'h', shiftKey: 'H' }, KeyJ: { key: 'j', shiftKey: 'J' }, KeyK: { key: 'k', shiftKey: 'K' }, KeyL: { key: 'l', shiftKey: 'L' }, Semicolon: { key: ';', shiftKey: ':' }, Quote: { key: "'", shiftKey: '"' },
+  KeyZ: { key: 'z', shiftKey: 'Z' }, KeyX: { key: 'x', shiftKey: 'X' }, KeyC: { key: 'c', shiftKey: 'C' }, KeyV: { key: 'v', shiftKey: 'V' }, KeyB: { key: 'b', shiftKey: 'B' }, KeyN: { key: 'n', shiftKey: 'N' }, KeyM: { key: 'm', shiftKey: 'M' }, Comma: { key: ',', shiftKey: '<' }, Period: { key: '.', shiftKey: '>' }, Slash: { key: '/', shiftKey: '?' }
+}
+```
+
+**TODO**: Add [hint.js] configuration.
+
+[QWERTY]: https://en.wikipedia.org/wiki/QWERTY
+
+See [modal.js] and [hint.js] for a complete reference.
 
 ## Hint appearance
 
@@ -71,33 +116,11 @@ settings['hint-style'] = {
 }
 ```
 
-See [Hint – Appearance] for more information.
+See [hint.js] for a complete reference.
 
 ## Tab search
 
-### [dmenu]
-
-Change the [dmenu] command:
-
-`~/.config/krabby/config.js`
-
-``` javascript
-const { extensions } = krabby
-const { dmenu } = extensions
-
-dmenu.send('set', {
-  dmenu: {
-    command: 'dmenu',
-    arguments: ['-l', '20', '-i']
-  }
-})
-```
-
-[dmenu]: https://tools.suckless.org/dmenu/
-
-### [fzf] and [Alacritty]
-
-Run with [fzf] and [Alacritty]:
+Change the [dmenu] command to search with [fzf] and [Alacritty]:
 
 `~/.config/krabby/config.js`
 
@@ -128,12 +151,15 @@ dmenu.send('set', {
 })
 ```
 
+[dmenu]: https://tools.suckless.org/dmenu/
 [fzf]: https://github.com/junegunn/fzf
 [Alacritty]: https://github.com/alacritty/alacritty
 
+See [chrome-dmenu] for a complete reference.
+
 ## External editor
 
-### [Alacritty]
+Open [Kakoune] in [Alacritty]:
 
 `~/.config/krabby/config.js`
 
@@ -146,18 +172,10 @@ editor.send('set', {
 })
 ```
 
-### [kitty]
+[Kakoune]: https://kakoune.org
+[Alacritty]: https://github.com/alacritty/alacritty
 
-`~/.config/krabby/config.js`
-
-``` javascript
-const { extensions } = krabby
-const { editor } = extensions
-
-editor.send('set', {
-  editor: `kitty --class 'kitty · Floating' --override background_opacity=0.75 kak "$file" -e "select $anchor_line.$anchor_column,$cursor_line.$cursor_column"`
-})
-```
+See [chrome-editor] for a complete reference.
 
 ## mpv
 
@@ -178,53 +196,3 @@ const { settings } = krabby
 
 settings['html-filter'] = ['pandoc', '--from', 'html', '--to', 'asciidoc']
 ```
-
-## Examples
-
-### [Read Berserk] with [mpv]
-
-`~/.config/krabby/config.js`
-
-``` javascript
-const { extensions, modes } = krabby
-const { shell } = extensions
-const { modal } = modes
-
-modal.filter('Read Berserk', () => location.hostname === 'readberserk.com', 'Command')
-modal.filter('Read Berserk · Chapter', () => location.pathname.startsWith('/chapter'), 'Read Berserk')
-modal.enable('Read Berserk · Chapter', 'Read Berserk', ...modal.context.filters)
-
-modal.map('Read Berserk · Chapter', ['KeyM'], () => shell.send('mpv', ...Array.from(document.querySelectorAll('.pages__img'), (image) => image.src)), 'Read Berserk with mpv', 'Read Berserk · Chapter')
-```
-
-[Krabby]: https://github.com/alexherbo2/krabby
-[Krabby icon]: https://iconfinder.com/icons/877852/kanto_krabby_pokemon_water_icon
-
-[Modal]: https://github.com/alexherbo2/modal.js
-[Mouse Selection]: https://simonwep.github.io/selection/
-[Prompt]: https://github.com/alexherbo2/prompt.js
-[Hint]: https://github.com/alexherbo2/hint.js
-[Hint – Appearance]: https://github.com/alexherbo2/hint.js#appearance
-[Mark]: https://github.com/alexherbo2/mark.js
-[Selection]: https://github.com/alexherbo2/selection.js
-[Mouse]: https://github.com/alexherbo2/mouse.js
-[Clipboard]: https://github.com/alexherbo2/clipboard.js
-[Scroll]: https://github.com/alexherbo2/scroll.js
-[Player]: https://github.com/alexherbo2/player.js
-
-[Commands]: https://github.com/alexherbo2/chrome-commands
-[Shell]: https://github.com/alexherbo2/chrome-shell
-[Editor]: https://github.com/alexherbo2/chrome-editor
-[dmenu]: https://github.com/alexherbo2/chrome-dmenu
-
-[mpv]: https://mpv.io
-
-[Read Berserk]: https://readberserk.com
-
-[`keydown`]: https://developer.mozilla.org/en-US/docs/Web/API/Document/keydown_event
-[KeyboardEvent.code]: https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/code
-[Key Values]: https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key/Key_Values
-[Modifiers]: https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key/Key_Values#Modifier_keys
-
-[Alacritty]: https://github.com/jwilm/alacritty
-[kitty]: https://sw.kovidgoyal.net/kitty/
