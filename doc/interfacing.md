@@ -1,8 +1,10 @@
 # Interfacing Krabby with external programs
 
-###### [Shell]
+See the following examples:
 
-## Basic interaction
+- [chrome-shell](https://github.com/alexherbo2/chrome-shell)
+- [chrome-editor](https://github.com/alexherbo2/chrome-editor)
+- [chrome-dmenu](https://github.com/alexherbo2/chrome-dmenu)
 
 `~/.config/krabby/config.js`
 
@@ -11,51 +13,26 @@ const { extensions, modes, commands } = krabby
 const { shell } = extensions
 const { modal } = modes
 
-shell.port.onMessage.addListener((response) => {
-  switch (response.id) {
-    case 'ping-pong':
-      console.log(response.output)
-      break
-  }
-})
-
+// Ping-pong
 commands.ping = () => {
   shell.port.postMessage({
     id: 'ping-pong',
     command: 'echo',
-    arguments: ['Pong']
+    arguments: ['Ping']
+  })
+  shell.port.onMessage.addListener((response) => {
+    switch (response.id) {
+      case 'ping-pong':
+        console.log(response.output, 'Pong')
+        break
+    }
   })
 }
 
-modal.map('Command', ['KeyP'], () => commands.ping(), 'Ping', 'Ping-pong')
+// Mappings
+modal.map('Command', ['F2'], () => commands.ping(), 'Ping', 'Ping-pong')
 ```
 
-## Shell
+See [chrome-shell] for a complete reference.
 
-`~/.config/krabby/config.js`
-
-``` javascript
-commands.ping = () => {
-  shell.port.postMessage({
-    id: 'ping-pong',
-    shell: true,
-    command: 'echo Pong'
-  })
-}
-```
-
-## Piping
-
-`~/.config/krabby/config.js`
-
-``` javascript
-commands.ping = () => {
-  shell.port.postMessage({
-    id: 'ping-pong',
-    command: 'cat',
-    input: 'Pong'
-  })
-}
-```
-
-[Shell]: https://github.com/alexherbo2/chrome-shell
+[chrome-shell]: https://github.com/alexherbo2/chrome-shell
