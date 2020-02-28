@@ -133,6 +133,7 @@ function KrabbyExtension(krabby) {
 
   // Tab search
   krabby.modes.modal.map('Command', ['KeyQ'], () => krabby.extensions.dmenu.send('tab-search'), 'Tab search with dmenu', 'Tab search')
+  krabby.modes.modal.map('Command', ['Shift', 'KeyQ'], () => krabby.extensions.dmenu.send('bring-tab'), 'Bring tab', 'Tab search')
 
   // Zoom
   krabby.modes.modal.map('Command', ['Shift', 'Equal'], () => krabby.extensions.commands.send('zoom-in'), 'Zoom in', 'Zoom')
