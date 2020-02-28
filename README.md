@@ -288,7 +288,7 @@ See [krabby-resources] for all available demos.
 - [Commands] (Chrome API to perform browser actions)
 - [Shell] (Chrome API to execute external commands)
 - [Editor] (Open an external editor to edit text inputs)
-- [dmenu][chrome-dmenu] (Tab search with a [dmenu] filter program)
+- [dmenu][chrome-dmenu] (Tab search, selection and beyond with a [dmenu] filter program)
 
 ## Installation
 
