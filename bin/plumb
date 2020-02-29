@@ -3,8 +3,8 @@
 # Description
 # ‾‾‾‾‾‾‾‾‾‾‾
 # Plumber from Plan 9.
-# Use (wl-clipboard|xclip|pb{copy,paste}) to access the clipboard and jq for JSON.
-# dmenu is used for validating execution.
+# Use (wl-clipboard|xclip|pb{copy,paste}) (or $CLIPBOARD_COPY and $CLIPBOARD_PASTE if set) to access the clipboard and jq for JSON.
+# dmenu (or $DMENU if set) is used for validating execution.
 #
 # Dependencies
 # ‾‾‾‾‾‾‾‾‾‾‾‾
@@ -19,7 +19,7 @@
 # $ plumb [commands]
 #
 # Allowed commands are passed through the command-line, and a validation step
-# (with dmenu) is required before proceeding.
+# (with a dmenu filter program) is required before proceeding.
 #
 # Primary selection (JSON) format:
 # ❯ [<command>, <arguments>]
@@ -39,56 +39,79 @@
 # ❯ ["input", "<p>Tchou</p>", "pandoc", "--from", "html", "--to", "markdown"]
 #
 # A Tour of the Acme Editor: https://research.swtch.com/acme
+#
+# Configuration
+# ‾‾‾‾‾‾‾‾‾‾‾‾‾
+# Change the dmenu command to validate with fzf and Alacritty:
+# ┌
+# │ DMENU=$(cat <<'EOF'
+# │   # Create IO files
+# │   state=$(mktemp -d)
+# │   input=$state/input
+# │   output=$state/output
+# │   trap 'rm -Rf "$state"' EXIT
+# │   # Get input from /dev/stdin
+# │   cat > "$input"
+# │   # Run fzf with Alacritty
+# │   alacritty --class 'Alacritty · Floating' --command sh -c 'fzf < "$1" > "$2"' -- "$input" "$output"
+# │   # Write output to /dev/stdout
+# │   cat "$output"
+# │   # Exit code
+# │   if test ! -s "$output"; then
+# │     exit 1
+# │   fi
+# │ EOF
+# │ )
+# └
+#
+# Change the clipboard copy and paste commands:
+# $ CLIPBOARD_COPY=wl-copy
+# $ CLIPBOARD_PASTE=wl-paste
 
 # Environment variables
 OS=$(uname -s)
 
-# Clipboard handler
-case "$OS" in
-  Linux|FreeBSD|OpenBSD)
-    case "$XDG_SESSION_TYPE" in
-      wayland)
-        copy() {
-          wl-copy
-        }
-        paste() {
-          wl-paste
-        }
-        ;;
-      x11)
-        copy() {
-          xclip -filter -selection clipboard | xclip
-        }
-        paste() {
-          xclip -out
-        }
-        ;;
-      *)
-        printf 'Please set XDG_SESSION_TYPE: %s\n' "$XDG_SESSION_TYPE" > /dev/stderr
-        exit 1
-        ;;
-    esac
-    ;;
-  Darwin)
-    copy() {
-      pbcopy
-    }
-    paste() {
-      pbpaste
-    }
-    ;;
-  *)
-    printf 'Unsupported platform: %s\n' "$OS" > /dev/stderr
-    exit 1
-    ;;
-esac
+# Options ──────────────────────────────────────────────────────────────────────
+
+# Validate input with a dmenu filter program.
+if test -z "$DMENU"; then
+  DMENU='dmenu -l 20'
+fi
+
+# Copy content to the clipboard.
+if test -z "$CLIPBOARD_COPY"; then
+  case "$OS" in
+    Darwin) CLIPBOARD_COPY='pbcopy' ;;
+    Linux|FreeBSD|OpenBSD)
+      case "$XDG_SESSION_TYPE" in
+        wayland) CLIPBOARD_COPY='wl-copy' ;;
+        x11) CLIPBOARD_COPY='xclip -filter -selection clipboard | xclip' ;;
+      esac
+      ;;
+  esac
+fi
+
+# Paste content from the clipboard.
+if test -z "$CLIPBOARD_PASTE"; then
+  case "$OS" in
+    Darwin) CLIPBOARD_PASTE='pbpaste' ;;
+    Linux|FreeBSD|OpenBSD)
+      case "$XDG_SESSION_TYPE" in
+        wayland) CLIPBOARD_PASTE='wl-paste' ;;
+        x11) CLIPBOARD_PASTE='xclip -out' ;;
+      esac
+      ;;
+  esac
+fi
+
+# ──────────────────────────────────────────────────────────────────────────────
 
 # List of allowed commands
 PLUMBERS=$@
 
 # Get message from the primary selection
 script=$(
-  paste |
+  sh -c "$CLIPBOARD_PASTE" |
   jq --raw-output '
     @sh "
       set -- \(.)
@@ -113,7 +136,7 @@ validate_command() {
   # Note: '␤' could be nice, but `tr` only supports ASCII characters.
   printf '%s\0' "$@" |
   tr '\n\0' '\t\n' |
-  dmenu -l 20 -p 'Plumb? (Enter/Escape)' > /dev/null 2>&1
+  sh -c "$DMENU" > /dev/null 2>&1
 }
 
 plumb() {
@@ -127,7 +150,7 @@ plumb() {
         exit 1
       fi
       # Execute the command and copy its output to the clipboard
-      "$@" | copy
+      "$@" | sh -c "$CLIPBOARD_COPY"
       notify-send 'Plumb' "Command finished: $command"
       plumbed=yes
       break

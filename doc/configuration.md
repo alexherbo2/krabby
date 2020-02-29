@@ -10,6 +10,7 @@
 - [External editor](#external-editor)
 - [mpv](#mpv)
 - [HTML filter](#html-filter)
+- [Plumbing](#plumbing)
 
 ## Files
 
@@ -196,3 +197,41 @@ const { settings } = krabby
 
 settings['html-filter'] = ['pandoc', '--from', 'html', '--to', 'asciidoc']
 ```
+
+## Plumbing
+
+Change the [dmenu] command to validate with [fzf] and [Alacritty]:
+
+``` sh
+DMENU=$(cat <<'EOF'
+  # Create IO files
+  state=$(mktemp -d)
+  input=$state/input
+  output=$state/output
+  trap 'rm -Rf "$state"' EXIT
+  # Get input from /dev/stdin
+  cat > "$input"
+  # Run fzf with Alacritty
+  alacritty --class 'Alacritty · Floating' --command sh -c 'fzf < "$1" > "$2"' -- "$input" "$output"
+  # Write output to /dev/stdout
+  cat "$output"
+  # Exit code
+  if test ! -s "$output"; then
+    exit 1
+  fi
+EOF
+)
+```
+
+[dmenu]: https://tools.suckless.org/dmenu/
+[fzf]: https://github.com/junegunn/fzf
+[Alacritty]: https://github.com/alacritty/alacritty
+
+Change the clipboard copy and paste commands:
+
+``` sh
+CLIPBOARD_COPY=wl-copy
+CLIPBOARD_PASTE=wl-paste
+```
+
+See the [`plumb`](/bin/plumb) script for a complete reference.
