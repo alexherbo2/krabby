@@ -68,7 +68,8 @@
 # $ CLIPBOARD_COPY=wl-copy
 # $ CLIPBOARD_PASTE=wl-paste
 
-# Environment variables
+# Environment variables ────────────────────────────────────────────────────────
+
 OS=$(uname -s)
 
 # Options ──────────────────────────────────────────────────────────────────────
@@ -104,40 +105,56 @@ if test -z "$CLIPBOARD_PASTE"; then
   esac
 fi
 
-# ──────────────────────────────────────────────────────────────────────────────
+# Main ─────────────────────────────────────────────────────────────────────────
 
-# List of allowed commands
-PLUMBERS=$@
+main() {
 
-# Get message from the primary selection
-script=$(
-  sh -c "$CLIPBOARD_PASTE" |
-  jq --raw-output '
-    @sh "
-      set -- \(.)
-    "
-  '
-)
+  # List of allowed commands
+  PLUMBERS=$@
 
-# Abort if invalid JSON
-if test $? != 0; then
-  notify-send --urgency critical 'Plumb' 'Invalid JSON'
-  exit 1
-fi
+  # Get message from the primary selection
+  script=$(
+    sh -c "$CLIPBOARD_PASTE" |
+    jq --raw-output '
+      @sh "
+        set -- \(.)
+      "
+    '
+  )
 
-# Get the argument list – now it is safe to proceed.
-eval "$script"
+  # Abort if invalid JSON
+  if test $? != 0; then
+    notify-send --urgency critical 'Plumb' 'Invalid JSON'
+    exit 1
+  fi
 
-# Requires validation before proceeding commands.
-validate_command() {
-  # Display one item per argument.
-  # Separator for dmenu: '\0'
-  # Newline display: '\t'
-  # Note: '␤' could be nice, but `tr` only supports ASCII characters.
-  printf '%s\0' "$@" |
-  tr '\n\0' '\t\n' |
-  sh -c "$DMENU" > /dev/null 2>&1
+  # Get the argument list – now it is safe to proceed.
+  eval "$script"
+  # Input handler
+  if test "$1" = 'input'; then
+    exec <<EOF
+$2
+EOF
+    shift 2
+  fi
+
+  # Use `xdg_open` wrapper function
+  if test "$1" = xdg-open; then
+    for plumber in $PLUMBERS; do
+      if test "$plumber" = xdg-open; then
+        PLUMBERS=xdg_open
+        shift
+        set -- xdg_open "$@"
+        break
+      fi
+    done
+  fi
+
+  plumb "$@"
+
 }
+
+# Functions ────────────────────────────────────────────────────────────────────
 
 plumb() {
   command=$1
@@ -163,6 +180,17 @@ plumb() {
   fi
 }
 
+# Requires validation before proceeding commands.
+validate_command() {
+  # Display one item per argument.
+  # Separator for dmenu: '\0'
+  # Newline display: '\t'
+  # Note: '␤' could be nice, but `tr` only supports ASCII characters.
+  printf '%s\0' "$@" |
+  tr '\n\0' '\t\n' |
+  sh -c "$DMENU" > /dev/null 2>&1
+}
+
 # Wrapper function to open multiple URLs.
 xdg_open() {
   for url do
@@ -170,24 +198,4 @@ xdg_open() {
   done
 }
 
-# Input handler
-if test "$1" = 'input'; then
-  exec <<EOF
-$2
-EOF
-  shift 2
-fi
-
-# Use `xdg_open` wrapper function
-if test "$1" = xdg-open; then
-  for plumber in $PLUMBERS; do
-    if test "$plumber" = xdg-open; then
-      PLUMBERS=xdg_open
-      shift
-      set -- xdg_open "$@"
-      break
-    fi
-  done
-fi
-
-plumb "$@"
+main "$@"
