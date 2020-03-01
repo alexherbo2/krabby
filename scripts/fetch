@@ -16,16 +16,16 @@ fetch() {
   esac
 }
 
-fetch https://github.com/alexherbo2/modal.js/raw/master/scripts/modal.js
+fetch https://github.com/alexherbo2/modal.js/raw/master/src/modal.js
 fetch https://cdn.jsdelivr.net/npm/@simonwep/selection-js/dist/selection.min.js mouse-selection.js
-fetch https://github.com/alexherbo2/prompt.js/raw/master/scripts/prompt.js
-fetch https://github.com/alexherbo2/hint.js/raw/master/scripts/hint.js
-fetch https://github.com/alexherbo2/mark.js/raw/master/scripts/mark.js
-fetch https://github.com/alexherbo2/selection.js/raw/master/scripts/selection.js
-fetch https://github.com/alexherbo2/selection.js/raw/master/styles/selection.css
-fetch https://github.com/alexherbo2/mouse.js/raw/master/scripts/mouse.js
-fetch https://github.com/alexherbo2/clipboard.js/raw/master/scripts/clipboard.js
-fetch https://github.com/alexherbo2/scroll.js/raw/master/scripts/scroll.js
-fetch https://github.com/alexherbo2/player.js/raw/master/scripts/player.js
+fetch https://github.com/alexherbo2/prompt.js/raw/master/src/prompt.js
+fetch https://github.com/alexherbo2/hint.js/raw/master/src/hint.js
+fetch https://github.com/alexherbo2/mark.js/raw/master/src/mark.js
+fetch https://github.com/alexherbo2/selection.js/raw/master/src/selection.js
+fetch https://github.com/alexherbo2/selection.js/raw/master/src/selection.css
+fetch https://github.com/alexherbo2/mouse.js/raw/master/src/mouse.js
+fetch https://github.com/alexherbo2/clipboard.js/raw/master/src/clipboard.js
+fetch https://github.com/alexherbo2/scroll.js/raw/master/src/scroll.js
+fetch https://github.com/alexherbo2/player.js/raw/master/src/player.js
 fetch https://iconfinder.com/icons/877852/download/svg/512 krabby.svg
 fetch https://iconfinder.com/icons/877852/download/png/512 krabby.png
