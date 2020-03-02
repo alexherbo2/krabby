@@ -19,6 +19,7 @@ Commands are bound to **physical keys** and **displayed** with the [US layout][Q
 
 - <kbd>q</kbd> ⇒ Tab search with [dmenu] (**Command** context)
 - <kbd>Q</kbd> ⇒ Bring tab (**Command** context)
+- <kbd>Alt</kbd> + <kbd>q</kbd> ⇒ Open bookmark (**Command** context)
 
 ## Scroll
 
