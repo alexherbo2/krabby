@@ -163,14 +163,14 @@ function KrabbyExtension(krabby) {
   // Switch tabs
   krabby.modes.modal.map('Page', ['Alt', 'KeyL'], () => krabby.extensions.commands.send('next-tab'), 'Next tab', 'Switch tabs')
   krabby.modes.modal.map('Page', ['Alt', 'KeyH'], () => krabby.extensions.commands.send('previous-tab'), 'Previous tab', 'Switch tabs')
-  krabby.modes.modal.map('Command', ['Digit1'], () => krabby.extensions.commands.send('first-tab'), 'First tab', 'Switch tabs')
-  krabby.modes.modal.map('Command', ['Digit0'], () => krabby.extensions.commands.send('last-tab'), 'Last tab', 'Switch tabs')
+  krabby.modes.modal.map('Page', ['Alt', 'Digit1'], () => krabby.extensions.commands.send('first-tab'), 'First tab', 'Switch tabs')
+  krabby.modes.modal.map('Page', ['Alt', 'Digit0'], () => krabby.extensions.commands.send('last-tab'), 'Last tab', 'Switch tabs')
 
   // Move tabs
   krabby.modes.modal.map('Page', ['Alt', 'Shift', 'KeyL'], () => krabby.extensions.commands.send('move-tab-right'), 'Move tab right', 'Move tabs')
   krabby.modes.modal.map('Page', ['Alt', 'Shift', 'KeyH'], () => krabby.extensions.commands.send('move-tab-left'), 'Move tab left', 'Move tabs')
-  krabby.modes.modal.map('Command', ['Alt', 'Digit1'], () => krabby.extensions.commands.send('move-tab-first'), 'Move tab first', 'Move tabs')
-  krabby.modes.modal.map('Command', ['Alt', 'Digit0'], () => krabby.extensions.commands.send('move-tab-last'), 'Move tab last', 'Move tabs')
+  krabby.modes.modal.map('Page', ['Alt', 'Shift', 'Digit1'], () => krabby.extensions.commands.send('move-tab-first'), 'Move tab first', 'Move tabs')
+  krabby.modes.modal.map('Page', ['Alt', 'Shift', 'Digit0'], () => krabby.extensions.commands.send('move-tab-last'), 'Move tab last', 'Move tabs')
 
   // Detach tabs
   krabby.modes.modal.map('Command', ['KeyD'], () => krabby.extensions.commands.send('detach-tab'), 'Detach tab', 'Detach tabs')
