@@ -154,6 +154,9 @@ function Krabby({ dormant = true } = {}) {
     // Class for the selection-area
     class: 'selection',
 
+    // Disable single-click selection
+    singleClick: false,
+
     // All elements in this container can be selected
     selectables: ['a']
 
