@@ -288,7 +288,7 @@ function Krabby({ dormant = true } = {}) {
 
   // Help
   krabby.modes.modal.map('Page', ['F1'], () => krabby.modes.modal.help(), 'Show help', 'Help')
-  krabby.modes.modal.map('Page', ['Shift', 'F1'], () => window.open('https://github.com/alexherbo2/krabby/tree/master/doc'), 'Open the documentation in a new tab', 'Help')
+  krabby.modes.modal.map('Page', ['Shift', 'F1'], () => window.open('https://github.com/alexherbo2/krabby/tree/master/docs'), 'Open the documentation in a new tab', 'Help')
 
   // Scroll
   krabby.modes.modal.map('Command', ['KeyJ'], ({ repeat }) => krabby.scroll.down(repeat), 'Scroll down', 'Scroll')

@@ -7,11 +7,11 @@
 [![IRC](https://img.shields.io/badge/IRC-%23krabby-blue)](https://webchat.freenode.net/#krabby)
 [![Plugins](https://img.shields.io/badge/Plugins-%23krabby%20%23plugin-green)](https://github.com/search?q=topic:krabby+topic:plugin)
 
-###### [Installation](#installation) | [Configuration](doc/configuration.md) | [Documentation](doc) | [Supported platforms](#supported-platforms) | [Browser compatibility](#browser-compatibility) | [Contributing](CONTRIBUTING)
+###### [Installation](#installation) | [Configuration](docs/configuration.md) | [Documentation](docs) | [Supported platforms](#supported-platforms) | [Browser compatibility](#browser-compatibility) | [Contributing](CONTRIBUTING)
 
 > Krabby is a web extension (for [Chrome], [Firefox] and [surf]) for keyboard-based navigation, inspired by [Kakoune].
 >
-> The main differences with [existing extensions](doc/alternatives.md) are:
+> The main differences with [existing extensions](docs/alternatives.md) are:
 > multiple selections,
 > keyboard layout agnostic,
 > SOV ([subject–object–verb]) constructs and
@@ -338,7 +338,7 @@ make install [static=no] [extensions=yes] [interactive=yes]
 [Krabby icon]: https://iconfinder.com/icons/877852/kanto_krabby_pokemon_water_icon
 [krabby-resources]: https://github.com/alexherbo2/krabby-resources
 
-[A linguistic twist]: https://github.com/alexherbo2/krabby/blob/master/doc/differences-with-vim.md#a-linguistic-twist
+[A linguistic twist]: https://github.com/alexherbo2/krabby/blob/master/docs/differences-with-vim.md#a-linguistic-twist
 
 [WebExtension]: https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions
 [QWERTY]: https://en.wikipedia.org/wiki/QWERTY
