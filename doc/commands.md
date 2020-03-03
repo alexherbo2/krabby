@@ -83,15 +83,15 @@ Commands are bound to **physical keys** and **displayed** with the [US layout][Q
 
 ## Switch tabs
 
-- <kbd>Alt</kbd> + <kbd>l</kbd> ⇒ Next tab (**Command** context)
-- <kbd>Alt</kbd> + <kbd>h</kbd> ⇒ Previous tab (**Command** context)
+- <kbd>Alt</kbd> + <kbd>l</kbd> ⇒ Next tab (**Page** context)
+- <kbd>Alt</kbd> + <kbd>h</kbd> ⇒ Previous tab (**Page** context)
 - <kbd>1</kbd> ⇒ First tab (**Command** context)
 - <kbd>0</kbd> ⇒ Last tab (**Command** context)
 
 ## Move tabs
 
-- <kbd>Alt</kbd> + <kbd>L</kbd> ⇒ Move tab right (**Command** context)
-- <kbd>Alt</kbd> + <kbd>H</kbd> ⇒ Move tab left (**Command** context)
+- <kbd>Alt</kbd> + <kbd>L</kbd> ⇒ Move tab right (**Page** context)
+- <kbd>Alt</kbd> + <kbd>H</kbd> ⇒ Move tab left (**Page** context)
 - <kbd>Alt</kbd> + <kbd>1</kbd> ⇒ Move tab first (**Command** context)
 - <kbd>Alt</kbd> + <kbd>0</kbd> ⇒ Move tab last (**Command** context)
 
