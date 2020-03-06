@@ -257,7 +257,7 @@ const showKeys = () => {
     const key = keys.join('-')
     commands.send('notify', 'show-keys', {
       title: label,
-      message: `${key}: ${description}`
+      message: `${key} ⇒ ${description}`
     })
   })
 }
