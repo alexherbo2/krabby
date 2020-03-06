@@ -130,7 +130,7 @@ main() {
   if test "$BUILD_EXTENSIONS" = yes; then
     # Extension: Commands
     name='Commands'
-    description='Chrome API to perform browser actions'
+    description='WebExtension API to perform browser actions'
     url='https://github.com/alexherbo2/chrome-commands'
     path=$CONFIG/extensions/commands
     dependencies='jq zip'
@@ -144,7 +144,7 @@ main() {
 
     # Extension: Shell
     name='Shell'
-    description='Chrome API to execute external commands through native messaging'
+    description='WebExtension API to execute external commands through native messaging'
     url='https://github.com/alexherbo2/chrome-shell'
     path=$CONFIG/extensions/shell
     if test "$STATIC_BUILD" = yes; then
