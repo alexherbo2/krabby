@@ -250,12 +250,18 @@ const { extensions, modes } = krabby
 const { commands } = extensions
 const { modal } = modes
 
-modal.on('command', ({ keyChord, description, label }) => {
-  const keys = modal.keyValues(keyChord)
-  const key = keys.join('-')
-  commands.send('notify', 'show-keys', {
-    title: label,
-    message: `${key}: ${description}`
+// Show keys for screencasts
+const showKeys = () => {
+  modal.on('command', ({ keyChord, description, label }) => {
+    const keys = modal.keyValues(keyChord)
+    const key = keys.join('-')
+    commands.send('notify', 'show-keys', {
+      title: label,
+      message: `${key}: ${description}`
+    })
   })
-})
+}
+
+// Enable show-keys notifications
+// showKeys()
 ```
