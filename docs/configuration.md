@@ -11,6 +11,7 @@
 - [mpv](#mpv)
 - [HTML filter](#html-filter)
 - [Plumbing](#plumbing)
+- [Show keys](#show-keys)
 
 ## Files
 
@@ -239,3 +240,22 @@ CLIPBOARD_PASTE=wl-paste
 ```
 
 See the [`plumb`](/bin/plumb) script for a complete reference.
+
+## Show keys
+
+`~/.config/krabby/config.js`
+
+``` javascript
+const { extensions, modes } = krabby
+const { commands } = extensions
+const { modal } = modes
+
+modal.on('command', ({ keyChord, description, label }) => {
+  const keys = modal.keyValues(keyChord)
+  const key = keys.join('-')
+  commands.send('notify', 'show-keys', {
+    title: label,
+    message: `${key}: ${description}`
+  })
+})
+```
