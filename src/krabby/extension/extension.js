@@ -103,11 +103,12 @@ function KrabbyExtension(krabby) {
   }
 
   krabby.commands.yankFilteredHTML = (selections, filter) => {
+    const [command, ...arguments] = filter
     const input = krabby.commands.getElements(selections).map((element) => element.outerHTML).join('\n')
     krabby.extensions.shell.port.postMessage({
       id: 'html-filter',
-      shell: true,
-      command: filter,
+      command,
+      arguments,
       input
     })
   }
