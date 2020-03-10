@@ -18,6 +18,14 @@
 > simple interaction with external programs.
 > It is also quite usable with the mouse.
 
+[![Krabby](https://img.youtube.com/vi_webp/aXaFt75lIqo/maxresdefault.webp)](https://youtube.com/playlist?list=PLdr-HcjEDx_kOnqvLcE5T1tq9rAVwmths "YouTube – Krabby")
+[![YouTube Play Button](https://www.iconfinder.com/icons/317714/download/png/16)](https://youtube.com/playlist?list=PLdr-HcjEDx_kOnqvLcE5T1tq9rAVwmths) · [Krabby](https://youtube.com/playlist?list=PLdr-HcjEDx_kOnqvLcE5T1tq9rAVwmths)
+
+See [YouTube · Krabby] and [krabby-resources] for all available demos.
+
+[YouTube · Krabby]: https://youtube.com/playlist?list=PLdr-HcjEDx_kOnqvLcE5T1tq9rAVwmths
+[krabby-resources]: https://github.com/alexherbo2/krabby-resources
+
 ## TL;DR
 
 **WebExtension** — **Keyboard interface** — **Subject–object–verb order** — **Multiple selections** — **Kakoune-inspired**
@@ -106,172 +114,6 @@ other projects.
 - [Chrome], [Firefox] and [surf] support.  It has also been tested on [Opera],
 [Vivaldi] and [Brave].
 
-## Demos
-
-<details>
-
-<summary>Download 3-gatsu no Lion episodes from HorribleSubs</summary>
-
-[![Download 3-gatsu no Lion episodes from HorribleSubs](https://img.youtube.com/vi_webp/aXaFt75lIqo/maxresdefault.webp)](https://youtu.be/aXaFt75lIqo "YouTube – Download 3-gatsu no Lion episodes from HorribleSubs")
-[![YouTube Play Button](https://www.iconfinder.com/icons/317714/download/png/16)](https://youtu.be/aXaFt75lIqo) · [Download 3-gatsu no Lion episodes from HorribleSubs](https://youtu.be/aXaFt75lIqo)
-
-**Commands**
-
-- <kbd>f</kbd> ⇒ Focus link
-  - Input: <kbd>o</kbd>
-- <kbd>s</kbd> ⇒ Select active element
-- <kbd>Alt</kbd> + <kbd>a</kbd> ⇒ Select parent elements (2 times)
-- <kbd>Alt</kbd> + <kbd>i</kbd> ⇒ Select child elements (2 times)
-- <kbd>Enter</kbd> ⇒ Open link
-- <kbd>Alt</kbd> + <kbd>i</kbd> ⇒ Select child elements
-- <kbd>Alt</kbd> + <kbd>k</kbd> ⇒ Keep selections that match the given [RegExp][Regular Expressions]
-  - Input: `720p`
-- <kbd>Alt</kbd> + <kbd>I</kbd> ⇒ Select links
-- <kbd>Alt</kbd> + <kbd>k</kbd> ⇒ Keep selections that match the given [RegExp][Regular Expressions]
-  - Input: `Magnet`
-- <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>Enter</kbd> ⇒ Open link in the associated application
-
-</details>
-
-<details>
-
-<summary>Extract from Wikipedia the list of cities and towns in Russia</summary>
-
-[![Extract from Wikipedia the list of cities and towns in Russia](https://img.youtube.com/vi_webp/PJXCnRBkHDY/maxresdefault.webp)](https://youtu.be/PJXCnRBkHDY "YouTube – Extract from Wikipedia the list of cities and towns in Russia")
-[![YouTube Play Button](https://www.iconfinder.com/icons/317714/download/png/16)](https://youtu.be/PJXCnRBkHDY) · [Extract from Wikipedia the list of cities and towns in Russia](https://youtu.be/PJXCnRBkHDY)
-
-**Commands**
-
-- <kbd>f</kbd> ⇒ Focus link
-  - Input: <kbd>a</kbd>, <kbd>l</kbd>
-- <kbd>s</kbd> ⇒ Select active element
-- <kbd>Alt</kbd> + <kbd>a</kbd> ⇒ Select parent elements (3 times)
-- <kbd>S</kbd> ⇒ Select elements that match the specified group of selectors
-  - Input: `tr td:first-child`
-- <kbd>Alt</kbd> + <kbd>I</kbd> ⇒ Select links
-- <kbd>Alt</kbd> + <kbd>y</kbd> ⇒ Copy link text
-
-</details>
-
-<details>
-
-<summary>Quickly move around a document with no table of contents</summary>
-
-[![Quickly move around a document with no table of contents](https://img.youtube.com/vi_webp/gp4_6VGXkOk/maxresdefault.webp)](https://youtu.be/gp4_6VGXkOk "YouTube – Quickly move around a document with no table of contents")
-[![YouTube Play Button](https://www.iconfinder.com/icons/317714/download/png/16)](https://youtu.be/gp4_6VGXkOk) · [Quickly move around a document with no table of contents](https://youtu.be/gp4_6VGXkOk)
-
-**Commands**
-
-- <kbd>%</kbd> ⇒ Select document
-- <kbd>S</kbd> ⇒ Select elements that match the specified group of selectors
-  - Input: `h1, h2, h3`
-- <kbd>(</kbd> ⇒ Focus previous selection
-
-</details>
-
-<details>
-
-<summary>Tab search with dmenu</summary>
-
-[![Tab search with dmenu](https://img.youtube.com/vi_webp/tgrmss3u2aE/maxresdefault.webp)](https://youtu.be/tgrmss3u2aE "YouTube – Tab search with dmenu")
-[![YouTube Play Button](https://www.iconfinder.com/icons/317714/download/png/16)](https://youtu.be/tgrmss3u2aE) · [Tab search with dmenu](https://youtu.be/tgrmss3u2aE)
-
-**Commands**
-
-- <kbd>q</kbd> ⇒ Tab search with [dmenu]
-
-</details>
-
-<details>
-
-<summary>Playing videos in picture-in-picture mode</summary>
-
-[![Playing videos in picture-in-picture mode](https://img.youtube.com/vi_webp/zgSx1AE6pig/maxresdefault.webp)](https://youtu.be/zgSx1AE6pig "YouTube – Playing videos in picture-in-picture mode")
-[![YouTube Play Button](https://www.iconfinder.com/icons/317714/download/png/16)](https://youtu.be/zgSx1AE6pig) · [Playing videos in picture-in-picture mode](https://youtu.be/zgSx1AE6pig)
-
-**Commands**
-
-- <kbd>p</kbd> ⇒ Toggle picture-in-picture mode
-
-</details>
-
-<details>
-
-<summary>Opening links in a paragraph</summary>
-
-[![Opening links in a paragraph](https://img.youtube.com/vi_webp/v2Jvk1rhIlc/maxresdefault.webp)](https://youtu.be/v2Jvk1rhIlc "YouTube – Opening links in a paragraph")
-[![YouTube Play Button](https://www.iconfinder.com/icons/317714/download/png/16)](https://youtu.be/v2Jvk1rhIlc) · [Opening links in a paragraph](https://youtu.be/v2Jvk1rhIlc)
-
-**Commands**
-
-- <kbd>f</kbd> ⇒ Focus link
-  - Input: <kbd>e</kbd>
-- <kbd>s</kbd> ⇒ Select active element
-- <kbd>Alt</kbd> + <kbd>a</kbd> ⇒ Select parent elements
-- <kbd>Alt</kbd> + <kbd>I</kbd> ⇒ Select links
-- <kbd>Control</kbd> + <kbd>Enter</kbd> ⇒ Open link in new tab
-
-</details>
-
-<details>
-
-<summary>Play videos with mpv</summary>
-
-[![Play videos with mpv](https://img.youtube.com/vi_webp/gYTi-eXuWdI/maxresdefault.webp)](https://youtu.be/gYTi-eXuWdI "YouTube – Play videos with mpv")
-[![YouTube Play Button](https://www.iconfinder.com/icons/317714/download/png/16)](https://youtu.be/gYTi-eXuWdI) · [Play videos with mpv](https://youtu.be/gYTi-eXuWdI)
-
-**Commands**
-
-- <kbd>f</kbd> ⇒ Focus link
-  - Input: <kbd>a</kbd>, <kbd>w</kbd>
-- <kbd>s</kbd> ⇒ Select active element
-- <kbd>Alt</kbd> + <kbd>a</kbd> ⇒ Select parent elements (3 times)
-- <kbd>Alt</kbd> + <kbd>I</kbd> ⇒ Select links
-- <kbd>Alt</kbd> + <kbd>m</kbd> ⇒ Play with [mpv] in reverse order
-
-</details>
-
-<details>
-
-<summary>Copy selection with Pandoc</summary>
-
-[![Copy selection with Pandoc](https://img.youtube.com/vi_webp/gmx3eEm6L3M/maxresdefault.webp)](https://youtu.be/gmx3eEm6L3M "YouTube – Copy selection with Pandoc")
-[![YouTube Play Button](https://www.iconfinder.com/icons/317714/download/png/16)](https://youtu.be/gmx3eEm6L3M) · [Copy selection with Pandoc](https://youtu.be/gmx3eEm6L3M)
-
-**Commands**
-
-- <kbd>f</kbd> ⇒ Focus link
-  - Input: <kbd>s</kbd>
-- <kbd>s</kbd> ⇒ Select active element
-- <kbd>Alt</kbd> + <kbd>a</kbd> ⇒ Select parent elements (4 times)
-- <kbd>Y</kbd> ⇒ Copy selection, using an HTML filter
-
-</details>
-
-<details>
-
-<summary>Copy multiple links</summary>
-
-[![Copy multiple links](https://img.youtube.com/vi_webp/rRGmuJhopJg/maxresdefault.webp)](https://youtu.be/rRGmuJhopJg "YouTube – Copy multiple links")
-[![YouTube Play Button](https://www.iconfinder.com/icons/317714/download/png/16)](https://youtu.be/rRGmuJhopJg) · [Copy multiple links](https://youtu.be/rRGmuJhopJg)
-
-**Commands**
-
-- <kbd>f</kbd> ⇒ Focus link
-  - Input: <kbd>s</kbd>
-- <kbd>s</kbd> ⇒ Select active element
-- <kbd>Alt</kbd> + <kbd>a</kbd> ⇒ Select parent elements (3 times)
-- <kbd>Alt</kbd> + <kbd>i</kbd> ⇒ Select child elements
-- <kbd>Alt</kbd> + <kbd>]</kbd> ⇒ Select last child elements
-- <kbd>Alt</kbd> + <kbd>(</kbd> ⇒ Select previous sibling elements
-- <kbd>Alt</kbd> + <kbd>I</kbd> ⇒ Select links
-- <kbd>y</kbd> ⇒ Copy link address
-- <kbd>Y</kbd> ⇒ Copy link address and text
-
-</details>
-
-See [krabby-resources] for all available demos.
-
 ## Dependencies
 
 - [Crystal]
@@ -338,7 +180,6 @@ make install [static=no] [extensions=yes] [interactive=yes]
 [Krabby]: https://krabby.netlify.com
 [Live demo]: https://krabby.netlify.com#live-demo
 [Krabby icon]: https://iconfinder.com/icons/877852/kanto_krabby_pokemon_water_icon
-[krabby-resources]: https://github.com/alexherbo2/krabby-resources
 
 [A linguistic twist]: https://github.com/alexherbo2/krabby/blob/master/docs/differences-with-vim.md#a-linguistic-twist
 
