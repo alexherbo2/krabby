@@ -23,7 +23,7 @@ ln -sf "$css_target" "$css_config" > /dev/null 2>&1
 
 # Add a note to remove the Escape key-binding from config.h
 cat <<'EOF'
-Note: Make sure surf has been compiled without the following settings.
+Note: Make sure surf has been compiled without the following settings:
 
 config.h
 

@@ -38,7 +38,7 @@ cd krabby
 make install [static=no] [extensions=yes] [interactive=yes]
 ```
 
-After installing, try to accomplish the following examples.
+After installing, try to accomplish the following examples:
 
 <details>
 
