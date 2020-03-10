@@ -9,14 +9,14 @@
 
 ###### [Installation](#installation) | [Configuration](docs/configuration.md) | [Documentation](docs) | [Supported platforms](#supported-platforms) | [Browser compatibility](#browser-compatibility) | [Contributing](CONTRIBUTING)
 
-> Krabby is a web extension (for [Chrome], [Firefox] and [surf]) for keyboard-based navigation, inspired by [Kakoune].
->
-> The main differences with [existing extensions](docs/alternatives.md) are:
-> multiple selections,
-> keyboard layout agnostic,
-> SOV ([subject–object–verb]) constructs and
-> simple interaction with external programs.
-> It is also quite usable with the mouse.
+Krabby is a web extension (for [Chrome], [Firefox] and [surf]) for keyboard-based navigation, inspired by [Kakoune].
+
+The main differences with [existing extensions](docs/alternatives.md) are:
+multiple selections,
+keyboard layout agnostic,
+SOV ([subject–object–verb]) constructs and
+simple interaction with external programs.
+It is also quite usable with the mouse.
 
 [![Krabby](https://img.youtube.com/vi_webp/aXaFt75lIqo/maxresdefault.webp)](https://youtube.com/playlist?list=PLdr-HcjEDx_kOnqvLcE5T1tq9rAVwmths "YouTube – Krabby")
 [![YouTube Play Button](https://www.iconfinder.com/icons/317714/download/png/16)](https://youtube.com/playlist?list=PLdr-HcjEDx_kOnqvLcE5T1tq9rAVwmths) · [Krabby](https://youtube.com/playlist?list=PLdr-HcjEDx_kOnqvLcE5T1tq9rAVwmths)
