@@ -15,12 +15,20 @@ Commands are bound to **physical keys** and **displayed** with the [US layout][Q
 
 - <kbd>Alt</kbd> + <kbd>i</kbd> ⇒ Open your favorite editor (**Text** context)
 
+See [chrome-editor] for a complete reference.
+
+[chrome-editor]: https://github.com/alexherbo2/chrome-editor
+
 ## dmenu
 
 - <kbd>q</kbd> ⇒ Tab search (**Command** context)
 - <kbd>Q</kbd> ⇒ Bring tab (**Command** context)
 - <kbd>Alt</kbd> + <kbd>q</kbd> ⇒ Open bookmark (**Command** context)
 - <kbd>Alt</kbd> + <kbd>Q</kbd> ⇒ Search history (**Command** context)
+
+See [chrome-dmenu] for a complete reference.
+
+[chrome-dmenu]: https://github.com/alexherbo2/chrome-dmenu
 
 ## Scroll
 
