@@ -132,11 +132,11 @@ function KrabbyExtension(krabby) {
   // External editor
   krabby.modes.modal.map('Text', ['Alt', 'KeyI'], () => krabby.extensions.editor.send('edit'), 'Open your favorite editor', 'External editor')
 
-  // Tab search
-  krabby.modes.modal.map('Command', ['KeyQ'], () => krabby.extensions.dmenu.send('tab-search'), 'Tab search with dmenu', 'Tab search')
-  krabby.modes.modal.map('Command', ['Shift', 'KeyQ'], () => krabby.extensions.dmenu.send('bring-tab'), 'Bring tab', 'Tab search')
-  krabby.modes.modal.map('Command', ['Alt', 'KeyQ'], () => krabby.extensions.dmenu.send('open-bookmark'), 'Open bookmark', 'Tab search')
-  krabby.modes.modal.map('Command', ['Alt', 'Shift', 'KeyQ'], () => krabby.extensions.dmenu.send('search-history'), 'Search history', 'Tab search')
+  // dmenu
+  krabby.modes.modal.map('Command', ['KeyQ'], () => krabby.extensions.dmenu.send('tab-search'), 'Tab search', 'dmenu')
+  krabby.modes.modal.map('Command', ['Shift', 'KeyQ'], () => krabby.extensions.dmenu.send('bring-tab'), 'Bring tab', 'dmenu')
+  krabby.modes.modal.map('Command', ['Alt', 'KeyQ'], () => krabby.extensions.dmenu.send('open-bookmark'), 'Open bookmark', 'dmenu')
+  krabby.modes.modal.map('Command', ['Alt', 'Shift', 'KeyQ'], () => krabby.extensions.dmenu.send('search-history'), 'Search history', 'dmenu')
 
   // Zoom
   krabby.modes.modal.map('Command', ['Shift', 'Equal'], () => krabby.extensions.commands.send('zoom-in'), 'Zoom in', 'Zoom')
