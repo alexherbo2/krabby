@@ -260,6 +260,16 @@ const showKeys = () => {
       message: `${key} ⇒ ${description}`
     })
   })
+  // Show native commands
+  modal.on('default', ({ metaKey, altKey, ctrlKey, shiftKey, code }) => {
+    const keyChord = { metaKey, altKey, ctrlKey, shiftKey, code }
+    const keys = modal.keyValues(keyChord)
+    const key = keys.join('-')
+    commands.send('notify', 'show-keys', {
+      title: 'Native',
+      message: key
+    })
+  })
 }
 
 // Enable show-keys notifications
