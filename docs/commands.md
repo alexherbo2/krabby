@@ -107,6 +107,7 @@ See [chrome-dmenu] for a complete reference.
 
 - <kbd>d</kbd> ⇒ Detach tab (**Command** context)
 - <kbd>D</kbd> ⇒ Attach tab (**Command** context)
+- <kbd>Alt</kbd> + <kbd>D</kbd> ⇒ Attach tabs (**Command** context)
 
 ## Discard tabs
 

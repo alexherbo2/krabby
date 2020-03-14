@@ -176,6 +176,7 @@ function KrabbyExtension(krabby) {
   // Detach tabs
   krabby.modes.modal.map('Command', ['KeyD'], () => krabby.extensions.commands.send('detach-tab'), 'Detach tab', 'Detach tabs')
   krabby.modes.modal.map('Command', ['Shift', 'KeyD'], () => krabby.extensions.commands.send('attach-tab'), 'Attach tab', 'Detach tabs')
+  krabby.modes.modal.map('Command', ['Alt', 'Shift', 'KeyD'], () => krabby.extensions.commands.send('attach-tabs'), 'Attach tabs', 'Detach tabs')
 
   // Discard tabs
   krabby.modes.modal.map('Command', ['Shift', 'Escape'], () => krabby.extensions.commands.send('discard-tab'), 'Discard tab', 'Discard tabs')
