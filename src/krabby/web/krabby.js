@@ -342,6 +342,7 @@ function Krabby({ dormant = true } = {}) {
   krabby.modes.modal.map('Command', ['KeyS'], () => krabby.selections.add(document.activeElement), 'Select active element', 'Selection manipulation')
   krabby.modes.modal.map('Command', ['Shift', 'KeyS'], () => krabby.commands.select(krabby.selections), 'Select elements that match the specified group of selectors', 'Selection manipulation')
   krabby.modes.modal.map('Command', ['Shift', 'Digit5'], () => krabby.selections.set([document.documentElement]), 'Select document', 'Selection manipulation')
+  krabby.modes.modal.map('Command', ['Shift', 'Digit3'], () => krabby.selections.set(document.querySelectorAll('h1, h2, h3, h4, h5, h6')), 'Select section headings', 'Selection manipulation')
   krabby.modes.modal.map('Command', ['Shift', 'Digit0'], () => krabby.selections.next(), 'Focus next selection', 'Selection manipulation')
   krabby.modes.modal.map('Command', ['Shift', 'Digit9'], () => krabby.selections.previous(), 'Focus previous selection', 'Selection manipulation')
   krabby.modes.modal.map('Command', ['Space'], () => krabby.selections.clear(), 'Clear selections', 'Selection manipulation')

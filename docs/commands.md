@@ -150,6 +150,7 @@ See [chrome-dmenu] for a complete reference.
 - <kbd>s</kbd> ⇒ Select active element (**Command** context)
 - <kbd>S</kbd> ⇒ Select elements that match the specified group of selectors (**Command** context)
 - <kbd>%</kbd> ⇒ Select document (**Command** context)
+- <kbd>#</kbd> ⇒ Select section headings (**Command** context)
 - <kbd>)</kbd> ⇒ Focus next selection (**Command** context)
 - <kbd>(</kbd> ⇒ Focus previous selection (**Command** context)
 - <kbd>Space</kbd> ⇒ Clear selections (**Command** context)
