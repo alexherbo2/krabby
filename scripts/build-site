@@ -2,7 +2,7 @@
 
 mkdir -p website/packages
 cd website/packages
-../../scripts/fetch
+../../scripts/fetch .
 cp ../../src/krabby/web/krabby.js .
 cp ../../src/krabby/web/krabby.css .
 curl -sSL -O https://github.com/alexherbo2/carousel.js/raw/master/src/carousel.js

@@ -112,7 +112,7 @@ main() {
   cp -R "$ROOT/bin/." "$BIN"
   (cd "$ROOT/bin"; find .)
   # Fetch packages to ~/.config/krabby/packages
-  (cd packages; "$ROOT/scripts/fetch")
+  ("$ROOT/scripts/fetch" packages)
   # Run user’s Makefile (~/.config/krabby)
   if test -e Makefile; then
     make
