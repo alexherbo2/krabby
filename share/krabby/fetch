@@ -15,3 +15,10 @@ fetch() {
     2) curl "$1" --output "$2" ;;
   esac
 }
+
+# Ensure the base directory exists
+mkdir -p packages
+cd packages
+
+# Fetch packages
+# fetch <source> [destination]

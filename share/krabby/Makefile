@@ -14,7 +14,7 @@ surf: fetch
 	extensions/krabby/scripts/build-surf
 
 fetch:
-	cd packages; ../fetch
+	./fetch
 
 update:
 	cd extensions/krabby; git pull; make static="$(static)" extensions="$(extensions)" interactive="$(interactive)"
