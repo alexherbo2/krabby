@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# Base directory
+packages=${1:-packages}
+
 # Faces
 none=$(printf '\033[0m')
 green=$(printf '\033[32m')
@@ -15,6 +18,10 @@ fetch() {
     2) curl "$1" --output "$2" ;;
   esac
 }
+
+# Ensure the base directory exists
+mkdir -p "$packages"
+cd "$packages"
 
 fetch https://github.com/alexherbo2/modal.js/raw/master/src/modal.js
 fetch https://cdn.jsdelivr.net/npm/@simonwep/selection-js/dist/selection.min.js mouse-selection.js
