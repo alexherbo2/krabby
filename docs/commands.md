@@ -111,7 +111,7 @@ See [chrome-dmenu] for a complete reference.
 
 ## Discard tabs
 
-- <kbd>Shift</kbd> + <kbd>Escape</kbd> ⇒ Discard tab (**Command** context)
+- <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>Escape</kbd> ⇒ Discard tab (**Command** context)
 
 ## Mute tabs
 
