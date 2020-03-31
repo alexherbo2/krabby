@@ -9,7 +9,7 @@
 
 ###### [Installation](#installation) | [Configuration](docs/configuration.md) | [Documentation](docs) | [Supported platforms](#supported-platforms) | [Browser compatibility](#browser-compatibility) | [Contributing](CONTRIBUTING)
 
-Krabby is a browser extension (for [Chrome], [Firefox] and [surf]) for keyboard-based navigation, inspired by [Kakoune].
+Krabby is an open source browser extension (for [Chrome], [Firefox] and [surf]) used for keyboard-based navigation, inspired by [Kakoune].
 
 The main differences with [existing extensions](docs/alternatives.md) are:
 multiple selections,
