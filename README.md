@@ -177,8 +177,8 @@ make install [static=no] [extensions=yes] [interactive=yes]
 
 - [Create a keyboard interface to the web]
 
-[Krabby]: https://krabby.netlify.com
-[Live demo]: https://krabby.netlify.com#live-demo
+[Krabby]: https://krabby.netlify.app
+[Live demo]: https://krabby.netlify.app#live-demo
 [Krabby icon]: https://iconfinder.com/icons/877852/kanto_krabby_pokemon_water_icon
 
 [A linguistic twist]: https://github.com/alexherbo2/krabby/blob/master/docs/differences-with-vim.md#a-linguistic-twist
