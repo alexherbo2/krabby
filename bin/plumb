@@ -1,72 +1,79 @@
 #!/bin/sh
 
-# Description
-# ‾‾‾‾‾‾‾‾‾‾‾
-# Plumber from Plan 9.
-# Use (wl-clipboard|xclip|pb{copy,paste}) (or $CLIPBOARD_COPY and $CLIPBOARD_PASTE if set) to access the clipboard and jq for JSON.
-# dmenu (or $DMENU if set) is used for validating execution.
-#
-# Dependencies
-# ‾‾‾‾‾‾‾‾‾‾‾‾
-# – Clipboard
-#   – Wayland: wl-clipboard (https://github.com/bugaevc/wl-clipboard)
-#   – X11: xclip (https://github.com/astrand/xclip)
-# – jq (https://stedolan.github.io/jq/)
-# – dmenu (https://tools.suckless.org/dmenu/)
-#
-# Usage
-# ‾‾‾‾‾
-# $ plumb [commands]
-#
-# Allowed commands are passed through the command-line, and a validation step
-# (with a dmenu filter program) is required before proceeding.
-#
-# Primary selection (JSON) format:
-# ❯ [<command>, <arguments>]
-# ❯ ["input", <input>, <command>, <arguments>]
-#
-# The primary selection is used as input for the command (in a JSON array of strings)
-# and will be escaped suitable (list of single-quoted strings, separated by spaces)
-# for use in a command-line for a POSIX shell.  The output of the command will be
-# copied to the clipboard.
-#
-# Examples
-# ‾‾‾‾‾‾‾‾
-# $ plumb mpv pandoc xdg-open
-#
-# Primary selection contents:
-# ❯ ["mpv", "https://youtu.be/dP1xVpMPn8M"]
-# ❯ ["input", "<p>Tchou</p>", "pandoc", "--from", "html", "--to", "markdown"]
-#
-# A Tour of the Acme Editor: https://research.swtch.com/acme
-#
-# Configuration
-# ‾‾‾‾‾‾‾‾‾‾‾‾‾
-# Change the dmenu command to validate with fzf and Alacritty:
-# ┌
-# │ DMENU=$(cat <<'EOF'
-# │   # Create IO files
-# │   state=$(mktemp -d)
-# │   input=$state/input
-# │   output=$state/output
-# │   trap 'rm -Rf "$state"' EXIT
-# │   # Get input from /dev/stdin
-# │   cat > "$input"
-# │   # Run fzf with Alacritty
-# │   alacritty --class 'Alacritty · Floating' --command sh -c 'fzf < "$1" > "$2"' -- "$input" "$output"
-# │   # Write output to /dev/stdout
-# │   cat "$output"
-# │   # Exit code
-# │   if test ! -s "$output"; then
-# │     exit 1
-# │   fi
-# │ EOF
-# │ )
-# └
-#
-# Change the clipboard copy and paste commands:
-# $ CLIPBOARD_COPY=wl-copy
-# $ CLIPBOARD_PASTE=wl-paste
+# Documentation ────────────────────────────────────────────────────────────────
+
+if test $# -eq 0; then
+  cat <<'EOF' > /dev/stderr
+Description
+‾‾‾‾‾‾‾‾‾‾‾
+Plumber from Plan 9.
+Use (wl-clipboard|xclip|pb{copy,paste}) (or $CLIPBOARD_COPY and $CLIPBOARD_PASTE if set) to access the clipboard and jq for JSON.
+dmenu (or $DMENU if set) is used for validating execution.
+
+Dependencies
+‾‾‾‾‾‾‾‾‾‾‾‾
+– Clipboard
+  – Wayland: wl-clipboard (https://github.com/bugaevc/wl-clipboard)
+  – X11: xclip (https://github.com/astrand/xclip)
+– jq (https://stedolan.github.io/jq/)
+– dmenu (https://tools.suckless.org/dmenu/)
+
+Usage
+‾‾‾‾‾
+$ plumb [commands]
+
+Allowed commands are passed through the command-line, and a validation step
+(with a dmenu filter program) is required before proceeding.
+
+Primary selection (JSON) format:
+❯ [<command>, <arguments>]
+❯ ["input", <input>, <command>, <arguments>]
+
+The primary selection is used as input for the command (in a JSON array of strings)
+and will be escaped suitable (list of single-quoted strings, separated by spaces)
+for use in a command-line for a POSIX shell.  The output of the command will be
+copied to the clipboard.
+
+Examples
+‾‾‾‾‾‾‾‾
+$ plumb mpv pandoc xdg-open
+
+Primary selection contents:
+❯ ["mpv", "https://youtu.be/dP1xVpMPn8M"]
+❯ ["input", "<p>Tchou</p>", "pandoc", "--from", "html", "--to", "markdown"]
+
+A Tour of the Acme Editor: https://research.swtch.com/acme
+
+Configuration
+‾‾‾‾‾‾‾‾‾‾‾‾‾
+Change the dmenu command to validate with fzf and Alacritty:
+┌
+│ DMENU=$(cat <<'EOF'
+│   # Create IO files
+│   state=$(mktemp -d)
+│   input=$state/input
+│   output=$state/output
+│   trap 'rm -Rf "$state"' EXIT
+│   # Get input from /dev/stdin
+│   cat > "$input"
+│   # Run fzf with Alacritty
+│   alacritty --class 'Alacritty · Floating' --command sh -c 'fzf < "$1" > "$2"' -- "$input" "$output"
+│   # Write output to /dev/stdout
+│   cat "$output"
+│   # Exit code
+│   if test ! -s "$output"; then
+│     exit 1
+│   fi
+│ EOF
+│ )
+└
+
+Change the clipboard copy and paste commands:
+$ CLIPBOARD_COPY=wl-copy
+$ CLIPBOARD_PASTE=wl-paste
+EOF
+  exit 1
+fi
 
 # Environment variables ────────────────────────────────────────────────────────
 
