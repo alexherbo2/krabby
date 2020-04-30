@@ -118,13 +118,21 @@ function KrabbyExtension(krabby) {
     if (reverse) {
       playlist.reverse()
     }
-    krabby.extensions.shell.send('mpv', ...krabby.settings['mpv-config'], ...playlist)
+    krabby.extensions.shell.port.postMessage({
+      command: 'mpv',
+      arguments: [...krabby.settings['mpv-config'], ...playlist],
+      environment: krabby.settings['mpv-environment']
+    })
   }
 
   krabby.commands.mpvResume = () => {
     const media = krabby.commands.player().media
     media.pause()
-    krabby.extensions.shell.send('mpv', ...krabby.settings['mpv-config'], location.href, '-start', media.currentTime.toString())
+    krabby.extensions.shell.port.postMessage({
+        command: 'mpv',
+        arguments: [...krabby.settings['mpv-config'], location.href, '-start', media.currentTime.toString()],
+        environment: krabby.settings['mpv-environment']
+    })
   }
 
   // Mappings ──────────────────────────────────────────────────────────────────
@@ -197,7 +205,7 @@ function KrabbyExtension(krabby) {
   krabby.modes.modal.map('Image', ['Alt', 'Enter'], () => krabby.commands.download(krabby.selections, (selection) => selection.src), 'Download image', 'Open links')
 
   // mpv
-  krabby.modes.modal.map('Document', ['KeyM'], () => krabby.extensions.shell.send('mpv', ...krabby.settings['mpv-config'], location.href), 'Play with mpv', 'mpv')
+  krabby.modes.modal.map('Document', ['KeyM'], () => krabby.extensions.shell.port.postMessage({ command: 'mpv', arguments: [...krabby.settings['mpv-config'], location.href], environment: krabby.settings['mpv-environment'] }), 'Play with mpv', 'mpv')
 
   return krabby
 }
