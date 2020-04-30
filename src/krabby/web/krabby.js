@@ -14,6 +14,7 @@ function Krabby({ dormant = true } = {}) {
 
   krabby.settings = {}
   krabby.settings['mpv-config'] = ['-no-terminal']
+  krabby.settings['mpv-environment'] = {}
   krabby.settings['html-filter'] = ['pandoc', '--from', 'html', '--to', 'markdown']
 
   switch (true) {

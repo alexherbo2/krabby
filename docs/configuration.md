@@ -191,6 +191,10 @@ See [chrome-editor] for a complete reference.
 const { settings } = krabby
 
 settings['mpv-config'] = ['-no-config', '-no-terminal']
+
+settings['mpv-environment'] = {
+  MPV_HOME: '~/.mpv'
+}
 ```
 
 ## HTML filter
