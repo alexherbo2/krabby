@@ -1,0 +1,19 @@
+#!/bin/sh
+
+swaymsg workspace 'Introduction'
+chromium --new-window 'https://krabby.netlify.app' 'https://krabby.netlify.app#3'
+
+swaymsg workspace 'Download Chihayafuru season 3 with synapse'
+chromium --new-window 'http://localhost:3000' 'https://nyaa.si/user/HorribleSubs?q=Chihayafuru+S3+720p' 'https://horriblesubs.info/shows/chihayafuru-s3/'
+
+swaymsg workspace 'Play Chihayafuru season 3 with mpv'
+chromium --new-window 'https://crunchyroll.com/chihayafuru'
+
+swaymsg workspace 'Play 3-gatsu no Lion soundtracks in picture-in-picture'
+chromium --new-window 'https://youtube.com/watch?v=7ky_itVPTnk'
+
+swaymsg workspace 'Read and download Berserk'
+chromium --new-window 'https://readberserk.com/chapter/berserk-chapter-a0/'
+
+swaymsg workspace 'Tab and window management'
+chromium --new-window 'https://krabby.netlify.app#6'
