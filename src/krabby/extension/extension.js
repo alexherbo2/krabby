@@ -129,9 +129,9 @@ function KrabbyExtension(krabby) {
     const media = krabby.commands.player().media
     media.pause()
     krabby.extensions.shell.port.postMessage({
-        command: 'mpv',
-        arguments: [...krabby.settings['mpv-config'], location.href, '-start', media.currentTime.toString()],
-        environment: krabby.settings['mpv-environment']
+      command: 'mpv',
+      arguments: [...krabby.settings['mpv-config'], location.href, '-start', media.currentTime.toString()],
+      environment: krabby.settings['mpv-environment']
     })
   }
 
