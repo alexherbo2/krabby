@@ -6,4 +6,4 @@ cd website/packages
 cp ../../src/krabby/web/krabby.js .
 cp ../../src/krabby/web/krabby.css .
 curl -sSL -O https://github.com/alexherbo2/carousel.js/raw/master/src/carousel.js
-curl -sSL https://github.com/alexherbo2/krabby-resources/raw/master/introduction/subs/2020-05-24_23:25:36.vtt --create-dirs -o introduction/subs/2020-05-24_23:25:36.vtt
+curl -sSL https://github.com/alexherbo2/krabby-resources/raw/master/introduction/subs/2020-05-25_10:36:39.vtt --create-dirs -o introduction/subs/2020-05-25_10:36:39.vtt
