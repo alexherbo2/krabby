@@ -147,8 +147,9 @@ https://krabby.netlify.app#6
 That’s it for this introduction to Krabby,
 I hope you enjoyed it.
 
-If you have any questions, do not hesitate to come to our IRC channel
+If you have any questions, do not hesitate to come to our [Discord server] or IRC channel
 [`#krabby`] on [freenode].
 
+[Discord server]: https://discord.gg/CXF2P8w
 [freenode]: https://freenode.net
 [`#krabby`]: https://webchat.freenode.net/#krabby
