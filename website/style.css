@@ -65,14 +65,34 @@ a:hover {
   margin: 0;
 }
 
-#header a {
+#header a, #header button {
   color: white;
   text-decoration: none;
   display: inline-block;
   padding: 20px;
 }
 
-#header a:focus, #header a:hover {
+#header button {
+  height: 100%;
+}
+
+#header .drop-down .menu {
+  display: none;
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  color: white;
+  background-color: var(--persian-orange);
+  border-collapse: collapse;
+  border: 1px solid var(--butterscotch);
+}
+
+#header .drop-down:hover .menu, #header .drop-down button:focus + .menu {
+  display: flex;
+  flex-direction: column;
+}
+
+#header li:focus, #header li:hover, #header a:focus, #header a:hover {
   background-color: var(--butterscotch);
 }
 
@@ -218,6 +238,8 @@ label {
 }
 
 button {
+  font-family: inherit;
+  font-size: inherit;
   background-color: transparent;
   border: none;
   cursor: pointer;
