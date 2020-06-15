@@ -20,6 +20,7 @@
   - [`config.js`](/share/krabby/config.js): contains the user configuration.
   - [`fetch`](/share/krabby/fetch): shell script to fetch plugins.
   - [`Makefile`](/share/krabby/Makefile): contains commands to build and update Krabby.
+  - [`.gitignore`](/share/krabby/.gitignore): files to ignore.
   - `packages`: contains files used by Krabby.
     - [modal.js]
     - [mouse-selection.js]
