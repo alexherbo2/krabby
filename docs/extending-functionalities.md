@@ -9,10 +9,10 @@
 
 See the following examples:
 
-- [chrome-commands](https://github.com/alexherbo2/chrome-commands)
-- [chrome-shell](https://github.com/alexherbo2/chrome-shell)
-- [chrome-editor](https://github.com/alexherbo2/chrome-editor)
-- [chrome-dmenu](https://github.com/alexherbo2/chrome-dmenu)
+- [webextension-commands](https://github.com/alexherbo2/webextension-commands)
+- [webextension-shell](https://github.com/alexherbo2/webextension-shell)
+- [webextension-editor](https://github.com/alexherbo2/webextension-editor)
+- [webextension-dmenu](https://github.com/alexherbo2/webextension-dmenu)
 
 `~/.config/krabby/config.js`
 

@@ -131,7 +131,7 @@ other projects.
 - [Commands] ([WebExtension] API to perform browser actions)
 - [Shell] ([WebExtension] API to execute external commands)
 - [Editor] (Open an external editor to edit text inputs)
-- [dmenu][chrome-dmenu] (Tab search, selection and beyond with a [dmenu] filter program)
+- [dmenu][webextension-dmenu] (Tab search, selection and beyond with a [dmenu] filter program)
 
 [WebExtension]: https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions
 
@@ -234,10 +234,10 @@ make install [static=no] [extensions=yes] [interactive=yes]
 [Pandoc]: https://pandoc.org
 [Zip]: http://infozip.sourceforge.net/Zip.html
 
-[Commands]: https://github.com/alexherbo2/chrome-commands
-[Shell]: https://github.com/alexherbo2/chrome-shell
-[Editor]: https://github.com/alexherbo2/chrome-editor
-[chrome-dmenu]: https://github.com/alexherbo2/chrome-dmenu
+[Commands]: https://github.com/alexherbo2/webextension-commands
+[Shell]: https://github.com/alexherbo2/webextension-shell
+[Editor]: https://github.com/alexherbo2/webextension-editor
+[webextension-dmenu]: https://github.com/alexherbo2/webextension-dmenu
 
 [Kakoune]: https://kakoune.org
 [Why Kakoune]: https://kakoune.org/why-kakoune/why-kakoune.html

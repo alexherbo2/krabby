@@ -131,7 +131,7 @@ main() {
     # Extension: Commands
     name='Commands'
     description='WebExtension API to perform browser actions'
-    url='https://github.com/alexherbo2/chrome-commands'
+    url='https://github.com/alexherbo2/webextension-commands'
     path=$CONFIG/extensions/commands
     dependencies='jq zip'
     print_horizontal_line
@@ -145,7 +145,7 @@ main() {
     # Extension: Shell
     name='Shell'
     description='WebExtension API to execute external commands through native messaging'
-    url='https://github.com/alexherbo2/chrome-shell'
+    url='https://github.com/alexherbo2/webextension-shell'
     path=$CONFIG/extensions/shell
     if test "$STATIC_BUILD" = yes; then
       dependencies='docker'
@@ -167,7 +167,7 @@ main() {
     # Extension: Editor
     name='Editor'
     description='Open an external editor to edit text inputs'
-    url='https://github.com/alexherbo2/chrome-editor'
+    url='https://github.com/alexherbo2/webextension-editor'
     path=$CONFIG/extensions/editor
     dependencies='jq zip'
     print_horizontal_line
@@ -181,7 +181,7 @@ main() {
     # Extension: dmenu
     name='dmenu'
     description='Tab search, selection and beyond with a dmenu filter program'
-    url='https://github.com/alexherbo2/chrome-dmenu'
+    url='https://github.com/alexherbo2/webextension-dmenu'
     path=$CONFIG/extensions/dmenu
     dependencies='dmenu jq zip'
     print_horizontal_line

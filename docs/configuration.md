@@ -35,10 +35,10 @@
     - [icons][Krabby icon]
     - [`krabby`](/src/krabby)
   - `extensions`: contains extensions used by Krabby.
-    - [chrome-commands]
-    - [chrome-shell]
-    - [chrome-editor]
-    - [chrome-dmenu]
+    - [webextension-commands]
+    - [webextension-shell]
+    - [webextension-editor]
+    - [webextension-dmenu]
     - [Krabby] (self-update)
 - [`~/.local/bin`](/bin): contains executables used by Krabby.
   - [`plumb`](/bin/plumb)
@@ -59,10 +59,10 @@ Krabby’s default configuration is located in [`~/.config/krabby/packages/krabb
 [scroll.js]: https://github.com/alexherbo2/scroll.js
 [player.js]: https://github.com/alexherbo2/player.js
 
-[chrome-commands]: https://github.com/alexherbo2/chrome-commands
-[chrome-shell]: https://github.com/alexherbo2/chrome-shell
-[chrome-editor]: https://github.com/alexherbo2/chrome-editor
-[chrome-dmenu]: https://github.com/alexherbo2/chrome-dmenu
+[webextension-commands]: https://github.com/alexherbo2/webextension-commands
+[webextension-shell]: https://github.com/alexherbo2/webextension-shell
+[webextension-editor]: https://github.com/alexherbo2/webextension-editor
+[webextension-dmenu]: https://github.com/alexherbo2/webextension-dmenu
 
 ## Mapping
 
@@ -172,7 +172,7 @@ dmenu.send('set', {
 [fzf]: https://github.com/junegunn/fzf
 [Alacritty]: https://github.com/alacritty/alacritty
 
-See [chrome-dmenu] for a complete reference.
+See [webextension-dmenu] for a complete reference.
 
 ## External editor
 
@@ -192,7 +192,7 @@ editor.send('set', {
 [Kakoune]: https://kakoune.org
 [Alacritty]: https://github.com/alacritty/alacritty
 
-See [chrome-editor] for a complete reference.
+See [webextension-editor] for a complete reference.
 
 ## mpv
 

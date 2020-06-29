@@ -15,9 +15,9 @@ Commands are bound to **physical keys** and **displayed** with the [US layout][Q
 
 - <kbd>Alt</kbd> + <kbd>i</kbd> ⇒ Open your favorite editor (**Text** context)
 
-See [chrome-editor] for a complete reference.
+See [webextension-editor] for a complete reference.
 
-[chrome-editor]: https://github.com/alexherbo2/chrome-editor
+[webextension-editor]: https://github.com/alexherbo2/webextension-editor
 
 ## dmenu
 
@@ -26,9 +26,9 @@ See [chrome-editor] for a complete reference.
 - <kbd>Alt</kbd> + <kbd>q</kbd> ⇒ Open bookmark (**Command** context)
 - <kbd>Alt</kbd> + <kbd>Q</kbd> ⇒ Search history (**Command** context)
 
-See [chrome-dmenu] for a complete reference.
+See [webextension-dmenu] for a complete reference.
 
-[chrome-dmenu]: https://github.com/alexherbo2/chrome-dmenu
+[webextension-dmenu]: https://github.com/alexherbo2/webextension-dmenu
 
 ## Scroll
 

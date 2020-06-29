@@ -2,9 +2,9 @@
 
 See the following examples:
 
-- [chrome-shell](https://github.com/alexherbo2/chrome-shell)
-- [chrome-editor](https://github.com/alexherbo2/chrome-editor)
-- [chrome-dmenu](https://github.com/alexherbo2/chrome-dmenu)
+- [webextension-shell](https://github.com/alexherbo2/webextension-shell)
+- [webextension-editor](https://github.com/alexherbo2/webextension-editor)
+- [webextension-dmenu](https://github.com/alexherbo2/webextension-dmenu)
 
 `~/.config/krabby/config.js`
 
@@ -33,6 +33,6 @@ commands.ping = () => {
 modal.map('Command', ['F2'], () => commands.ping(), 'Ping', 'Ping-pong')
 ```
 
-See [chrome-shell] for a complete reference.
+See [webextension-shell] for a complete reference.
 
-[chrome-shell]: https://github.com/alexherbo2/chrome-shell
+[webextension-shell]: https://github.com/alexherbo2/webextension-shell
