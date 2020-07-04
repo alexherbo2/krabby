@@ -223,7 +223,7 @@ settings['html-filter'] = ['pandoc', '--from', 'html', '--to', 'asciidoc']
 Change the [dmenu] command to validate with [fzf] and [Alacritty]:
 
 ``` sh
-DMENU=$(cat <<'EOF'
+export DMENU=$(cat <<'EOF'
   # Create IO files
   state=$(mktemp -d)
   input=$state/input
@@ -250,8 +250,8 @@ EOF
 Change the clipboard copy and paste commands:
 
 ``` sh
-CLIPBOARD_COPY=wl-copy
-CLIPBOARD_PASTE=wl-paste
+export CLIPBOARD_COPY=wl-copy
+export CLIPBOARD_PASTE=wl-paste
 ```
 
 See the [`plumb`](/bin/plumb) script for a complete reference.
