@@ -77,7 +77,9 @@ modal.map('Command', ['F2'], (event) => console.log(krabby.settings), 'Display s
 
 You are encouraged to read the default configuration.
 
-See [modal.js] for a complete reference.
+See [modal.js] for a complete reference and [`src/krabby`] for examples of mappings.
+
+[`src/krabby`]: https://github.com/alexherbo2/krabby/tree/master/src/krabby
 
 ## Keyboard layout
 
