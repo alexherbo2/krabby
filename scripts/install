@@ -218,7 +218,7 @@ EOF
 on_key() {
   prompt=$1
   printf "${blue}❯${none} $prompt\n"
-  read -n 1 key < /dev/tty
+  read key < /dev/tty
   printf '\r'
 }
 
