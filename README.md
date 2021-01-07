@@ -36,7 +36,7 @@ Run the following in your terminal, then follow the onscreen instructions.
 ``` sh
 git clone https://github.com/alexherbo2/krabby
 cd krabby
-make install [static=no] [extensions=yes] [interactive=yes]
+make install [static=no] [interactive=yes]
 ```
 
 After installing, try to accomplish the following examples:

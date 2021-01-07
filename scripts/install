@@ -10,7 +10,6 @@ XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-~/.config}
 CONFIG=$XDG_CONFIG_HOME/krabby
 OS=$(uname -s)
 STATIC_BUILD=${STATIC_BUILD:-no}
-BUILD_EXTENSIONS=${BUILD_EXTENSIONS:-yes}
 INTERACTIVE=${INTERACTIVE:-yes}
 
 # Faces
@@ -42,40 +41,38 @@ main() {
   check_dependency git Git https://git-scm.com
   check_dependency zip Zip http://infozip.sourceforge.net/Zip.html
   check_dependency jq jq https://stedolan.github.io/jq/
-  if test "$BUILD_EXTENSIONS" = yes; then
-    if test "$STATIC_BUILD" = yes; then
-      printf "${green}Dependencies${none}: docker (Static build)\n"
-      check_dependency docker Docker https://docker.com
-    else
-      printf "${green}Dependencies${none}: crystal shards (Non-static build)\n"
-      check_dependency crystal Crystal https://crystal-lang.org
-      check_dependency shards Shards https://crystal-lang.org
-    fi
-    # Runtime dependencies
-    case "$OS" in
-      Linux|FreeBSD|OpenBSD)
-        printf "${green}Dependencies${none}: dmenu (Optional, (Linux|FreeBSD|OpenBSD)-only)\n"
-        check_dependency dmenu dmenu https://tools.suckless.org/dmenu/ yes
-        case "$XDG_SESSION_TYPE" in
-          wayland)
-            printf "${green}Dependencies${none}: wl-clipboard (Optional, Wayland)\n"
-            check_dependency wl-copy wl-clipboard https://github.com/bugaevc/wl-clipboard yes
-            check_dependency wl-paste wl-clipboard https://github.com/bugaevc/wl-clipboard yes
-            ;;
-          x11)
-            printf "${green}Dependencies${none}: xclip (Optional, X11)\n"
-            check_dependency xclip xclip https://github.com/astrand/xclip yes
-            ;;
-          *)
-            printf "${red}Warning${none}: Please set XDG_SESSION_TYPE for plumbing (https://github.com/alexherbo2/krabby/blob/master/bin/plumb)\n" > /dev/stderr
-            ;;
-        esac
-        ;;
-    esac
-    printf "${green}Dependencies${none}: mpv pandoc (Optional)\n"
-    check_dependency mpv mpv https://mpv.io yes
-    check_dependency pandoc Pandoc https://pandoc.org yes
+  if test "$STATIC_BUILD" = yes; then
+    printf "${green}Dependencies${none}: docker (Static build)\n"
+    check_dependency docker Docker https://docker.com
+  else
+    printf "${green}Dependencies${none}: crystal shards (Non-static build)\n"
+    check_dependency crystal Crystal https://crystal-lang.org
+    check_dependency shards Shards https://crystal-lang.org
   fi
+  # Runtime dependencies
+  case "$OS" in
+    Linux|FreeBSD|OpenBSD)
+      printf "${green}Dependencies${none}: dmenu (Optional, (Linux|FreeBSD|OpenBSD)-only)\n"
+      check_dependency dmenu dmenu https://tools.suckless.org/dmenu/ yes
+      case "$XDG_SESSION_TYPE" in
+        wayland)
+          printf "${green}Dependencies${none}: wl-clipboard (Optional, Wayland)\n"
+          check_dependency wl-copy wl-clipboard https://github.com/bugaevc/wl-clipboard yes
+          check_dependency wl-paste wl-clipboard https://github.com/bugaevc/wl-clipboard yes
+          ;;
+        x11)
+          printf "${green}Dependencies${none}: xclip (Optional, X11)\n"
+          check_dependency xclip xclip https://github.com/astrand/xclip yes
+          ;;
+        *)
+          printf "${red}Warning${none}: Please set XDG_SESSION_TYPE for plumbing (https://github.com/alexherbo2/krabby/blob/master/bin/plumb)\n" > /dev/stderr
+          ;;
+      esac
+      ;;
+  esac
+  printf "${green}Dependencies${none}: mpv pandoc (Optional)\n"
+  check_dependency mpv mpv https://mpv.io yes
+  check_dependency pandoc Pandoc https://pandoc.org yes
 
   # Extension: Krabby
   name='Krabby'
@@ -120,71 +117,69 @@ main() {
   # Print install instructions for Chrome and Firefox
   print_install_instructions
 
-  if test "$BUILD_EXTENSIONS" = yes; then
-    # Extension: Commands
-    name='Commands'
-    description='WebExtension API to perform browser actions'
-    url='https://github.com/alexherbo2/webextension-commands'
-    path=$CONFIG/extensions/commands
-    dependencies='jq zip'
-    print_horizontal_line
-    print_info "$name" "$description" "$url" "$path" "$dependencies"
-    clone_repo "$url" "$path"
-    cd "$path"
-    git pull
-    make
-    print_install_instructions
+  # Extension: Commands
+  name='Commands'
+  description='WebExtension API to perform browser actions'
+  url='https://github.com/alexherbo2/webextension-commands'
+  path=$CONFIG/extensions/commands
+  dependencies='jq zip'
+  print_horizontal_line
+  print_info "$name" "$description" "$url" "$path" "$dependencies"
+  clone_repo "$url" "$path"
+  cd "$path"
+  git pull
+  make
+  print_install_instructions
 
-    # Extension: Shell
-    name='Shell'
-    description='WebExtension API to execute external commands through native messaging'
-    url='https://github.com/alexherbo2/webextension-shell'
-    path=$CONFIG/extensions/shell
-    if test "$STATIC_BUILD" = yes; then
-      dependencies='docker'
-    else
-      dependencies='crystal shards'
-    fi
-    dependencies="$dependencies jq zip"
-    print_horizontal_line
-    print_info "$name" "$description" "$url" "$path" "$dependencies"
-    clone_repo "$url" "$path"
-    cd "$path"
-    git pull
-    cd "$path/host"
-    make install static="$STATIC_BUILD"
-    cd "$path/extension"
-    make
-    print_install_instructions
-
-    # Extension: Editor
-    name='Editor'
-    description='Open an external editor to edit text inputs'
-    url='https://github.com/alexherbo2/webextension-editor'
-    path=$CONFIG/extensions/editor
-    dependencies='jq zip'
-    print_horizontal_line
-    print_info "$name" "$description" "$url" "$path" "$dependencies"
-    clone_repo "$url" "$path"
-    cd "$path"
-    git pull
-    make
-    print_install_instructions
-
-    # Extension: dmenu
-    name='dmenu'
-    description='Tab search, selection and beyond with a dmenu filter program'
-    url='https://github.com/alexherbo2/webextension-dmenu'
-    path=$CONFIG/extensions/dmenu
-    dependencies='dmenu jq zip'
-    print_horizontal_line
-    print_info "$name" "$description" "$url" "$path" "$dependencies"
-    clone_repo "$url" "$path"
-    cd "$path"
-    git pull
-    make
-    print_install_instructions
+  # Extension: Shell
+  name='Shell'
+  description='WebExtension API to execute external commands through native messaging'
+  url='https://github.com/alexherbo2/webextension-shell'
+  path=$CONFIG/extensions/shell
+  if test "$STATIC_BUILD" = yes; then
+    dependencies='docker'
+  else
+    dependencies='crystal shards'
   fi
+  dependencies="$dependencies jq zip"
+  print_horizontal_line
+  print_info "$name" "$description" "$url" "$path" "$dependencies"
+  clone_repo "$url" "$path"
+  cd "$path"
+  git pull
+  cd "$path/host"
+  make install static="$STATIC_BUILD"
+  cd "$path/extension"
+  make
+  print_install_instructions
+
+  # Extension: Editor
+  name='Editor'
+  description='Open an external editor to edit text inputs'
+  url='https://github.com/alexherbo2/webextension-editor'
+  path=$CONFIG/extensions/editor
+  dependencies='jq zip'
+  print_horizontal_line
+  print_info "$name" "$description" "$url" "$path" "$dependencies"
+  clone_repo "$url" "$path"
+  cd "$path"
+  git pull
+  make
+  print_install_instructions
+
+  # Extension: dmenu
+  name='dmenu'
+  description='Tab search, selection and beyond with a dmenu filter program'
+  url='https://github.com/alexherbo2/webextension-dmenu'
+  path=$CONFIG/extensions/dmenu
+  dependencies='dmenu jq zip'
+  print_horizontal_line
+  print_info "$name" "$description" "$url" "$path" "$dependencies"
+  clone_repo "$url" "$path"
+  cd "$path"
+  git pull
+  make
+  print_install_instructions
 
   # Post-installation
   print_horizontal_line
@@ -199,10 +194,10 @@ Installation finished 🦀
 
 • How to update Krabby:
 
-    ╭──────────────────────────────────────────────────────────────╮
-    │ $ cd ~/.config/krabby                                        │
-    │ $ make update [static=no] [extensions=yes] [interactive=yes] │
-    ╰──────────────────────────────────────────────────────────────╯
+    ╭─────────────────────────────────────────────╮
+    │ $ cd ~/.config/krabby                       │
+    │ $ make update [static=no] [interactive=yes] │
+    ╰─────────────────────────────────────────────╯
 EOF
 }
 

@@ -1,5 +1,4 @@
 static ?= no
-extensions ?= yes
 interactive ?= yes
 
 all: chrome firefox
@@ -14,6 +13,6 @@ fetch:
 	./fetch
 
 update:
-	cd extensions/krabby; git pull; make static="$(static)" extensions="$(extensions)" interactive="$(interactive)"
+	cd extensions/krabby; git pull; make static="$(static)" interactive="$(interactive)"
 
 .PHONY: build fetch
