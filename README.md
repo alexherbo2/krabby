@@ -1,7 +1,7 @@
 # [Krabby]
 
 [![Platform](https://img.shields.io/badge/Platform-Linux%20|%20FreeBSD%20|%20OpenBSD%20|%20macOS-lightgray)](#supported-platforms)
-[![Browser](https://img.shields.io/badge/Browser-Chrome%20|%20Firefox%20|%20surf-lightgray)](#browser-compatibility)
+[![Browser](https://img.shields.io/badge/Browser-Chrome%20|%20Firefox-lightgray)](#browser-compatibility)
 [![Discord](https://img.shields.io/discord/718348741811109908)](https://discord.gg/CXF2P8w)
 [![IRC](https://img.shields.io/badge/IRC-%23krabby-blue)](https://webchat.freenode.net/#krabby)
 [![Plugins](https://img.shields.io/badge/Plugins-%23krabby%20%23plugin-green)](https://github.com/search?q=topic:krabby+topic:plugin)
@@ -10,7 +10,7 @@
 
 <img src="https://www.iconfinder.com/icons/877852/download/svg/512" height="168" align="right">
 
-Krabby is a browser extension (for [Chrome], [Firefox] and [surf]) for keyboard-based navigation, inspired by [Kakoune].
+Krabby is a browser extension (for [Chrome] and [Firefox]) for keyboard-based navigation, inspired by [Kakoune].
 
 The main differences with [existing extensions](docs/alternatives.md) are:
 multiple selections,
@@ -112,7 +112,7 @@ on the context, <kbd>y</kbd> will yank the page or a link URL.
 - Modular (think [Emacs]).  Krabby is divided into multiple small projects.  At
 its core Krabby just holds the configuration and grabs its functionalities from
 other projects.
-- [Chrome], [Firefox] and [surf] support.  It has also been tested on [Opera],
+- [Chrome] and [Firefox] support.  It has also been tested on [Opera],
 [Vivaldi] and [Brave].
 
 ## Dependencies
@@ -152,17 +152,16 @@ make install [static=no] [extensions=yes] [interactive=yes]
 
 ## Browser compatibility
 
-| Web browser | Support |             Engine              |                                        Notes                                        |
-| ----------- |:-------:|:-------------------------------:| ----------------------------------------------------------------------------------- |
-| [Chrome]    |    ✓    | [![Blink][chrome.svg]][Blink]   |                                                                                     |
-| [Chromium]  |    ✓    | [![Blink][chrome.svg]][Blink]   |                                                                                     |
-| [Firefox]   |    ✓    | [![Gecko][firefox.svg]][Gecko]  | [Only developer or unbranded version][Firefox – Extension Signing – FAQ]            |
-| [surf]      |    ✓    | [![WebKit][safari.svg]][WebKit] | Limited support (does not have [WebExtension] features, such as [native messaging]) |
-| [Edge]      |    ?    | [![Blink][chrome.svg]][Blink]   |                                                                                     |
-| [Opera]     |    ✓    | [![Blink][chrome.svg]][Blink]   |                                                                                     |
-| [Safari]    |    ✗    | [![WebKit][safari.svg]][WebKit] |                                                                                     |
-| [Vivaldi]   |    ✓    | [![Blink][chrome.svg]][Blink]   |                                                                                     |
-| [Brave]     |    ✓    | [![Blink][chrome.svg]][Blink]   |                                                                                     |
+| Web browser | Support |             Engine              |                                        Notes                             |
+| ----------- |:-------:|:-------------------------------:| ------------------------------------------------------------------------ |
+| [Chrome]    |    ✓    | [![Blink][chrome.svg]][Blink]   |                                                                          |
+| [Chromium]  |    ✓    | [![Blink][chrome.svg]][Blink]   |                                                                          |
+| [Firefox]   |    ✓    | [![Gecko][firefox.svg]][Gecko]  | [Only developer or unbranded version][Firefox – Extension Signing – FAQ] |
+| [Edge]      |    ?    | [![Blink][chrome.svg]][Blink]   |                                                                          |
+| [Opera]     |    ✓    | [![Blink][chrome.svg]][Blink]   |                                                                          |
+| [Safari]    |    ✗    | [![WebKit][safari.svg]][WebKit] |                                                                          |
+| [Vivaldi]   |    ✓    | [![Blink][chrome.svg]][Blink]   |                                                                          |
+| [Brave]     |    ✓    | [![Blink][chrome.svg]][Blink]   |                                                                          |
 
 ## Credits
 
@@ -206,7 +205,6 @@ make install [static=no] [extensions=yes] [interactive=yes]
 [Chrome]: https://google.com/chrome/
 [Chromium]: https://chromium.org
 [Firefox]: https://mozilla.org/firefox/
-[surf]: https://surf.suckless.org
 [Edge]: https://microsoft.com/en-us/windows/microsoft-edge
 [Opera]: https://opera.com
 [Safari]: https://apple.com/safari/

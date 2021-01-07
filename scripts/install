@@ -117,13 +117,6 @@ main() {
   if test -e Makefile; then
     make
   fi
-  # Install ~/.config/krabby/target/surf to ~/.surf
-  if test "$INTERACTIVE" = yes; then
-    on_key 'Install surf? (y/n)'
-    if test "$key" = 'y'; then
-      extensions/krabby/scripts/install-surf
-    fi
-  fi
   # Print install instructions for Chrome and Firefox
   print_install_instructions
 
@@ -198,11 +191,11 @@ main() {
   cat <<'EOF'
 Installation finished 🦀
 
-    ╭──────────────────────────────────╮
-    │ $ cd ~/.config/krabby            │
-    │ $ kak config.js                  │
-    │ $ make [chrome] [firefox] [surf] │
-    ╰──────────────────────────────────╯
+    ╭───────────────────────────╮
+    │ $ cd ~/.config/krabby     │
+    │ $ kak config.js           │
+    │ $ make [chrome] [firefox] │
+    ╰───────────────────────────╯
 
 • How to update Krabby:
 

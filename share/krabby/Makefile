@@ -2,16 +2,13 @@ static ?= no
 extensions ?= yes
 interactive ?= yes
 
-all: chrome firefox surf
+all: chrome firefox
 
 chrome: fetch
 	extensions/krabby/scripts/build-target chrome
 
 firefox: fetch
 	extensions/krabby/scripts/build-target firefox
-
-surf: fetch
-	extensions/krabby/scripts/build-surf
 
 fetch:
 	./fetch
