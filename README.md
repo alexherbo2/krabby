@@ -118,7 +118,6 @@ other projects.
 ## Dependencies
 
 - [Crystal]
-- [Docker] (for static builds)
 - [jq]
 - [wl-clipboard] for [Wayland] _or_ [xclip] for [X11] (Optional, for [plumbing](bin/plumb))
 - [mpv] (Optional, for playing videos)
@@ -223,7 +222,6 @@ make install [static=no] [extensions=yes] [interactive=yes]
 [Vim]: https://vim.org
 [Emacs]: https://gnu.org/software/emacs/
 [Crystal]: https://crystal-lang.org
-[Docker]: https://docker.com
 [jq]: https://stedolan.github.io/jq/
 [wl-clipboard]: https://github.com/bugaevc/wl-clipboard
 [xclip]: https://github.com/astrand/xclip
