@@ -46,27 +46,8 @@ A Tour of the Acme Editor: https://research.swtch.com/acme
 
 Configuration
 ‾‾‾‾‾‾‾‾‾‾‾‾‾
-Change the dmenu command to validate with fzf and Alacritty:
-┌
-│ export DMENU=$(cat <<'EOF'
-│   # Create IO files
-│   state=$(mktemp -d)
-│   input=$state/input
-│   output=$state/output
-│   trap 'rm -Rf "$state"' EXIT
-│   # Get input from /dev/stdin
-│   cat > "$input"
-│   # Run fzf with Alacritty
-│   alacritty --class 'Alacritty · Floating' --command sh -c 'fzf < "$1" > "$2"' -- "$input" "$output"
-│   # Write output to /dev/stdout
-│   cat "$output"
-│   # Exit code
-│   if test ! -s "$output"; then
-│     exit 1
-│   fi
-│ EOF
-│ )
-└
+Change the dmenu command:
+$ export DMENU=dmenu
 
 Change the clipboard copy and paste commands:
 $ export CLIPBOARD_COPY=wl-copy
@@ -83,7 +64,7 @@ OS=$(uname -s)
 
 # Validate input with a dmenu filter program.
 if test -z "$DMENU"; then
-  DMENU='dmenu -l 20'
+  DMENU=dmenu
 fi
 
 # Copy content to the clipboard.

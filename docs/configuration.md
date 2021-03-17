@@ -137,37 +137,35 @@ See [hint.js] for a complete reference.
 
 Change the [dmenu] command to search with [fzf] and [Alacritty]:
 
-`~/.config/krabby/config.js`
+`~/.local/bin/dmenu`
 
-``` javascript
-const { extensions } = krabby
-const { dmenu } = extensions
+``` sh
+#!/bin/sh
 
-dmenu.send('set', {
-  dmenu: {
-    command: 'sh',
-    arguments: [
-      '-c',
-      `
-        # Create IO files
-        state=$(mktemp -d)
-        input=$state/input
-        output=$state/output
-        trap 'rm -Rf "$state"' EXIT
-        # Get input from /dev/stdin
-        cat > "$input"
-        # Run fzf with Alacritty
-        alacritty --class 'Alacritty · Floating' --command sh -c 'fzf < "$1" > "$2"' -- "$input" "$output"
-        # Write output to /dev/stdout
-        cat "$output"
-        # Exit code
-        if test ! -s "$output"; then
-          exit 1
-        fi
-      `
-    ]
-  }
-})
+# A drop-in dmenu replacement using fzf with Alacritty.
+
+# – fzf (https://github.com/junegunn/fzf)
+# – Alacritty (https://github.com/alacritty/alacritty)
+
+# Create IO files
+state=$(mktemp -d)
+input=$state/input
+output=$state/output
+trap 'rm -Rf "$state"' EXIT
+
+# Get input
+cat > "$input"
+
+# Run fzf with Alacritty
+alacritty --class 'Alacritty · Floating' --command sh -c 'fzf < "$1" > "$2"' -- "$input" "$output"
+
+# Write output
+cat "$output"
+
+# Exit code
+if test ! -s "$output"; then
+  exit 1
+fi
 ```
 
 [dmenu]: https://tools.suckless.org/dmenu/
@@ -227,32 +225,13 @@ settings['html-filter'] = ['pandoc', '--from', 'html', '--to', 'asciidoc']
 
 ## Plumbing
 
-Change the [dmenu] command to validate with [fzf] and [Alacritty]:
+Change the [dmenu] command:
 
 ``` sh
-export DMENU=$(cat <<'EOF'
-  # Create IO files
-  state=$(mktemp -d)
-  input=$state/input
-  output=$state/output
-  trap 'rm -Rf "$state"' EXIT
-  # Get input from /dev/stdin
-  cat > "$input"
-  # Run fzf with Alacritty
-  alacritty --class 'Alacritty · Floating' --command sh -c 'fzf < "$1" > "$2"' -- "$input" "$output"
-  # Write output to /dev/stdout
-  cat "$output"
-  # Exit code
-  if test ! -s "$output"; then
-    exit 1
-  fi
-EOF
-)
+export DMENU=dmenu
 ```
 
 [dmenu]: https://tools.suckless.org/dmenu/
-[fzf]: https://github.com/junegunn/fzf
-[Alacritty]: https://github.com/alacritty/alacritty
 
 Change the clipboard copy and paste commands:
 
