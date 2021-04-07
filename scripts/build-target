@@ -10,5 +10,5 @@ for platform do
   mkdir -p "$target"
   cp -R config.js packages "$target"
   jq 'add' --slurp manifest/common.json "manifest/$platform.json" > "$target/manifest.json"
-  (cd "$target"; zip --recurse-paths package.zip manifest.json config.js packages)
+  (cd "$target"; zip -r package.zip manifest.json config.js packages)
 done

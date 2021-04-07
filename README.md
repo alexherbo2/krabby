@@ -123,7 +123,6 @@ other projects.
 - [mpv] (Optional, for playing videos)
 - [dmenu] (Optional, for tab search and [plumbing](bin/plumb))
 - [Pandoc] (Optional, for HTML filtering)
-- [Zip] (Zip is used to package the extension)
 
 ### Extensions
 
@@ -228,7 +227,6 @@ make install [static=no] [extensions=yes] [interactive=yes]
 [mpv]: https://mpv.io
 [dmenu]: https://tools.suckless.org/dmenu/
 [Pandoc]: https://pandoc.org
-[Zip]: http://infozip.sourceforge.net/Zip.html
 
 [Commands]: https://github.com/alexherbo2/webextension-commands
 [Shell]: https://github.com/alexherbo2/webextension-shell

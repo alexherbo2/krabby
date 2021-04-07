@@ -37,9 +37,8 @@ main() {
   # Dependencies
   print_horizontal_line
   # Build dependencies
-  printf "${green}Dependencies${none}: git zip jq\n"
+  printf "${green}Dependencies${none}: git jq\n"
   check_dependency git Git https://git-scm.com
-  check_dependency zip Zip http://infozip.sourceforge.net/Zip.html
   check_dependency jq jq https://stedolan.github.io/jq/
   printf "${green}Dependencies${none}: crystal shards\n"
   check_dependency crystal Crystal https://crystal-lang.org
@@ -74,7 +73,7 @@ main() {
   description='A keyboard interface to the web'
   url='https://github.com/alexherbo2/krabby'
   path=$CONFIG
-  dependencies='jq zip'
+  dependencies='jq'
   print_horizontal_line
   print_info "$name" "$description" "$url" "$path" "$dependencies"
   # Initialize ~/.config/krabby if it does not exist.
@@ -117,7 +116,7 @@ main() {
   description='WebExtension API to perform browser actions'
   url='https://github.com/alexherbo2/webextension-commands'
   path=$CONFIG/extensions/commands
-  dependencies='jq zip'
+  dependencies='jq'
   print_horizontal_line
   print_info "$name" "$description" "$url" "$path" "$dependencies"
   clone_repo "$url" "$path"
@@ -131,7 +130,7 @@ main() {
   description='WebExtension API to execute external commands through native messaging'
   url='https://github.com/alexherbo2/webextension-shell'
   path=$CONFIG/extensions/shell
-  dependencies='crystal shards jq zip'
+  dependencies='crystal shards jq'
   print_horizontal_line
   print_info "$name" "$description" "$url" "$path" "$dependencies"
   clone_repo "$url" "$path"
@@ -148,7 +147,7 @@ main() {
   description='Open an external editor to edit text inputs'
   url='https://github.com/alexherbo2/webextension-editor'
   path=$CONFIG/extensions/editor
-  dependencies='jq zip'
+  dependencies='jq'
   print_horizontal_line
   print_info "$name" "$description" "$url" "$path" "$dependencies"
   clone_repo "$url" "$path"
@@ -162,7 +161,7 @@ main() {
   description='Tab search, selection and beyond with a dmenu filter program'
   url='https://github.com/alexherbo2/webextension-dmenu'
   path=$CONFIG/extensions/dmenu
-  dependencies='dmenu jq zip'
+  dependencies='dmenu jq'
   print_horizontal_line
   print_info "$name" "$description" "$url" "$path" "$dependencies"
   clone_repo "$url" "$path"
