@@ -157,7 +157,7 @@ trap 'rm -Rf "$state"' EXIT
 cat > "$input"
 
 # Run fzf with Alacritty
-alacritty --class 'Alacritty · Floating' --command sh -c 'fzf < "$1" > "$2"' -- "$input" "$output"
+alacritty --class 'popup' --command sh -c 'fzf < "$1" > "$2"' -- "$input" "$output"
 
 # Write output
 cat "$output"
@@ -186,7 +186,7 @@ const { editor } = extensions
 
 editor.send('set', {
   editor: `
-    alacritty --class 'Alacritty · Floating' --command \\
+    alacritty --class 'popup' --command \\
       kak "$file" -e "
         select $anchor_line.$anchor_column,$cursor_line.$cursor_column
       "
